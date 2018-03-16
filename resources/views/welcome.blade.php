@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Akbar
+                    Januar Branch
                 </div>
 
                 <div class="links">
