@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'UserController@Index');
+Route::get('/testRoute', function () {
+    return "Test Route";
 });
