@@ -8,7 +8,11 @@ class UserController extends Controller
 {
     //
 
-    public function Index(){
-        return view('Login');
+    public function index(){
+        return view('login');
+    }
+
+    public function dashBoard(){
+        return view('admin.dashBoard');
     }
 }
