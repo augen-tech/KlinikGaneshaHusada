@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', 'UserController@index');
+Route::get('/', 'UserController@Index') ->name('login');
 
-Route::get('/woy', function () {
-    return 'boobs';
+Route::get('/dashboard', 'UserController@DashBoard') ->name('dashboard');
+
+Route::get('/registration/list', 'RegistrationController@Index') ->name('registration.list');
+
+Route::get('/testRoute', function () {
+    return "Test Route";
 });
