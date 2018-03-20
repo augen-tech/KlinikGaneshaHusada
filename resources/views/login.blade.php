@@ -37,11 +37,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-<<<<<<< HEAD
     <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/akbar.jpg')}});">
-=======
-    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/januar.jpg')}});">
->>>>>>> 94633e26841f1d82e665497ff078715dfac524c7
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" id="loginform" action="index.html">
