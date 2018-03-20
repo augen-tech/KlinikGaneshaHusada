@@ -15,9 +15,13 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_diagnosis');
+            $table->integer('diagnosis_id')->unsigned();
             $table->integer('total');
             $table->timestamps();
+
+            $table->foreign('diagnosis_id')
+                ->references('id')->on('diagnoses')
+                ->onDelete('cascade');
         });
     }
 

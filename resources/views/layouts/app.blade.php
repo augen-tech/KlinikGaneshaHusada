@@ -332,7 +332,7 @@
                     <!-- User profile image -->
                     <div class="profile-img"> <img src="{{ asset ('material/images/users/9.png')}}" alt="user" /> </div>
                     <!-- User profile text-->
-                    <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Januar Elsan <span class="caret"></span></a>
+                    <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dokter Kelamin <span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
                             <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                             <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
@@ -346,16 +346,19 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">PERSONAL</li>
+                        <li class="nav-small-cap">DOCTOR</li>
                         <li>
-                            <a href="starter-kit.html" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Registration</span></a>
+                            <a href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Diagnosis</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="map-google.html">Add Registration</a></li>
-                                <li><a href="{{ route('registration.list')}}">List Registration</a></li>
+                                <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis</a></li>
+                                <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patients</span></a>
                         </li>
                         <li>
                             {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
