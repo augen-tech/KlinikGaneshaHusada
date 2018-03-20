@@ -15,9 +15,15 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_registration');
-            $table->string('result');
+            $table->integer('patient_id')->unsigned();
+            $table->string('complaint');
+            $table->integer('type');
+
             $table->timestamps();
+
+            $table->foreign('patient_id')
+            ->references('id')->on('patients')
+            ->onDelete('cascade');
         });
     }
 

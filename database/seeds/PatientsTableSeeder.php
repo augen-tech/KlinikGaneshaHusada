@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class PatientsTableSeeder extends Seeder
 {
@@ -11,15 +12,20 @@ class PatientsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //       
+        $faker = Faker::create();
+
+        $blood_type = array("A","B","AB","O");
+        $gender = array("M","F");
+
         foreach(range(0,10) as $index){
             DB::table('patients')->insert([
-                'name' => 'Akbar ',
-                'address' => 'Jl. FachDes',
-                'blood_type' => 'O',
-                'gender' => 'M',
-                'phone' => '081234567890',
-                
+                'name' => $faker->name,
+                'dob' => $faker->date($format = 'Y-m-d', $max = '2017-01-01'),
+                'address' => $faker->address,
+                'gender' => $gender[array_rand($gender)],
+                'blood_type' => $blood_type[array_rand($blood_type)],
+                'phone' => $faker->phoneNumber,
             ]);
         }
         
