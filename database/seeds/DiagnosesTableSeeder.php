@@ -19,7 +19,8 @@ class DiagnosesTableSeeder extends Seeder
         foreach(range(0,10) as $index){
             DB::table('diagnoses')->insert([                
                 'registration_id' => $index + 1,
-                'result' => $faker->text($maxNbChars = 190),                
+                'result' => $faker->text($maxNbChars = 190),
+                'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),             
             ]);
         }
     }

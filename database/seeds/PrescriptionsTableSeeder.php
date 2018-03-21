@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
+
 
 class PrescriptionsTableSeeder extends Seeder
 {
@@ -13,14 +13,13 @@ class PrescriptionsTableSeeder extends Seeder
     public function run()
     {
         //
-        $faker = Faker::create();
-        foreach(range(0,4) as $index){
+        foreach(range(0,9) as $index){
             DB::table('prescriptions')->insert([
-                'name' => $medicine[$index],
-                'stock' => rand(10,50),
-                'price' => rand(5000,10000),
-                
+                'diagnosis_id' => $index+1,
+                'total_price' => rand(75000,250000), 
             ]);
         }
+        
+
     }
 }
