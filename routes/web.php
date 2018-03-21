@@ -19,9 +19,11 @@ Route::get('/registration/list', 'RegistrationController@Index') ->name('registr
 
 Route::get('/doctor/dashboard', 'DiagnosisController@Index') ->name('doctor.dashboard');
 
-Route::get('/doctor/diagnosis/add', 'DiagnosisController@create') ->name('doctor.diagnosis.add');
+Route::get('/doctor/diagnosis/add', 'DiagnosisController@add') ->name('doctor.diagnosis.add');
 
 Route::get('/doctor/diagnosis/list', 'DiagnosisController@Index') ->name('doctor.diagnosis.list');
+
+Route::get('/doctor/diagnosis/create', 'DiagnosisController@create') ->name('doctor.diagnosis.create');
 
 
 Route::get('/testRoute', function () {

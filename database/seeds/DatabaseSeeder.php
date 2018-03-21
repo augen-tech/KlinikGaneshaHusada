@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(PatientsTableSeeder::class);
          $this->call(RegistrationsTableSeeder::class);
+         $this->call(DiagnosesTableSeeder::class);
     }
 }

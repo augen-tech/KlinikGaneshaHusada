@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\diagnosis;
+use App\registration;
 
 class DiagnosisController extends Controller
 {
@@ -14,7 +16,8 @@ class DiagnosisController extends Controller
     public function index()
     {
         //
-        return view('doctor.diagnosis.list');
+        $diagnoses = diagnosis::all();
+        return view('doctor.diagnosis.list', compact('diagnoses'));
     }
 
     /**
@@ -25,7 +28,12 @@ class DiagnosisController extends Controller
     public function create()
     {
         //
-        return view('doctor.diagnosis.add');
+        return view('doctor.diagnosis.create');
+    }
+
+    public function add(){
+        $registrations = registration::all();
+        return view('doctor.diagnosis.add', compact('registrations'));
     }
 
     /**
