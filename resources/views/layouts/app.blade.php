@@ -14,6 +14,7 @@
     <title>Klinik Ganesha Husada</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('material/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    @yield('style')
     <!-- Custom CSS -->
     <link href="{{ asset('material/css/style.css') }}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
@@ -346,7 +347,7 @@
                         <li>
                             <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Doctor</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="">Add Doctor</a></li>
+                                <li><a href="{{ route('superadmin.doctor.create') }}">Add Doctor</a></li>
                                 <li><a href="{{ route('superadmin.doctor.list') }}">List Doctor</a></li>
                             </ul>
                         </li>
@@ -430,6 +431,7 @@
     <script src="{{ asset('material/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('material/js/custom.min.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>

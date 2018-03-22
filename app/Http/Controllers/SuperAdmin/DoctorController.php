@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class DoctorController extends Controller
 {
@@ -15,7 +16,8 @@ class DoctorController extends Controller
     public function index()
     {
         //
-        return view('SuperAdmin.Doctor.list');
+        $doctors = User::where('role', 'Doctor')->get();
+        return view('SuperAdmin.Doctor.list', compact('doctors'));
     }
 
     /**

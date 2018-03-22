@@ -14,6 +14,7 @@
 Route::get('/', 'UserController@index');
 
 Route::get('/superadmin/dashboard', 'UserController@dashboard')->name('dashboard');
+Route::get('/superadmin/doctor/add', 'SuperAdmin\DoctorController@create')->name('superadmin.doctor.create');
 Route::get('/superadmin/doctor/list', 'SuperAdmin\DoctorController@index')->name('superadmin.doctor.list');
 
 Route::get('/test', function () {
