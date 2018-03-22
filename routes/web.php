@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'UserController@index');
+
+Route::get('/woy', function () {
+    return 'boobs';
 });
