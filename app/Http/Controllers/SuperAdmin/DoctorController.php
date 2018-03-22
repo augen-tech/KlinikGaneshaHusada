@@ -15,9 +15,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
         $doctors = User::where('role', 'Doctor')->get();
-        return view('SuperAdmin.Doctor.list', compact('doctors'));
+        return view('superAdmin.doctor.list', compact('doctors'));
     }
 
     /**
@@ -27,7 +26,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('superAdmin.doctor.add', compact('doctors'));
     }
 
     /**
