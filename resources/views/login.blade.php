@@ -119,10 +119,6 @@
     <script src="{{ asset('material/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('material/js/custom.min.js')}}"></script>
-    <!-- ============================================================== -->
-    <!-- Style switcher -->
-    <!-- ============================================================== -->
-    {{--  <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>  --}}
 </body>
 
 </html>
