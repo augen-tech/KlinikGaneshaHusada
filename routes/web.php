@@ -13,6 +13,9 @@
 
 Route::get('/', 'UserController@index');
 
-Route::get('/woy', function () {
-    return 'boobs';
+Route::get('/superadmin/dashboard', 'UserController@dashboard')->name('dashboard');
+Route::get('/superadmin/doctor/list', 'SuperAdmin\DoctorController@index')->name('superadmin.doctor.list');
+
+Route::get('/test', function () {
+    return 'test 123';
 });
