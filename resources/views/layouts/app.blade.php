@@ -291,7 +291,7 @@
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="{{ asset('material/images/users/9.png')}}" alt="user"></div>
+                                            <div class="u-img"><img src="{{ asset('material/images/users/3.png')}}" alt="user"></div>
                                             <div class="u-text">
                                                 <h4>Steave Jobs</h4>
                                                 <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
@@ -331,7 +331,7 @@
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset ('material/images/background/user-info.jpg')}}) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="{{ asset ('material/images/users/9.png')}}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{{ asset ('material/images/users/3.png')}}" alt="user" /> </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dokter Kelamin <span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
