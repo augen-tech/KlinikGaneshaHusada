@@ -59,9 +59,10 @@
                                     <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->address}}">
                                 </div>
                             </div>
+                            <br>
                             <div class="col-md-6">
                                     <div class="form-group">
-                                        <a href=""><label for="address1"><i class="fa fa-info-circle">Details</i></label></a>
+                                        <a href="{{ route('doctor.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
                                     </div>
                                 </div>
                         </div>

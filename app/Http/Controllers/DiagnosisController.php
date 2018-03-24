@@ -37,6 +37,8 @@ class DiagnosisController extends Controller
         return view('doctor.diagnosis.add', compact('registrations'));
     }
 
+    
+
     /**
      * Store a newly created resource in storage.
      *

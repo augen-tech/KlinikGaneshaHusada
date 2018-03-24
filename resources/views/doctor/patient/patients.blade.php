@@ -28,10 +28,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($registrations as $row)
+                        @foreach($patients as $row)
                             <tr>
                                 <td><center>{{ $row->id }}</center></td>
-                                <td>{{ $row->patient->name }}</td>
+                                <td>{{ $row->name }}</td>
                             <td><a href="{{ route('doctor.patient.detail', $row->id)}}"><center><span><i class="fa fa-search"></i></span></center></a></td>
                             </tr>                            
                         @endforeach
