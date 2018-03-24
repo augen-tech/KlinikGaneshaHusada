@@ -37,7 +37,18 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => $request->password,
+            'role'      => 'Doctor',
+        ];
+
+        // return dd($data);
+
+        User::create($data);
+
+        return redirect()->route('superadmin.doctor.list');
     }
 
     /**

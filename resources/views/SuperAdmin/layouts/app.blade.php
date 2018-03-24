@@ -345,6 +345,13 @@
                             <a href="{{ route('dashboard') }}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Receptionist</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('superadmin.doctor.create') }}">Add Receptionist</a></li>
+                                <li><a href="{{ route('superadmin.doctor.list') }}">List Receptionist</a></li>
+                            </ul>
+                        </li>
+                        <li>
                             <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Doctor</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('superadmin.doctor.create') }}">Add Doctor</a></li>

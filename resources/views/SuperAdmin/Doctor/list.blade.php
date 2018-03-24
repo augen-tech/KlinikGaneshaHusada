@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('SuperAdmin.layouts.app')
 
 @section('breadcumb')
 <div class="row page-titles">

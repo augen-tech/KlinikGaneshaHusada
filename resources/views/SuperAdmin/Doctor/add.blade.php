@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('SuperAdmin.layouts.app')
 
 @section('breadcumb')
 <div class="row page-titles">
@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="#">
+                <form action="{{ route('superadmin.doctor.store') }}" method="POST">
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="text" name="email" class="form-control" placeholder="Johndoe@mailinator.com">
+                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>
