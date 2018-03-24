@@ -25,10 +25,11 @@ class DiagnosisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        return view('doctor.diagnosis.create');
+        $registration = Registration::find($id);
+        return view('doctor.diagnosis.create', compact('registration'));
     }
 
     public function add(){
