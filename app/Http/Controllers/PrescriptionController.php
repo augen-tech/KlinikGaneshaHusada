@@ -12,7 +12,6 @@ class PrescriptionController extends Controller
         
         $prescriptions = Prescription::all();
         return view('pharmacist.prescription',compact('prescriptions'));
-
     }
 
     
