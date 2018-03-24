@@ -22,6 +22,7 @@ class CreateDiagnosesTable extends Migration
             $table->foreign('registration_id')
                 ->references('id')->on('registrations')
                 ->onDelete('cascade');
+
         });
     }
 

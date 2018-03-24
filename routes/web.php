@@ -20,6 +20,12 @@ Route::get('/doctor/diagnosis/add', 'DiagnosisController@add') ->name('doctor.di
 Route::get('/doctor/diagnosis/list', 'DiagnosisController@Index') ->name('doctor.diagnosis.list');
 Route::get('/doctor/diagnosis/create', 'DiagnosisController@create') ->name('doctor.diagnosis.create');
 
+Route::get('/pharmacist/prescription', 'PrescriptionController@Index') ->name('pharmacist.prescription');
+Route::get('/pharmacist/medicinelist', 'MedicineController@Index') ->name('pharmacist.medicinelist');
+Route::get('/pharmacist/addmedicine', 'MedicineController@create') ->name('pharmacist.addmedicine');
+Route::post('/pharmacist/addmedicine', 'MedicineController@store') ->name('pharmacist.storemedicine');
+
+
 Route::get('/testRoute', function () {
     return "Test Route";
 });

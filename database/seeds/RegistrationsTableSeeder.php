@@ -14,13 +14,13 @@ class RegistrationsTableSeeder extends Seeder
     {
         //
         $faker = Faker::create();
-        $patients = DB::table('patients')->get();
-        foreach(range(0,10) as $index)
-        DB::table('registrations')->insert([
-            'patient_id' => $patients[rand(0, count($patients) - 1)]->id,
-            'complain' => 'Aku sehat bro',
-            'type' => rand(0,1),
-            'created_at' => $faker->date($format = 'Y-m-d', $max = '2017-01-01'),
-        ]);
+
+        foreach(range(0,10) as $index){
+            DB::table('registrations')->insert([
+                'patient_id' => rand(1,11),
+                'complaint' => $faker->text($maxNbChars = 190), 
+                'type' => rand(0,1),                
+            ]);
+        }
     }
 }
