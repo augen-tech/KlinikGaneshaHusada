@@ -15,7 +15,8 @@ Route::get('/', 'UserController@Index') ->name('login');
 
 Route::get('/dashboard', 'UserController@DashBoard') ->name('dashboard');
 
-Route::get('/registration/list', 'RegistrationController@Index') ->name('registration.list');
+Route::get('/lab/createResultLab', 'LabController@Create') ->name('health_analyst.lab.createResultLab');
+Route::get('/lab/listResultLab', 'LabController@Index') ->name('health_analyst.lab.listResultLab');
 
 Route::get('/testRoute', function () {
     return "Test Route";

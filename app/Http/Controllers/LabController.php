@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ResultLab;
 
-class RegistrationController extends Controller
+class LabController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class RegistrationController extends Controller
     public function index()
     {
         //
-        return view('admin.registration.list');
+        $resultLab = ResultLab::all();
+        return view('health_analyst.lab.listResultLab',compact('resultLab'));
     }
 
     /**
@@ -25,6 +27,7 @@ class RegistrationController extends Controller
     public function create()
     {
         //
+        return view('health_analyst.lab.createResultLab');
     }
 
     /**

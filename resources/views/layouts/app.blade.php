@@ -329,7 +329,7 @@
             <div class="scroll-sidebar">
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset ('material/images/background/user-info.jpg')}}) no-repeat;">
-                    <!-- User profile image -->
+                    <!-- User profile image --> 
                     <div class="profile-img"> <img src="{{ asset ('material/images/users/9.png')}}" alt="user" /> </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Januar Elsan <span class="caret"></span></a>
@@ -346,15 +346,15 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">PERSONAL</li>
+                        <li class="nav-small-cap">Analis Kesehatan</li>
                         <li>
                             <a href="starter-kit.html" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Registration</span></a>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="map-google.html">Add Registration</a></li>
-                                <li><a href="{{ route('registration.list')}}">List Registration</a></li>
+                                <li><a href="{{ route('health_analyst.lab.createResultLab')}}">Create Result Lab</a></li>
+                                <li><a href="{{ route('health_analyst.lab.listResultLab')}}">List Result Lab</a></li>
                             </ul>
                         </li>
                         <li>

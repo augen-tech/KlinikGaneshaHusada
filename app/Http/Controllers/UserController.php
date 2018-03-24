@@ -13,6 +13,6 @@ class UserController extends Controller
     }
 
     public function dashBoard(){
-        return view('admin.dashBoard');
+        return view('health_analyst.dashBoard');
     }
 }

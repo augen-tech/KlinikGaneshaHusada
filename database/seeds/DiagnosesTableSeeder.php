@@ -20,6 +20,7 @@ class DiagnosesTableSeeder extends Seeder
             DB::table('diagnoses')->insert([                
                 'registration_id' => $index + 1,
                 'result' => $faker->text($maxNbChars = 190),                
+                'special_request' => $faker->text($maxNbChars = 190),                
             ]);
         }
     }
