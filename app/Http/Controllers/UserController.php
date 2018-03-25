@@ -10,8 +10,4 @@ class UserController extends Controller
     public function index(){
         return view('login');
     }
-
-    public function dashboard(){
-        return view('superadmin.dashboard');
-    }
 }
