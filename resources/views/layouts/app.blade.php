@@ -16,7 +16,7 @@
     <!-- Custom CSS -->    
     <link href="{{ asset('material/css/style.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="{{ asset('material/css/colors/red.css')}}" id="theme" rel="stylesheet">
+    <link href="{{ asset('material/css/colors/blue.css')}}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -348,7 +348,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">Analis Kesehatan</li>
                         <li>
-                            <a href="starter-kit.html" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            <a href="{{ route('dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
                             <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>

@@ -15,8 +15,11 @@ Route::get('/', 'UserController@Index') ->name('login');
 
 Route::get('/dashboard', 'UserController@DashBoard') ->name('dashboard');
 
-Route::get('/lab/createResultLab', 'LabController@Create') ->name('health_analyst.lab.createResultLab');
+Route::get('/lab/createResultLab', 'LabController@IndexDiagnoses') ->name('health_analyst.lab.createResultLab');
+Route::get('/lab/formResultLab/{id}', 'LabController@Create') ->name('health_analyst.lab.formResultLab');
 Route::get('/lab/listResultLab', 'LabController@Index') ->name('health_analyst.lab.listResultLab');
+
+Route::post('/lab/store', 'LabController@Store') ->name('health_analyst.lab.storeResultLab');
 
 Route::get('/testRoute', function () {
     return "Test Route";

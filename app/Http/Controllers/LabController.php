@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ResultLab;
+use App\Diagnosis;
 
 class LabController extends Controller
 {
@@ -19,16 +20,25 @@ class LabController extends Controller
         return view('health_analyst.lab.listResultLab',compact('resultLab'));
     }
 
+    public function indexDiagnoses()
+    {
+        //        
+        $diagnoses = Diagnosis::all();
+        return view('health_analyst.lab.createResultLab',compact('diagnoses'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        return view('health_analyst.lab.createResultLab');
+        $diagnosis = Diagnosis::find($id);        
+        return view('health_analyst.lab.formResultLab',compact('diagnosis'));        
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -39,6 +49,16 @@ class LabController extends Controller
     public function store(Request $request)
     {
         //
+        // return dd($request->all());
+        $data = [
+            'diagnosis_id' => $request->diagnosis_id,
+            'result' => $request->result
+        ];
+
+        ResultLab::create($data);
+        return redirect()->route('health_analyst.lab.listResultLab');
+        
+
     }
 
     /**

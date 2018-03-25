@@ -11,8 +11,8 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Diagnosis Id</th>
+                                {{--  <th>Id</th>  --}}
+                                <th width="15%">Diagnosis Id</th>
                                 <th>Result</th>                                
                             </tr>
                         </thead>
@@ -21,9 +21,9 @@
 
                             @foreach($resultLab as $row)
                                 <tr>
-                                <td>{{$row->id}}</td>
-                                    <td>{{$row->diagnosis->result}}</td>
-                                    <td>{{$row->result}}</td>
+                                {{--  <td>{{$row->id}}</td>  --}}
+                                <td>{{$row->diagnosis->id}}</td>
+                                <td>{{$row->result}}</td>
                                 </tr>
                             @endforeach
                             
