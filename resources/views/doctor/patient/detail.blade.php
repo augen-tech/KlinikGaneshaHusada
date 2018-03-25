@@ -1,4 +1,4 @@
-@extends('layouts.app_doctor')
+@extends('doctor.layouts.app')
 
 @section('styles')
 <link href="{{ asset('material/plugins/wizard/steps.css')}}" rel="stylesheet">
@@ -11,7 +11,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
             
-            <li class="breadcrumb-item"><a href="{{ route('doctor.patient.patients')}}">Patient</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('doctor.patient.list')}}">Patient</a></li>
             <li class="breadcrumb-item active">Patient Detail</li>
         </ol>
     </div>

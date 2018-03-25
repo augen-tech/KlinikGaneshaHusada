@@ -11,7 +11,7 @@ class PatientsController extends Controller
     //
     public function Index(){
         $patients = Patient::all();
-        return view('doctor.patient.patients', compact('patients'));
+        return view('doctor.patient.list', compact('patients'));
     }
     
     public function show($id)

@@ -21,7 +21,7 @@ Route::get('/doctor/diagnosis/add', 'doctor\DiagnosisController@add') ->name('do
 Route::get('/doctor/diagnosis/list', 'doctor\DiagnosisController@Index') ->name('doctor.diagnosis.list');
 Route::get('/doctor/diagnosis/create/{id}', 'doctor\DiagnosisController@create') ->name('doctor.diagnosis.create');
 
-Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.patients');
+Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
 Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');
 
 Route::get('/pharmacist/', function(){

@@ -1,4 +1,4 @@
-@extends('layouts.app_doctor')
+@extends('doctor.layouts.app')
 
 @section('styles')
 
