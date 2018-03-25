@@ -37,6 +37,6 @@ class CreateMedicinePrescriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_medicine_lists');
+        Schema::dropIfExists('medicine_prescriptions');
     }
 }

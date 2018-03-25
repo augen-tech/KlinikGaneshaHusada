@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\healthAnalyst;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\ResultLab;
+use App\Diagnosis;
 
-class RegistrationController extends Controller
+class ResultLabController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class RegistrationController extends Controller
     public function index()
     {
         //
-        return view('admin.registration.list');
+        $resultLab = ResultLab::all();
+        return view('healthAnalyst.resultLab.list',compact('resultLab'));
     }
 
     /**
@@ -25,7 +30,17 @@ class RegistrationController extends Controller
     public function create()
     {
         //
+        $diagnoses = Diagnosis::all();
+        return view('healthAnalyst.resultLab.create',compact('diagnoses'));  
     }
+
+    public function form($id)
+    {
+        //
+        $diagnosis = Diagnosis::find($id);        
+        return view('healthAnalyst.resultLab.form',compact('diagnosis'));        
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -36,6 +51,16 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         //
+        // return dd($request->all());
+        $data = [
+            'diagnosis_id' => $request->diagnosis_id,
+            'result' => $request->result
+        ];
+
+        ResultLab::create($data);
+        return redirect()->route('healthAnalyst.resultLab.list');
+        
+
     }
 
     /**

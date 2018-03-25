@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\pharmacist;
 
 use Illuminate\Http\Request;
-use App\Diagnosis;
-use App\Registration;
+use App\Http\Controllers\Controller;
+use App\Medicine;
 
-class DiagnosisController extends Controller
+class MedicineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,11 @@ class DiagnosisController extends Controller
     public function index()
     {
         //
-        $diagnoses = Diagnosis::all();
-        return view('doctor.diagnosis.list', compact('diagnoses'));
+        $medicines = medicine::all();
+        return view('pharmacist.medicine.list',compact('medicines'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,12 +30,8 @@ class DiagnosisController extends Controller
     public function create()
     {
         //
-        return view('doctor.diagnosis.create');
-    }
+        return view('pharmacist.medicine.add');
 
-    public function add(){
-        $registrations = Registration::all();
-        return view('doctor.diagnosis.add', compact('registrations'));
     }
 
     /**
@@ -45,6 +43,15 @@ class DiagnosisController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'name' => $request->name,
+            'stock' => $request->stock,
+            'price' => $request->price,
+        ];
+
+        $medic = Medicine::create($data);
+        
+        return redirect()->route('pharmacist.medicine.list');
     }
 
     /**

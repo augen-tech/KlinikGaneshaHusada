@@ -15,7 +15,7 @@
     <div class="card-body">
         <h4 class="card-title">Add Medicine</h4>
         {{--  <h6 class="card-subtitle">Use the button classes on an <code>data-mask</code> to the input element.</h6>  --}}
-        <form action="{{route('pharmacist.storemedicine')}}" method="POST">
+        <form action="{{route('pharmacist.medicine.store')}}" method="POST">
             <div class="form-group">
                 <label>Medicine Name</label>
                 <input type="text" placeholder="medicine-name" name="name" class="form-control">
