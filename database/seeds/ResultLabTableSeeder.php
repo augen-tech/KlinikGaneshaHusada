@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-class RegistrationsTableSeeder extends Seeder
+class ResultLabTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,10 +16,9 @@ class RegistrationsTableSeeder extends Seeder
         $faker = Faker::create();
 
         foreach(range(0,10) as $index){
-            DB::table('registrations')->insert([
-                'patient_id' => rand(1,11),
-                'complaint' => $faker->text($maxNbChars = 190), 
-                'type' => rand(0,1),                
+            DB::table('result_labs')->insert([                
+                'diagnosis_id' => $index + 1,
+                'result' => $faker->text($maxNbChars = 190),                                
             ]);
         }
     }

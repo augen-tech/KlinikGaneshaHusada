@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\healthAnalyst;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\ResultLab;
 use App\Diagnosis;
-use App\Registration;
 
-class DiagnosisController extends Controller
+class ResultLabController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +18,8 @@ class DiagnosisController extends Controller
     public function index()
     {
         //
-        $diagnoses = Diagnosis::all();
-        return view('doctor.diagnosis.list', compact('diagnoses'));
+        $resultLab = ResultLab::all();
+        return view('healthAnalyst.resultLab.list',compact('resultLab'));
     }
 
     /**
@@ -25,18 +27,19 @@ class DiagnosisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         //
-        $registration = Registration::find($id);
-        return view('doctor.diagnosis.create', compact('registration'));
+        $diagnoses = Diagnosis::all();
+        return view('healthAnalyst.resultLab.create',compact('diagnoses'));  
     }
 
-    public function add(){
-        $registrations = Registration::all();
-        return view('doctor.diagnosis.add', compact('registrations'));
+    public function form($id)
+    {
+        //
+        $diagnosis = Diagnosis::find($id);        
+        return view('healthAnalyst.resultLab.form',compact('diagnosis'));        
     }
-
     
 
     /**
@@ -48,6 +51,16 @@ class DiagnosisController extends Controller
     public function store(Request $request)
     {
         //
+        // return dd($request->all());
+        $data = [
+            'diagnosis_id' => $request->diagnosis_id,
+            'result' => $request->result
+        ];
+
+        ResultLab::create($data);
+        return redirect()->route('healthAnalyst.resultLab.list');
+        
+
     }
 
     /**

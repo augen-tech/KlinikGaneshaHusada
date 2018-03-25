@@ -1,4 +1,4 @@
-@extends('layouts.app_doctor')
+@extends('doctor.layouts.app')
 
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">

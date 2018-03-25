@@ -14,11 +14,14 @@ class DiagnosesTableSeeder extends Seeder
     {
         //       
         $faker = Faker::create();
-        $registrations = DB::table('registrations')->get();
+
+
         foreach(range(0,10) as $index){
             DB::table('diagnoses')->insert([                
-                'registration_id' => $registrations[rand(0, count($registrations) - 1)]->id,
-                'result' => $faker->text($maxNbChars = 190),                
+                'registration_id' => $index + 1,
+                'result' => $faker->text($maxNbChars = 190),     
+                'special_request' => $faker->text($maxNbChars = 190),
+                'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }
     }

@@ -20,8 +20,8 @@ class CreateInvoicesTable extends Migration
             $table->timestamps();
 
             $table->foreign('diagnosis_id')
-                ->references('id')->on('diagnoses')
-                ->onDelete('cascade');
+            ->references('id')->on('diagnoses')
+            ->onDelete('cascade');
         });
     }
 

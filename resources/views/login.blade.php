@@ -119,6 +119,17 @@
     <script src="{{ asset('material/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('material/js/custom.min.js')}}"></script>
+<<<<<<< HEAD
+=======
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+<<<<<<< HEAD
+    {{--  <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>  --}}
+=======
+    <script src="{{ asset('material/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+>>>>>>> 94633e26841f1d82e665497ff078715dfac524c7
+>>>>>>> 356ad0413604dd6a869d3edb9e5dc45eb15aae80
 </body>
 
 </html>

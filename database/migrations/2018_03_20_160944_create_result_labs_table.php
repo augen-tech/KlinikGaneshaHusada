@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrescriptionsTable extends Migration
+class CreateResultLabsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreatePrescriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prescriptions', function (Blueprint $table) {
+        Schema::create('Result_Labs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('diagnosis_id')->unsigned();
-            $table->integer('total_price');
+            $table->string('result');
             $table->timestamps();
 
             $table->foreign('diagnosis_id')
             ->references('id')->on('diagnoses')
             ->onDelete('cascade');
 
-            
         });
     }
 
@@ -34,6 +33,6 @@ class CreatePrescriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prescriptions');
+        Schema::dropIfExists('result_labs');
     }
 }

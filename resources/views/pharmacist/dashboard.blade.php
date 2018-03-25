@@ -1,4 +1,4 @@
-@extends('doctor.layouts.app')
+@extends('pharmacist.layouts.app')
 
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                Doctor 
+                Pharmacist Dashboard! 
             </div>
         </div>
     </div>

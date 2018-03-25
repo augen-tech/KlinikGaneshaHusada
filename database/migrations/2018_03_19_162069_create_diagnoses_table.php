@@ -17,11 +17,13 @@ class CreateDiagnosesTable extends Migration
             $table->increments('id');
             $table->integer('registration_id')->unsigned();
             $table->string('result');
+            $table->string('special_request');
             $table->timestamps();
 
             $table->foreign('registration_id')
                 ->references('id')->on('registrations')
                 ->onDelete('cascade');
+
         });
     }
 
