@@ -85,7 +85,7 @@ class ResultLabController extends Controller
     {
         //
         $resultLab = ResultLab::find($id);        
-        return view('healthAnalyst.resultLab.formEdit',compact('resultLab'));  
+        return view('healthAnalyst.resultLab.form',compact('resultLab'));  
     }
 
     /**
@@ -101,15 +101,15 @@ class ResultLabController extends Controller
         $resultLab = ResultLab::findOrFail($id);
 
        
-        $this->validate($request, [
-            'diagnosis_id' => 'required',
-            'result' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'diagnosis_id' => 'required',
+        //     'result' => 'required'
+        // ]);
     
+        
         $input = $request->all();
     
         $resultLab->fill($input)->save();
-    
         // Session::flash('flash_message', 'Task successfully added!');
     
         return redirect()->route('healthAnalyst.resultLab.list');

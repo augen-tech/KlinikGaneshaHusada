@@ -48,8 +48,8 @@ Route::get('/healthAnalyst/dashboard', 'healthAnalyst\UserController@Dashboard')
 Route::get('/healthAnalyst/create', 'healthAnalyst\ResultLabController@Create') ->name('healthAnalyst.resultLab.create');
 Route::post('/healthAnalyst/store', 'healthAnalyst\ResultLabController@Store') ->name('healthAnalyst.resultLab.store');
 Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@form') ->name('healthAnalyst.resultLab.form');
-Route::get('/healthAnalyst/formEdit/{id}', 'healthAnalyst\ResultLabController@Edit') ->name('healthAnalyst.resultLab.formEdit');
-Route::get('/healthAnalyst/formEdit/update', 'healthAnalyst\ResultLabController@Update') ->name('healthAnalyst.resultLab.update');
+Route::get('/healthAnalyst/edit/{id}', 'healthAnalyst\ResultLabController@Edit') ->name('healthAnalyst.resultLab.edit');
+Route::post('/healthAnalyst/update/{id}', 'healthAnalyst\ResultLabController@Update') ->name('healthAnalyst.resultLab.update');
 
 Route::get('/healthAnalyst/list', 'healthAnalyst\ResultLabController@Index') ->name('healthAnalyst.resultLab.list');
 
