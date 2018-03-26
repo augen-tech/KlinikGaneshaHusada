@@ -12,7 +12,7 @@
                     {{--  <h6 class="card-subtitle">Just add <code>form-material</code> class to the form that's it.</h6>  --}}
                     <form class="form-material m-t-40" action="{{ isset($resultLab) ? route('healthAnalyst.resultLab.update', $resultLab->id) : route('healthAnalyst.resultLab.store')}}" method="POST">                         
                         {{--  {{ method_field('PUT') }}  --}}
-                        <input type="hidden" name="resultLab_id" value="{{ isset($resultLab) ? $resultLab->id : $diagnosis->id}}">
+                        <input type="hidden" name={{isset($resultLab) ? "resultLab_id" : "diagnosis_id"}} value="{{ isset($resultLab) ? $resultLab->id : $diagnosis->id}}">
                         <div class="form-group">
                             {{--  <label>Result</label>  --}}
                             <textarea name="result" class="form-control" rows="5" placeholder="Write Result Lab Here">{{ isset($resultLab) ?  $resultLab->result : ''}}</textarea>
