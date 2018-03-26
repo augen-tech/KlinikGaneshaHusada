@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Receptionist</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Health Analyst</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Receptionist</a></li>
-            <li class="breadcrumb-item active">{{ isset($receptionist) ? 'Edit' : 'Add'}}</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Health Analyst</a></li>
+            <li class="breadcrumb-item active">{{ isset($healthAnalyst) ? 'Edit' : 'Add'}}</li>
         </ol>
     </div>
 </div>
@@ -17,20 +17,20 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ !isset($receptionist) ? route('superadmin.receptionist.store') : route('superadmin.receptionist.update', $receptionist->id) }}" method="POST">
-                    {{ isset($receptionist) ? method_field('PUT') : ''}}
+                <form action="{{ !isset($healthAnalyst) ? route('superadmin.healthAnalyst.store') : route('superadmin.healthAnalyst.update', $healthAnalyst->id)}}" method="POST">
+                    {{ isset($healthAnalyst) ? method_field('PUT') : ''}}
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($receptionist) ? $receptionist->name : '' }}" required>
+                            <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($healthAnalyst) ? $healthAnalyst->name : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($receptionist) ? $receptionist->email : '' }}" required>
+                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($healthAnalyst) ? $healthAnalyst->email : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="password" value='' required>
+                            <input type="password" name="password" class="form-control" placeholder="password" required>
                         </div>
                     </div>
                     <div class="form-actions pull-right">

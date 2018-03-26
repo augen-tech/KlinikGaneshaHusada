@@ -342,20 +342,41 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">SUPERADMIN</li>
                         <li>
-                            <a href="{{ route('superadmin.dashboard') }}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            <a href="{{ route('superadmin.dashboard') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Receptionist</span></a>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Receptionist</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('superadmin.receptionist.create') }}">Add Receptionist</a></li>
                                 <li><a href="{{ route('superadmin.receptionist.list') }}">List Receptionist</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Doctor</span></a>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Doctor</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('superadmin.doctor.create') }}">Add Doctor</a></li>
                                 <li><a href="{{ route('superadmin.doctor.list') }}">List Doctor</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Midwife</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('superadmin.midwife.create') }}">Add Midwife</a></li>
+                                <li><a href="{{ route('superadmin.midwife.list') }}">List Midwife</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Health Analyst</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('superadmin.healthAnalyst.create') }}">Add Health Analyst</a></li>
+                                <li><a href="{{ route('superadmin.healthAnalyst.list') }}">List Health Analyst</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Pharmacist</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('superadmin.pharmacist.create') }}">Add Pharmacist</a></li>
+                                <li><a href="{{ route('superadmin.pharmacist.list') }}">List Pharmacist</a></li>
                             </ul>
                         </li>
                     </ul>

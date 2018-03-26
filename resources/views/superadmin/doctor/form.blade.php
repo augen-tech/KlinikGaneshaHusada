@@ -6,7 +6,7 @@
         <h3 class="text-themecolor m-b-0 m-t-0">Doctor</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Doctor</a></li>
-            <li class="breadcrumb-item active">Add</li>
+            <li class="breadcrumb-item active">{{ isset($doctor) ? 'Edit' : 'Add'}}</li>
         </ol>
     </div>
 </div>
@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <form action="{{ !isset($doctor) ? route('superadmin.doctor.store') : route('superadmin.doctor.update', $doctor->id)}}" method="POST">
-                    {{ method_field('PUT') }}
+                    {{ isset($doctor) ? method_field('PUT') : ''}}
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
