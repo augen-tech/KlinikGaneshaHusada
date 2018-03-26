@@ -15,6 +15,15 @@ Route::get('/', 'UserController@Index') ->name('login');
 
 Route::get('/dashboard', 'UserController@DashBoard') ->name('dashboard');
 
+Route::get('/admin/', function(){
+    return redirect()->route('admin.dashboard');
+});
+
+Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.dashboard');
+Route::get('/admin/registration/add', 'admin\PatientController@index') ->name('admin.patient.registration.add');
+Route::get('/admin/registration/list', 'admin\PatientController@create') ->name('admin.patient.registration.list');
+
+
 Route::get('/doctor/', function(){
     return redirect()->route('doctor.dashboard');
 });
@@ -37,8 +46,11 @@ Route::get('/healthAnalyst/', function(){
 });
 Route::get('/healthAnalyst/dashboard', 'healthAnalyst\UserController@Dashboard') ->name('healthAnalyst.dashboard');
 Route::get('/healthAnalyst/create', 'healthAnalyst\ResultLabController@Create') ->name('healthAnalyst.resultLab.create');
-Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@form') ->name('healthAnalyst.resultLab.form');
 Route::post('/healthAnalyst/store', 'healthAnalyst\ResultLabController@Store') ->name('healthAnalyst.resultLab.store');
+Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@form') ->name('healthAnalyst.resultLab.form');
+Route::get('/healthAnalyst/formEdit/{id}', 'healthAnalyst\ResultLabController@Edit') ->name('healthAnalyst.resultLab.formEdit');
+Route::get('/healthAnalyst/formEdit/update', 'healthAnalyst\ResultLabController@Update') ->name('healthAnalyst.resultLab.update');
+
 Route::get('/healthAnalyst/list', 'healthAnalyst\ResultLabController@Index') ->name('healthAnalyst.resultLab.list');
 
 Route::get('/testRoute', function () {

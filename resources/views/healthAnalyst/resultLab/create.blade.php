@@ -29,11 +29,7 @@
                                 <td>{{$row->special_request}}</td>                                
                                 <td>                                
                                     <a href="{{ route('healthAnalyst.resultLab.form', $row->id)}}">
-                                        <span>
-                                            <center>
-                                                <i class="fa fa-file-text-o"></i>
-                                            </center> 
-                                        </span>          
+                                        <span><center><i class="fa fa-file-text-o"></i></center> </span>          
                                     </a>    
                                 </td>
                                 </tr>
