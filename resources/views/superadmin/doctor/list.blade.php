@@ -34,10 +34,15 @@
                             <td>{{ $row->email }}</td>
                             <td style="vertical-align: middle">
                                 <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                    <a href="#"><i class="ti-marker-alt text-inverse"></i></a>
+                                    <a href="{{ route('superadmin.doctor.edit', $row->id) }}"><i class="ti-marker-alt text-inverse"></i></a>
                                 </span>
                                 <span data-toggle="tooltip" data-placement="top" title="Delete">
-                                    <a href="#"><i class="ti-trash text-inverse"></i></a>
+                                    <a href="javascript:void(0);" onclick="$(this).find('form').submit();">
+                                        <i class="ti-trash text-inverse"></i>
+                                        <form action="{{ route('superadmin.doctor.destroy', $row->id) }}" method="POST">
+                                            {{ method_field('DELETE') }}
+                                        </form>
+                                    </a>
                                 </span>
                             </td>
                         </tr>

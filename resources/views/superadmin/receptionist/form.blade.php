@@ -3,9 +3,9 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Doctor</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Receptionist</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Doctor</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Receptionist</a></li>
             <li class="breadcrumb-item active">Add</li>
         </ol>
     </div>
@@ -17,19 +17,20 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('superadmin.doctor.store') }}" method="POST">
+                <form action="{{ !isset($receptionist) ? route('superadmin.receptionist.store') : route('superadmin.receptionist.update', $receptionist->id) }}" method="POST">
+                    {{ method_field('PUT') }}
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="John doe">
+                            <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($receptionist) ? $receptionist->name : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com">
+                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($receptionist) ? $receptionist->email : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="password">
+                            <input type="password" name="password" class="form-control" placeholder="password" value='' required>
                         </div>
                     </div>
                     <div class="form-actions pull-right">

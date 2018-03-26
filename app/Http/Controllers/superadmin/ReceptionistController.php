@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\superadmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class DoctorController extends Controller
+class ReceptionistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = User::where('role', 'Doctor')->get();
-        return view('superadmin.doctor.list', compact('doctors'));
+        $receptionists = User::where('role', 'Receptionist')->get();
+        return view('superadmin.receptionist.list', compact('receptionists'));
     }
 
     /**
@@ -26,7 +26,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('superadmin.doctor.form');
+        return view('superadmin.receptionist.form');
     }
 
     /**
@@ -37,16 +37,17 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $data = [
             'name'      => $request->name,
             'email'     => $request->email,
             'password'  => $request->password,
-            'role'      => 'Doctor',
+            'role'      => 'Receptionist',
         ];
 
         User::create($data);
 
-        return redirect()->route('superadmin.doctor.list');
+        return redirect()->route('superadmin.receptionist.list');
     }
 
     /**
@@ -68,8 +69,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $doctor = User::find($id);
-        return view('superadmin.doctor.form', compact('doctor'));
+        $receptionist =  User::find($id);
+        return view('superadmin.receptionist.form', compact('receptionist'));
     }
 
     /**
@@ -87,9 +88,9 @@ class DoctorController extends Controller
             'password'  => $request->password,
         ];
 
-        $doctor = User::find($id);
-        $doctor->update($data);
-        return redirect()->route('superadmin.doctor.list');
+        $receptionist = User::find($id);
+        $receptionist->update($data);
+        return redirect()->route('superadmin.receptionist.list');
     }
 
     /**
@@ -100,8 +101,8 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctor = User::find($id);
-        $doctor->delete();
-        return redirect()->route('superadmin.doctor.list');
+        $receptionist = User::find($id);
+        $receptionist->delete();
+        return redirect()->route('superadmin.receptionist.list');
     }
 }

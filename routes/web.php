@@ -16,10 +16,20 @@ Route::get('/', 'UserController@Index') ->name('login');
 Route::get('/superadmin/', function(){
     return redirect()->route('superadmin.dashboard');
 });
+Route::get('/superadmin/receptionist/create', 'superadmin\ReceptionistController@create')->name('superadmin.receptionist.create');
+Route::post('/superadmin/receptionist/store', 'superadmin\ReceptionistController@store')->name('superadmin.receptionist.store');
+Route::get('/superadmin/receptionist/list', 'superadmin\ReceptionistController@index')->name('superadmin.receptionist.list');
+Route::get('/superadmin/receptionist/edit/{id}', 'superadmin\ReceptionistController@edit')->name('superadmin.receptionist.edit');
+Route::post('/superadmin/receptionist/update/{id}', 'superadmin\ReceptionistController@update')->name('superadmin.receptionist.update');
+Route::delete('/superadmin/receptionist/destroy/{id}', 'superadmin\ReceptionistController@destroy')->name('superadmin.receptionist.destroy');
+
 Route::get('/superadmin/dashboard', 'superadmin\UserController@Dashboard') ->name('superadmin.dashboard');
-Route::get('/superadmin/doctor/add', 'superadmin\DoctorController@create')->name('superadmin.doctor.create');
+Route::get('/superadmin/doctor/create', 'superadmin\DoctorController@create')->name('superadmin.doctor.create');
 Route::post('/superadmin/doctor/store', 'superadmin\DoctorController@store')->name('superadmin.doctor.store');
 Route::get('/superadmin/doctor/list', 'superadmin\DoctorController@index')->name('superadmin.doctor.list');
+Route::get('/superadmin/doctor/edit/{id}', 'superadmin\DoctorController@edit')->name('superadmin.doctor.edit');
+Route::put('/superadmin/doctor/update/{id}', 'superadmin\DoctorController@update')->name('superadmin.doctor.update');
+Route::delete('/superadmin/doctor/destroy/{id}', 'superadmin\DoctorController@destroy')->name('superadmin.doctor.destroy');
 
 Route::get('/doctor/', function(){
     return redirect()->route('doctor.dashboard');

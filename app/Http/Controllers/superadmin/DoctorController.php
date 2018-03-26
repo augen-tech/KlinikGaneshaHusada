@@ -26,7 +26,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('superadmin.doctor.add', compact('doctors'));
+        return view('superadmin.doctor.form');
     }
 
     /**
@@ -43,8 +43,6 @@ class DoctorController extends Controller
             'password'  => $request->password,
             'role'      => 'Doctor',
         ];
-
-        // return dd($data);
 
         User::create($data);
 
@@ -70,7 +68,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $doctor = User::find($id);
+        return view('superadmin.doctor.form', compact('doctor'));
     }
 
     /**
@@ -82,7 +81,15 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => $request->password,
+        ];
+
+        $doctor = User::find($id);
+        $doctor->update($data);
+        return redirect()->route('superadmin.doctor.list');
     }
 
     /**
@@ -93,6 +100,8 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $doctor = User::find($id);
+        $doctor->delete();
+        return redirect()->route('superadmin.doctor.list');
     }
 }

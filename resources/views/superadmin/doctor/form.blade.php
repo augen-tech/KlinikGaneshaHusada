@@ -17,19 +17,20 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('superadmin.doctor.store') }}" method="POST">
+                <form action="{{ !isset($doctor) ? route('superadmin.doctor.store') : route('superadmin.doctor.update', $doctor->id)}}" method="POST">
+                    {{ method_field('PUT') }}
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="John doe">
+                            <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($doctor) ? $doctor->name : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com">
+                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($doctor) ? $doctor->email : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="password">
+                            <input type="password" name="password" class="form-control" placeholder="password" required>
                         </div>
                     </div>
                     <div class="form-actions pull-right">
