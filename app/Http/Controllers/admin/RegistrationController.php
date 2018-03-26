@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Registration;
 
-class PatientController extends Controller
+class RegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class PatientController extends Controller
     {
         //
         $registrations = Registration::all();
-        return view('admin.patient.registration.add', compact('registrations'));
+        return view('admin.registration.list', compact('registrations'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PatientController extends Controller
     public function create()
     {
         //
-        return view('admin.patient.registration.list');
+        return view('admin.registration.add');
     }
 
     /**

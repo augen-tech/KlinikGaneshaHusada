@@ -20,8 +20,8 @@ Route::get('/admin/', function(){
 });
 
 Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.dashboard');
-Route::get('/admin/registration/add', 'admin\PatientController@index') ->name('admin.patient.registration.add');
-Route::get('/admin/registration/list', 'admin\PatientController@create') ->name('admin.patient.registration.list');
+Route::get('/admin/registration/add', 'admin\RegistrationController@create') ->name('admin.registration.create');
+Route::get('/admin/registration/list', 'admin\RegistrationController@index') ->name('admin.registration.list');
 
 
 Route::get('/doctor/', function(){
