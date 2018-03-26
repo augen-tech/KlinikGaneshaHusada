@@ -70,9 +70,14 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     
     public function edit($id)
     {
         //
+        $medicine = Medicine::find($id);
+        return view('pharmacist.editmedicinelist', compact('medicine'));
+
     }
 
     /**
@@ -84,7 +89,18 @@ class MedicineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 'stock' => $request->stock,
+        $medicine = Medicine::find($id);
+        
+        $data = [
+            'name' => $request->name,
+            'stock' => $request->stock,
+            'price' => $request->price,
+        ];
+
+        $medicine->update($data);
+        
+        return redirect()->route('pharmacist.medicinelist');
     }
 
     /**
@@ -96,5 +112,9 @@ class MedicineController extends Controller
     public function destroy($id)
     {
         //
+        $medicine = Medicine::find($id)->delete();
+        
+        return redirect()->route('pharmacist.medicinelist');
+
     }
 }

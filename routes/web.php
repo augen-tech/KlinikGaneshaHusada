@@ -23,7 +23,12 @@ Route::get('/doctor/diagnosis/create', 'DiagnosisController@create') ->name('doc
 Route::get('/pharmacist/prescription', 'PrescriptionController@Index') ->name('pharmacist.prescription');
 Route::get('/pharmacist/medicinelist', 'MedicineController@Index') ->name('pharmacist.medicinelist');
 Route::get('/pharmacist/addmedicine', 'MedicineController@create') ->name('pharmacist.addmedicine');
+Route::get('/pharmacist/editmedicinelist/{id}', 'MedicineController@edit') ->name('pharmacist.editmedicinelist');
 Route::post('/pharmacist/addmedicine', 'MedicineController@store') ->name('pharmacist.storemedicine');
+Route::post('/pharmacist/medicinelist/{id}', 'MedicineController@update') ->name('pharmacist.updatemedicine');
+Route::delete('/pharmacist/delete/{id}','MedicineController@destroy')->name('pharmacist.deletemedicine');
+
+
 
 
 Route::get('/testRoute', function () {
