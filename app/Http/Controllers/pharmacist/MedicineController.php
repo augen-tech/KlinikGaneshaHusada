@@ -101,7 +101,7 @@ class MedicineController extends Controller
 
         $medicine->update($data);
         
-        return redirect()->route('pharmacist.medicinelist');
+        return redirect()->route('pharmacist.medicine.list');
     }
 
     /**

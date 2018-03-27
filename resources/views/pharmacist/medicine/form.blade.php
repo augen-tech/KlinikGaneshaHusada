@@ -35,7 +35,7 @@
                     <input type="text" placeholder="your-price-stock" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
                     
                 </div>
-                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{isset($medicine) ? 'Update' : 'Submit' }}</button>
             
             </form> 
         

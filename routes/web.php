@@ -34,7 +34,7 @@ Route::get('/pharmacist/medicine/list', 'pharmacist\MedicineController@Index') -
 Route::get('/pharmacist/medicine/add', 'pharmacist\MedicineController@create') ->name('pharmacist.medicine.add');
 Route::post('/pharmacist/medicine/store', 'pharmacist\MedicineController@store') ->name('pharmacist.medicine.store');
 Route::get('/pharmacist/medicine/list/edit/{id}', 'pharmacist\MedicineController@edit') ->name('pharmacist.medicine.edit');
-Route::put('/pharmacist/medicine/list', 'pharmacist\MedicineController@update') ->name('pharmacist.medicine.update');
+Route::put('/pharmacist/medicine/list/{id}', 'pharmacist\MedicineController@update') ->name('pharmacist.medicine.update');
 Route::delete('/pharmacist/delete/{id}','pharmacist\MedicineController@destroy')->name('pharmacist.medicine.delete');
 
 Route::get('/healthAnalyst/', function(){
