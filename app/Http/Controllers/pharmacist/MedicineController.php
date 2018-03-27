@@ -30,7 +30,7 @@ class MedicineController extends Controller
     public function create()
     {
         //
-        return view('pharmacist.medicine.add');
+        return view('pharmacist.medicine.form');
 
     }
 
@@ -68,12 +68,17 @@ class MedicineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
+
+     
     public function edit($id)
     {
         //
+        $medicine = Medicine::find($id);
+        return view('pharmacist.medicine.form', compact('medicine'));
+
     }
 
     /**
@@ -85,7 +90,18 @@ class MedicineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 'stock' => $request->stock,
+        $medicine = Medicine::find($id);
+        
+        $data = [
+            'name' => $request->name,
+            'stock' => $request->stock,
+            'price' => $request->price,
+        ];
+
+        $medicine->update($data);
+        
+        return redirect()->route('pharmacist.medicine.list');
     }
 
     /**
@@ -97,5 +113,9 @@ class MedicineController extends Controller
     public function destroy($id)
     {
         //
+        $medicine = Medicine::find($id)->delete();
+        
+        return redirect()->route('pharmacist.medicine.list');
+
     }
 }

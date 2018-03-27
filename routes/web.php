@@ -61,6 +61,8 @@ Route::get('/doctor/diagnosis/add', 'doctor\DiagnosisController@add') ->name('do
 Route::get('/doctor/diagnosis/list', 'doctor\DiagnosisController@Index') ->name('doctor.diagnosis.list');
 Route::get('/doctor/diagnosis/create', 'doctor\DiagnosisController@create') ->name('doctor.diagnosis.create');
 
+
+
 Route::get('/pharmacist/', function(){
     return redirect()->route('pharmacist.dashboard');
 });
@@ -69,6 +71,9 @@ Route::get('/pharmacist/prescription', 'pharmacist\PrescriptionController@Index'
 Route::get('/pharmacist/medicine/list', 'pharmacist\MedicineController@Index') ->name('pharmacist.medicine.list');
 Route::get('/pharmacist/medicine/add', 'pharmacist\MedicineController@create') ->name('pharmacist.medicine.add');
 Route::post('/pharmacist/medicine/store', 'pharmacist\MedicineController@store') ->name('pharmacist.medicine.store');
+Route::get('/pharmacist/medicine/list/edit/{id}', 'pharmacist\MedicineController@edit') ->name('pharmacist.medicine.edit');
+Route::put('/pharmacist/medicine/list/{id}', 'pharmacist\MedicineController@update') ->name('pharmacist.medicine.update');
+Route::delete('/pharmacist/delete/{id}','pharmacist\MedicineController@destroy')->name('pharmacist.medicine.delete');
 
 Route::get('/healthAnalyst/', function(){
     return redirect()->route('healthAnalyst.dashboard');
