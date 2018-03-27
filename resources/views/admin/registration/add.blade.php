@@ -15,18 +15,24 @@
 @endsection
 
 @section('content')
+
+<form action="{{route('admin.registration.store')}}">
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 
                 <div class="row p-t-12">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Id Patient</label>
-                            <input type="text" id="firstName" class="form-control">
-                            <small class="form-control-feedback">  </small> 
-                        </div>
+                        <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label class="control-label">Id Patient</label>
+                                    <select class="form-control custom-select" name="patient_id">
+                                    @foreach($patients as $row)
+                                        <option value="{{$row->id}}">{{$row->id}}</option>                           
+                                    @endforeach
+                                    </select>
+                                </div>
                     </div>
                     <!--/span-->
 
@@ -35,11 +41,11 @@
                                 <label class="control-label">Type</label>
                                 <div class="m-b-10">
                                     <label class="custom-control custom-radio">
-                                        <input id="radio5" name="radio" type="radio" class="custom-control-input">
+                                        <input id="radio5" value= "0" name="type" type="radio" class="custom-control-input">
                                         <span class="custom-control-label">General</span>
                                     </label>
                                     <label class="custom-control custom-radio">
-                                        <input id="radio6" name="radio" type="radio" class="custom-control-input">
+                                        <input id="radio6" value= "1" name="type" type="radio" class="custom-control-input">
                                         <span class="custom-control-label">Obgyn</span>
                                     </label>
                                 </div>
@@ -54,7 +60,7 @@
                         <div class="col-md-6">
                         <div >
                             <label class="control-label">Name</label>
-                            <input type="text" id="address" class="form-control">
+                            <input type="text" id="address" class="form-control" name="name">
                             <small class="form-control-feedback">  </small> 
                         </div>
                     </div>
@@ -62,7 +68,7 @@
                     <div class="col-md-6">
                             <div >
                                 <label class="control-label">Blood Pressure</label>
-                                <input type="text" id="address" class="form-control">
+                                <input type="text" id="address" class="form-control" name="blood">
                                 <small class="form-control-feedback">  </small> 
                             </div>
                         </div>
@@ -73,7 +79,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label">Complaint</label>
-                                <textarea class="textarea_editor form-control" rows="15"></textarea>
+                                <textarea class="textarea_editor form-control" rows="15"  name="complaint"></textarea>
                                
                             </div>
                         </div>
@@ -87,11 +93,13 @@
                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                 <button type="button" class="btn btn-inverse">Cancel</button>
             </div>
-        </form>
+                
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    </div>
+</div>
+
+</form>
     
 @endsection
 

@@ -22,6 +22,8 @@ Route::get('/admin/', function(){
 Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.dashboard');
 Route::get('/admin/registration/add', 'admin\RegistrationController@create') ->name('admin.registration.create');
 Route::get('/admin/registration/list', 'admin\RegistrationController@index') ->name('admin.registration.list');
+Route::get('/admin/registration/store', 'admin\RegistrationController@store') ->name('admin.registration.store');
+
 
 
 Route::get('/doctor/', function(){

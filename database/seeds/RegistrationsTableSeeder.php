@@ -19,7 +19,8 @@ class RegistrationsTableSeeder extends Seeder
             DB::table('registrations')->insert([
                 'patient_id' => rand(1,11),
                 'complaint' => $faker->text($maxNbChars = 190), 
-                'type' => rand(0,1),                
+                'type' => rand(0,1), 
+                'blood_pressure' => rand(50,100),               
             ]);
         }
     }

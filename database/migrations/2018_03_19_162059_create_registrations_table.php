@@ -18,6 +18,7 @@ class CreateRegistrationsTable extends Migration
             $table->integer('patient_id')->unsigned();
             $table->string('complaint');
             $table->integer('type');
+            $table->float('blood_pressure');
 
             $table->timestamps();
 
