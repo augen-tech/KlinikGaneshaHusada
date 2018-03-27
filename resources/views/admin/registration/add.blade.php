@@ -27,7 +27,7 @@
                                 <div class="form-group">
 
                                     <label class="control-label">Id Patient</label>
-                                    <select class="form-control custom-select" name="patient_id">
+                                    <select id="id" class="form-control custom-select" name="patient_id">
                                     @foreach($patients as $row)
                                         <option value="{{$row->id}}">{{$row->id}}</option>                           
                                     @endforeach
@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                         <div >
                             <label class="control-label">Name</label>
-                            <input type="text" id="address" class="form-control" name="name">
+                            <input type="text" id="name" class="form-control" name="name" placeholder="" disabled>
                             <small class="form-control-feedback">  </small> 
                         </div>
                     </div>
@@ -104,6 +104,12 @@
 @endsection
 
 @section('scripts')
+<script>
+$('#id').on('change', function() {
+    var selected = $(this).val();
+    $("#name").val(selected);
+})
+</script>
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script>$('#myTable').DataTable();</script>
 @endsection
