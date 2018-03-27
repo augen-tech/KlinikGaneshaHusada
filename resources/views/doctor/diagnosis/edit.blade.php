@@ -7,10 +7,10 @@
 @endsection
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Add Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Edit Diagnosis</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Add Diagnosis</li>
+            <li class="breadcrumb-item active">Edit Diagnosis</li>
         </ol>
     </div>
 @endsection
@@ -20,7 +20,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body wizard-content">
-                 <form action="{{ route('doctor.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
+                 <form action="#" class="tab-wizard wizard-circle">
                     <!-- Step 1 -->
                     <h6>Patient Info</h6>
                     <section>
@@ -73,8 +73,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Result :</label>
-                                    <textarea name="result" rows="6" class="form-control"></textarea>
+                                    <label for="shortDescription1">Result :</label>
+                                    <textarea name="shortDescription" id="shortDescription1" rows="6" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,6 @@
                             </div>
                         </div>
                     </section>
-                    
                 </form>
             </div>
         </div>

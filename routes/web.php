@@ -20,6 +20,7 @@ Route::get('/doctor/dashboard', 'doctor\UserController@Dashboard') ->name('docto
 Route::get('/doctor/diagnosis/add', 'doctor\DiagnosisController@add') ->name('doctor.diagnosis.add');
 Route::get('/doctor/diagnosis/list', 'doctor\DiagnosisController@Index') ->name('doctor.diagnosis.list');
 Route::get('/doctor/diagnosis/create/{id}', 'doctor\DiagnosisController@create') ->name('doctor.diagnosis.create');
+Route::post('/doctor/diagnosis/store', 'doctor\DiagnosisController@store') ->name('doctor.diagnosis.store');
 
 Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
 Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');

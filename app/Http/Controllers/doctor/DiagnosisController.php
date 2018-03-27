@@ -49,7 +49,15 @@ class DiagnosisController extends Controller
     public function store(Request $request)
     {
         //
+        $data = [
+            'result' => $request->result,
+        ];
+
+        $diagnosis = Diagnosis::create($data);
+        dd($diagnosis);
+        return redirect()->route('doctor.diagnosis.list');
     }
+
 
     /**
      * Display the specified resource.
@@ -60,6 +68,7 @@ class DiagnosisController extends Controller
     public function show($id)
     {
         //
+       
     }
 
     /**
@@ -71,6 +80,7 @@ class DiagnosisController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
@@ -83,6 +93,7 @@ class DiagnosisController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
