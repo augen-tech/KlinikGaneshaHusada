@@ -8,7 +8,8 @@ class Diagnosis extends Model
 {
     //
     protected $fillable =[
-        
+
+        'registration_id',
         'result',
     ];
 

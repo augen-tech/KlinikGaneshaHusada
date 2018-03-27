@@ -21,6 +21,7 @@
         <div class="card">
             <div class="card-body wizard-content">
                  <form action="{{ route('doctor.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
+                        <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <!-- Step 1 -->
                     <h6>Patient Info</h6>
                     <section>

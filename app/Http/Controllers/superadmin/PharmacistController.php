@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\pharmacist;
+namespace App\Http\Controllers\superadmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Medicine;
+use App\User;
 
-class MedicineController extends Controller
+class PharmacistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,9 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        //
-        $medicines = medicine::all();
-        return view('pharmacist.medicine.list',compact('medicines'));
+        $pharmacists = User::where('role', 'Pharmacist')->get();
+        return view('superadmin.pharmacist.list', compact('pharmacists'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -29,9 +26,7 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        //
-        return view('pharmacist.medicine.form');
-
+        return view('superadmin.pharmacist.form');
     }
 
     /**
@@ -42,16 +37,16 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $data = [
-            'name' => $request->name,
-            'stock' => $request->stock,
-            'price' => $request->price,
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => $request->password,
+            'role'      => 'Pharmacist',
         ];
 
-        $medic = Medicine::create($data);
-        
-        return redirect()->route('pharmacist.medicine.list');
+        User::create($data);
+
+        return redirect()->route('superadmin.pharmacist.list');
     }
 
     /**
@@ -68,17 +63,13 @@ class MedicineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id 
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-     
     public function edit($id)
     {
-        //
-        $medicine = Medicine::find($id);
-        return view('pharmacist.medicine.form', compact('medicine'));
-
+        $pharmacist = User::find($id);
+        return view('superadmin.pharmacist.form', compact('pharmacist'));
     }
 
     /**
@@ -90,18 +81,15 @@ class MedicineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 'stock' => $request->stock,
-        $medicine = Medicine::find($id);
-        
         $data = [
-            'name' => $request->name,
-            'stock' => $request->stock,
-            'price' => $request->price,
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => $request->password,
         ];
 
-        $medicine->update($data);
-        
-        return redirect()->route('pharmacist.medicine.list');
+        $pharmacist = User::find($id);
+        $pharmacist->update($data);
+        return redirect()->route('superadmin.pharmacist.list');
     }
 
     /**
@@ -112,10 +100,8 @@ class MedicineController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $medicine = Medicine::find($id)->delete();
-        
-        return redirect()->route('pharmacist.medicine.list');
-
+        $pharmacist = User::find($id);
+        $pharmacist->delete();
+        return redirect()->route('superadmin.pharmacist.list');
     }
 }

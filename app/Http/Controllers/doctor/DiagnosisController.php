@@ -50,11 +50,11 @@ class DiagnosisController extends Controller
     {
         //
         $data = [
+            'registration_id' => $request->registration_id,
             'result' => $request->result,
         ];
 
         $diagnosis = Diagnosis::create($data);
-        dd($diagnosis);
         return redirect()->route('doctor.diagnosis.list');
     }
 
