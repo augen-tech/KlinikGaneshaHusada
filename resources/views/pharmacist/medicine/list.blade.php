@@ -18,6 +18,7 @@
         <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
+                    <th>No.</th>
                     <th>Medicine ID</th>
                     <th>Name</th>
                     <th>Stock</th>
@@ -28,20 +29,19 @@
             </thead>
             
             <tbody>
-                @foreach($medicines as $row)
+                @foreach($medicines as $key => $row)
                     <tr>
+                        <td>{{$key+1}}</td>
                         <td>{{$row->id}}</td>
                         <td>{{$row->name}}</td>
                         <td>{{$row->stock}}</td>
                         <td>{{$row->price}}</td>
                         <td class="text-nowrap">
-                            <a href="{{route('pharmacist.editmedicinelist', $row->id)}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                            <a href="#" onclick="$(this).find('form').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
-                            <form action="{{ route('pharmacist.deletemedicine', $row->id) }}" method="post">
-                                {{--  <input type="submit" name="_method" value="delete" />  --}}
+                            <a href="{{ route('pharmacist.medicine.edit', $row->id) }}" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                            
+                            <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
+                            <form action="{{ route('pharmacist.medicine.delete', $row->id) }}" id="delete" method="post">
                                 {{ method_field('DELETE') }} {{--kalo tulis ini sama dengan kayak tulis yang diatas, jadi yang diatas gw comment aja --}}
-                                {{--  <button type="submit"><i class="fa fa-close text-danger"></i></button>  --}}
-                                {{--  <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Delete</button>  --}}
                             </form>
                             </a>
                         </td>

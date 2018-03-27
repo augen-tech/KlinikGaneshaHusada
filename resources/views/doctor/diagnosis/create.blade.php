@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('doctor.layouts.app')
 
 @section('styles')
 <link href="{{ asset('material/plugins/wizard/steps.css')}}" rel="stylesheet">

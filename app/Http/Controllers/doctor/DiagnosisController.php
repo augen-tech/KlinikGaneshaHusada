@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\doctor;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Diagnosis;
 use App\Registration;
 

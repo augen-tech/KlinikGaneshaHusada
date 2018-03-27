@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('healthAnalyst.layouts.app')
 
 @section('dashboard')
 <div class="col-md-5 col-8 align-self-center">
@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                Tekindo!
+                Dashboard Health Analyst!
             </div>
         </div>
     </div>

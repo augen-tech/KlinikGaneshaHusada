@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\healthAnalyst;
 
 use Illuminate\Http\Request;
-use App\Medicine;
+use App\Http\Controllers\Controller;
+use App\ResultLab;
+use App\Diagnosis;
 
-class MedicineController extends Controller
+class ResultLabController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,11 +18,9 @@ class MedicineController extends Controller
     public function index()
     {
         //
-        $medicines = medicine::all();
-        return view('pharmacist.medicinelist',compact('medicines'));
+        $resultLab = ResultLab::all();
+        return view('healthAnalyst.resultLab.list',compact('resultLab'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -29,9 +30,17 @@ class MedicineController extends Controller
     public function create()
     {
         //
-        return view('pharmacist.addmedicine');
-
+        $diagnoses = Diagnosis::all();
+        return view('healthAnalyst.resultLab.create',compact('diagnoses'));  
     }
+
+    public function form($id)
+    {
+        //
+        $diagnosis = Diagnosis::find($id);        
+        return view('healthAnalyst.resultLab.form',compact('diagnosis'));        
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -42,15 +51,16 @@ class MedicineController extends Controller
     public function store(Request $request)
     {
         //
+        // return dd($request->all());
         $data = [
-            'name' => $request->name,
-            'stock' => $request->stock,
-            'price' => $request->price,
+            'diagnosis_id' => $request->diagnosis_id,
+            'result' => $request->result
         ];
 
-        $medic = medicine::create($data);
+        ResultLab::create($data);
+        return redirect()->route('healthAnalyst.resultLab.list');
         
-        return view('pharmacist.addmedicine');
+
     }
 
     /**
@@ -70,14 +80,9 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-     
     public function edit($id)
     {
         //
-        $medicine = Medicine::find($id);
-        return view('pharmacist.editmedicinelist', compact('medicine'));
-
     }
 
     /**
@@ -89,18 +94,7 @@ class MedicineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 'stock' => $request->stock,
-        $medicine = Medicine::find($id);
-        
-        $data = [
-            'name' => $request->name,
-            'stock' => $request->stock,
-            'price' => $request->price,
-        ];
-
-        $medicine->update($data);
-        
-        return redirect()->route('pharmacist.medicinelist');
+        //
     }
 
     /**
@@ -112,9 +106,5 @@ class MedicineController extends Controller
     public function destroy($id)
     {
         //
-        $medicine = Medicine::find($id)->delete();
-        
-        return redirect()->route('pharmacist.medicinelist');
-
     }
 }

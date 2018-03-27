@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\pharmacist;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Prescription;
 
 class PrescriptionController extends Controller
@@ -11,7 +12,7 @@ class PrescriptionController extends Controller
     public function index(){
         
         $prescriptions = Prescription::all();
-        return view('pharmacist.prescription',compact('prescriptions'));
+        return view('pharmacist.prescription.list',compact('prescriptions'));
     }
 
     

@@ -347,18 +347,36 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">PHARMACIST</li>
+                        <li class="nav-small-cap">HEALTH ANALYST</li>
                         <li>
-                            <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="{{route('pharmacist.prescription')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a>
-                        </li>
-                        <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Medicine</span></a>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{route('pharmacist.medicine.add')}}">Add Medicine</a></li>
-                                <li><a href="{{ route('pharmacist.medicine.list')}}">List Medicine</a></li>
+                                <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Create Result Lab</a></li>
+                                <li><a href="{{ route('healthAnalyst.resultLab.list')}}">List Result Lab</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patients</span></a>
+                        </li>
+                        <li>
+                            {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="javascript:void(0)">item 1.1</a></li>
+                                <li><a href="javascript:void(0)">item 1.2</a></li>
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="javascript:void(0)">item 1.3.1</a></li>
+                                        <li><a href="javascript:void(0)">item 1.3.2</a></li>
+                                        <li><a href="javascript:void(0)">item 1.3.3</a></li>
+                                        <li><a href="javascript:void(0)">item 1.3.4</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">item 1.4</a></li>
                             </ul>
                         </li>
                     </ul>
