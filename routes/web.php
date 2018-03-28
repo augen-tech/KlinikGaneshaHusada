@@ -28,6 +28,7 @@ Route::get('/admin/patient/add', 'admin\PatientController@create') ->name('admin
 Route::get('/admin/patient/list', 'admin\PatientController@index') ->name('admin.patient.list');
 Route::get('/admin/patient/store', 'admin\PatientController@store') ->name('admin.patient.store');
 Route::get('/admin/patient/edit/{id}', 'admin\PatientController@edit') ->name('admin.patient.edit');
+Route::get('/admin/patient/update/{id}', 'admin\PatientController@update') ->name('admin.patient.update');
 
 
 

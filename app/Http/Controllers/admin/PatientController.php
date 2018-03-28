@@ -89,6 +89,8 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        return redirect()->route('admin.patient.list');
     }
 
     /**

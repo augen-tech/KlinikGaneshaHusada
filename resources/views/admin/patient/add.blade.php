@@ -16,7 +16,7 @@
 
 @section('content')
 
-<form {{ isset($patient) ? action="{{route('admin.patient.edit')}}" : action="{{route('admin.patient.store')}}"}}>
+<form action="{{ isset ($patient) ? route('admin.patient.update',$patient->id) : route('admin.patient.store')}}">
 <div class="row">
     <div class="col-12">
         <div class="card">
