@@ -26,7 +26,10 @@
                             <th>Complaint</th>
                             <th>Date</th>
                             <th>Type</th>
-                            <th>Action</th>
+                            <th>Blood Pressure</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+
                             
                         </tr>
                     </thead>
@@ -37,8 +40,10 @@
                                 <td>{{$row->patient->name}} </td>
                                 <td>{{$row->complaint}} </td>
                                 <td>{{$row->created_at}}</td>
-                                <td>{{ $row->type == 0 ? 'OBGYN' : 'GENERAL'}}</td>
-                                <td><a href="#"><span><i class="fa fa-pencil"></span></a></i></td>
+                                <td>{{ $row->type == 1 ? 'OBGYN' : 'GENERAL'}}</td>
+                                <td>{{$row->blood_pressure}} </td>
+                                <td><a href="{{ route('admin.registration.edit', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i></td>
+                                <td><a href="{{ route('admin.registration.destroy', $row->id)}}"><span><i class="mdi mdi-delete"></span></a></i></td>
                             </tr>                            
                         @endforeach
                     </tbody>

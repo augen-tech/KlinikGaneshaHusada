@@ -89,7 +89,14 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $patient = Patient::findOrFail($id);
+              
         
+        $input = $request->all();
+    
+        $patient->fill($input)->save();
+        // Session::flash('flash_message', 'Task successfully added!');
+
         return redirect()->route('admin.patient.list');
     }
 
@@ -102,5 +109,8 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+        $patient = Patient::find($id);
+        $patient->delete();
+        return redirect()->route('admin.patient.list');
     }
 }

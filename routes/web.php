@@ -23,13 +23,16 @@ Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.d
 Route::get('/admin/registration/add', 'admin\RegistrationController@create') ->name('admin.registration.create');
 Route::get('/admin/registration/list', 'admin\RegistrationController@index') ->name('admin.registration.list');
 Route::get('/admin/registration/store', 'admin\RegistrationController@store') ->name('admin.registration.store');
+Route::get('/admin/registration/edit/{id}', 'admin\RegistrationController@edit') ->name('admin.registration.edit');
+Route::get('/admin/registration/update/{id}', 'admin\RegistrationController@update') ->name('admin.registration.update');
+Route::get('/admin/registration/destroy/{id}', 'admin\RegistrationController@destroy') ->name('admin.registration.destroy');
 
 Route::get('/admin/patient/add', 'admin\PatientController@create') ->name('admin.patient.create');
 Route::get('/admin/patient/list', 'admin\PatientController@index') ->name('admin.patient.list');
 Route::get('/admin/patient/store', 'admin\PatientController@store') ->name('admin.patient.store');
 Route::get('/admin/patient/edit/{id}', 'admin\PatientController@edit') ->name('admin.patient.edit');
 Route::get('/admin/patient/update/{id}', 'admin\PatientController@update') ->name('admin.patient.update');
-
+Route::get('/admin/patient/destroy/{id}', 'admin\PatientController@destroy') ->name('admin.patient.destroy');
 
 
 Route::get('/doctor/', function(){

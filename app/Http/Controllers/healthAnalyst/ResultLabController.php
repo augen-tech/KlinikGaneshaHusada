@@ -99,13 +99,7 @@ class ResultLabController extends Controller
     {
         //
         $resultLab = ResultLab::findOrFail($id);
-
-       
-        // $this->validate($request, [
-        //     'diagnosis_id' => 'required',
-        //     'result' => 'required'
-        // ]);
-    
+              
         
         $input = $request->all();
     

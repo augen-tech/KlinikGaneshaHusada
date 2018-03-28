@@ -6,17 +6,17 @@
 
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
-    <h3 class="text-themecolor m-b-0 m-t-0">Add Registration</h3>
+    <h3 class="text-themecolor m-b-0 m-t-0">{{isset ($registration) ? "Edit Registration" : "Add Registration" }}</h3>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item active">Add Dashboard</li>
+        <li class="breadcrumb-item active">{{isset ($registration) ? "Edit Registration" : "Add Registration" }}</li>
     </ol>
 </div>
 @endsection
 
 @section('content')
 
-<form action="{{route('admin.registration.store')}}">
+<form action="{{isset ($registration) ? route('admin.registration.update', $registration->id) : route('admin.registration.store')}}">
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -25,7 +25,7 @@
                 <div class="row p-t-12">
                         <div class="col-md-6">
                                 <div class="form-group">
-
+                                        {{--  {{isset ($registration) && $row->id=$registration->patient_id ? $registration->patient_id  : $row->id}}  --}}
                                     <label class="control-label">Id Patient</label>
                                     <select id="id" class="form-control custom-select" name="patient_id">
                                     @foreach($patients as $row)
@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                         <div >
                             <label class="control-label">Name</label>
-                            <input type="text" id="name" class="form-control" name="name" placeholder="" disabled>
+                            <input type="text" id="name" class="form-control" name="name" value="{{isset ($registration) ? $registration->patient->name : ""  }}" placeholder={{isset ($registration) ? $registration->patient->name : ""  }}>
                             <small class="form-control-feedback">  </small> 
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <div class="col-md-6">
                             <div >
                                 <label class="control-label">Blood Pressure</label>
-                                <input type="text" id="address" class="form-control" name="blood">
+                                <input type="text" id="address" class="form-control" name="blood_pressure" value="{{isset ($registration) ? $registration->blood_pressure : ""  }}" >
                                 <small class="form-control-feedback">  </small> 
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label">Complaint</label>
-                                <textarea class="textarea_editor form-control" rows="15"  name="complaint"></textarea>
+                                <textarea class="textarea_editor form-control" rows="15"  name="complaint" value="{{isset ($registration) ? $registration->complaint : ""  }}" placeholder={{isset ($registration) ? $registration->complaint : ""  }} ></textarea>
                                
                             </div>
                         </div>

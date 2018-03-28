@@ -46,7 +46,7 @@ class RegistrationController extends Controller
             'patient_id'=> $request->patient_id,
             'complaint'=> $request->complaint,
             'type' => $request->type,
-            'blood_pressure' => $request->blood           
+            'blood_pressure' => $request->blood_pressure           
         ];
 
         Registration::create($data);
@@ -76,6 +76,9 @@ class RegistrationController extends Controller
     public function edit($id)
     {
         //
+        $patients = Patient::all();
+        $registration = Registration ::find($id);        
+        return view('admin.registration.add',compact('registration','patients'));
     }
 
     /**
@@ -88,6 +91,16 @@ class RegistrationController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // return dd($request);
+        $registration = Registration::findOrFail($id);
+              
+        
+        $input = $request->all();
+    
+        $registration->fill($input)->save();
+        // Session::flash('flash_message', 'Task successfully added!');
+
+        return redirect()->route('admin.registration.list');
     }
 
     /**
@@ -99,5 +112,9 @@ class RegistrationController extends Controller
     public function destroy($id)
     {
         //
+            $registration = Registration::find($id);
+            $registration->delete();
+            return redirect()->route('admin.registration.list');
+        
     }
 }

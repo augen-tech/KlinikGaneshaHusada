@@ -6,13 +6,15 @@
 
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
-    <h3 class="text-themecolor m-b-0 m-t-0">Add Patient</h3>
+    <h3 class="text-themecolor m-b-0 m-t-0">{{isset ($patient) ? "Edit Patient" : "Add Patient" }}</h3>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item active">Add Patient</li>
+        <li class="breadcrumb-item active">{{isset ($patient) ? "Edit Patient" : "Add Patient"}}</li>
     </ol>
 </div>
 @endsection
+
+
 
 @section('content')
 
@@ -25,17 +27,17 @@
                 
                 <div class="form-group">
                     <label class="control-label">Name</label>
-                    <input name="name" type="text" id="firstName" class="form-control" placeholder="">                            
+                    <input name="name" type="text" id="firstName" class="form-control"  value="{{isset ($patient) ? $patient->name : ""  }}" placeholder={{isset ($patient) ? $patient->name : ""  }}>                            
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Date of Birth</label>
-                    <input name="dob" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                    <input name="dob" type="date" class="form-control" value="{{isset ($patient) ? $patient->dob : ""  }}" >
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Blood Type</label>
-                    <select name="blood" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                    <select name="blood" class="form-control custom-select" data-placeholder="Choose a Category"   >
                         <option >A</option>
                         <option >B</option>
                         <option >AB</option>
@@ -45,23 +47,23 @@
 
                 <div class="form-group">
                     <label>Address</label>
-                    <input name="address" type="text" class="form-control">
+                    <input name="address" type="text" class="form-control" value="{{isset ($patient) ? $patient->address : ""  }}" placeholder={{isset ($patient) ? $patient->address : ""  }} >
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Phone Number</label>
-                    <input name="phone" type="text" id="firstName" class="form-control" placeholder="">                            
+                    <input name="phone" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder={{isset ($patient) ? $patient->phone : ""  }}>                            
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Gender</label>
                     <div class="m-b-10">
                         <label class="custom-control custom-radio">
-                            <input value="M" id="radio5" name="gender" type="radio" class="custom-control-input">
+                            <input value="M" id="radio5" name="gender" type="radio" class="custom-control-input" >
                             <span class="custom-control-label">Male</span>
                         </label>
-                        <label class="custom-control custom-radio">
-                            <input value="F" id="radio6" name="gender" type="radio" class="custom-control-input">
+                        <label class="custom-control custom-radio ">
+                            <input value="F" id="radio6" name="gender"  type="radio" class="custom-control-input" >
                             <span class="custom-control-label">Female</span>
                         </label>
                     </div>
