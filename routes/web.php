@@ -23,7 +23,10 @@ Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.d
 Route::get('/admin/registration/add', 'admin\RegistrationController@create') ->name('admin.registration.create');
 Route::get('/admin/registration/list', 'admin\RegistrationController@index') ->name('admin.registration.list');
 Route::get('/admin/registration/store', 'admin\RegistrationController@store') ->name('admin.registration.store');
+
 Route::get('/admin/patient/add', 'admin\PatientController@create') ->name('admin.patient.create');
+Route::get('/admin/patient/list', 'admin\PatientController@index') ->name('admin.patient.list');
+Route::get('/admin/patient/store', 'admin\PatientController@store') ->name('admin.patient.store');
 
 
 

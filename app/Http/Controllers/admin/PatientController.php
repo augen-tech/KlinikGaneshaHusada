@@ -16,6 +16,8 @@ class PatientController extends Controller
     public function index()
     {
         //
+        $patients = Patient::all();
+        return view('admin.patient.list', compact('patients'));
         
     }
 
@@ -40,6 +42,17 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         //
+        $data=[
+            'name'=> $request->name,
+            'dob'=> $request->dob,
+            'address' => $request->address,
+            'blood_type' => $request->blood,
+            'gender' => $request->gender,
+            'phone' => $request->phone           
+        ];
+
+        Patient::create($data);
+        return redirect()->route('admin.patient.list');
     }
 
     /**

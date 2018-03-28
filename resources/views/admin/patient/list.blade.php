@@ -23,21 +23,26 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Complaint</th>
                             <th>Date</th>
-                            <th>Type</th>
-                            <th>Action</th>
-                            
+                            <th>Address</th>
+                            <th>Blood Type</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($registrations as $row)
+                        @foreach($patients as $row)
                             <tr>
                                 <td>{{$row->id}} </td>
-                                <td>{{$row->patient->name}} </td>
-                                <td>{{$row->complaint}} </td>
-                                <td>{{$row->created_at}}</td>
-                                <td>{{ $row->type == 0 ? 'OBGYN' : 'GENERAL'}}</td>
+                                <td>{{$row->name}} </td>
+                                <td>{{$row->dob}} </td>
+                                <td>{{$row->address}}</td>
+                                <td>{{$row->blood_type}}</td>
+                                <td>{{$row->gender}}</td>
+                                <td>{{$row->phone}}</td>
+                                <td><a href=""><span><i class="fa fa-pencil"></span></a></i></td>
                                 <td><a href="#"><span><i class="fa fa-pencil"></span></a></i></td>
                             </tr>                            
                         @endforeach
