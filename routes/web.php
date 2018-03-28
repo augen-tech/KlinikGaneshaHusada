@@ -47,9 +47,10 @@ Route::get('/healthAnalyst/', function(){
 Route::get('/healthAnalyst/dashboard', 'healthAnalyst\UserController@Dashboard') ->name('healthAnalyst.dashboard');
 Route::get('/healthAnalyst/create', 'healthAnalyst\ResultLabController@Create') ->name('healthAnalyst.resultLab.create');
 Route::post('/healthAnalyst/store', 'healthAnalyst\ResultLabController@Store') ->name('healthAnalyst.resultLab.store');
-Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@form') ->name('healthAnalyst.resultLab.form');
+Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@Form') ->name('healthAnalyst.resultLab.form');
 Route::get('/healthAnalyst/edit/{id}', 'healthAnalyst\ResultLabController@Edit') ->name('healthAnalyst.resultLab.edit');
 Route::post('/healthAnalyst/update/{id}', 'healthAnalyst\ResultLabController@Update') ->name('healthAnalyst.resultLab.update');
+Route::get('/healthAnalyst/delete/{id}', 'healthAnalyst\ResultLabController@Destroy') ->name('healthAnalyst.resultLab.destroy');
 
 Route::get('/healthAnalyst/list', 'healthAnalyst\ResultLabController@Index') ->name('healthAnalyst.resultLab.list');
 

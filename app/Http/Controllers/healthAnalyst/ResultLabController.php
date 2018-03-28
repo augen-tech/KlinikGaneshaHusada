@@ -124,5 +124,8 @@ class ResultLabController extends Controller
     public function destroy($id)
     {
         //
+        $resultLab = ResultLab::find($id);
+        $resultLab->delete();
+        return redirect()->route('healthAnalyst.resultLab.list');
     }
 }
