@@ -359,9 +359,7 @@
                             </ul>
                         </li>
                         
-                        <li>
-                            <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patients</span></a>
-                        </li>
+                        
                         <li>
                             {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
                             <ul aria-expanded="false" class="collapse">

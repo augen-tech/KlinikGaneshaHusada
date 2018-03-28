@@ -14,7 +14,8 @@
                                 <th>Id</th>
                                 <th width="15%">Diagnosis Id</th>
                                 <th>Result</th>                                
-                                <th>Edit</th>                                
+                                <th>Edit</th>                                                                 
+                                <th>Delete</th>                                                                 
                             </tr>
                         </thead>
                         
@@ -26,8 +27,13 @@
                                     <td>{{$row->diagnosis->id}}</td>
                                     <td>{{$row->result}}</td>
                                     <td>
-                                        <a href="{{ route('healthAnalyst.resultLab.formEdit', $row->id)}}">
+                                        <a href="{{ route('healthAnalyst.resultLab.edit', $row->id)}}">
                                             <span><center><i class="mdi mdi-lead-pencil"></i></center></span>          
+                                        </a>    
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('healthAnalyst.resultLab.destroy', $row->id)}}">
+                                            <span><center><i class="mdi mdi-delete"></i></center></span>          
                                         </a>    
                                     </td>
                                     
