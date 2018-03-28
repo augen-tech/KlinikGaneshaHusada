@@ -75,6 +75,8 @@ class PatientController extends Controller
     public function edit($id)
     {
         //
+        $patient = Patient ::find($id);        
+        return view('admin.patient.add',compact('patient'));  
     }
 
     /**

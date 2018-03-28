@@ -16,11 +16,12 @@
 
 @section('content')
 
-<form {{isset($patient) ? action="{{route('admin.patient.edit')}} : action="{{route('admin.patient.store')}}">
+<form {{ isset($patient) ? action="{{route('admin.patient.edit')}}" : action="{{route('admin.patient.store')}}"}}>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                {{--  {{isset($patient) ? <h6>edit</h6> : <h6>create</h6>}}  --}}
                 
                 <div class="form-group">
                     <label class="control-label">Name</label>

@@ -42,7 +42,7 @@
                                 <td>{{$row->blood_type}}</td>
                                 <td>{{$row->gender}}</td>
                                 <td>{{$row->phone}}</td>
-                                <td><a href=""><span><i class="fa fa-pencil"></span></a></i></td>
+                                <td><a href="{{ route('admin.patient.edit', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i></td>
                                 <td><a href="#"><span><i class="fa fa-pencil"></span></a></i></td>
                             </tr>                            
                         @endforeach
