@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Diagnosis;
 use App\Registration;
+use App\Medicine;
+use App\MedicinePrescription;
+use App\Prescription;
 
 class DiagnosisController extends Controller
 {
@@ -30,7 +33,10 @@ class DiagnosisController extends Controller
     {
         //
         $registration = Registration::find($id);
-        return view('doctor.diagnosis.create', compact('registration'));
+        $medicines = Medicine::all();
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('doctor.diagnosis.create', compact('registration','medicines'));
     }
 
     public function add(){
@@ -49,12 +55,28 @@ class DiagnosisController extends Controller
     public function store(Request $request)
     {
         //
-        $data = [
+        $data_diagnosis = [
             'registration_id' => $request->registration_id,
             'result' => $request->result,
-        ];
+            'special_request' => $request->special_request,
+        ];        
+       
+        $diagnosis = Diagnosis::create($data_diagnosis);
+       
+        //
+        //save prescription 
 
-        $diagnosis = Diagnosis::create($data);
+        $data_prescription = [            
+            'diagnosis_id' => $diagnosis->id,
+            'notation' => $request->notation,
+        ];
+        $prescription = Prescription::create($data_prescription);
+
+        $data_mp = [            
+            'amount' => $diagnosis->id,
+        ];
+        $prescription = Prescription::create($data_prescription);
+
         return redirect()->route('doctor.diagnosis.list');
     }
 
@@ -82,8 +104,8 @@ class DiagnosisController extends Controller
         //
         $diagnosis = Diagnosis::find($id);
         $registration = Registration::find($diagnosis->registration_id);
-
-        return view('doctor.diagnosis.create', compact('diagnosis', 'registration'));
+        $medicines = Medicine::all();        
+        return view('doctor.diagnosis.create', compact('diagnosis', 'registration','medicines'));
     }
 
     /**
@@ -116,5 +138,9 @@ class DiagnosisController extends Controller
     public function destroy($id)
     {
         //
+        $diagnosis = Diagnosis::find($id)->delete();
+        
+        return redirect()->route('doctor.diagnosis.list');
+
     }
 }
