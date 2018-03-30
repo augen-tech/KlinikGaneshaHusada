@@ -7,10 +7,10 @@
 @endsection
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Add Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($diagnosis) ? 'Edit Diagnosis': 'Add Diagnosis'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Add Diagnosis</li>
+            <li class="breadcrumb-item active">{{ isset($diagnosis) ? 'Edit Diagnosis':'Add Diagnosis'}}</li>
         </ol>
     </div>
 @endsection
@@ -20,8 +20,9 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body wizard-content">
-                 <form action="{{ route('doctor.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
-                        <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
+                 <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
+       
+                    <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <!-- Step 1 -->
                     <h6>Patient Info</h6>
                     <section>
@@ -75,7 +76,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Result :</label>
-                                    <textarea name="result" rows="6" class="form-control"></textarea>
+                                    <textarea name="result" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->result : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->result : ''}}"></textarea>
                                 </div>
                             </div>
                         </div>

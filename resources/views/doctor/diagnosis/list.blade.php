@@ -31,7 +31,7 @@
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->registration->patient->name }}</td>
                                     <td>{{ $row->result }}</td>
-                                    <td><a href="#"><span><i class="fa fa-pencil"></i></span></a>
+                                    <td><a href="{{ route('doctor.diagnosis.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
                                         <a href="#"><span><i class="mdi mdi-delete"></i></span></a>
                                     </td>
                                 </tr>                            

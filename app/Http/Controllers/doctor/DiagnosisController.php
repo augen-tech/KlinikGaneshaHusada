@@ -80,7 +80,10 @@ class DiagnosisController extends Controller
     public function edit($id)
     {
         //
-        
+        $diagnosis = Diagnosis::find($id);
+        $registration = Registration::find($diagnosis->registration_id);
+
+        return view('doctor.diagnosis.create', compact('diagnosis', 'registration'));
     }
 
     /**
@@ -93,6 +96,14 @@ class DiagnosisController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $diagnosis = Diagnosis::find($id);
+        $data = [
+            'registration_id' => $request->registration_id,
+            'result' => $request->result,
+        ];
+
+        $diagnosis = Diagnosis::update($data);
+        return redirect()->route('doctor.diagnosis.list');
 
     }
 
