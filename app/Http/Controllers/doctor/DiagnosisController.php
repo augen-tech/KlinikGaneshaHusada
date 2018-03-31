@@ -75,8 +75,8 @@ class DiagnosisController extends Controller
 
         $data_mp = [       
             'prescription_id' => $prescription->id,
-            'medicine_id' => $request->medicine , 
-            'amount' => $request->amount,
+            'medicine_id' => $request->medicine[0], 
+            'amount' => $request->amount[0],
         ];
         $medicine_prescription = MedicinePrescription::create($data_mp);
        
