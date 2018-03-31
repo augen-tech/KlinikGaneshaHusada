@@ -66,17 +66,20 @@ class DiagnosisController extends Controller
         //
         //save prescription 
 
+
         $data_prescription = [            
             'diagnosis_id' => $diagnosis->id,
             'notation' => $request->notation,
         ];
         $prescription = Prescription::create($data_prescription);
 
-        $data_mp = [            
-            'amount' => $diagnosis->id,
+        $data_mp = [       
+            'prescription_id' => $prescription->id,
+            'medicine_id' => $request->medicine , 
+            'amount' => $request->amount,
         ];
-        $prescription = Prescription::create($data_prescription);
-
+        $medicine_prescription = MedicinePrescription::create($data_mp);
+       
         return redirect()->route('doctor.diagnosis.list');
     }
 

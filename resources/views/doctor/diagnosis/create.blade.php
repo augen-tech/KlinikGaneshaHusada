@@ -91,9 +91,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="intType1">Medicine</label>
-                                        <select class="select2" style="width: 100%">
+                                        <select class="select2" style="width: 100%" name="medicine[]">
                                             @foreach($medicines as $row)
-                                                <option>{{$row->name}}</option>
+                                        <option value="{{$row->id}}">{{$row->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -101,13 +101,13 @@
                                 <div class="col-md-1">
                                     <div class="form-group">
                                         <label class="control-label">Qty</label>
-                                        <input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount"> </div>
+                                        <input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"> </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                                             <label for="notation1">Notation :</label>
-                                            <input name="notation" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"> </div>
+                                            <input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"> </div>
                                     </div>
                                     <div class="col-md-1">
                                             <div class="form-group">
@@ -148,8 +148,8 @@ $( document ).ready(function() {
     var i=1;  
     $(document).on("click","#add",function() {
         i++;
-        $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-6"><div class="form-group"><label for="intType1">Medicine</label><select class="select2" style="width: 100%">@foreach($medicines as $row)<option>{{$row->name}}</option>@endforeach</select></div></div><div class="col-md-1"><div class="form-group"><label class="control-label">Qty</label><input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" value="" name="vertical-spin"> </div></div><div class="col-md-4"><div class="form-group"><label for="notation1">Notation :</label><input type="text" class="form-control" id="notation1"></div></div><div class="col-md-1"><div class="form-group"><label for="notation1">Clear</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div></div></div>');
-        <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
+        $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-6"><div class="form-group"><label for="intType1">Medicine</label><select class="select2" style="width: 100%" name="medicine[]">@foreach($medicines as $row)<option value="{{$row->id}}">{{$row->name}}</option>@endforeach</select></div></div><div class="col-md-1"><div class="form-group"><label class="control-label">Qty</label><input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"> </div></div><div class="col-md-4"><div class="form-group"><label for="notation1">Notation :</label><input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"></div></div><div class="col-md-1"><div class="form-group"><label for="notation1">Clear</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div></div></div>');
+        // <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
     });
     $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   
