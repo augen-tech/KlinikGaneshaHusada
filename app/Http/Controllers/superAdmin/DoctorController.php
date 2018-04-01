@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class HealthAnalystController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class HealthAnalystController extends Controller
     public function index()
     {
         $doctors = User::where('role', 'Doctor')->get();
-        return view('superAdmin.doctor.list', compact('doctor'));
+        return view('superAdmin.doctor.list', compact('doctors'));
     }
 
     /**
