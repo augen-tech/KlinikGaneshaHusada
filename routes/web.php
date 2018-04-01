@@ -13,45 +13,45 @@
 
 Route::get('/', 'UserController@Index') ->name('login');
 
-Route::get('/superadmin/', function(){
-    return redirect()->route('superadmin.dashboard');
+Route::get('/superAdmin/', function(){
+    return redirect()->route('superAdmin.dashboard');
 });
-Route::get('/superadmin/dashboard', 'superadmin\UserController@Dashboard') ->name('superadmin.dashboard');
+Route::get('/superAdmin/dashboard', 'superAdmin\UserController@Dashboard') ->name('superAdmin.dashboard');
 
-Route::get('/superadmin/receptionist/create', 'superadmin\ReceptionistController@create')->name('superadmin.receptionist.create');
-Route::post('/superadmin/receptionist/store', 'superadmin\ReceptionistController@store')->name('superadmin.receptionist.store');
-Route::get('/superadmin/receptionist/list', 'superadmin\ReceptionistController@index')->name('superadmin.receptionist.list');
-Route::get('/superadmin/receptionist/edit/{id}', 'superadmin\ReceptionistController@edit')->name('superadmin.receptionist.edit');
-Route::post('/superadmin/receptionist/update/{id}', 'superadmin\ReceptionistController@update')->name('superadmin.receptionist.update');
-Route::delete('/superadmin/receptionist/destroy/{id}', 'superadmin\ReceptionistController@destroy')->name('superadmin.receptionist.destroy');
+Route::get('/superAdmin/receptionist/create', 'superAdmin\ReceptionistController@create')->name('superAdmin.receptionist.create');
+Route::post('/superAdmin/receptionist/store', 'superAdmin\ReceptionistController@store')->name('superAdmin.receptionist.store');
+Route::get('/superAdmin/receptionist/list', 'superAdmin\ReceptionistController@index')->name('superAdmin.receptionist.list');
+Route::get('/superAdmin/receptionist/edit/{id}', 'superAdmin\ReceptionistController@edit')->name('superAdmin.receptionist.edit');
+Route::post('/superAdmin/receptionist/update/{id}', 'superAdmin\ReceptionistController@update')->name('superAdmin.receptionist.update');
+Route::delete('/superAdmin/receptionist/destroy/{id}', 'superAdmin\ReceptionistController@destroy')->name('superAdmin.receptionist.destroy');
 
-Route::get('/superadmin/doctor/create', 'superadmin\DoctorController@create')->name('superadmin.doctor.create');
-Route::post('/superadmin/doctor/store', 'superadmin\DoctorController@store')->name('superadmin.doctor.store');
-Route::get('/superadmin/doctor/list', 'superadmin\DoctorController@index')->name('superadmin.doctor.list');
-Route::get('/superadmin/doctor/edit/{id}', 'superadmin\DoctorController@edit')->name('superadmin.doctor.edit');
-Route::put('/superadmin/doctor/update/{id}', 'superadmin\DoctorController@update')->name('superadmin.doctor.update');
-Route::delete('/superadmin/doctor/destroy/{id}', 'superadmin\DoctorController@destroy')->name('superadmin.doctor.destroy');
+Route::get('/superAdmin/doctor/create', 'superAdmin\DoctorController@create')->name('superAdmin.doctor.create');
+Route::post('/superAdmin/doctor/store', 'superAdmin\DoctorController@store')->name('superAdmin.doctor.store');
+Route::get('/superAdmin/doctor/list', 'superAdmin\DoctorController@index')->name('superAdmin.doctor.list');
+Route::get('/superAdmin/doctor/edit/{id}', 'superAdmin\DoctorController@edit')->name('superAdmin.doctor.edit');
+Route::put('/superAdmin/doctor/update/{id}', 'superAdmin\DoctorController@update')->name('superAdmin.doctor.update');
+Route::delete('/superAdmin/doctor/destroy/{id}', 'superAdmin\DoctorController@destroy')->name('superAdmin.doctor.destroy');
 
-Route::get('/superadmin/midwife/create', 'superadmin\MidwifeController@create')->name('superadmin.midwife.create');
-Route::post('/superadmin/midwife/store', 'superadmin\MidwifeController@store')->name('superadmin.midwife.store');
-Route::get('/superadmin/midwife/list', 'superadmin\MidwifeController@index')->name('superadmin.midwife.list');
-Route::get('/superadmin/midwife/edit/{id}', 'superadmin\MidwifeController@edit')->name('superadmin.midwife.edit');
-Route::put('/superadmin/midwife/update/{id}', 'superadmin\MidwifeController@update')->name('superadmin.midwife.update');
-Route::delete('/superadmin/midwife/destroy/{id}', 'superadmin\MidwifeController@destroy')->name('superadmin.midwife.destroy');
+Route::get('/superAdmin/midwife/create', 'superAdmin\MidwifeController@create')->name('superAdmin.midwife.create');
+Route::post('/superAdmin/midwife/store', 'superAdmin\MidwifeController@store')->name('superAdmin.midwife.store');
+Route::get('/superAdmin/midwife/list', 'superAdmin\MidwifeController@index')->name('superAdmin.midwife.list');
+Route::get('/superAdmin/midwife/edit/{id}', 'superAdmin\MidwifeController@edit')->name('superAdmin.midwife.edit');
+Route::put('/superAdmin/midwife/update/{id}', 'superAdmin\MidwifeController@update')->name('superAdmin.midwife.update');
+Route::delete('/superAdmin/midwife/destroy/{id}', 'superAdmin\MidwifeController@destroy')->name('superAdmin.midwife.destroy');
 
-Route::get('/superadmin/healthAnalyst/create', 'superadmin\HealthAnalystController@create')->name('superadmin.healthAnalyst.create');
-Route::post('/superadmin/healthAnalyst/store', 'superadmin\HealthAnalystController@store')->name('superadmin.healthAnalyst.store');
-Route::get('/superadmin/healthAnalyst/list', 'superadmin\HealthAnalystController@index')->name('superadmin.healthAnalyst.list');
-Route::get('/superadmin/healthAnalyst/edit/{id}', 'superadmin\HealthAnalystController@edit')->name('superadmin.healthAnalyst.edit');
-Route::put('/superadmin/healthAnalyst/update/{id}', 'superadmin\HealthAnalystController@update')->name('superadmin.healthAnalyst.update');
-Route::delete('/superadmin/healthAnalyst/destroy/{id}', 'superadmin\HealthAnalystController@destroy')->name('superadmin.healthAnalyst.destroy');
+Route::get('/superAdmin/healthAnalyst/create', 'superAdmin\HealthAnalystController@create')->name('superAdmin.healthAnalyst.create');
+Route::post('/superAdmin/healthAnalyst/store', 'superAdmin\HealthAnalystController@store')->name('superAdmin.healthAnalyst.store');
+Route::get('/superAdmin/healthAnalyst/list', 'superAdmin\HealthAnalystController@index')->name('superAdmin.healthAnalyst.list');
+Route::get('/superAdmin/healthAnalyst/edit/{id}', 'superAdmin\HealthAnalystController@edit')->name('superAdmin.healthAnalyst.edit');
+Route::put('/superAdmin/healthAnalyst/update/{id}', 'superAdmin\HealthAnalystController@update')->name('superAdmin.healthAnalyst.update');
+Route::delete('/superAdmin/healthAnalyst/destroy/{id}', 'superAdmin\HealthAnalystController@destroy')->name('superAdmin.healthAnalyst.destroy');
 
-Route::get('/superadmin/pharmacist/create', 'superadmin\PharmacistController@create')->name('superadmin.pharmacist.create');
-Route::post('/superadmin/pharmacist/store', 'superadmin\PharmacistController@store')->name('superadmin.pharmacist.store');
-Route::get('/superadmin/pharmacist/list', 'superadmin\PharmacistController@index')->name('superadmin.pharmacist.list');
-Route::get('/superadmin/pharmacist/edit/{id}', 'superadmin\PharmacistController@edit')->name('superadmin.pharmacist.edit');
-Route::put('/superadmin/pharmacist/update/{id}', 'superadmin\PharmacistController@update')->name('superadmin.pharmacist.update');
-Route::delete('/superadmin/pharmacist/destroy/{id}', 'superadmin\PharmacistController@destroy')->name('superadmin.pharmacist.destroy');
+Route::get('/superAdmin/pharmacist/create', 'superAdmin\PharmacistController@create')->name('superAdmin.pharmacist.create');
+Route::post('/superAdmin/pharmacist/store', 'superAdmin\PharmacistController@store')->name('superAdmin.pharmacist.store');
+Route::get('/superAdmin/pharmacist/list', 'superAdmin\PharmacistController@index')->name('superAdmin.pharmacist.list');
+Route::get('/superAdmin/pharmacist/edit/{id}', 'superAdmin\PharmacistController@edit')->name('superAdmin.pharmacist.edit');
+Route::put('/superAdmin/pharmacist/update/{id}', 'superAdmin\PharmacistController@update')->name('superAdmin.pharmacist.update');
+Route::delete('/superAdmin/pharmacist/destroy/{id}', 'superAdmin\PharmacistController@destroy')->name('superAdmin.pharmacist.destroy');
 
 Route::get('/doctor/', function(){
     return redirect()->route('doctor.dashboard');

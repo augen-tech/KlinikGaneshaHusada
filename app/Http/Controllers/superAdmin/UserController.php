@@ -9,6 +9,6 @@ class UserController extends Controller
 {
     //
     public function dashboard(){
-        return view('superadmin.dashboard');
+        return view('superAdmin.dashboard');
     }
 }

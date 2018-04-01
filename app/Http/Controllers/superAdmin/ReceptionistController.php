@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class PharmacistController extends Controller
+class ReceptionistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PharmacistController extends Controller
      */
     public function index()
     {
-        $pharmacists = User::where('role', 'Pharmacist')->get();
-        return view('superadmin.pharmacist.list', compact('pharmacists'));
+        $receptionists = User::where('role', 'Receptionist')->get();
+        return view('superAdmin.receptionist.list', compact('receptionists'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PharmacistController extends Controller
      */
     public function create()
     {
-        return view('superadmin.pharmacist.form');
+        return view('superAdmin.receptionist.form');
     }
 
     /**
@@ -37,16 +37,17 @@ class PharmacistController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $data = [
             'name'      => $request->name,
             'email'     => $request->email,
             'password'  => $request->password,
-            'role'      => 'Pharmacist',
+            'role'      => 'Receptionist',
         ];
 
         User::create($data);
 
-        return redirect()->route('superadmin.pharmacist.list');
+        return redirect()->route('superAdmin.receptionist.list');
     }
 
     /**
@@ -68,8 +69,8 @@ class PharmacistController extends Controller
      */
     public function edit($id)
     {
-        $pharmacist = User::find($id);
-        return view('superadmin.pharmacist.form', compact('pharmacist'));
+        $receptionist =  User::find($id);
+        return view('superAdmin.receptionist.form', compact('receptionist'));
     }
 
     /**
@@ -87,9 +88,9 @@ class PharmacistController extends Controller
             'password'  => $request->password,
         ];
 
-        $pharmacist = User::find($id);
-        $pharmacist->update($data);
-        return redirect()->route('superadmin.pharmacist.list');
+        $receptionist = User::find($id);
+        $receptionist->update($data);
+        return redirect()->route('superAdmin.receptionist.list');
     }
 
     /**
@@ -100,8 +101,8 @@ class PharmacistController extends Controller
      */
     public function destroy($id)
     {
-        $pharmacist = User::find($id);
-        $pharmacist->delete();
-        return redirect()->route('superadmin.pharmacist.list');
+        $receptionist = User::find($id);
+        $receptionist->delete();
+        return redirect()->route('superAdmin.receptionist.list');
     }
 }

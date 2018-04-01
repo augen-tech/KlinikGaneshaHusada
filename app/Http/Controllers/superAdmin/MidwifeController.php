@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class ReceptionistController extends Controller
+class MidwifeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
-        $receptionists = User::where('role', 'Receptionist')->get();
-        return view('superadmin.receptionist.list', compact('receptionists'));
+        $midwifes = User::where('role', 'Midwife')->get();
+        return view('superAdmin.midwife.list', compact('midwifes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ReceptionistController extends Controller
      */
     public function create()
     {
-        return view('superadmin.receptionist.form');
+        return view('superAdmin.midwife.form');
     }
 
     /**
@@ -37,17 +37,16 @@ class ReceptionistController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $data = [
             'name'      => $request->name,
             'email'     => $request->email,
             'password'  => $request->password,
-            'role'      => 'Receptionist',
+            'role'      => 'Midwife',
         ];
 
         User::create($data);
 
-        return redirect()->route('superadmin.receptionist.list');
+        return redirect()->route('superAdmin.midwife.list');
     }
 
     /**
@@ -69,8 +68,8 @@ class ReceptionistController extends Controller
      */
     public function edit($id)
     {
-        $receptionist =  User::find($id);
-        return view('superadmin.receptionist.form', compact('receptionist'));
+        $midwife = User::find($id);
+        return view('superAdmin.midwife.form', compact('midwife'));
     }
 
     /**
@@ -88,9 +87,9 @@ class ReceptionistController extends Controller
             'password'  => $request->password,
         ];
 
-        $receptionist = User::find($id);
-        $receptionist->update($data);
-        return redirect()->route('superadmin.receptionist.list');
+        $midwife = User::find($id);
+        $midwife->update($data);
+        return redirect()->route('superAdmin.midwife.list');
     }
 
     /**
@@ -101,8 +100,8 @@ class ReceptionistController extends Controller
      */
     public function destroy($id)
     {
-        $receptionist = User::find($id);
-        $receptionist->delete();
-        return redirect()->route('superadmin.receptionist.list');
+        $midwife = User::find($id);
+        $midwife->delete();
+        return redirect()->route('superAdmin.midwife.list');
     }
 }

@@ -1,12 +1,12 @@
-@extends('superadmin.layouts.app')
+@extends('superAdmin.layouts.app')
 
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Pharmacist</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Doctor</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Pharmacist</a></li>
-            <li class="breadcrumb-item active">{{ isset($pharmacist) ? 'Edit' : 'Add'}}</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Doctor</a></li>
+            <li class="breadcrumb-item active">{{ isset($doctor) ? 'Edit' : 'Add'}}</li>
         </ol>
     </div>
 </div>
@@ -17,16 +17,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ !isset($pharmacist) ? route('superadmin.pharmacist.store') : route('superadmin.pharmacist.update', $pharmacist->id)}}" method="POST">
-                    {{ isset($pharmacist) ? method_field('PUT') : ''}}
+                <form action="{{ !isset($doctor) ? route('superAdmin.doctor.store') : route('superAdmin.doctor.update', $doctor->id)}}" method="POST">
+                    {{ isset($doctor) ? method_field('PUT') : ''}}
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($pharmacist) ? $pharmacist->name : '' }}" required>
+                            <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($doctor) ? $doctor->name : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($pharmacist) ? $pharmacist->email : '' }}" required>
+                            <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($doctor) ? $doctor->email : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>

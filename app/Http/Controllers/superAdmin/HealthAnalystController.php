@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class HealthAnalystController extends Controller
     public function index()
     {
         $healthAnalysts = User::where('role', 'HealthAnalyst')->get();
-        return view('superadmin.healthAnalyst.list', compact('healthAnalysts'));
+        return view('superAdmin.healthAnalyst.list', compact('healthAnalysts'));
     }
 
     /**
@@ -26,7 +26,7 @@ class HealthAnalystController extends Controller
      */
     public function create()
     {
-        return view('superadmin.healthAnalyst.form');
+        return view('superAdmin.healthAnalyst.form');
     }
 
     /**
@@ -46,7 +46,7 @@ class HealthAnalystController extends Controller
 
         User::create($data);
 
-        return redirect()->route('superadmin.healthAnalyst.list');
+        return redirect()->route('superAdmin.healthAnalyst.list');
     }
 
     /**
@@ -69,7 +69,7 @@ class HealthAnalystController extends Controller
     public function edit($id)
     {
         $healthAnalyst = User::find($id);
-        return view('superadmin.healthAnalyst.form', compact('healthAnalyst'));
+        return view('superAdmin.healthAnalyst.form', compact('healthAnalyst'));
     }
 
     /**
@@ -89,7 +89,7 @@ class HealthAnalystController extends Controller
 
         $healthAnalyst = User::find($id);
         $healthAnalyst->update($data);
-        return redirect()->route('superadmin.healthAnalyst.list');
+        return redirect()->route('superAdmin.healthAnalyst.list');
     }
 
     /**
@@ -102,6 +102,6 @@ class HealthAnalystController extends Controller
     {
         $healthAnalyst = User::find($id);
         $healthAnalyst->delete();
-        return redirect()->route('superadmin.healthAnalyst.list');
+        return redirect()->route('superAdmin.healthAnalyst.list');
     }
 }

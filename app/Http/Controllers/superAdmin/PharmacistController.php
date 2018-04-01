@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class DoctorController extends Controller
+class PharmacistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = User::where('role', 'Doctor')->get();
-        return view('superadmin.doctor.list', compact('doctors'));
+        $pharmacists = User::where('role', 'Pharmacist')->get();
+        return view('superAdmin.pharmacist.list', compact('pharmacists'));
     }
 
     /**
@@ -26,7 +26,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('superadmin.doctor.form');
+        return view('superAdmin.pharmacist.form');
     }
 
     /**
@@ -41,12 +41,12 @@ class DoctorController extends Controller
             'name'      => $request->name,
             'email'     => $request->email,
             'password'  => $request->password,
-            'role'      => 'Doctor',
+            'role'      => 'Pharmacist',
         ];
 
         User::create($data);
 
-        return redirect()->route('superadmin.doctor.list');
+        return redirect()->route('superAdmin.pharmacist.list');
     }
 
     /**
@@ -68,8 +68,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $doctor = User::find($id);
-        return view('superadmin.doctor.form', compact('doctor'));
+        $pharmacist = User::find($id);
+        return view('superAdmin.pharmacist.form', compact('pharmacist'));
     }
 
     /**
@@ -87,9 +87,9 @@ class DoctorController extends Controller
             'password'  => $request->password,
         ];
 
-        $doctor = User::find($id);
-        $doctor->update($data);
-        return redirect()->route('superadmin.doctor.list');
+        $pharmacist = User::find($id);
+        $pharmacist->update($data);
+        return redirect()->route('superAdmin.pharmacist.list');
     }
 
     /**
@@ -100,8 +100,8 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctor = User::find($id);
-        $doctor->delete();
-        return redirect()->route('superadmin.doctor.list');
+        $pharmacist = User::find($id);
+        $pharmacist->delete();
+        return redirect()->route('superAdmin.pharmacist.list');
     }
 }
