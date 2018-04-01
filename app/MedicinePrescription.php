@@ -12,11 +12,12 @@ class MedicinePrescription extends Model
         'prescription_id',
         'medicine_id',
         'amount',
+        'notation',
     ];
     public function prescription(){
-        return $this->morphMany(Prescription::class);
+        return $this->hasMany(Prescription::class);
     }
     public function medicine(){
-        return $this->morphMany(Medicine::class);
+        return $this->hasMany(Medicine::class);
     }
 }

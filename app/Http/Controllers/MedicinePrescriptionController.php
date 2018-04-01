@@ -55,23 +55,6 @@ class MedicinePrescriptionController extends Controller
         // $medicine_prescriptions = MedicinePrescription::all();        
         // $diagnosis_prescription = Prescription::where('diagnosis_id', '=',$id);
        
-        $diagnosis = Diagnosis::where('id', '=', $id)->first();
-        $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();
-        $patient = Patient::where('id', '=', $registration->patient_id)->first();
-        $prescriptions = Prescription::all();        
-
-        $prescription = Prescription::where('diagnosis_id','=' , $id)->first();     
-       
-        $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
-        $medicines = Medicine::all();
-        // $medicines = Medicine::where('id', '=', $medicine_prescriptions[1]->medicine_id)->get();
-        // return dd($medicine_prescriptions);
-        // return dd($medicines);
-
-        return view('doctor.prescription.show', compact('prescription', 'patient', 'medicine_prescriptions', 'medicines'));
-        // return dd($diagnosis_prescription);
-
-
         
     }
 

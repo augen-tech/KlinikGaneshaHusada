@@ -18,7 +18,7 @@ class PrescriptionsTableSeeder extends Seeder
         foreach(range(0,9) as $index){
             DB::table('prescriptions')->insert([
                 'diagnosis_id' => $index+1, 
-                'notation' => $faker->text($maxNbChars = 190),
+                
             ]);
         }
         

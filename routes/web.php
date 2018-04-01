@@ -62,13 +62,12 @@ Route::get('/doctor/diagnosis/list', 'doctor\DiagnosisController@Index') ->name(
 Route::get('/doctor/diagnosis/create/{id}', 'doctor\DiagnosisController@create') ->name('doctor.diagnosis.create');
 Route::post('/doctor/diagnosis/store', 'doctor\DiagnosisController@store') ->name('doctor.diagnosis.store');
 Route::get('/doctor/diagnosis/list/edit/{id}', 'doctor\DiagnosisController@edit') ->name('doctor.diagnosis.edit');
-Route::put('/doctor/diagnosis/list/{id}', 'doctor\DiagnosisController@update') ->name('doctor.diagnosis.update');
+Route::post('/doctor/diagnosis/list/{id}', 'doctor\DiagnosisController@update') ->name('doctor.diagnosis.update');
 Route::get('/doctor/diagnosis/destroy/{id}', 'doctor\DiagnosisController@destroy')->name('doctor.diagnosis.destroy');
+Route::get('/doctor/prescription/show/{id}', 'doctor\DiagnosisController@show') ->name('doctor.prescription.show');
 
 Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
 Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');
-
-Route::get('/doctor/prescription/show/{id}', 'MedicinePrescriptionController@show') ->name('doctor.prescription.show');
 
 Route::get('/pharmacist/', function(){
     return redirect()->route('pharmacist.dashboard');

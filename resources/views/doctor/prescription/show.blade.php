@@ -2,8 +2,8 @@
 
 @section('styles')
 <link href="{{ asset('material/plugins/wizard/steps.css')}}" rel="stylesheet">
-<link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" />
-<link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
+<link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" >
+<link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" >
 @endsection
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
@@ -87,13 +87,18 @@
                             <th>Notation</th>
                         </thead>
                     </tr>
-                    @foreach($medicine_prescriptions as $row)
+                    @foreach($medicine_prescriptions as $row )
                     <tr>
-                        <td>{{$row->medicine->name}}</td>
-                        <td>{{$prescription->notation}}</td>
-                        <td>{{$prescription->notation}}</td>
+                        @foreach($medicines as $row_)
+                            @if ($row_->id == $row->medicine_id)                        
+                                <td>{{$row_->name}}</td>
+                            @endif
+                        @endforeach
+                        <td>{{$row->amount}}</td>
+                        <td>{{$row->notation}}</td>
                         {{--  <td>{{ $registration->diagnosis->result }}</td>  --}}
                     </tr>
+                    @endforeach
                     
                 </table>
             </div>
