@@ -54,6 +54,30 @@
           </div>
         </div>
         <div class="form-group">
+          <div class="row" align="center">
+            <div class="col-md-4">
+              <label><a href="#">Receptionist</a></label>
+            </div>
+            <div class="col-md-4">
+              <label><a href="{{ route('doctor.dashboard') }}">Doctor</a></label>
+            </div>
+            <div class="col-md-4">
+              <label><a href="#">Midwife</a></label>
+            </div>
+          </div>
+          <div class="row" align="center">
+              <div class="col-md-4">
+                <label><a href="{{ route('healthAnalyst.dashboard') }}">Analyst</a></label>
+              </div>
+              <div class="col-md-4">
+                <label><a href="{{ route('pharmacist.dashboard') }}">Pharmacist</a></label>
+              </div>
+              <div class="col-md-4">
+                <label><a href="{{ route('superAdmin.dashboard') }}">SuperAdmin</a></label>
+              </div>
+          </div>
+        </div>
+        <div class="form-group">
           <div class="col-md-12">
             <div class="checkbox checkbox-primary pull-left p-t-0">
               <input id="checkbox-signup" type="checkbox">
@@ -63,7 +87,7 @@
         </div>
         <div class="form-group text-center m-t-20">
           <div class="col-xs-12">
-            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+            <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" style="background-color:#00897B">Log In</button>
           </div>
         </div>
         <div class="row">

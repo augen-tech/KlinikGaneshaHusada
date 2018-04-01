@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Prescription;
+use App\Medicine;
 
 class MedicinePrescriptionsTableSeeder extends Seeder
 {
@@ -12,44 +14,46 @@ class MedicinePrescriptionsTableSeeder extends Seeder
     public function run()
     {
         //
+        $prescriptions = Prescription::all();
+        $medicines = Medicine::all();
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 1,
-            'medicine_id' => 1,
+            'prescription_id' => $prescriptions[0]->id,
+            'medicine_id' => $medicines[1]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 1,
-            'medicine_id' => 3,
+            'prescription_id' => $prescriptions[0]->id,
+            'medicine_id' => $medicines[3]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 2,
-            'medicine_id' => 4,
+            'prescription_id' => $prescriptions[1]->id,
+            'medicine_id' => $medicines[4]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 3,
-            'medicine_id' => 2,
+            'prescription_id' => $prescriptions[2]->id,
+            'medicine_id' => $medicines[2]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 4,
-            'medicine_id' => 1,
+            'prescription_id' => $prescriptions[3]->id,
+            'medicine_id' => $medicines[0]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 4,
-            'medicine_id' => 2,
+            'prescription_id' => $prescriptions[4]->id,
+            'medicine_id' => $medicines[1]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 4,
-            'medicine_id' => 4,
+            'prescription_id' => $prescriptions[4]->id,
+            'medicine_id' => $medicines[3]->id,
             'total' => rand(2,10), 
         ]);
         DB::table('medicine_prescriptions')->insert([
-            'prescription_id' => 5,
-            'medicine_id' => 5,
+            'prescription_id' => $prescriptions[4]->id,
+            'medicine_id' => $medicines[4]->id,
             'total' => rand(2,10), 
         ]);
     }
