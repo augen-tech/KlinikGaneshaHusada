@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class ReceptionistController extends Controller
     public function index()
     {
         $receptionists = User::where('role', 'Receptionist')->get();
-        return view('superadmin.receptionist.list', compact('receptionists'));
+        return view('superAdmin.receptionist.list', compact('receptionists'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ReceptionistController extends Controller
      */
     public function create()
     {
-        return view('superadmin.receptionist.form');
+        return view('superAdmin.receptionist.form');
     }
 
     /**
@@ -47,7 +47,7 @@ class ReceptionistController extends Controller
 
         User::create($data);
 
-        return redirect()->route('superadmin.receptionist.list');
+        return redirect()->route('superAdmin.receptionist.list');
     }
 
     /**
@@ -70,7 +70,7 @@ class ReceptionistController extends Controller
     public function edit($id)
     {
         $receptionist =  User::find($id);
-        return view('superadmin.receptionist.form', compact('receptionist'));
+        return view('superAdmin.receptionist.form', compact('receptionist'));
     }
 
     /**
@@ -90,7 +90,7 @@ class ReceptionistController extends Controller
 
         $receptionist = User::find($id);
         $receptionist->update($data);
-        return redirect()->route('superadmin.receptionist.list');
+        return redirect()->route('superAdmin.receptionist.list');
     }
 
     /**
@@ -103,6 +103,6 @@ class ReceptionistController extends Controller
     {
         $receptionist = User::find($id);
         $receptionist->delete();
-        return redirect()->route('superadmin.receptionist.list');
+        return redirect()->route('superAdmin.receptionist.list');
     }
 }

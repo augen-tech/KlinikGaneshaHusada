@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class MidwifeController extends Controller
     public function index()
     {
         $midwifes = User::where('role', 'Midwife')->get();
-        return view('superadmin.midwife.list', compact('midwifes'));
+        return view('superAdmin.midwife.list', compact('midwifes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class MidwifeController extends Controller
      */
     public function create()
     {
-        return view('superadmin.midwife.form');
+        return view('superAdmin.midwife.form');
     }
 
     /**
@@ -46,7 +46,7 @@ class MidwifeController extends Controller
 
         User::create($data);
 
-        return redirect()->route('superadmin.midwife.list');
+        return redirect()->route('superAdmin.midwife.list');
     }
 
     /**
@@ -69,7 +69,7 @@ class MidwifeController extends Controller
     public function edit($id)
     {
         $midwife = User::find($id);
-        return view('superadmin.midwife.form', compact('midwife'));
+        return view('superAdmin.midwife.form', compact('midwife'));
     }
 
     /**
@@ -89,7 +89,7 @@ class MidwifeController extends Controller
 
         $midwife = User::find($id);
         $midwife->update($data);
-        return redirect()->route('superadmin.midwife.list');
+        return redirect()->route('superAdmin.midwife.list');
     }
 
     /**
@@ -102,6 +102,6 @@ class MidwifeController extends Controller
     {
         $midwife = User::find($id);
         $midwife->delete();
-        return redirect()->route('superadmin.midwife.list');
+        return redirect()->route('superAdmin.midwife.list');
     }
 }

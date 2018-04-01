@@ -1,4 +1,4 @@
-@extends('superadmin.layouts.app')
+@extends('superAdmin.layouts.app')
 
 @section('breadcumb')
 <div class="row page-titles">
@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ !isset($healthAnalyst) ? route('superadmin.healthAnalyst.store') : route('superadmin.healthAnalyst.update', $healthAnalyst->id)}}" method="POST">
+                <form action="{{ !isset($healthAnalyst) ? route('superAdmin.healthAnalyst.store') : route('superAdmin.healthAnalyst.update', $healthAnalyst->id)}}" method="POST">
                     {{ isset($healthAnalyst) ? method_field('PUT') : ''}}
                     <div class="form-body">
                         <div class="form-group">

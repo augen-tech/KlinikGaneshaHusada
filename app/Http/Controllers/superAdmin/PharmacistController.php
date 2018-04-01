@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\superadmin;
+namespace App\Http\Controllers\superAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class PharmacistController extends Controller
     public function index()
     {
         $pharmacists = User::where('role', 'Pharmacist')->get();
-        return view('superadmin.pharmacist.list', compact('pharmacists'));
+        return view('superAdmin.pharmacist.list', compact('pharmacists'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PharmacistController extends Controller
      */
     public function create()
     {
-        return view('superadmin.pharmacist.form');
+        return view('superAdmin.pharmacist.form');
     }
 
     /**
@@ -46,7 +46,7 @@ class PharmacistController extends Controller
 
         User::create($data);
 
-        return redirect()->route('superadmin.pharmacist.list');
+        return redirect()->route('superAdmin.pharmacist.list');
     }
 
     /**
@@ -69,7 +69,7 @@ class PharmacistController extends Controller
     public function edit($id)
     {
         $pharmacist = User::find($id);
-        return view('superadmin.pharmacist.form', compact('pharmacist'));
+        return view('superAdmin.pharmacist.form', compact('pharmacist'));
     }
 
     /**
@@ -89,7 +89,7 @@ class PharmacistController extends Controller
 
         $pharmacist = User::find($id);
         $pharmacist->update($data);
-        return redirect()->route('superadmin.pharmacist.list');
+        return redirect()->route('superAdmin.pharmacist.list');
     }
 
     /**
@@ -102,6 +102,6 @@ class PharmacistController extends Controller
     {
         $pharmacist = User::find($id);
         $pharmacist->delete();
-        return redirect()->route('superadmin.pharmacist.list');
+        return redirect()->route('superAdmin.pharmacist.list');
     }
 }

@@ -1,4 +1,4 @@
-@extends('superadmin.layouts.app')
+@extends('superAdmin.layouts.app')
 
 @section('breadcumb')
 <div class="row page-titles">
@@ -34,12 +34,12 @@
                             <td>{{ $row->email }}</td>
                             <td style="vertical-align: middle">
                                 <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                    <a href="{{ route('superadmin.receptionist.edit', $row->id) }}"><i class="ti-marker-alt text-inverse"></i></a>
+                                    <a href="{{ route('superAdmin.receptionist.edit', $row->id) }}"><i class="ti-marker-alt text-inverse"></i></a>
                                 </span>
                                 <span data-toggle="tooltip" data-placement="top" title="Delete">
                                     <a href="javascript:void(0);" onclick="$(this).find('form').submit();">
                                         <i class="ti-trash text-inverse"></i>
-                                        <form action="{{ route('superadmin.receptionist.destroy', $row->id) }}" method="POST">
+                                        <form action="{{ route('superAdmin.receptionist.destroy', $row->id) }}" method="POST">
                                             {{ method_field('DELETE') }}
                                         </form>
                                     </a>

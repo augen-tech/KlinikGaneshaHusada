@@ -3,9 +3,9 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Pharmacist</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Doctor</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Pharmacist</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Doctor</a></li>
             <li class="breadcrumb-item active">List</li>
         </ol>
     </div>
@@ -27,19 +27,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pharmacists as $key => $row)
+                        @foreach($doctors as $key => $row)
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->email }}</td>
                             <td style="vertical-align: middle">
                                 <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                    <a href="{{ route('superAdmin.pharmacist.edit', $row->id) }}"><i class="ti-marker-alt text-inverse"></i></a>
+                                    <a href="{{ route('superAdmin.healthAnalyst.edit', $row->id) }}"><i class="ti-marker-alt text-inverse"></i></a>
                                 </span>
                                 <span data-toggle="tooltip" data-placement="top" title="Delete">
                                     <a href="javascript:void(0);" onclick="$(this).find('form').submit();">
                                         <i class="ti-trash text-inverse"></i>
-                                        <form action="{{ route('superAdmin.pharmacist.destroy', $row->id) }}" method="POST">
+                                        <form action="{{ route('superAdmin.healthAnalyst.destroy', $row->id) }}" method="POST">
                                             {{ method_field('DELETE') }}
                                         </form>
                                     </a>
