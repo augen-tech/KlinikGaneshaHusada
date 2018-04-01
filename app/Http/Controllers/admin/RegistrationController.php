@@ -78,6 +78,7 @@ class RegistrationController extends Controller
         //
         $patients = Patient::all();
         $registration = Registration ::find($id);        
+        
         return view('admin.registration.add',compact('registration','patients'));
     }
 
@@ -96,6 +97,8 @@ class RegistrationController extends Controller
               
         
         $input = $request->all();
+
+        // return dd ($request);
     
         $registration->fill($input)->save();
         // Session::flash('flash_message', 'Task successfully added!');

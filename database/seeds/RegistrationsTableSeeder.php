@@ -20,7 +20,7 @@ class RegistrationsTableSeeder extends Seeder
                 'patient_id' => rand(1,11),
                 'complaint' => $faker->text($maxNbChars = 190), 
                 'type' => rand(0,1), 
-                'blood_pressure' => rand(50,100),               
+                'blood_pressure' => rand(50,100) . "/" . rand(50,100) ,               
             ]);
         }
     }

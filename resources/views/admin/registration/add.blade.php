@@ -23,34 +23,44 @@
             <div class="card-body">
                 
                 <div class="row p-t-12">
-                        <div class="col-md-6">
-                                <div class="form-group">
-                                        {{--  {{isset ($registration) && $row->id=$registration->patient_id ? $registration->patient_id  : $row->id}}  --}}
-                                    <label class="control-label">Id Patient</label>
-                                    <select id="id" class="form-control custom-select" name="patient_id">
-                                    @foreach($patients as $row)
-                                        <option value="{{$row->id}}">{{$row->id}}</option>                           
-                                    @endforeach
-                                    </select>
-                                </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{--  {{isset ($registration) && $row->id=$registration->patient_id ? $registration->patient_id  : $row->id}}  --}}
+                            <label class="control-label">Id Patient</label>                            
+                                
+                            @if(isset($registration))
+                            <select id="id" class="form-control custom-select" name="patient_id" disabled>
+                                @foreach($patients as $row)
+                                <option   value="{{$row->id}}">{{$row->id}} - {{ $row->name }} </option>                                                                   
+                                @endforeach
+                            </select>
+                            @else
+                            <select id="id" class="form-control custom-select" name="patient_id" >
+                                @foreach($patients as $row)
+                                <option   value="{{$row->id}}">{{$row->id}} - {{ $row->name }}</option>                                                                   
+                                @endforeach
+                            </select>
+                            @endif                            
+                            
+                        </div>
                     </div>
                     <!--/span-->
 
                     <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label">Type</label>
-                                <div class="m-b-10">
-                                    <label class="custom-control custom-radio">
-                                        <input id="radio5" value= "0" name="type" type="radio" class="custom-control-input">
-                                        <span class="custom-control-label">General</span>
-                                    </label>
-                                    <label class="custom-control custom-radio">
-                                        <input id="radio6" value= "1" name="type" type="radio" class="custom-control-input">
-                                        <span class="custom-control-label">Obgyn</span>
-                                    </label>
-                                </div>
+                        <div class="form-group">
+                            <label class="control-label">Type</label>
+                            <div class="m-b-10">
+                                <label class="custom-control custom-radio">
+                                    <input id="radio5" value= "0" name="type" type="radio" class="custom-control-input">
+                                    <span class="custom-control-label">General</span>
+                                </label>
+                                <label class="custom-control custom-radio">
+                                    <input id="radio6" value= "1" name="type" type="radio" class="custom-control-input">
+                                    <span class="custom-control-label">Obgyn</span>
+                                </label>
                             </div>
-                        </div>                    
+                        </div>
+                    </div>                    
                     <!--/span-->
                 </div>
 
@@ -59,18 +69,23 @@
                 <div class="row p-t-12">
                         <div class="col-md-6">
                         <div >
+                                <label class="control-label">Blood Pressure</label>
+                                <input type="text" id="blood" class="form-control" name="blood_pressure" value="{{isset ($registration) ? $registration->blood_pressure : ""  }}" >
+                                <small class="form-control-feedback">  </small> 
+                            </div>
+                        <!-- <div >
                             <label class="control-label">Name</label>
-                            <input type="text" id="name" class="form-control" name="name" value="{{isset ($registration) ? $registration->patient->name : ""  }}" placeholder={{isset ($registration) ? $registration->patient->name : ""  }}>
-                            <small class="form-control-feedback">  </small> 
-                        </div>
+                            <input type="text" id="name" disabled class="form-control" name="name" value="{{isset ($registration) ? $registration->patient->name : ""  }}" placeholder="{{isset ($registration) ? $registration->patient->name : ""  }}">
+                            <small class="form-control-feedback">  </small>                         
+                        </div> -->
                     </div>
 
                     <div class="col-md-6">
-                            <div >
+                            <!-- <div >
                                 <label class="control-label">Blood Pressure</label>
-                                <input type="text" id="address" class="form-control" name="blood_pressure" value="{{isset ($registration) ? $registration->blood_pressure : ""  }}" >
+                                <input type="text" id="blood" class="form-control" name="blood_pressure" value="{{isset ($registration) ? $registration->blood_pressure : ""  }}" >
                                 <small class="form-control-feedback">  </small> 
-                            </div>
+                            </div> -->
                         </div>
 
                 </div>
@@ -79,10 +94,11 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="control-label">Complaint</label>
-                                <textarea class="textarea_editor form-control" rows="15"  name="complaint" value="{{isset ($registration) ? $registration->complaint : ""  }}" placeholder={{isset ($registration) ? $registration->complaint : ""  }} ></textarea>
+                                <textarea class="textarea_editor form-control" rows="15"  name="complaint"   >{{isset ($registration) ? $registration->complaint :  "" }}</textarea>
                                
                             </div>
                         </div>
+                        
                     <!--/span-->
                     </div>
                 <!--/row-->

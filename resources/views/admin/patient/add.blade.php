@@ -37,7 +37,7 @@
 
                 <div class="form-group">
                     <label class="control-label">Blood Type</label>
-                    <select name="blood" class="form-control custom-select" data-placeholder="Choose a Category"   >
+                    <select name="blood" class="form-control custom-select" data-placeholder="Choose a Category"   >                    
                         <option >A</option>
                         <option >B</option>
                         <option >AB</option>
