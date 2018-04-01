@@ -145,22 +145,30 @@
 <script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 <script>
 $( document ).ready(function() {
-    var i=1;  
     $(document).on("click","#add",function() {
+        var i=1;
         i++;
         $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-6"><div class="form-group"><label for="intType1">Medicine</label><select class="select2" style="width: 100%" name="medicine[]">@foreach($medicines as $row)<option value="{{$row->id}}">{{$row->name}}</option>@endforeach</select></div></div><div class="col-md-1"><div class="form-group"><label class="control-label">Qty</label><input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"> </div></div><div class="col-md-4"><div class="form-group"><label for="notation1">Notation :</label><input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"></div></div><div class="col-md-1"><div class="form-group"><label for="notation1">Clear</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div></div></div>');
         // <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
+        
+        $(".select2").select2();
+        $(".vertical-spin").TouchSpin({
+            verticalbuttons: true,
+            verticalupclass: 'ti-plus',
+            verticaldownclass: 'ti-minus'
+        });
     });
     $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   
            $('#row'+button_id+'').remove();  
-      });  
+    });
+
+    $(".select2").select2();
     $(".vertical-spin").TouchSpin({
         verticalbuttons: true,
         verticalupclass: 'ti-plus',
         verticaldownclass: 'ti-minus'
     });
-    $(".select2").select2();
 });
 </script> 
 
