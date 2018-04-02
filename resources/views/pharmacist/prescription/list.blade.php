@@ -24,7 +24,7 @@
                         <th>Patient</th>
                         <th>Recipe</th>
                         <th>Total Price</th>
-                        <th>Accept</th>
+                        <th>Action</th>
                         
                     </tr>
                 </thead>
