@@ -2,10 +2,10 @@
 
 @section('breadcumb')
 <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Prescription List</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Prescription Commited</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Prescription</a></li>
-            <li class="breadcrumb-item active">Prescription List</li>
+            <li class="breadcrumb-item active">Prescription Commited</li>
         </ol>
     </div>
 @endsection
@@ -24,7 +24,6 @@
                         <th>Patient</th>
                         <th>Recipe</th>
                         <th>Total Price</th>
-                        <th>Accept</th>
                         
                     </tr>
                 </thead>
@@ -37,15 +36,6 @@
                             <td>{{$row->diagnosis->registration->patient->name}}</td>
                             <td>{{$row->diagnosis->special_request}}</td>
                             <td>{{$row->total_price}}</td>
-                            <td class="text-nowrap">
-                                <a href="{{ route('pharmacist.medicine.edit', $row->id) }}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
-                                
-                                <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
-                                {{-- <form action="{{ route('pharmacist.medicine.delete', $row->id) }}" id="delete" method="post"> --}}
-                                    {{-- {{ method_field('DELETE') }} kalo tulis ini sama dengan kayak tulis yang diatas, jadi yang diatas gw comment aja --}}
-                                {{-- </form> --}}
-                                </a>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>
