@@ -35,15 +35,43 @@
                     <input name="dob" type="date" class="form-control" value="{{isset ($patient) ? $patient->dob : ""  }}" >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" >
                     <label class="control-label">Blood Type</label>
-                    <select name="blood" class="form-control custom-select" data-placeholder="Choose a Category"   >                    
-                        <option >A</option>
-                        <option >B</option>
-                        <option >AB</option>
-                        <option >O</option>
-                    </select>
+                        <div class="row p-t-12">
+                            <div class="col-md-1">
+                                <label class="custom-control custom-radio">
+                                <input value="A" id="radio1" name="blood" type="radio" class="custom-control-input" >
+                                <span class="custom-control-label">A</span>
+                                </label>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="custom-control custom-radio ">
+                                <input value="B" id="radio2" name="blood"  type="radio" class="custom-control-input" >
+                                <span class="custom-control-label">B</span>
+                                </label>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="custom-control custom-radio">
+                                <input value="AB" id="radio3" name="blood" type="radio" class="custom-control-input" >
+                                <span class="custom-control-label">AB</span>
+                                </label>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="custom-control custom-radio ">
+                                <input value="O" id="radio4" name="blood"  type="radio" class="custom-control-input" >
+                                <span class="custom-control-label">O</span>
+                                </label>
+                            </div>
+                         </div>
+
+                    <!-- <select name="blood" class="form-control custom-select"    >                    
+                        <option value = "A">A</option>
+                        <option value = "B">B</option>
+                        <option value = "AB">AB</option>
+                        <option value = "O">O</option>
+                    </select> -->
                 </div>
+
 
                 <div class="form-group">
                     <label>Address</label>
@@ -59,7 +87,7 @@
                     <label class="control-label">Gender</label>
                     <div class="m-b-10">
                         <label class="custom-control custom-radio">
-                            <input value="M" id="radio5" name="gender" type="radio" class="custom-control-input" >
+                            <input value="M" id="radio5" name="gender" type="radio" class="custom-control-input"  >
                             <span class="custom-control-label">Male</span>
                         </label>
                         <label class="custom-control custom-radio ">

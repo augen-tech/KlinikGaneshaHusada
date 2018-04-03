@@ -76,7 +76,8 @@ class PatientController extends Controller
     {
         //
         
-        $patient = Patient :: find($id);        
+        $patient = Patient :: find($id);
+                
         return view('admin.patient.add',compact('patient'));  
     }
 
@@ -92,7 +93,7 @@ class PatientController extends Controller
         //
         $patient = Patient::findOrFail($id);
               
-        
+        //cek yang ini
         $input = $request->all();
     
         $patient->fill($input)->save();
