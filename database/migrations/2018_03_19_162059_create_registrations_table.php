@@ -19,11 +19,16 @@ class CreateRegistrationsTable extends Migration
             $table->string('complaint');
             $table->integer('type');
             $table->string('blood_pressure');
+            $table->integer('doctor_duty_id')->unsigned();
 
             $table->timestamps();
 
             $table->foreign('patient_id')
             ->references('id')->on('patients')
+            ->onDelete('cascade');
+
+            $table->foreign('doctor_duty_id')
+            ->references('id')->on('doctors')
             ->onDelete('cascade');
         });
     }
