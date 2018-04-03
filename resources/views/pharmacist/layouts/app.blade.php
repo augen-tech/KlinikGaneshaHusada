@@ -354,7 +354,7 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{route('pharmacist.prescription')}}">Prescription List</a></li>
+                                <li><a href="{{route('pharmacist.prescription.list')}}">Prescription List</a></li>
                                 <li><a href="#">Prescription Commited</a></li>
                             </ul>
                         </li>

@@ -84,5 +84,8 @@ class PrescriptionController extends Controller
     public function destroy($id)
     {
         //
+        $prescription = Prescription::find($id)->delete();
+        
+        return redirect()->route('pharmacist.prescription.list');
     }
 }
