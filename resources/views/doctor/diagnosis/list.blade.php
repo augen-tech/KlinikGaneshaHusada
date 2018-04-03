@@ -22,6 +22,7 @@
                                 <th>Id</th>
                                 <th style="width:30%">Patient</th>
                                 <th>Result</th>
+                                <th>Special Request</th>
                                 <th>action</th>
                             </tr>
                         </thead>
@@ -31,7 +32,12 @@
                                     <td>{{ $row->id }}</td>
                                     <td>{{ $row->registration->patient->name }}</td>
                                     <td>{{ $row->result }}</td>
-                                    <td><a href="#"><span><i class="fa fa-pencil"></span></a></i></td>    
+                                    <td>{{ $row->special_request }}</td>
+                                    <td>        
+                                        <a href="{{ route('doctor.diagnosis.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
+                                        <a href="{{ route('doctor.diagnosis.destroy', $row->id) }}"><span><i class="mdi mdi-delete"></i></span></a>
+                                        <a href="{{ route('doctor.prescription.show', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
+                                    </td>
                                 </tr>                            
                             @endforeach
                         </tbody>

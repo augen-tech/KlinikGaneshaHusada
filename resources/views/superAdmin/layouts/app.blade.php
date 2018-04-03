@@ -345,10 +345,10 @@
                             <a href="{{ route('superAdmin.dashboard') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Receptionist</span></a>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('superAdmin.receptionist.create') }}">Add Receptionist</a></li>
-                                <li><a href="{{ route('superAdmin.receptionist.list') }}">List Receptionist</a></li>
+                                <li><a href="{{ route('superAdmin.admin.create') }}">Add Admin</a></li>
+                                <li><a href="{{ route('superAdmin.admin.list') }}">List Admin</a></li>
                             </ul>
                         </li>
                         <li>

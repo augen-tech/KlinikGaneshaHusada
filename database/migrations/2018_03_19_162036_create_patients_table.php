@@ -18,7 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->date('dob');
             $table->string('address');
-            $table->char('blood_type',1);
+            $table->char('blood_type',2);
             $table->char('gender',1);
             $table->string('phone');
             $table->timestamps();

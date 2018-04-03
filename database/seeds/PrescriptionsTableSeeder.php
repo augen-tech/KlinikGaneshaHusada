@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Diagnosis;
+use Faker\Factory as Faker;
+
 
 class PrescriptionsTableSeeder extends Seeder
 {
@@ -17,7 +19,6 @@ class PrescriptionsTableSeeder extends Seeder
         foreach(range(0,9) as $index){
             DB::table('prescriptions')->insert([
                 'diagnosis_id' => $diagnoses[rand(0, 10)]->id,
-                'total_price' => rand(75000,250000), 
             ]);
         }
         

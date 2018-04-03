@@ -17,7 +17,8 @@ class CreateMedicinePrescriptionsTable extends Migration
             $table->increments('id');
             $table->integer('prescription_id')->unsigned();
             $table->integer('medicine_id')->unsigned();
-            $table->integer('total');
+            $table->integer('amount');
+            $table->string('notation');
             $table->timestamps();
 
             $table->foreign('medicine_id')

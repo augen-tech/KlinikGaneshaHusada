@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\superAdmin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
+use App\MedicinePrescription;
+use App\Medicine;
+use App\Prescription;
+use App\Diagnosis;
+use App\Patient;
+use App\Registration;
 
-class ReceptionistController extends Controller
+class MedicinePrescriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +19,7 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
-        $receptionists = User::where('role', 'Receptionist')->get();
-        return view('superAdmin.receptionist.list', compact('receptionists'));
+        //
     }
 
     /**
@@ -26,7 +29,7 @@ class ReceptionistController extends Controller
      */
     public function create()
     {
-        return view('superAdmin.receptionist.form');
+        //
     }
 
     /**
@@ -38,16 +41,6 @@ class ReceptionistController extends Controller
     public function store(Request $request)
     {
         //
-        $data = [
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => $request->password,
-            'role'      => 'Receptionist',
-        ];
-
-        User::create($data);
-
-        return redirect()->route('superAdmin.receptionist.list');
     }
 
     /**
@@ -59,6 +52,10 @@ class ReceptionistController extends Controller
     public function show($id)
     {
         //
+        // $medicine_prescriptions = MedicinePrescription::all();        
+        // $diagnosis_prescription = Prescription::where('diagnosis_id', '=',$id);
+       
+        
     }
 
     /**
@@ -69,8 +66,7 @@ class ReceptionistController extends Controller
      */
     public function edit($id)
     {
-        $receptionist =  User::find($id);
-        return view('superAdmin.receptionist.form', compact('receptionist'));
+        //
     }
 
     /**
@@ -82,15 +78,7 @@ class ReceptionistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => $request->password,
-        ];
-
-        $receptionist = User::find($id);
-        $receptionist->update($data);
-        return redirect()->route('superAdmin.receptionist.list');
+        //
     }
 
     /**
@@ -101,8 +89,6 @@ class ReceptionistController extends Controller
      */
     public function destroy($id)
     {
-        $receptionist = User::find($id);
-        $receptionist->delete();
-        return redirect()->route('superAdmin.receptionist.list');
+        //
     }
 }
