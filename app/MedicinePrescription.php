@@ -18,6 +18,6 @@ class MedicinePrescription extends Model
         return $this->hasMany(Prescription::class);
     }
     public function medicine(){
-        return $this->hasMany(Medicine::class);
+        return $this->belongsTo(Medicine::class);
     }
 }

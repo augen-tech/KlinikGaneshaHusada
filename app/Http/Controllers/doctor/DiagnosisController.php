@@ -138,11 +138,15 @@ class DiagnosisController extends Controller
             $tempmedicines_ = Medicine::where('id', '=', $row->medicine_id)->first();
             array_push($medicines_, $tempmedicines_);
         }
-        
+
+
+
+        // return dd($medicine_prescriptions);
         // return dd($medicines_);
         
         
         return view('doctor.diagnosis.create', compact('diagnosis', 'registration','medicines','prescription', 'medicine_prescriptions','medicines_'));
+        
     }
 
     /**
@@ -174,7 +178,7 @@ class DiagnosisController extends Controller
         ];
        
         $prescription->fill($data_prescription)->save();
-
+        
         foreach ($request->medicine as $index => $row) {            
             $data_mp = [       
                 'prescription_id' => $prescription->id,
@@ -188,7 +192,20 @@ class DiagnosisController extends Controller
             // $medicine_prescriptions = MedicinePrescription::whereId($id)->update($index->all());; 
             // $medicine_prescriptions->update($data_mp);  
         }
-
+        
+        $prescription = Prescription::where('diagnosis_id', '=', $id)->first();
+        $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->delete();
+       
+        // return dd($medicine_prescriptions);
+        foreach ($request->medicine as $index => $row) {            
+            $data_mp = [       
+                'prescription_id' => $prescription->id,
+                'medicine_id' => $request->medicine[$index], 
+                'amount' => $request->amount[$index],
+                'notation' => $request->notation[$index],
+            ];
+            $medicine_prescriptions = MedicinePrescription::create($data_mp);    
+        }
         
 
         return redirect()->route('doctor.diagnosis.list');
@@ -204,6 +221,7 @@ class DiagnosisController extends Controller
     public function destroy($id)
     {
         //
+        
         $diagnosis = Diagnosis::find($id)->delete();
         
         return redirect()->route('doctor.diagnosis.list');
