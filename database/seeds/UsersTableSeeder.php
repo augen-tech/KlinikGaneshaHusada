@@ -12,15 +12,167 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        $role = array("Admin", "Admin", "Doctor", "Midwife", "HealthAnalyst", "Pharmacist");
+        $this->createRoles();
+        $this->createUser();
+    }
+
+    public function createRoles()
+    {
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'SuperAdmin',
+                'slug'        => 'superAdmin',
+            ]
+        );
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'Admin',
+                'slug'        => 'admin',
+            ]
+        );
+
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'Doctor',
+                'slug'        => 'doctor',
+            ]
+        );
+
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'Midwife',
+                'slug'        => 'midwife',
+            ]
+        );
+
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'Health Analyst',
+                'slug'        => 'healthAnalyst',
+            ]
+        );
+
+        Sentinel::getRoleRepository()->createModel()->create
+        (
+			[
+				'name'        => 'Pharmacist',
+                'slug'        => 'pharmacist',
+            ]
+        );
+    }
+
+    public function createUser()
+    {
+        $this->createDefaultSuperAdmin();
+        $this->createDefaultAdmin();
+        $this->createDefaultDoctor();
+        $this->createDefaultMidwife();
+        $this->createDefaultHealthAnalyst();
+        $this->createDefaultPharmacist();
+        
+        $roleArray = array("admin", "doctor", "midwife", "healthAnalyst", "pharmacist");
         foreach(range(0,20) as $index){
-            DB::table('users')->insert([
-                'name' => $faker->name,
+            $faker = Faker::create();
+            $credentials = [
+                'username' => $faker->userName,
                 'email' => $faker->email,
-                'password' => 'test123',
-                'role' => $role[array_rand($role)],
-            ]);
+                'password' => 'qwerty123',
+                'name' => $faker->name,
+                'image' => 'test.png',
+            ];
+
+            $user = Sentinel::registerAndActivate($credentials);
+            $role = Sentinel::findRoleBySlug($roleArray[array_rand($roleArray)]);
+            $user->roles()->attach($role);
         }
+    }
+
+    public function createDefaultSuperAdmin(){
+        $credentials = [
+            'username' => 'superAdmin',
+			'email' => 'superAdmin@example.com',
+            'password' => 'qwerty123',
+            'name' => 'SuperAdmin',
+            'image' => 'test.png',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('superAdmin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultAdmin(){
+        $credentials = [
+            'username' => 'admin',
+			'email' => 'admin@example.com',
+            'password' => 'qwerty123',
+            'name' => 'Admin',
+            'image' => 'test.png',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultDoctor(){
+        $credentials = [
+            'username' => 'doctor',
+			'email' => 'doctor@example.com',
+            'password' => 'qwerty123',
+            'name' => 'Doctor',
+            'image' => 'test.png',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('doctor');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultMidwife(){
+        $credentials = [
+            'username' => 'midwife',
+			'email' => 'midwife@example.com',
+            'password' => 'qwerty123',
+            'name' => 'Midwife',
+            'image' => 'test.png',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('midwife');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultHealthAnalyst(){
+        $credentials = [
+            'username' => 'healthAnalyst',
+			'email' => 'healthAnalyst@example.com',
+            'password' => 'qwerty123',
+            'name' => 'Health Analyst',
+            'image' => 'test.png',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('healthAnalyst');
+        $user->roles()->attach($role);
+    }
+
+    public function createDefaultPharmacist(){
+        $credentials = [
+            'username' => 'pharmacist',
+			'email' => 'pharmacist@example.com',
+            'password' => 'qwerty123',
+            'name' => 'Pharmacist',
+            'image' => 'test.png',
+		];
+
+        $user = Sentinel::registerAndActivate($credentials);
+        $role = Sentinel::findRoleBySlug('pharmacist');
+        $user->roles()->attach($role);
     }
 }

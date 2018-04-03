@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Sentinel;
 
 class MidwifeController extends Controller
 {
@@ -15,8 +16,9 @@ class MidwifeController extends Controller
      */
     public function index()
     {
-        $midwifes = User::where('role', 'Midwife')->get();
-        return view('superAdmin.midwife.list', compact('midwifes'));
+        $role = Sentinel::findRoleById(4);
+        $midwifes = $role->users()->with('roles')->get();
+        return view('pages.superAdmin.midwife.list', compact('midwifes'));
     }
 
     /**
@@ -26,7 +28,7 @@ class MidwifeController extends Controller
      */
     public function create()
     {
-        return view('superAdmin.midwife.form');
+        return view('pages.superAdmin.midwife.form');
     }
 
     /**
@@ -69,7 +71,7 @@ class MidwifeController extends Controller
     public function edit($id)
     {
         $midwife = User::find($id);
-        return view('superAdmin.midwife.form', compact('midwife'));
+        return view('pages.superAdmin.midwife.form', compact('midwife'));
     }
 
     /**

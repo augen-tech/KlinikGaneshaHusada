@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Sentinel;
 
 class AdminController extends Controller
 {
@@ -15,8 +16,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = User::where('role', 'Admin')->get();
-        return view('superAdmin.admin.list', compact('admins'));
+        $role = Sentinel::findRoleById(2);
+        $admins = $role->users()->with('roles')->get();
+        return view('pages.superAdmin.admin.list', compact('admins'));
     }
 
     /**
@@ -26,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('superAdmin.admin.form');
+        return view('pages.superAdmin.admin.form');
     }
 
     /**
@@ -70,7 +72,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admin =  User::find($id);
-        return view('superAdmin.admin.form', compact('admin'));
+        return view('pages.superAdmin.admin.form', compact('admin'));
     }
 
     /**

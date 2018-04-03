@@ -10,6 +10,6 @@ class UserController extends Controller
     //
     public function dashboard()
     {
-        return view('healthAnalyst.dashboard');
+        return view('pages.healthAnalyst.dashboard');
     }
 }

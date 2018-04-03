@@ -40,41 +40,24 @@
     <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/akbar.jpg')}});">
   <div class="login-box card">
     <div class="card-body">
-      <form class="form-horizontal form-material" id="loginform" action="index.html">
+      <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
         <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/logo-icon.png')}}" alt="Home" /><br/><img src="{{ asset('material/images/logo-text.png')}}" alt="Home" /></a>  
         
-        <div class="form-group m-t-40">
+        @if(session('error'))
+        <div class="form-group m-t-30">
+            <div class="col-xs-12">
+                <div class="alert alert-danger"> {{ session()->get('error') }} </div>
+            </div>
+        </div>
+        @endif
+        <div class="form-group {{ session('error') ? 'm-t-10' : 'm-t-40' }}">
           <div class="col-xs-12">
-            <input class="form-control" type="text" required="" placeholder="Username">
+            <input class="form-control" name="username" type="text" required="" placeholder="Username">
           </div>
         </div>
         <div class="form-group">
           <div class="col-xs-12">
-            <input class="form-control" type="password" required="" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row" align="center">
-            <div class="col-md-4">
-              <label><a href="#">Receptionist</a></label>
-            </div>
-            <div class="col-md-4">
-              <label><a href="{{ route('doctor.dashboard') }}">Doctor</a></label>
-            </div>
-            <div class="col-md-4">
-              <label><a href="#">Midwife</a></label>
-            </div>
-          </div>
-          <div class="row" align="center">
-              <div class="col-md-4">
-                <label><a href="{{ route('healthAnalyst.dashboard') }}">Analyst</a></label>
-              </div>
-              <div class="col-md-4">
-                <label><a href="{{ route('pharmacist.dashboard') }}">Pharmacist</a></label>
-              </div>
-              <div class="col-md-4">
-                <label><a href="{{ route('superAdmin.dashboard') }}">SuperAdmin</a></label>
-              </div>
+            <input class="form-control" name="password" type="password" required="" placeholder="Password">
           </div>
         </div>
         <div class="form-group">

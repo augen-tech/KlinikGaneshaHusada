@@ -22,7 +22,7 @@ class DiagnosisController extends Controller
     {
         //
         $diagnoses = Diagnosis::all();
-        return view('doctor.diagnosis.list', compact('diagnoses'));
+        return view('pages.doctor.diagnosis.list', compact('diagnoses'));
     }
 
     /**
@@ -37,12 +37,12 @@ class DiagnosisController extends Controller
         $medicines = Medicine::all();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('doctor.diagnosis.create', compact('registration','medicines'));
+        return view('pages.doctor.diagnosis.create', compact('registration','medicines'));
     }
 
     public function add(){
         $registrations = Registration::all();
-        return view('doctor.diagnosis.add', compact('registrations'));
+        return view('pages.doctor.diagnosis.add', compact('registrations'));
     }
 
     
@@ -113,7 +113,7 @@ class DiagnosisController extends Controller
         // return dd($medicine_prescriptions);
         // return dd($medicines);
         
-        return view('doctor.prescription.show', compact('prescription', 'patient', 'medicine_prescriptions', 'medicines'));
+        return view('pages.doctor.prescription.show', compact('prescription', 'patient', 'medicine_prescriptions', 'medicines'));
         // return dd($diagnosis_prescription);       
     }
 
@@ -145,7 +145,7 @@ class DiagnosisController extends Controller
         // return dd($medicines_);
         
         
-        return view('doctor.diagnosis.create', compact('diagnosis', 'registration','medicines','prescription', 'medicine_prescriptions','medicines_'));
+        return view('pages.doctor.diagnosis.create', compact('diagnosis', 'registration','medicines','prescription', 'medicine_prescriptions','medicines_'));
         
     }
 

@@ -19,7 +19,7 @@ class ResultLabController extends Controller
     {
         //
         $resultLab = ResultLab::all();
-        return view('healthAnalyst.resultLab.list',compact('resultLab'));
+        return view('pages.healthAnalyst.resultLab.list',compact('resultLab'));
     }
 
     /**
@@ -31,14 +31,14 @@ class ResultLabController extends Controller
     {
         //
         $diagnoses = Diagnosis::all();
-        return view('healthAnalyst.resultLab.create',compact('diagnoses'));  
+        return view('pages.healthAnalyst.resultLab.create',compact('diagnoses'));  
     }
 
     public function form($id)
     {
         //
         $diagnosis = Diagnosis::find($id);        
-        return view('healthAnalyst.resultLab.form',compact('diagnosis'));        
+        return view('pages.healthAnalyst.resultLab.form',compact('diagnosis'));        
     }
     
 
@@ -85,7 +85,7 @@ class ResultLabController extends Controller
     {
         //
         $resultLab = ResultLab::find($id);        
-        return view('healthAnalyst.resultLab.form',compact('resultLab'));  
+        return view('pages.healthAnalyst.resultLab.form',compact('resultLab'));  
     }
 
     /**

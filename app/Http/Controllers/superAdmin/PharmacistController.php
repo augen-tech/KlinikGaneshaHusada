@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Sentinel;
 
 class PharmacistController extends Controller
 {
@@ -15,8 +16,9 @@ class PharmacistController extends Controller
      */
     public function index()
     {
-        $pharmacists = User::where('role', 'Pharmacist')->get();
-        return view('superAdmin.pharmacist.list', compact('pharmacists'));
+        $role = Sentinel::findRoleById(6);
+        $pharmacists = $role->users()->with('roles')->get();
+        return view('pages.superAdmin.pharmacist.list', compact('pharmacists'));
     }
 
     /**
@@ -26,7 +28,7 @@ class PharmacistController extends Controller
      */
     public function create()
     {
-        return view('superAdmin.pharmacist.form');
+        return view('pages.superAdmin.pharmacist.form');
     }
 
     /**
@@ -69,7 +71,7 @@ class PharmacistController extends Controller
     public function edit($id)
     {
         $pharmacist = User::find($id);
-        return view('superAdmin.pharmacist.form', compact('pharmacist'));
+        return view('pages.superAdmin.pharmacist.form', compact('pharmacist'));
     }
 
     /**

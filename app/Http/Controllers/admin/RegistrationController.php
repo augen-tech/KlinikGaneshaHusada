@@ -18,7 +18,7 @@ class RegistrationController extends Controller
     {
         //
         $registrations = Registration::all();
-        return view('admin.registration.list', compact('registrations'));
+        return view('pages.admin.registration.list', compact('registrations'));
     }
 
     /**
@@ -30,7 +30,7 @@ class RegistrationController extends Controller
     {
         //
         $patients = Patient::all(); 
-        return view('admin.registration.add', compact ('patients'));
+        return view('pages.admin.registration.add', compact ('patients'));
     }
 
     /**
@@ -79,7 +79,7 @@ class RegistrationController extends Controller
         $patients = Patient::all();
         $registration = Registration ::find($id);        
         
-        return view('admin.registration.add',compact('registration','patients'));
+        return view('pages.admin.registration.add',compact('registration','patients'));
     }
 
     /**

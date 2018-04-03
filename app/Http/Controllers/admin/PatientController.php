@@ -17,7 +17,7 @@ class PatientController extends Controller
     {
         //
         $patients = Patient::all();
-        return view('admin.patient.list', compact('patients'));
+        return view('pages.admin.patient.list', compact('patients'));
         
     }
 
@@ -30,7 +30,7 @@ class PatientController extends Controller
     {
         //
         $patients = Patient::all();
-        return view('admin.patient.add', compact('patients'));
+        return view('pages.admin.patient.add', compact('patients'));
     }
 
     /**
@@ -78,7 +78,7 @@ class PatientController extends Controller
         
         $patient = Patient :: find($id);
                 
-        return view('admin.patient.add',compact('patient'));  
+        return view('pages.admin.patient.add',compact('patient'));  
     }
 
     /**

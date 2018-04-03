@@ -17,7 +17,7 @@ class MedicineController extends Controller
     {
         //
         $medicines = medicine::all();
-        return view('pharmacist.medicine.list',compact('medicines'));
+        return view('pages.pharmacist.medicine.list',compact('medicines'));
     }
 
 
@@ -30,7 +30,7 @@ class MedicineController extends Controller
     public function create()
     {
         //
-        return view('pharmacist.medicine.form');
+        return view('pages.pharmacist.medicine.form');
 
     }
 
@@ -77,7 +77,7 @@ class MedicineController extends Controller
     {
         //
         $medicine = Medicine::find($id);
-        return view('pharmacist.medicine.form', compact('medicine'));
+        return view('pages.pharmacist.medicine.form', compact('medicine'));
 
     }
 

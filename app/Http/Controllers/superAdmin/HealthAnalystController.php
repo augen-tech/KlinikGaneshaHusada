@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superAdmin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Sentinel;
 
 class HealthAnalystController extends Controller
 {
@@ -15,8 +16,9 @@ class HealthAnalystController extends Controller
      */
     public function index()
     {
-        $healthAnalysts = User::where('role', 'HealthAnalyst')->get();
-        return view('superAdmin.healthAnalyst.list', compact('healthAnalysts'));
+        $role = Sentinel::findRoleById(5);
+        $healthAnalysts = $role->users()->with('roles')->get();
+        return view('pages.superAdmin.healthAnalyst.list', compact('healthAnalysts'));
     }
 
     /**
@@ -26,7 +28,7 @@ class HealthAnalystController extends Controller
      */
     public function create()
     {
-        return view('superAdmin.healthAnalyst.form');
+        return view('pages.superAdmin.healthAnalyst.form');
     }
 
     /**
@@ -69,7 +71,7 @@ class HealthAnalystController extends Controller
     public function edit($id)
     {
         $healthAnalyst = User::find($id);
-        return view('superAdmin.healthAnalyst.form', compact('healthAnalyst'));
+        return view('pages.superAdmin.healthAnalyst.form', compact('healthAnalyst'));
     }
 
     /**
