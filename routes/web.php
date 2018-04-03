@@ -53,6 +53,26 @@ Route::get('/superAdmin/pharmacist/edit/{id}', 'superAdmin\PharmacistController@
 Route::put('/superAdmin/pharmacist/update/{id}', 'superAdmin\PharmacistController@update')->name('superAdmin.pharmacist.update');
 Route::delete('/superAdmin/pharmacist/destroy/{id}', 'superAdmin\PharmacistController@destroy')->name('superAdmin.pharmacist.destroy');
 
+Route::get('/admin/', function(){
+    return redirect()->route('admin.dashboard');
+});
+
+Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.dashboard');
+Route::get('/admin/registration/add', 'admin\RegistrationController@create') ->name('admin.registration.create');
+Route::get('/admin/registration/list', 'admin\RegistrationController@index') ->name('admin.registration.list');
+Route::get('/admin/registration/store', 'admin\RegistrationController@store') ->name('admin.registration.store');
+Route::get('/admin/registration/edit/{id}', 'admin\RegistrationController@edit') ->name('admin.registration.edit');
+Route::get('/admin/registration/update/{id}', 'admin\RegistrationController@update') ->name('admin.registration.update');
+Route::get('/admin/registration/destroy/{id}', 'admin\RegistrationController@destroy') ->name('admin.registration.destroy');
+
+Route::get('/admin/patient/add', 'admin\PatientController@create') ->name('admin.patient.create');
+Route::get('/admin/patient/list', 'admin\PatientController@index') ->name('admin.patient.list');
+Route::get('/admin/patient/store', 'admin\PatientController@store') ->name('admin.patient.store');
+Route::get('/admin/patient/edit/{id}', 'admin\PatientController@edit') ->name('admin.patient.edit');
+Route::get('/admin/patient/update/{id}', 'admin\PatientController@update') ->name('admin.patient.update');
+Route::get('/admin/patient/destroy/{id}', 'admin\PatientController@destroy') ->name('admin.patient.destroy');
+
+
 Route::get('/doctor/', function(){
     return redirect()->route('doctor.dashboard');
 });
@@ -80,8 +100,12 @@ Route::get('/healthAnalyst/', function(){
 });
 Route::get('/healthAnalyst/dashboard', 'healthAnalyst\UserController@Dashboard') ->name('healthAnalyst.dashboard');
 Route::get('/healthAnalyst/create', 'healthAnalyst\ResultLabController@Create') ->name('healthAnalyst.resultLab.create');
-Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@form') ->name('healthAnalyst.resultLab.form');
 Route::post('/healthAnalyst/store', 'healthAnalyst\ResultLabController@Store') ->name('healthAnalyst.resultLab.store');
+Route::get('/healthAnalyst/form/{id}', 'healthAnalyst\ResultLabController@Form') ->name('healthAnalyst.resultLab.form');
+Route::get('/healthAnalyst/edit/{id}', 'healthAnalyst\ResultLabController@Edit') ->name('healthAnalyst.resultLab.edit');
+Route::post('/healthAnalyst/update/{id}', 'healthAnalyst\ResultLabController@Update') ->name('healthAnalyst.resultLab.update');
+Route::get('/healthAnalyst/delete/{id}', 'healthAnalyst\ResultLabController@Destroy') ->name('healthAnalyst.resultLab.destroy');
+
 Route::get('/healthAnalyst/list', 'healthAnalyst\ResultLabController@Index') ->name('healthAnalyst.resultLab.list');
 
 Route::get('/testRoute', function () {

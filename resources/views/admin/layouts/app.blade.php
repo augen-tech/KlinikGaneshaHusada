@@ -347,15 +347,24 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">HEALTH ANALYST</li>
+                        <li class="nav-small-cap">Admin</li>
                         <li>
-                            <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                            <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Create Result Lab</a></li>
-                                <li><a href="{{ route('healthAnalyst.resultLab.list')}}">List Result Lab</a></li>
+                                <li><a href="{{ route('admin.patient.create')}}">Add Patient</a></li>
+                                <li><a href="{{ route('admin.patient.list')}}">List Patient</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
+                                <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
+                                
                             </ul>
                         </li>
                         

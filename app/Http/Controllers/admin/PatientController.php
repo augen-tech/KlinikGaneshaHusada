@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\healthAnalyst;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ResultLab;
-use App\Diagnosis;
+use App\Patient;
 
-class ResultLabController extends Controller
+class PatientController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +16,9 @@ class ResultLabController extends Controller
     public function index()
     {
         //
-        $resultLab = ResultLab::all();
-        return view('healthAnalyst.resultLab.list',compact('resultLab'));
+        $patients = Patient::all();
+        return view('admin.patient.list', compact('patients'));
+        
     }
 
     /**
@@ -30,17 +29,9 @@ class ResultLabController extends Controller
     public function create()
     {
         //
-        $diagnoses = Diagnosis::all();
-        return view('healthAnalyst.resultLab.create',compact('diagnoses'));  
+        $patients = Patient::all();
+        return view('admin.patient.add', compact('patients'));
     }
-
-    public function form($id)
-    {
-        //
-        $diagnosis = Diagnosis::find($id);        
-        return view('healthAnalyst.resultLab.form',compact('diagnosis'));        
-    }
-    
 
     /**
      * Store a newly created resource in storage.
@@ -51,16 +42,17 @@ class ResultLabController extends Controller
     public function store(Request $request)
     {
         //
-        // return dd($request->all());
-        $data = [
-            'diagnosis_id' => $request->diagnosis_id,
-            'result' => $request->result
+        $data=[
+            'name'=> $request->name,
+            'dob'=> $request->dob,
+            'address' => $request->address,
+            'blood_type' => $request->blood,
+            'gender' => $request->gender,
+            'phone' => $request->phone           
         ];
 
-        ResultLab::create($data);
-        return redirect()->route('healthAnalyst.resultLab.list');
-        
-
+        Patient::create($data);
+        return redirect()->route('admin.patient.list');
     }
 
     /**
@@ -72,7 +64,6 @@ class ResultLabController extends Controller
     public function show($id)
     {
         //
-        
     }
 
     /**
@@ -84,8 +75,10 @@ class ResultLabController extends Controller
     public function edit($id)
     {
         //
-        $resultLab = ResultLab::find($id);        
-        return view('healthAnalyst.resultLab.form',compact('resultLab'));  
+        
+        $patient = Patient :: find($id);
+                
+        return view('admin.patient.add',compact('patient'));  
     }
 
     /**
@@ -98,15 +91,15 @@ class ResultLabController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $resultLab = ResultLab::findOrFail($id);
+        $patient = Patient::findOrFail($id);
               
-        
+        //cek yang ini
         $input = $request->all();
     
-        $resultLab->fill($input)->save();
+        $patient->fill($input)->save();
         // Session::flash('flash_message', 'Task successfully added!');
-    
-        return redirect()->route('healthAnalyst.resultLab.list');
+
+        return redirect()->route('admin.patient.list');
     }
 
     /**
@@ -118,8 +111,8 @@ class ResultLabController extends Controller
     public function destroy($id)
     {
         //
-        $resultLab = ResultLab::find($id);
-        $resultLab->delete();
-        return redirect()->route('healthAnalyst.resultLab.list');
+        $patient = Patient::find($id);
+        $patient->delete();
+        return redirect()->route('admin.patient.list');
     }
 }

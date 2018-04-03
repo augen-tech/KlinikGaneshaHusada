@@ -16,4 +16,6 @@ class ResultLab extends Model
     public function diagnosis(){
         return $this->belongsTo(Diagnosis::class);
     }
+
+    
 }
