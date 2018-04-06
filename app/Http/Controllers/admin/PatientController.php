@@ -46,7 +46,7 @@ class PatientController extends Controller
             'name'=> $request->name,
             'dob'=> $request->dob,
             'address' => $request->address,
-            'blood_type' => $request->blood,
+            'blood_type' => $request->blood_type,
             'gender' => $request->gender,
             'phone' => $request->phone           
         ];

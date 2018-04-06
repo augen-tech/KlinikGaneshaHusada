@@ -11,6 +11,7 @@ class Registration extends Model
         'id',
         'patient_id',
         'complaint',
+        'doctor_id',
         'type',
         'blood_pressure',
 
@@ -18,6 +19,10 @@ class Registration extends Model
 
     public function patient(){
         return $this->belongsTo(Patient::class);
+    }
+
+    public function doctor(){
+        return $this->belongsTo(User::class);
     }
 
     public function diagnosis(){

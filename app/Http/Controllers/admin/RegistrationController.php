@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Registration;
 use App\Patient;
+use App\User;
+use Sentinel;
 
 class RegistrationController extends Controller
 {
@@ -29,8 +31,10 @@ class RegistrationController extends Controller
     public function create()
     {
         //
-        $patients = Patient::all(); 
-        return view('pages.admin.registration.add', compact ('patients'));
+        $patients = Patient::all();
+        $role = Sentinel::findRoleById(3);
+        $doctors = $role->users()->with('roles')->get();
+        return view('pages.admin.registration.add', compact ('patients', 'doctors'));
     }
 
     /**
@@ -44,6 +48,7 @@ class RegistrationController extends Controller
         //
         $data=[
             'patient_id'=> $request->patient_id,
+            'doctor_id'=>$request->doctor_id,
             'complaint'=> $request->complaint,
             'type' => $request->type,
             'blood_pressure' => $request->blood_pressure           
@@ -77,9 +82,10 @@ class RegistrationController extends Controller
     {
         //
         $patients = Patient::all();
-        $registration = Registration ::find($id);        
-        
-        return view('pages.admin.registration.add',compact('registration','patients'));
+        $registration = Registration ::find($id);
+        $role = Sentinel::findRoleById(3);        
+        $doctors = $role->users()->with('roles')->get();
+        return view('pages.admin.registration.add',compact('registration','patients','doctors'));
     }
 
     /**
