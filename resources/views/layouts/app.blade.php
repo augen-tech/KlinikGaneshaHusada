@@ -474,7 +474,7 @@
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    {{$onPatientList = 0}}
+                                    @php ($onPatientList = 0)
                                     <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Create Result Lab</a></li>
                                     <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Result Lab</a></li>
                                 </ul>
@@ -482,7 +482,7 @@
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">                                    
-                                    {{$onPatientList = 1}}
+                                    @php ($onPatientList = 1)
                                     <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Patients</a></li>
                                 </ul>
                             </li>

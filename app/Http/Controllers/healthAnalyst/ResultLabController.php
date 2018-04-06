@@ -16,12 +16,17 @@ class ResultLabController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($onPatientList)
     {
         //
         $resultLabs = ResultLab::all();
         $patients = Patient::all();
-        return view('pages.healthAnalyst.resultLab.list',compact('resultLabs','patients'));
+
+        if($onPatientList == 1){
+            return view('pages.healthAnalyst.resultLab.list',compact('resultLabs','patients'));
+        }else{
+            return view('pages.healthAnalyst.resultLab.list',compact('resultLabs'));
+        }
     }
 
     /**
