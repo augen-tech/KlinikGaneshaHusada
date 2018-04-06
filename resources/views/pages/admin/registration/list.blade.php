@@ -2,14 +2,12 @@
 
 @section('breadcumb')
 <div class="row page-titles">
-    <div class="row page-titles">
-        <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">List Registration</h3>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">List Registration</li>
-            </ol>
-        </div>
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">List Registrations</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">List</li>
+        </ol>
     </div>
 </div>
 @endsection
@@ -19,11 +17,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Doctor Responsible</th>
                             <th>Complaint</th>
                             <th>Date</th>
                             <th>Type</th>
@@ -39,6 +39,7 @@
                             <tr>
                                 <td>{{$row->id}} </td>
                                 <td>{{$row->patient->name}} </td>
+                                <td>{{$row->doctor->name}} </td>
                                 <td>{{$row->complaint}} </td>
                                 <td>{{$row->created_at}}</td>
                                 <td>{{ $row->type == 1 ? 'OBGYN' : 'GENERAL'}}</td>
@@ -49,13 +50,16 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+
+                
+
+            </div>                        
         </div>
     </div>
 </div>
 @endsection
 
-@section('scripts')
+@section('script')
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script>$('#myTable').DataTable();</script>
 @endsection

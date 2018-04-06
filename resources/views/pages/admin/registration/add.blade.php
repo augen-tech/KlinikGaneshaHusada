@@ -41,6 +41,27 @@
                             @endif                            
                             
                         </div>
+
+                        <div class="form-group">
+                            {{--  {{isset ($registration) && $row->id=$registration->patient_id ? $registration->patient_id  : $row->id}}  --}}
+                            <label class="control-label">Id Doctors</label>                            
+                                
+                            @if(isset($registration))
+                            <select id="id" class="form-control custom-select" name="doctor_id" disabled>
+                                @foreach($doctors as $row)
+                                <option   value="{{$row->id}}">{{$row->id}} - {{ $row->name }} </option>                                                                   
+                                @endforeach
+                            </select>
+                            @else
+                            <select id="id" class="form-control custom-select" name="doctor_id" >
+                                @foreach($doctors as $row)
+                                <option   value="{{$row->id}}">{{$row->id}} - {{ $row->name }}</option>                                                                   
+                                @endforeach
+                            </select>
+                            @endif                            
+                            
+                        </div>
+
                     </div>
                     <!--/span-->
 
@@ -105,7 +126,7 @@
                 
             <div class="form-actions">
                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                <button type="button" class="btn btn-inverse">Cancel</button>
+                <button type="reset" class="btn btn-inverse">Cancel</button>
             </div>
                 
             </div>
