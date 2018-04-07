@@ -96,7 +96,7 @@ Route::group(['middleware' => 'doctor'], function() {
     Route::post('/doctor/diagnosis/list/{id}', 'doctor\DiagnosisController@update') ->name('doctor.diagnosis.update');
     Route::get('/doctor/diagnosis/destroy/{id}', 'doctor\DiagnosisController@destroy')->name('doctor.diagnosis.destroy');
     Route::get('/doctor/prescription/show/{id}', 'doctor\DiagnosisController@show') ->name('doctor.prescription.show');
-
+    
     Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
     Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');
 });

@@ -20,7 +20,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST">
+                <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <div class="form-body">
                         <h3 class="card-title">Patient Info</h3>
@@ -67,38 +67,37 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                </form>
-                <h3 class="box-title m-t-40">Upload Diagnosis</h3>
-                <hr>
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">File Diagnosis</h4>
-                            <label for="input-file-now"></label>
-                            <input type="file" id="input-file-now" class="dropify" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Special Request</label>
-                            <div class="m-b-10">
-                                <label class="custom-control custom-radio">
-                                    <input id="radio5" name="radio" type="radio" class="custom-control-input">
-                                    <span class="custom-control-label">yes</span>
-                                </label>
-                                <label class="custom-control custom-radio">
-                                    <input id="radio6" name="radio" type="radio" class="custom-control-input">
-                                    <span class="custom-control-label">no</span>
-                                </label>
+                        <h3 class="box-title m-t-40">Upload Diagnosis</h3>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">File Diagnosis</h4>
+                                    <input type="file" id="file" name="file" class="dropify">
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Special Request</label>
+                                <div class="m-b-10">
+                                    <label class="custom-control custom-radio">
+                                        <input id="radio5" name="radio" type="radio" class="custom-control-input">
+                                        <span class="custom-control-label">yes</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input id="radio6" name="radio" type="radio" class="custom-control-input">
+                                        <span class="custom-control-label">no</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Submit</button>
+                            <button type="button" class="btn btn-inverse">Cancel</button>
+                        </div>
                     </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Submit</button>
-                    <button type="button" class="btn btn-inverse">Cancel</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -264,6 +263,7 @@
 $( document ).ready(function() {
     $('.dropify').dropify();
 });
+
 </script> 
 
   

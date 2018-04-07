@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\doctor;
 
+use \Input as Input;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Diagnosis;
@@ -56,36 +57,43 @@ class DiagnosisController extends Controller
     public function store(Request $request)
     {
         //
-        $data_diagnosis = [
-            'registration_id' => $request->registration_id,
-            'result' => $request->result,
-            'special_request' => $request->special_request,
-        ];        
+        if(Input::hasFile('file')){
+
+			echo 'Uploaded';
+			$file = Input::file('file');
+			$file->move('uploads', $file->getClientOriginalName());
+			echo '';
+        }
+        
+        // $data_diagnosis = [
+        //     'registration_id' => $request->registration_id,
+        //     'result' => $request->result,
+        //     'special_request' => $request->special_request,
+        // ];        
        
-        $diagnosis = Diagnosis::create($data_diagnosis);
+        // $diagnosis = Diagnosis::create($data_diagnosis);
        
-        //
-        //save prescription 
+        // //
+        // //save prescription 
 
 
-        $data_prescription = [            
-            'diagnosis_id' => $diagnosis->id,
-        ];
-        $prescription = Prescription::create($data_prescription);
+        // $data_prescription = [            
+        //     'diagnosis_id' => $diagnosis->id,
+        // ];
+        // $prescription = Prescription::create($data_prescription);
 
         
             
-        foreach ($request->medicine as $index => $row) {            
-            $data_mp = [       
-                'prescription_id' => $prescription->id,
-                'medicine_id' => $request->medicine[$index], 
-                'amount' => $request->amount[$index],
-                'notation' => $request->notation[$index],
-            ];
-            $medicine_prescription = MedicinePrescription::create($data_mp);    
-        }
+        // foreach ($request->medicine as $index => $row) {            
+        //     $data_mp = [       
+        //         'prescription_id' => $prescription->id,
+        //         'medicine_id' => $request->medicine[$index], 
+        //         'amount' => $request->amount[$index],
+        //         'notation' => $request->notation[$index],
+        //     ];
+        //     $medicine_prescription = MedicinePrescription::create($data_mp);    
+        // }
 
-        
        
         return redirect()->route('doctor.diagnosis.list');
     }
