@@ -45,7 +45,9 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('script')
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script>$('#myTable').DataTable();</script>
+<script>$('#myTable').DataTable({
+    "order": [[ 2, "asc" ]]
+});</script>
 @endsection

@@ -20,7 +20,7 @@ class DiagnosesTableSeeder extends Seeder
             DB::table('diagnoses')->insert([                
                 'registration_id' => $registrations[rand(0, 10)]->id,
                 'result' => $faker->text($maxNbChars = 190),     
-                'special_request' => $faker->text($maxNbChars = 190),
+                'special_request' => rand(0,1),
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);
         }

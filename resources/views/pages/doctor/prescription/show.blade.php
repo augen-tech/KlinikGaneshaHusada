@@ -107,7 +107,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('script')
 <script src="{{ asset('material/plugins/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('material/plugins/wizard/jquery.steps.min.js')}}"></script>
 <script src="{{ asset('material/plugins/wizard/jquery.validate.min.js')}}"></script>
