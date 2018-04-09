@@ -13,6 +13,7 @@ class Registration extends Model
         'complaint',
         'type',
         'blood_pressure',
+        'state',
 
     ];
 
@@ -23,5 +24,4 @@ class Registration extends Model
     public function diagnosis(){
         return $this->hasOne(Diagnosis::class);
     }
-    
 }

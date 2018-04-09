@@ -2,11 +2,12 @@
 
 @section('styles')
 <link href="{{ asset('material/plugins/wizard/steps.css')}}" rel="stylesheet">
-<link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" >
-<link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" >
+<link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" />
+<link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @endsection
 @section('breadcumb')
-<div class="col-md-5 col-8 align-self-center">
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Patient Detail</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -15,6 +16,7 @@
             <li class="breadcrumb-item active">Patient Detail</li>
         </ol>
     </div>
+</div>
 @endsection
 
 @section('content')
@@ -79,26 +81,22 @@
                 <label>Patient History</label>
                 {{--  Table Diagnosis  --}}
                 <table id="myTable" class="table table-bordered table-striped">
-                    
                     <tr>
                         <thead>
-                            <th>Medicine</th>
-                            <th>Qty</th>
-                            <th>Notation</th>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    @foreach($medicine_prescriptions as $row )
-                    <tr>
-                        @foreach($medicines as $row_)
-                            @if ($row_->id == $row->medicine_id)                        
-                                <td>{{$row_->name}}</td>
-                            @endif
-                        @endforeach
-                        <td>{{$row->amount}}</td>
-                        <td>{{$row->notation}}</td>
-                        {{--  <td>{{ $registration->diagnosis->result }}</td>  --}}
-                    </tr>
-                    @endforeach
+                    
+                    
+                        <tr>
+                            <td>{{ $diagnosis->id}}</td>
+                            <td>{{ $diagnosis->created_at}}</td>
+                            <td>
+                                <center><a href="{{ Storage::url($diagnosis->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            </td>                            
+                        </tr>
                     
                 </table>
             </div>

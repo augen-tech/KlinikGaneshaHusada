@@ -16,7 +16,8 @@ class CreateDiagnosesTable extends Migration
         Schema::create('diagnoses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('registration_id')->unsigned();
-            $table->string('result');
+            $table->string('evidence');
+            $table->string('result')->nullable();
             $table->integer('special_request');
             $table->timestamps();
 

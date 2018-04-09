@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Registration;
 use App\Patient;
+use App\Diagnosis;
 
 class PatientsController extends Controller
 {
@@ -16,9 +17,20 @@ class PatientsController extends Controller
     
     public function show($id)
     {
-        //
+        // //
+        // $registration = Registration::find($id);
+        // $patient = Patient::where('id','=', $id)->first();
+        // $diagnosis = Diagnosis::where('registration_id','=', $id)->get();
+
+        // return view('pages.doctor.patient.detail', compact('diagnosis','patient', 'registration'));
+        
         $patient = Patient::find($id);
-        return view('pages.doctor.patient.detail', compact('patient'));
+        $registration = Registration::where('patient_id','=', $id)->first();
+        $diagnoses = Diagnosis::where('registration_id','=', $registration->id)->get();
+            
+        return view('pages.doctor.patient.detail', compact('patient','diagnoses'));
+
+
     }
     public function create($id)
     {

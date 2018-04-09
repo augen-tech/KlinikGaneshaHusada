@@ -21,7 +21,8 @@ class RegistrationsTableSeeder extends Seeder
                 'patient_id' => $patients[rand(0, 10)]->id,
                 'complaint' => $faker->text($maxNbChars = 190), 
                 'type' => rand(0,1), 
-                'blood_pressure' => rand(50,100) . "/" . rand(50,100) ,               
+                'blood_pressure' => rand(50,100) . "/" . rand(50,100) ,   
+                'state' => 0,             
             ]);
         }
     }

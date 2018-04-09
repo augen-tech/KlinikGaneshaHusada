@@ -19,6 +19,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('complaint');
             $table->integer('type');
             $table->string('blood_pressure');
+            $table->integer('state');
 
             $table->timestamps();
 

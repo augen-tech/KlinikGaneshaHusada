@@ -6,7 +6,8 @@
 <link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @endsection
 @section('breadcumb')
-<div class="col-md-5 col-8 align-self-center">
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Patient Detail</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -15,6 +16,7 @@
             <li class="breadcrumb-item active">Patient Detail</li>
         </ol>
     </div>
+</div>
 @endsection
 
 @section('content')
@@ -77,20 +79,22 @@
                 </form>
                 <hr>
                 <label>Patient History</label>
-                {{--  Table Diagnosis  --}}
                 <table id="myTable" class="table table-bordered table-striped">
-                    @foreach($patient->registrations as $row)
                     <tr>
                         <thead>
                             <th>ID</th>
-                            <th>Diagnosis Result</th>
+                            <th>Date</th>
+                            <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    <tr>
-                        <td>{{ $row->diagnosis->id}}</td>
-                        <td>{{ $row->diagnosis->result}}</td>
-                        {{--  <td>{{ $registration->diagnosis->result }}</td>  --}}
-                    </tr>
+                    @foreach($diagnoses as $row)
+                        <tr>
+                            <td>{{ $row->id}}</td>
+                            <td>{{ $row->created_at}}</td>
+                            <td>
+                                <center><a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            </td>
+                        </tr>
                     @endforeach
                 </table>
             </div>
