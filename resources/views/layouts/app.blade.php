@@ -505,11 +505,18 @@
                                 <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
+                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Diagnoses</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{route('pharmacist.diagnosis.update')}}">Update Diagnoses</a></li>
+                                    <li><a href="{{route('pharmacist.diagnosis.list')}}">Diag-Presc List</a></li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{route('pharmacist.prescription.list')}}">Prescription List</a></li>
-                                    <li><a href="#">Prescription Commited</a></li>
                                 </ul>
+                                {{-- <a href="{{route('pharmacist.receipt.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a> --}}
                             </li>
                             <li>
                                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Medicine</span></a>
@@ -568,7 +575,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 Material Pro Admin by wrappixel.com
+                © 2018 Tekindo.com
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
