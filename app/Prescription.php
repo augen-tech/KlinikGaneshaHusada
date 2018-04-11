@@ -10,7 +10,8 @@ class Prescription extends Model
     protected $fillable =[
 
         'diagnosis_id',
-        'notation',
+        'status',
+        'total_price',
     ];
 
     public function diagnosis(){
