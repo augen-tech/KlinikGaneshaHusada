@@ -19,6 +19,9 @@ class PrescriptionsTableSeeder extends Seeder
         foreach(range(0,9) as $index){
             DB::table('prescriptions')->insert([
                 'diagnosis_id' => $diagnoses[rand(0, 10)]->id,
+                'status' => 'no',
+                'total_price' => rand(100000,300000),
+
             ]);
         }
         
