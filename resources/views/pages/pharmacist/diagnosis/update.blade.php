@@ -34,7 +34,7 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{ $row->created_at}}</td>
                                 <td>{{ $row->registration->patient->name }}</td>
-                                <td></td>
+                                <td>{{ $row->registration->doctor->name}}</td>
                                 <td>        
                                     <a href="{{ route('pharmacist.diagnosis.proceed', $row->id) }}" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a>
                                     <a href="{{ route('doctor.diagnosis.destroy', $row->id) }}" data-toggle="tooltip" data-original-title="Delete"><span><i class="fa fa-close text-danger"></i></span></a>

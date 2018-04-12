@@ -15,15 +15,118 @@
 
 @section('content')
 <div class="row">
+    <div class="col-md-12">
+        <div class="card card-body printableArea">
+            <h3><b>INVOICE</b> <span class="pull-right">#5669626</span></h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <address>
+                            <h3> &nbsp;<b class="text-danger">Klinik Ganesha Husada</b></h3>
+                            {{-- <p class="text-muted m-l-5">E 104, Dharti-2,
+                                <br/> Nr' Viswakarma Temple,
+                                <br/> Talaja Road,
+                                <br/> Bhavnagar - 364002</p> --}}
+                        </address>
+                    </div>
+                    <div class="pull-right text-right">
+                        <address>
+                            <h3>To,</h3>
+                            <h4 class="font-bold">{{$prescription->diagnosis->registration->patient->name}},</h4>
+                            <p class="text-muted m-l-30">
+                                {{$prescription->diagnosis->registration->patient->address}}
+                            </p>
+                            <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> {{$prescription->diagnosis->created_at}}</p>
+                            <p><b>Due Date :</b> <i class="fa fa-calendar"></i> {{$prescription->created_at}}</p>
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive m-t-40" style="clear: both;">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Description</th>
+                                    <th class="text-right">Quantity</th>
+                                    <th class="text-right">Notation</th>
+                                    <th class="text-right">Unit Cost</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td>Diagnosis</td>
+                                    <td class="text-right"></td>
+                                    <td class="text-right"> {{$prescription->diagnosis->result}} </td>
+                                    <td class="text-right"> Rp. 50000 </td>
+                                    <td class="text-right"> Rp. 50000 </td>
+                                </tr>
+                                @if($prescription->diagnosis->special_request != null)
+                                    <tr>
+                                        <td class="text-center">2</td>
+                                        <td>Special Request</td>
+                                        <td class="text-right"></td>
+                                        <td class="text-right">{{$prescription->diagnosis->special_request}}</td>
+                                        <td class="text-right">Rp. 50000</td>
+                                        <td class="text-right">Rp. 50000</td>
+                                    </tr>
+                                @endif
+                                @foreach($medipres as $key => $row)
+                                    <tr>
+                                        @if($prescription->diagnosis->special_request != null)
+                                            <td class="text-center">{{$key+3}}</td>
+                                        @else
+                                            <td class="text-center">{{$key+2}}</td>
+                                        @endif
+                                        <td>Medicine: {{$row->medicine->name}}</td>
+                                        <td class="text-right">{{$row->amount}}</td>
+                                        <td class="text-right">{{$row->notation}}</td>
+                                        <td class="text-right">Rp. {{$row->medicine->price}}</td>
+                                        <td class="text-right">Rp. {{$row->medicine->price * $row->amount}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pull-right m-t-30 text-right">
+                        <p>Sub - Total amount: {{$subtotal}}</p>
+                        <p>tax (10%) : {{$tax}}</p>
+                        <hr>
+                        <h3><b>Total :</b> {{$prescription->total_price}}</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    @if($prescription->status == 'no')
+                        <div class="text-right">
+                            <a href="{{ route('pharmacist.prescription.store', $prescription->id) }}"><button class="btn btn-danger" type="button"> Proceed to payment </button></a>
+                            <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                        </div>    
+                    @elseif($prescription->status == 'yes')
+                        <div class="text-right">
+                            <p style="float: left; color: green; font-weight: bold">
+                                Prescription was created! <i class="fa fa-check m-r-10"></i>
+                            </p>
+                            <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                        </div>
+                    @endif
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Accept Form</h4>
                 <h6 class="card-subtitle">{{$prescription->created_at}}</h6>
-                {{-- <div class="form-group">
-                    <label>Patient Name</label>
-                    <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control">
-                </div> --}}
+                
                 <p><span style="margin-right: 50px; font-weight: bold">Name:</span>{{$prescription->diagnosis->registration->patient->name}}</p>
                 <p><span style="margin-right: 50px; font-weight: bold">Diagnosis date:</span>{{$prescription->diagnosis->created_at}}</p>
                 <p><span style="font-weight: bold">Receipt:</span></p>
@@ -99,5 +202,26 @@
             </div>
         </div>
     </div>
-</div>    
+</div>     --}}
+@endsection
+
+@section('script')
+<script src="{{ asset('material/js/jquery.PrintArea.js')}}" type="text/JavaScript"></script>
+<script>
+    $(document).ready(function() {
+        $("#print").click(function() {
+            var mode = 'iframe'; //popup
+            var close = mode == "popup";
+            var options = {
+                mode: mode,
+                popClose: close
+            };
+            $("div.printableArea").printArea(options);
+        });
+    });
+</script>
+<!-- ============================================================== -->
+<!-- Style switcher -->
+<!-- ============================================================== -->
+{{-- <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script> --}}
 @endsection

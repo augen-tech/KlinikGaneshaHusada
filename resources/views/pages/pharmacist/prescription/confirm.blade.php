@@ -24,6 +24,7 @@
                     <th>No.</th>
                     <th>Date</th>
                     <th>Patient</th>
+                    <th>Doctor</th>
                     <th>Status</th>
                     <th>Total Price</th>
                     <th>Action</th>
@@ -35,8 +36,9 @@
                 @foreach($prescriptions as $key=> $row)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$row->diagnosis->created_at}}</td>
+                        <td>{{$row->created_at}}</td>
                         <td>{{$row->diagnosis->registration->patient->name}}</td>
+                        <td>{{$row->diagnosis->registration->doctor->name}}</td>
                         <td>
                             @if($row->status == 'no')
                                 <span class="label label-warning">{{$row->status}}</span>
@@ -44,7 +46,7 @@
                                 <span class="label label-success">{{$row->status}}</span>
                             @endif
                         </td>
-                        <td>{{$row->total_price + 50000}}</td>
+                        <td>Rp. {{$row->total_price}}</td>
                         <td class="text-nowrap">
                             <a href="{{ route('pharmacist.prescription.accept', $row->id) }}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-check m-r-10"></i> </a>
                             {{-- <a href="#" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a> --}}
