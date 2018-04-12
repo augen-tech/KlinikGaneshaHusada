@@ -22,17 +22,19 @@
                         <tbody>
 
                             @foreach($diagnoses as $row)
-                                <tr>
-                                <td>{{$row->id}}</td>                                
-                                {{--  <td>{{$row->registration_id}}</td>      --}}
-                                <td>{{$row->result}}</td>
-                                <td>{{$row->special_request}}</td>                                
-                                <td>                                
-                                    <a href="{{ route('healthAnalyst.resultLab.form', $row->id)}}">
-                                        <span><center><i class="fa fa-file-text-o"></i></center> </span>          
-                                    </a>    
-                                </td>
-                                </tr>
+                                @if($row->special_request != "")
+                                    <tr>
+                                    <td>{{$row->id}}</td>                                
+                                    {{--  <td>{{$row->registration_id}}</td>      --}}
+                                    <td>{{$row->result}}</td>
+                                    <td>{{$row->special_request}}</td>                                
+                                    <td>                                
+                                        <a href="{{ route('healthAnalyst.resultLab.form', $row->id)}}">
+                                            <span><center><i class="fa fa-file-text-o"></i></center> </span>          
+                                        </a>    
+                                    </td>
+                                    </tr>
+                                @endif
                             @endforeach
                             
                         </tbody>

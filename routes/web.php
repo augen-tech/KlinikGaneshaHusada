@@ -116,8 +116,7 @@ Route::group(['middleware' => 'healthAnalyst'], function() {
     Route::get('/healthAnalyst/edit/{id}', 'healthAnalyst\ResultLabController@Edit') ->name('healthAnalyst.resultLab.edit');
     Route::post('/healthAnalyst/update/{id}', 'healthAnalyst\ResultLabController@Update') ->name('healthAnalyst.resultLab.update');
     Route::get('/healthAnalyst/delete/{id}', 'healthAnalyst\ResultLabController@Destroy') ->name('healthAnalyst.resultLab.destroy');
-    
-    Route::get('/healthAnalyst/list', 'healthAnalyst\ResultLabController@Index') ->name('healthAnalyst.resultLab.list');    
+    Route::get('/healthAnalyst/list/{onPatientList}', 'healthAnalyst\ResultLabController@Index') ->name('healthAnalyst.resultLab.list');    
 });
 
 Route::group(['middleware' => 'pharmacist'], function() {
