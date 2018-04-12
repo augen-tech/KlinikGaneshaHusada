@@ -26,8 +26,11 @@ class PatientsController extends Controller
         
         $patient = Patient::find($id);
         $registration = Registration::where('patient_id','=', $id)->first();
-        $diagnoses = Diagnosis::where('registration_id','=', $registration->id)->get();
-            
+        if($registration != null){  
+            $diagnoses = Diagnosis::where('registration_id','=', $registration->id)->get();
+        }   
+        else
+            $diagnoses = null;
         return view('pages.doctor.patient.detail', compact('patient','diagnoses'));
 
 
