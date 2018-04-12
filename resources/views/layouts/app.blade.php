@@ -393,6 +393,14 @@
                                 <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
+                                        <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('admin.patient.create')}}">Add Patient</a></li>
@@ -400,14 +408,7 @@
                                     
                                 </ul>
                             </li>
-                            <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
-                                    <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
-                                    
-                                </ul>
-                            </li>
+                            
                             
                             
                             <li>
@@ -474,8 +475,16 @@
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
                                 <ul aria-expanded="false" class="collapse">
+                                    @php ($onPatientList = 0)
                                     <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Create Result Lab</a></li>
-                                    <li><a href="{{ route('healthAnalyst.resultLab.list')}}">List Result Lab</a></li>
+                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Result Lab</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Patient</span></a>
+                                <ul aria-expanded="false" class="collapse">                                    
+                                    @php ($onPatientList = 1)
+                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Patients</a></li>
                                 </ul>
                             </li>
                             

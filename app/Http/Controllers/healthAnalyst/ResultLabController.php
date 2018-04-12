@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ResultLab;
 use App\Diagnosis;
+use App\Patient;
 
 class ResultLabController extends Controller
 {
@@ -15,11 +16,17 @@ class ResultLabController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($onPatientList)
     {
         //
-        $resultLab = ResultLab::all();
-        return view('pages.healthAnalyst.resultLab.list',compact('resultLab'));
+        $resultLabs = ResultLab::all();
+        $patients = Patient::all();
+
+        if($onPatientList == 1){
+            return view('pages.healthAnalyst.resultLab.list',compact('resultLabs','patients'));
+        }else{
+            return view('pages.healthAnalyst.resultLab.list',compact('resultLabs'));
+        }
     }
 
     /**
