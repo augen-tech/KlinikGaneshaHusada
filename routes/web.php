@@ -124,19 +124,16 @@ Route::group(['middleware' => 'pharmacist'], function() {
         return redirect()->route('pharmacist.dashboard');
     });
     Route::get('/pharmacist/dashboard', 'pharmacist\UserController@Dashboard') ->name('pharmacist.dashboard');
-    Route::get('/pharmacist/diagnosis/list', 'pharmacist\PrescriptionController@diag_Index') ->name('pharmacist.diagnosis.list');
+    
     Route::get('/pharmacist/diagnosis/update', 'pharmacist\PrescriptionController@update_Index') ->name('pharmacist.diagnosis.update');
     Route::get('/pharmacist/diagnosis/update/proceed/{id}', 'pharmacist\PrescriptionController@create') ->name('pharmacist.diagnosis.proceed');
-    Route::delete('/pharmacist/diagnosis/list/delete/{id}','pharmacist\PrescriptionController@destroy')->name('pharmacist.diagnosis.delete');
-    Route::get('/pharmacist/diagnosis/list/accept/{id}', 'pharmacist\PrescriptionController@create_Prescription') ->name('pharmacist.diagnosis.accept');
+    Route::post('/pharmacist/diagnosis/store/{id}', 'pharmacist\PrescriptionController@store') ->name('pharmacist.diagnosis.store');
 
     Route::get('/pharmacist/prescription/list', 'pharmacist\PrescriptionController@prescription_Index') ->name('pharmacist.prescription.list');
-
-    
-    
+    Route::get('/pharmacist/prescription/confirm', 'pharmacist\PrescriptionController@confirm_Index') ->name('pharmacist.prescription.confirm');
+    Route::delete('/pharmacist/prescription/confirm/delete/{id}','pharmacist\PrescriptionController@destroy')->name('pharmacist.prescription.delete');
+    Route::get('/pharmacist/prescription/confirm/accept/{id}', 'pharmacist\PrescriptionController@create_Prescription') ->name('pharmacist.prescription.accept');
     Route::get('/pharmacist/prescription/list/store/{id}', 'pharmacist\PrescriptionController@store_Prescription') ->name('pharmacist.prescription.store');
-    Route::post('/pharmacist/diagnosis/list/store/{id}', 'pharmacist\PrescriptionController@store') ->name('pharmacist.diagnosis.store');
-    
 
     Route::get('/pharmacist/medicine/list', 'pharmacist\MedicineController@Index') ->name('pharmacist.medicine.list');
     Route::get('/pharmacist/medicine/add', 'pharmacist\MedicineController@create') ->name('pharmacist.medicine.add');
@@ -144,7 +141,6 @@ Route::group(['middleware' => 'pharmacist'], function() {
     Route::put('/pharmacist/medicine/list/{id}', 'pharmacist\MedicineController@update') ->name('pharmacist.medicine.update');
     Route::post('/pharmacist/medicine/store', 'pharmacist\MedicineController@store') ->name('pharmacist.medicine.store');    
     Route::delete('/pharmacist/medicine/list/delete/{id}','pharmacist\MedicineController@destroy')->name('pharmacist.medicine.delete');
-    
     
 });
 

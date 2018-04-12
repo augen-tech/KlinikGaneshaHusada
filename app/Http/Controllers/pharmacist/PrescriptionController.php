@@ -11,6 +11,7 @@ use App\MedicinePrescription;
 use App\Medicine;
 use App\Patient;
 use App\Registration;
+use App\User;
 
 
 class PrescriptionController extends Controller
@@ -20,20 +21,20 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function diag_Index()
+    public function confirm_Index()
     {
         
         $prescriptions = Prescription::orderBy('status','asc')->get();
         // $prescriptions = Prescription::where('status', '=', 'no')->get();
         
-        return view('pages.pharmacist.diagnosis.list',compact('prescriptions'));
+        return view('pages.pharmacist.prescription.confirm',compact('prescriptions'));
         // return view('pages.pharmacist.prescription.list',['prescriptions' => $prescriptions,'medicine_prescriptions' => $medipresc]);
     }
 
     public function update_Index()
     {
         //
-        $diagnoses = Diagnosis::all();
+        $diagnoses = Diagnosis::orderBy('created_at','desc')->get();
         return view('pages.pharmacist.diagnosis.update', compact('diagnoses'));
     }
 
@@ -70,12 +71,21 @@ class PrescriptionController extends Controller
         $diagnoses = Diagnosis::find($id);
         
 
-        $total = 0;
+        $subtotal = 0;
         foreach($request->medicine AS $key => $row){
             $medicine = Medicine::find($row);
-            $total += $medicine->price * $request->amount[$key];
+            $subtotal += $medicine->price * $request->amount[$key];
         }
-        
+
+        if($diagnoses->special_request != null){
+            $subtotal += 100000;
+        }else{
+            $subtotal += 50000;
+        }
+
+        $tax = $subtotal * 0.1;
+        $total = $subtotal + $tax;
+
         $data_prescription = [
             'diagnosis_id' => $diagnoses->id,
             'status' => 'no',
@@ -105,12 +115,21 @@ class PrescriptionController extends Controller
         $prescription = Prescription::find($id);
         $medipres = MedicinePrescription::where('prescription_id', '=', $id)->get();
         
-        $total = 0;
+        $subtotal = 0;
         foreach($medipres AS $row){
             // $medicine = Medicine::find($row);
-            $total += $row->medicine->price * $row->amount;
+            $subtotal += $row->medicine->price * $row->amount;
         }
-        return view('pages.pharmacist.diagnosis.accept', compact('prescription','medipres'));
+
+        if($prescription->diagnosis->special_request != null){
+            $subtotal += 100000;
+        }else{
+            $subtotal += 50000;
+        }
+
+        $tax = $subtotal * 0.1;
+        $total = $subtotal + $tax;
+        return view('pages.pharmacist.prescription.accept', compact('prescription','medipres','subtotal','tax','total'));
 
     }
 
