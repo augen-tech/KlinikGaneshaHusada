@@ -10,8 +10,8 @@ class Diagnosis extends Model
     protected $fillable =[
 
         'registration_id',
-        'result',
         'special_request',
+        'evidence',
     ];
 
     public function registration(){
