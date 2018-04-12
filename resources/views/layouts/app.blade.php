@@ -502,18 +502,18 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">PHARMACIST</li>
                             <li>
-                                <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Diagnoses</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-heartbeat"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{route('pharmacist.diagnosis.update')}}">Update Diagnoses</a></li>
-                                    <li><a href="{{route('pharmacist.diagnosis.list')}}">Diag-Presc List</a></li>
+                                    <li><a href="{{route('pharmacist.diagnosis.update')}}">Update Diagnosis</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-th"></i><span class="hide-menu">Prescription</span></a>
                                 <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{route('pharmacist.prescription.confirm')}}">Confirm Prescription</a></li>
                                     <li><a href="{{route('pharmacist.prescription.list')}}">Prescription List</a></li>
                                 </ul>
                                 {{-- <a href="{{route('pharmacist.receipt.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a> --}}

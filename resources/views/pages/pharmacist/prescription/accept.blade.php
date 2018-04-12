@@ -5,8 +5,8 @@
     <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Accept Prescription</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Diagnosis</a></li>
-            <li class="breadcrumb-item">Diagnosis List</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Prescription</a></li>
+            <li class="breadcrumb-item">Confirm Prescription</li>
             <li class="breadcrumb-item active">Accept Prescription</li>
         </ol>
     </div>
@@ -85,7 +85,7 @@
                 @if($prescription->status == 'no')
                     <div style="float: right">
                         <a href="{{ route('pharmacist.prescription.store', $prescription->id) }}"><button type="button" class="btn btn-success waves-effect waves-light m-r-10">Submit</button></a>
-                        <a href="{{ route('pharmacist.diagnosis.list') }}"><button type="button" class="btn btn-info waves-effect" data-dismiss="row">Close</button></a>
+                        <a href="{{ route('pharmacist.prescription.confirm') }}"><button type="button" class="btn btn-info waves-effect" data-dismiss="row">Close</button></a>
                     </div>
                 @elseif($prescription->status == 'yes')
                     <p style="float: right; position: relative; right: -6px; color: green; font-weight: bold">
@@ -93,7 +93,7 @@
                     </p>
                     <div style="clear: both"></div>
                     <div style="float: right">
-                        <a href="{{ route('pharmacist.diagnosis.list') }}"><button type="button" class="btn btn-info waves-effect" data-dismiss="row">Close</button></a>
+                        <a href="{{ route('pharmacist.prescription.confirm') }}"><button type="button" class="btn btn-info waves-effect" data-dismiss="row">Close</button></a>
                     </div>
                 @endif     
             </div>

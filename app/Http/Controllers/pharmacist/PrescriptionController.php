@@ -20,20 +20,20 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function diag_Index()
+    public function confirm_Index()
     {
         
         $prescriptions = Prescription::orderBy('status','asc')->get();
         // $prescriptions = Prescription::where('status', '=', 'no')->get();
         
-        return view('pages.pharmacist.diagnosis.list',compact('prescriptions'));
+        return view('pages.pharmacist.prescription.confirm',compact('prescriptions'));
         // return view('pages.pharmacist.prescription.list',['prescriptions' => $prescriptions,'medicine_prescriptions' => $medipresc]);
     }
 
     public function update_Index()
     {
         //
-        $diagnoses = Diagnosis::all();
+        $diagnoses = Diagnosis::orderBy('created_at','desc')->get();
         return view('pages.pharmacist.diagnosis.update', compact('diagnoses'));
     }
 
@@ -110,7 +110,7 @@ class PrescriptionController extends Controller
             // $medicine = Medicine::find($row);
             $total += $row->medicine->price * $row->amount;
         }
-        return view('pages.pharmacist.diagnosis.accept', compact('prescription','medipres'));
+        return view('pages.pharmacist.prescription.accept', compact('prescription','medipres'));
 
     }
 
