@@ -38,8 +38,12 @@
                                 <tr>
                                     <td><center>{{ $row->id }}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td><a href="{{ route('doctor.patient.detail', $row->registration->patient->id) }}">{{ $row->registration->patient->name }}</a>
-                                        <br>{{ $row->registration->patient->id }}</td>
+                                    <td><a href="{{ route('doctor.patient.detail', $row->registration->patient->id) }}">
+                                            {{ $row->registration->patient->name }}
+                                            <br>
+                                            ID : {{ str_pad($row->registration->patient->id,6,0,STR_PAD_LEFT) }}
+                                        </a>
+                                        </td>
                                     <td><center>{{ $row->result === null ? "-":" "}}</center></td>
                                     <td><center>{{ $row->special_request === 1 ? "Yes" : "No"}}</center></td>
                                     <td><center>   
