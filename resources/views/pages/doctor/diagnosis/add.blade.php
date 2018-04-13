@@ -28,7 +28,6 @@
                             <th>Date</th>
                             <th style="width : 30%">Patient</th>
                             <th style="width : 40%">Complaint</th>
-                            <th style="width : 5%">State</th>
                             <th style="width : 10%">Action</th>
                         </tr>
                     </thead>
@@ -39,7 +38,6 @@
                                 <td>{{ $row->created_at }}</td>
                                 <td>{{ $row->patient->name }}</td>
                                 <td>{{ $row->complaint }}</td>
-                                <td>{{ $row->state }}</td>
                                 <td><a href="{{ route('doctor.diagnosis.create', $row->id)}}"><center><span><i class="fa fa-stethoscope"></i></span></center></a></td>
                             </tr>                            
                         @endforeach
