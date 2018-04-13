@@ -433,10 +433,10 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">DOCTOR</li>
                             <li>
-                                <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Diagnosis</span></a>
+                                <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
@@ -444,7 +444,7 @@
                             </li>
                             
                             <li>
-                                <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patients</span></a>
+                                <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
                             </li>
                             <li>
                                 {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}

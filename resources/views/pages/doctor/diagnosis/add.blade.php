@@ -24,9 +24,11 @@
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th style="width : 10%">Id Registration</th>
-                            <th style="width : 40%">Patient</th>
+                            <th style="width : 5%">ID</th>
                             <th>Date</th>
+                            <th style="width : 30%">Patient</th>
+                            <th style="width : 40%">Complaint</th>
+                            <th style="width : 5%">State</th>
                             <th style="width : 10%">Action</th>
                         </tr>
                     </thead>
@@ -34,8 +36,10 @@
                         @foreach($registrations as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
-                                <td>{{ $row->patient->name }}</td>
                                 <td>{{ $row->created_at }}</td>
+                                <td>{{ $row->patient->name }}</td>
+                                <td>{{ $row->complaint }}</td>
+                                <td>{{ $row->state }}</td>
                                 <td><a href="{{ route('doctor.diagnosis.create', $row->id)}}"><center><span><i class="fa fa-stethoscope"></i></span></center></a></td>
                             </tr>                            
                         @endforeach
@@ -50,6 +54,6 @@
 @section('script')
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script>$('#myTable').DataTable({
-    "order": [[ 2, "asc" ]]
+    "order": [[ 1, "asc" ]]
 });</script>
 @endsection
