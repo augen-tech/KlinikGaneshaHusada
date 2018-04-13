@@ -17,6 +17,10 @@ class Diagnosis extends Model
     public function registration(){
         return $this->belongsTo(Registration::class);
     }
+
+    public function resultLab(){
+        return $this->hasOne(ResultLab::class);
+    }
     public function medicine(){
         return $this->belongsTo(Medicine::class);
     }
