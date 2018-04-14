@@ -103,6 +103,22 @@ Route::group(['middleware' => 'doctor'], function() {
 });
 
 Route::group(['middleware' => 'midwife'], function() {
+    Route::get('/midwife/', function(){
+        return redirect()->route('midwife.dashboard');
+    });
+    Route::get('/midwife/dashboard', 'midwife\UserController@Dashboard') ->name('midwife.dashboard');
+    Route::get('/midwife/diagnosis/add', 'midwife\DiagnosisController@add') ->name('midwife.diagnosis.add');
+    Route::get('/midwife/diagnosis/list', 'midwife\DiagnosisController@Index') ->name('midwife.diagnosis.list');
+    Route::get('/midwife/diagnosis/create/{id}', 'midwife\DiagnosisController@create') ->name('midwife.diagnosis.create');
+    Route::post('/midwife/diagnosis/store', 'midwife\DiagnosisController@store') ->name('midwife.diagnosis.store');
+    Route::get('/midwife/diagnosis/list/edit/{id}', 'midwife\DiagnosisController@edit') ->name('midwife.diagnosis.edit');
+    Route::post('/midwife/diagnosis/list/{id}', 'midwife\DiagnosisController@update') ->name('midwife.diagnosis.update');
+    Route::get('/midwife/diagnosis/destroy/{id}', 'midwife\DiagnosisController@destroy')->name('midwife.diagnosis.destroy');
+    Route::get('/midwife/diagnosis/download/{evidence}', 'midwife\DiagnosisController@download') ->name('midwife.diagnosis.download');
+    Route::get('/midwife/diagnosis/detail/{id}', 'midwife\DiagnosisController@show') ->name('midwife.diagnosis.detail');
+
+    Route::get('/midwife/patient/list', 'PatientsController@Index') ->name('midwife.patient.list');
+    Route::get('/midwife/patient/detail/{id}', 'PatientsController@show') ->name('midwife.patient.detail');
 });
 
 Route::group(['middleware' => 'healthAnalyst'], function() {
