@@ -73,7 +73,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Diagnosis</h4>
-                                    <input type="file" id="file" name="file" class="dropify">
+                                    <input type="file" id="file" name="file" class="dropify" required/>
                                 </div>
                             </div>
                         </div>

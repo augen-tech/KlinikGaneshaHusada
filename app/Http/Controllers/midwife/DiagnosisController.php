@@ -42,7 +42,18 @@ class DiagnosisController extends Controller
     }
 
     public function add(){
-        $registrations = Registration::where('state','=',0)->get();
+
+        $tempregistrations = Registration::doesntHave('diagnosis'); 
+        $registrations = $tempregistrations->where('type','=',1)->get();   
+        // $registrations = $tempRegistrations->where('id', '!=', -1)->get();        
+        // $registrations = Registration::all();
+        // return dd($tempRegistrations);
+        // return dd($diagnoses);
+
+        
+
+        // $registrations->all();
+        // $registrations = $registrations1::where('registration_id','=','')->get();
         return view('pages.midwife.diagnosis.add', compact('registrations'));
     }
 
