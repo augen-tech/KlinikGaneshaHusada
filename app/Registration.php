@@ -23,7 +23,7 @@ class Registration extends Model
     }
 
     public function diagnosis(){   // dd('HEY');
-        return $this->hasOne(Diagnosis::class, 'id');
+        return $this->hasOne(Diagnosis::class);
     }
     public function doctor(){
         return $this->belongsTo(User::class);

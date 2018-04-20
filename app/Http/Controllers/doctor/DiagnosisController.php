@@ -42,7 +42,7 @@ class DiagnosisController extends Controller
     }
 
     public function add(){
-        $registrations = Registration::where('state','=',0)->get();
+        $registrations = Registration::doesntHave('diagnosis')->get();
         return view('pages.doctor.diagnosis.add', compact('registrations'));
     }
 
