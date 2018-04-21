@@ -41,8 +41,7 @@ class ResultLabController extends Controller
         //     $query->where('special_request', '=', 1);
         // })->orderBy('created_at','ASC')->get();              
 
-        $tempDiagnoses = Diagnosis::doesntHave('resultLab')->get();
-        return dd($tempDiagnoses);
+        $tempDiagnoses = Diagnosis::doesntHave('resultLab');    
         $diagnoses = $tempDiagnoses->where('special_request', '=', 1)->orderBy('created_at','ASC')->get();
 
         // $diagnoses = Diagnosis::doesntHave('resultLab','and', function($q){

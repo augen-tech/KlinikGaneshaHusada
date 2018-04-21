@@ -51,8 +51,8 @@
                                 @foreach($patients as $row)
                                     <tr>
                                         <td>
-                                            <div><left>{{str_pad($row->id,6,"0",STR_PAD_LEFT)}}</left></span>                                            
-                                            <div><left>{{$row->name}}</left></span>
+                                            {{str_pad($row->id,6,"0",STR_PAD_LEFT)}}<br>
+                                            {{$row->name}}
                                         </td>                                        
                                         <td>{{$row->dob}}</td>
                                         <td>{{$row->address}}</td>

@@ -23,12 +23,12 @@
                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>No</th>                                                                                                
-                                <th>Date</th>                                
-                                <th>Evidence</th>                                
-                                <th>Patient</th>                                                                                            
-                                <th>Doctor</th>  
-                                <th>Action</th>                                
+                                <th style="text-align:center">No</th>                                                                                                
+                                <th style="text-align:center" style="width:10%">Date </th>                                
+                                {{-- <th>Evidence</th>                                 --}}
+                                <th style="text-align:center">Patient</th>                                                                                            
+                                <th style="text-align:center">Doctor</th>  
+                                <th style="text-align:center">Action</th>                                
                             </tr>
                         </thead>
                         
@@ -38,14 +38,21 @@
                                 
                                 <tr>
                                 {{-- <td>{{$index + 1}}</td>                                                                 --}}
-                                <td>{{$row->id}}</td>
-                                <td>{{$row->created_at}}</td>
-                                <td>{{$row->evidence}}</td>
-                                <td>{{$row->registration->patient->name}}</td>                                
-                                <td>{{$row->registration->doctor->name}}</td>                                
-                                <td>                                
+                                <td style="text-align:center">{{$row->id}}</td>
+                                <td style="text-align:center">{{$row->created_at}}</td>
+                                {{-- <td>{{$row->evidence}}</td> --}}
+                                <td>
+                                    {{-- {{$row->registration->patient->name}} --}}
+                                    {{str_pad($row->registration->patient->id,6,"0",STR_PAD_LEFT)}}<br>
+                                    {{$row->registration->patient->name}}
+                                </td>                                
+                                <td>
+                                    {{str_pad($row->registration->doctor->id,6,"0",STR_PAD_LEFT)}}<br>
+                                    {{$row->registration->doctor->name}}
+                                </td>                                
+                                <td style="text-align:center">                                
                                     <a href="{{ route('healthAnalyst.resultLab.form', $row->id)}}">
-                                        <span><center><i class="fa fa-check m-r-10"></i></center> </span>          
+                                        <span><center><i class="fa fa-plus"></i></center> </span>          
                                     </a>    
                                 </td>
                                 </tr>
