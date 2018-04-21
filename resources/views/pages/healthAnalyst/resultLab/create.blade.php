@@ -54,6 +54,7 @@
                                     <a href="{{ route('healthAnalyst.resultLab.form', $row->id)}}">
                                         <span><center><i class="fa fa-plus"></i></center> </span>          
                                     </a>    
+                                    <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
                                 </td>
                                 </tr>
                                 
