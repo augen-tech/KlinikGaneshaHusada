@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Akbar
+                    Test
                 </div>
 
                 <div class="links">
