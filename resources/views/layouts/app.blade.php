@@ -470,22 +470,24 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">HEALTH ANALYST</li>
                             <li>
-                                <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-bar-chart-o"></i><span class="hide-menu">Result Lab</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     @php ($onPatientList = 0)
-                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Create Result Lab</a></li>
+                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Add Result Lab</a></li>
                                     <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Result Lab</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Patient</span></a>
+                                @php ($onPatientList = 1)
+                                <a  href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}"><i class="fa fa-address-book-o"></i>Patients</a>
+                                {{-- <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">                                    
                                     @php ($onPatientList = 1)
                                     <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Patients</a></li>
-                                </ul>
+                                </ul> --}}
                             </li>
                             
                             
