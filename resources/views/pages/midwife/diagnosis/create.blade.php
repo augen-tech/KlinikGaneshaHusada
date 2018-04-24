@@ -20,7 +20,7 @@
     <div class="col-lg-12">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ isset($diagnosis) ? route('midwife.diagnosis.update', $diagnosis-> id) : route('midwife.diagnosis.store')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <div class="form-body">
                         <h3 class="card-title">Patient Info</h3>
@@ -63,7 +63,7 @@
                             <br>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <a href="{{ route('doctor.patient.detail', $registration->patient->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
+                                    <a href="{{ route('midwife.patient.detail', $registration->patient->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
                                 </div>
                             </div>
                         </div>
