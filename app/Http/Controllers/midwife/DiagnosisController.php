@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\doctor;
+namespace App\Http\Controllers\midwife;
 
 use \Input as Input;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class DiagnosisController extends Controller
     {
         //
         $diagnoses = Diagnosis::all();
-        return view('pages.doctor.diagnosis.list', compact('diagnoses'));
+        return view('pages.midwife.diagnosis.list', compact('diagnoses'));
     }
 
     /**
@@ -38,13 +38,23 @@ class DiagnosisController extends Controller
         $medicines = Medicine::all();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
-        return view('pages.doctor.diagnosis.create', compact('registration','medicines'));
+        return view('pages.midwife.diagnosis.create', compact('registration','medicines'));
     }
 
     public function add(){
+
         $tempregistrations = Registration::doesntHave('diagnosis'); 
-        $registrations = $tempregistrations->where('type','=',0)->get();
-        return view('pages.doctor.diagnosis.add', compact('registrations'));
+        $registrations = $tempregistrations->where('type','=',1)->get();   
+        // $registrations = $tempRegistrations->where('id', '!=', -1)->get();        
+        // $registrations = Registration::all();
+        // return dd($tempRegistrations);
+        // return dd($diagnoses);
+
+        
+
+        // $registrations->all();
+        // $registrations = $registrations1::where('registration_id','=','')->get();
+        return view('pages.midwife.diagnosis.add', compact('registrations'));
     }
 
     
@@ -115,7 +125,7 @@ class DiagnosisController extends Controller
         // }
 
        
-        return redirect()->route('doctor.diagnosis.list');
+        return redirect()->route('midwife.diagnosis.list');
     }
 
 
@@ -132,7 +142,7 @@ class DiagnosisController extends Controller
         $patient = Patient::where('id','=', $diagnosis->registration->patient->id)->first();
         $registration = Registration::where('patient_id','=', $patient->id)->get();
         
-        return view('pages.doctor.diagnosis.detail', compact('patient', 'registration','diagnosis'));
+        return view('pages.midwife.diagnosis.detail', compact('patient', 'registration','diagnosis'));
 
         // $diagnosis = Diagnosis::where('id', '=', $id)->first();
         // $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();
@@ -147,7 +157,7 @@ class DiagnosisController extends Controller
         // // return dd($medicine_prescriptions);
         // // return dd($medicines);
         
-        // return view('pages.doctor.prescription.show', compact('prescription', 'patient', 'medicine_prescriptions', 'medicines'));
+        // return view('pages.midwife.prescription.show', compact('prescription', 'patient', 'medicine_prescriptions', 'medicines'));
         // // return dd($diagnosis_prescription);       
     }
 
@@ -167,7 +177,7 @@ class DiagnosisController extends Controller
         $patient = Patient::where('id', '=', $registration->patient_id)->first();
         
         
-        return view('pages.doctor.diagnosis.create  ', compact('registration','diagnosis', 'patient'));
+        return view('pages.midwife.diagnosis.create  ', compact('registration','diagnosis', 'patient'));
         // $diagnosis = Diagnosis::find($id);
         // $registration = Registration::find($diagnosis->registration_id);
         // $medicines = Medicine::all();
@@ -187,7 +197,7 @@ class DiagnosisController extends Controller
         // // return dd($medicines_);
         
         
-        // return view('pages.doctor.diagnosis.create', compact('diagnosis', 'registration','medicines','prescription', 'medicine_prescriptions','medicines_'));
+        // return view('pages.midwife.diagnosis.create', compact('diagnosis', 'registration','medicines','prescription', 'medicine_prescriptions','medicines_'));
         
     }
 
@@ -255,7 +265,7 @@ class DiagnosisController extends Controller
         // }
         
 
-        return redirect()->route('doctor.diagnosis.list');
+        return redirect()->route('midwife.diagnosis.list');
 
     }
 
@@ -271,7 +281,7 @@ class DiagnosisController extends Controller
         
         $diagnosis = Diagnosis::find($id)->delete();
         
-        return redirect()->route('doctor.diagnosis.list');
+        return redirect()->route('midwife.diagnosis.list');
 
     }
 

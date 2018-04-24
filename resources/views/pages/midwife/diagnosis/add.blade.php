@@ -38,7 +38,7 @@
                                 <td>{{ $row->created_at }}</td>
                                 <td>{{ $row->patient->name }}</td>
                                 <td>{{ $row->complaint }}</td>
-                                <td><a href="{{ route('doctor.diagnosis.create', $row->id)}}"><center><span><i class="fa fa-stethoscope"></i></span></center></a></td>
+                                <td><a href="{{ route('midwife.diagnosis.create', $row->id)}}"><center><span><i class="fa fa-stethoscope"></i></span></center></a></td>
                             </tr>                            
                         @endforeach
                     </tbody>

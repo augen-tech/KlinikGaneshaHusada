@@ -38,7 +38,7 @@
                                 <tr>
                                     <td><center>{{ $row->id }}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td><a href="{{ route('doctor.patient.detail', $row->registration->patient->id) }}">
+                                    <td><a href="{{ route('midwife.patient.detail', $row->registration->patient->id) }}">
                                             {{ $row->registration->patient->name }}
                                             <br>
                                             ID : {{ str_pad($row->registration->patient->id,6,0,STR_PAD_LEFT) }}
@@ -47,10 +47,10 @@
                                     <td><center>{{ $row->result === null ? "-":" "}}</center></td>
                                     <td><center>{{ $row->special_request === 1 ? "Yes" : "No"}}</center></td>
                                     <td><center>   
-                                        <a href="{{ route('doctor.diagnosis.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
-                                        <a href="{{ route('doctor.diagnosis.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
+                                        <a href="{{ route('midwife.diagnosis.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
+                                        <a href="{{ route('midwife.diagnosis.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
                                         <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
-                                        {{-- <a href="{{ route('doctor.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a> --}}
+                                        {{-- <a href="{{ route('midwife.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a> --}}
                                     </center></td>
                                 </tr>                            
                             @endforeach
