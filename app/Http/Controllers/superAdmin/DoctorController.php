@@ -41,12 +41,15 @@ class DoctorController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
+            'username'  => $request->username,
             'password'  => $request->password,
-            'role'      => 'Doctor',
         ];
 
-        User::create($data);
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('doctor');
+        $user->roles()->attach($role);
 
         return redirect()->route('superAdmin.doctor.list');
     }
@@ -85,12 +88,14 @@ class DoctorController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
             'password'  => $request->password,
         ];
 
-        $doctor = User::find($id);
-        $doctor->update($data);
+        $user = Sentinel::findById($id);
+        $user->update($data);
+        
         return redirect()->route('superAdmin.doctor.list');
     }
 

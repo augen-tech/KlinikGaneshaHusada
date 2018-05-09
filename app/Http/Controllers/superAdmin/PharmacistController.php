@@ -41,12 +41,15 @@ class PharmacistController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
+            'username'  => $request->username,
             'password'  => $request->password,
-            'role'      => 'Pharmacist',
         ];
 
-        User::create($data);
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('pharmacist');
+        $user->roles()->attach($role);
 
         return redirect()->route('superAdmin.pharmacist.list');
     }
@@ -85,12 +88,14 @@ class PharmacistController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
             'password'  => $request->password,
         ];
 
-        $pharmacist = User::find($id);
-        $pharmacist->update($data);
+        $user = Sentinel::findById($id);
+        $user->update($data);
+
         return redirect()->route('superAdmin.pharmacist.list');
     }
 
