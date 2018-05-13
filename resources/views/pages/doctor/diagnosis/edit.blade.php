@@ -77,6 +77,28 @@
                                 </div>
                             </div>
                         </div>
+                        <h3 class="box-title m-t-40">Diagnosis</h3>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Subject</h4>
+                                    <textarea name="subject" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Object</h4>
+                                    <textarea name="object" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Assesment</h4>
+                                    <textarea name="assesment" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Planning</h4>
+                                    <textarea name="planning" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">Special Request</label>

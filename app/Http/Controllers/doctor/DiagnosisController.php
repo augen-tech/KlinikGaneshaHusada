@@ -11,6 +11,7 @@ use App\Medicine;
 use App\MedicinePrescription;
 use App\Prescription;
 use App\Patient;
+use Validator;
 
 class DiagnosisController extends Controller
 {
@@ -47,6 +48,21 @@ class DiagnosisController extends Controller
         return view('pages.doctor.diagnosis.add', compact('registrations'));
     }
 
+    public function add1(){
+        $tempregistrations = Registration::doesntHave('diagnosis'); 
+        $registrations = $tempregistrations->where('type','=',0)->get();
+        return view('pages.doctor.diagnosis.add1', compact('registrations'));
+    }
+
+    public function create1($id)
+    {
+        //
+        $registration = Registration::find($id);
+        $medicines = Medicine::all();
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.doctor.diagnosis.create1', compact('registration','medicines'));
+    }
     
 
     /**
@@ -57,9 +73,139 @@ class DiagnosisController extends Controller
      */
     public function store(Request $request)
     {
-        $uploadedFile = $request->file('file');
 
-        $path = $uploadedFile->store('public/files');
+        if (isset($request->file)){
+            $rules = [
+                'evidence'                  => 'required',
+            ];
+            $validation = Validator::make($request->all(), $rules);
+            
+            if (!$validation->fails()){
+                $uploadedFile = $request->file('file');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data_diagnosis = [
+                    'registration_id' => $request->registration_id,
+                    'special_request' => $request->radio,
+                    'evidence' => $path,
+                ];
+
+                $diagnosis = Diagnosis::create($data_diagnosis);
+        
+                $data_registration = [
+                    'state' => 1,
+                ];
+    
+                $registration = Registration::find($diagnosis->registration->id);
+                $registration->update($data_registration);
+    
+                
+                return redirect()->route('doctor.diagnosis.list');
+            }
+            
+             
+           
+            
+        } else {
+            $data_diagnosis = [
+                'registration_id' => $request->registration_id,
+                'special_request' => $request->radio,
+                'subject' => $request->subject,
+                'object' => $request->object,
+                'assesment' => $request->assesment,
+                'planning' => $request->planning,
+            ];      
+           
+            $diagnosis = Diagnosis::create($data_diagnosis);
+        
+            $data_registration = [
+                'state' => 1,
+            ];
+
+            $registration = Registration::find($diagnosis->registration->id);
+            $registration->update($data_registration);
+
+            
+            return redirect()->route('doctor.diagnosis.list');
+           
+        }
+
+        $notification = [
+            'heading' => 'Gagal Disimpan!',
+            'message' => 'Silahkan memastikan tiap inputan yang dibutuhkan terisi dengan benar.',
+            'alert-type' => 'error'
+        ];
+            return redirect()->back()->withInput();
+           
+           
+        // $uploadedFile = $request->file('file');
+
+        // $path = $uploadedFile->store('public/files');
+        // //
+        // // $md5Name = md5_file($request->file('file')->getRealPath());
+        // // $guessExtension = $request->file('file')->guessExtension();
+        // // $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
+
+        // // {{ asset('storage/' . $diagnosis->filename)}}
+
+        // // if(Input::hasFile('file')){
+
+		// // 	echo 'Uploaded';
+		// // 	$file = Input::file('file');
+		// // 	$file->move('uploads', $file->getClientOriginalName());
+		// // 	echo '';
+        // // }
+
+        // // $md5Name = md5_file($request->file('lele')->getRealPath());
+        // // $guessExtension = $request->file('lele')->guessExtension();
+        // // $file = $request->file('lele')->storeAs('\xampp\htdocs\tekindo\KlinikGaneshaHusada\public\uploads', $md5Name.'.'.$guessExtension  ,'C');
+
+
+        // $data_diagnosis = [
+        //     'registration_id' => $request->registration_id,
+        //     'special_request' => $request->radio,
+        //     'evidence' => $path,           
+        //     'subject' => $request->subject,
+        //     'object' => $request->object,
+        //     'assesment' => $request->assesment,
+        //     'planning' => $request->planning,
+        // ];      
+       
+        // $diagnosis = Diagnosis::create($data_diagnosis);
+
+        // $data_registration = [
+        //     'state' => 1,
+        // ];
+
+        // $registration = Registration::find($diagnosis->registration->id);
+        // $registration->update($data_registration);
+        // // //
+        // // //save prescription 
+
+        // // $data_prescription = [            
+        // //     'diagnosis_id' => $diagnosis->id,
+        // // ];
+        // // $prescription = Prescription::create($data_prescription);
+
+        
+            
+        // // foreach ($request->medicine as $index => $row) {            
+        // //     $data_mp = [       
+        // //         'prescription_id' => $prescription->id,
+        // //         'medicine_id' => $request->medicine[$index], 
+        // //         'amount' => $request->amount[$index],
+        // //         'notation' => $request->notation[$index],
+        // //     ];
+        // //     $medicine_prescription = MedicinePrescription::create($data_mp);    
+        // // }
+
+       
+        // return redirect()->route('doctor.diagnosis.list');
+    
+
+    
+        
         //
         // $md5Name = md5_file($request->file('file')->getRealPath());
         // $guessExtension = $request->file('file')->guessExtension();
@@ -80,42 +226,7 @@ class DiagnosisController extends Controller
         // $file = $request->file('lele')->storeAs('\xampp\htdocs\tekindo\KlinikGaneshaHusada\public\uploads', $md5Name.'.'.$guessExtension  ,'C');
 
 
-        $data_diagnosis = [
-            'registration_id' => $request->registration_id,
-            'special_request' => $request->radio,
-            'evidence' => $path,           
-        ];      
-       
-        $diagnosis = Diagnosis::create($data_diagnosis);
-
-        $data_registration = [
-            'state' => 1,
-        ];
-
-        $registration = Registration::find($diagnosis->registration->id);
-        $registration->update($data_registration);
-        // //
-        // //save prescription 
-
-        // $data_prescription = [            
-        //     'diagnosis_id' => $diagnosis->id,
-        // ];
-        // $prescription = Prescription::create($data_prescription);
-
-        
-            
-        // foreach ($request->medicine as $index => $row) {            
-        //     $data_mp = [       
-        //         'prescription_id' => $prescription->id,
-        //         'medicine_id' => $request->medicine[$index], 
-        //         'amount' => $request->amount[$index],
-        //         'notation' => $request->notation[$index],
-        //     ];
-        //     $medicine_prescription = MedicinePrescription::create($data_mp);    
-        // }
-
-       
-        return redirect()->route('doctor.diagnosis.list');
+      
     }
 
 
