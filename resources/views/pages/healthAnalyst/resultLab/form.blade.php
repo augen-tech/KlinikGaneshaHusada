@@ -22,8 +22,10 @@
                     <form class="form-horizontal m-t-40" action="{{ isset($resultLab) ? route('healthAnalyst.resultLab.update', $resultLab->id) : route('healthAnalyst.resultLab.store')}}" method="POST">                                                 
                         <input type="hidden" name={{isset($resultLab) ? "resultLab_id" : "diagnosis_id"}} value="{{ isset($resultLab) ? $resultLab->id : $diagnosis->id}}">
                         <div class="form-group">                            
-                            <label>{{ !isset($resultLab) ? "Form Result Lab for Diagnosis Id: " . $diagnosis->id  : "Edit Result Lab for Id: " . $resultLab->id  }}</label>
+                            <label class="control-label">{{ !isset($resultLab) ? "Form Result Lab for Diagnosis Id: " . $diagnosis->id  : "Edit Result Lab for Id: " . $resultLab->id  }}</label>
                             <textarea name="result" class="form-control" rows="5" placeholder="Write Result Lab Here">{{ isset($resultLab) ?  $resultLab->result : ''}}</textarea>
+                            <label class="control-label">Price</label>
+                            <input name="price" type="number" class="form-control" placeholder="Price">
                         </div>                      
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>                                                
                     </form>

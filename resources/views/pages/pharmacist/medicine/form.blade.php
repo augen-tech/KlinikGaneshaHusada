@@ -17,7 +17,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</h4>
-            <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">
+            <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">            
                 {{ isset($medicine) ? method_field('PUT') : '' }}
                 <div class="form-group">
                     

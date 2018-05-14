@@ -75,7 +75,8 @@ class ResultLabController extends Controller
         // return dd($request->all());
         $data = [
             'diagnosis_id' => $request->diagnosis_id,
-            'result' => $request->result
+            'result' => $request->result,
+            'price' => $request->price
         ];
 
         ResultLab::create($data);
