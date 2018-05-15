@@ -23,7 +23,8 @@ class DiagnosesTableSeeder extends Seeder
                 'subject' => $faker->text($maxNbChars = 190),   
                 'object' => $faker->text($maxNbChars = 190),   
                 'assesment' => $faker->text($maxNbChars = 190),   
-                'planning' => $faker->text($maxNbChars = 190),     
+                'planning' => $faker->text($maxNbChars = 190),    
+                'price' => $faker->numberBetween($min = 1000, $max = 9000),
                 'special_request' => rand(0,1),
                 'created_at' => $faker->date($format = 'Y-m-d', $max = 'now')       
             ]);

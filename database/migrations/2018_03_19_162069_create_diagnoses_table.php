@@ -21,6 +21,7 @@ class CreateDiagnosesTable extends Migration
             $table->string('object')->nullable();
             $table->string('assesment')->nullable();
             $table->string('planning')->nullable();
+            $table->string('price')->nullable();
             $table->string('result')->nullable();
             $table->integer('special_request');
             $table->timestamps();
