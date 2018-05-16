@@ -18,7 +18,7 @@ class DiagnosesTableSeeder extends Seeder
         $faker = Faker::create();
         foreach(range(0,10) as $index){
             DB::table('diagnoses')->insert([                
-                'registration_id' => $registrations[rand(0, 10)]->id,
+                'registration_id' => $index+1,
                 'evidence' => $faker->text($maxNbChars = 190),   
                 'subject' => $faker->text($maxNbChars = 190),   
                 'object' => $faker->text($maxNbChars = 190),   

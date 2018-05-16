@@ -73,7 +73,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Diagnosis</h4>
-                                    <input type="file" id="file" name="file" class="dropify" required/>
+                                    <input type="file" id="file" name="file" class="dropify" />
                                 </div>
                             </div>
                         </div>
@@ -83,24 +83,24 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Subject</h4>
-                                    <textarea name="subject" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                    <textarea name="subject" rows="6" class="form-control" placeholder="{{$diagnosis->subject}}" ></textarea>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">Object</h4>
-                                    <textarea name="object" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                    <textarea name="object" rows="6" class="form-control" placeholder="{{$diagnosis->object}}" ></textarea>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">Assesment</h4>
-                                    <textarea name="assesment" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                    <textarea name="assesment" rows="6" class="form-control" placeholder="{{$diagnosis->assesment}}" ></textarea>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">Planning</h4>
-                                    <textarea name="planning" rows="6" class="form-control" placeholder="Patient's Result" required></textarea>
+                                    <textarea name="planning" rows="6" class="form-control" placeholder="{{$diagnosis->planning}}" ></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <label class="control-label">Special Request</label>
                                 <div class="m-b-10">
                                     <label class="custom-control custom-radio">
@@ -113,7 +113,14 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h4 class="card-title">Price</h4>
+                                    <input type="number" class="form-control" name="price" placeholder="{{$diagnosis->price}}">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Submit</button>
                             <button type="button" class="btn btn-inverse">Cancel</button>

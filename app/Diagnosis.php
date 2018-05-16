@@ -16,6 +16,7 @@ class Diagnosis extends Model
         'object',
         'assesment',
         'planning',
+        'price',
     ];
 
     public function registration(){

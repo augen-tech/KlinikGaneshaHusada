@@ -24,7 +24,7 @@
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th style="width : 10%">Id Registration</th>
+                            <th style="width : 10%">Id Patient</th>
                             <th style="width : 40%">Patient</th>
                             <th style="width : 10%">Action</th>
                         </tr>

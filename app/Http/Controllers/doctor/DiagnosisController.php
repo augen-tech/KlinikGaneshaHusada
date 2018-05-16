@@ -78,9 +78,7 @@ class DiagnosisController extends Controller
             $rules = [
                 'evidence'                  => 'required',
             ];
-            $validation = Validator::make($request->all(), $rules);
             
-            if (!$validation->fails()){
                 $uploadedFile = $request->file('file');
 
                 $path = $uploadedFile->store('public/files');
@@ -102,7 +100,7 @@ class DiagnosisController extends Controller
     
                 
                 return redirect()->route('doctor.diagnosis.list');
-            }
+            
             
              
            
@@ -115,6 +113,7 @@ class DiagnosisController extends Controller
                 'object' => $request->object,
                 'assesment' => $request->assesment,
                 'planning' => $request->planning,
+                'price' => $request->price,
             ];      
            
             $diagnosis = Diagnosis::create($data_diagnosis);
@@ -131,12 +130,12 @@ class DiagnosisController extends Controller
            
         }
 
-        $notification = [
-            'heading' => 'Gagal Disimpan!',
-            'message' => 'Silahkan memastikan tiap inputan yang dibutuhkan terisi dengan benar.',
-            'alert-type' => 'error'
-        ];
-            return redirect()->back()->withInput();
+        // $notification = [
+        //     'heading' => 'Gagal Disimpan!',
+        //     'message' => 'Silahkan memastikan tiap inputan yang dibutuhkan terisi dengan benar.',
+        //     'alert-type' => 'error'
+        // ];
+        //     return redirect()->back()->withInput();
            
            
         // $uploadedFile = $request->file('file');
@@ -278,7 +277,7 @@ class DiagnosisController extends Controller
         $patient = Patient::where('id', '=', $registration->patient_id)->first();
         
         
-        return view('pages.doctor.diagnosis.create  ', compact('registration','diagnosis', 'patient'));
+        return view('pages.doctor.diagnosis.edit  ', compact('registration','diagnosis', 'patient'));
         // $diagnosis = Diagnosis::find($id);
         // $registration = Registration::find($diagnosis->registration_id);
         // $medicines = Medicine::all();
@@ -313,23 +312,45 @@ class DiagnosisController extends Controller
     {
         //
         
-        $md5Name = md5_file($request->file('file')->getRealPath());
-        $guessExtension = $request->file('file')->guessExtension();
-        $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
+        if (isset($request->file)){
+            $md5Name = md5_file($request->file('file')->getRealPath());
+            $guessExtension = $request->file('file')->guessExtension();
+            $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
 
-        $diagnosis = Diagnosis::find($id); 
-        // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
-        // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+            $diagnosis = Diagnosis::find($id); 
+            // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
+            // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
 
-        $data_diagnosis = [
-            'registration_id' => $request->registration_id,
-            'special_request' => $request->radio,
-            'evidence' => $md5Name . '.' . $guessExtension,
-        ];
+            $data_diagnosis = [
+                'registration_id' => $request->registration_id,
+                'special_request' => $request->radio,
+                'evidence' => $md5Name . '.' . $guessExtension,
+            ];
 
-        // $diagnosis = Diagnosis::update($data);
+            // $diagnosis = Diagnosis::update($data);
+            
+            $diagnosis->fill($data_diagnosis)->save();
+        }else{
+
+            $diagnosis = Diagnosis::find($id); 
+            // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
+            // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+
+            $data_diagnosis = [
+                'registration_id' => $request->registration_id,
+                'special_request' => $request->radio,
+                'subject' => $request->subject,
+                'object' => $request->object,
+                'assesment' => $request->assesment,
+                'planning' => $request->planning,
+                'price' => $request->price,
+            ];
+            // dd($data_diagnosis);
+            // $diagnosis = Diagnosis::update($data);
+            
+            $diagnosis->fill($data_diagnosis)->save();
+        }
         
-        $diagnosis->fill($data_diagnosis)->save();
 
         // $data_prescription = [            
         //     'diagnosis_id' => $prescription->diagnosis_id,
