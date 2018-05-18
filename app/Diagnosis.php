@@ -12,6 +12,11 @@ class Diagnosis extends Model
         'registration_id',
         'special_request',
         'evidence',
+        'subject',
+        'object',
+        'assesment',
+        'planning',
+        'price',
     ];
 
     public function registration(){

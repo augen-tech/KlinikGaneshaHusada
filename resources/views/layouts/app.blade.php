@@ -279,14 +279,14 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/users/1.jpg') }}" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="{{ asset('material/images/users/1.jpg') }}" alt="user"></div>
+                                            <div class="u-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Steave Jobs</h4>
+                                                <h4>{{ Sentinel::getUser()->username }}</h4>
                                                 <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
@@ -329,7 +329,7 @@
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="{{ asset('material/images/users/1.jpg') }}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /> </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
@@ -438,7 +438,8 @@
                             <li>
                                 <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis</a></li>
+                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
+                                    <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
                                 </ul>
                             </li>

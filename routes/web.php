@@ -24,42 +24,58 @@ Route::group(['middleware' => 'superAdmin'], function() {
     Route::get('/superAdmin/', function(){
         return redirect()->route('superAdmin.dashboard');
     });
-    Route::get('/superAdmin/dashboard', 'superAdmin\UserController@Dashboard') ->name('superAdmin.dashboard');
+    Route::get('/superadmin/dashboard', 'superAdmin\UserController@Dashboard') ->name('superAdmin.dashboard');
 
-    Route::get('/superAdmin/admin/create', 'superAdmin\AdminController@create')->name('superAdmin.admin.create');
-    Route::post('/superAdmin/admin/store', 'superAdmin\AdminController@store')->name('superAdmin.admin.store');
-    Route::get('/superAdmin/admin/list', 'superAdmin\AdminController@index')->name('superAdmin.admin.list');
-    Route::get('/superAdmin/admin/edit/{id}', 'superAdmin\AdminController@edit')->name('superAdmin.admin.edit');
-    Route::post('/superAdmin/admin/update/{id}', 'superAdmin\AdminController@update')->name('superAdmin.admin.update');
-    Route::delete('/superAdmin/admin/destroy/{id}', 'superAdmin\AdminController@destroy')->name('superAdmin.admin.destroy');
+    Route::resource('superadmin/admin', 'superAdmin\AdminController', ['names' => [
+        'index'   => 'superAdmin.admin.list',
+        'show'    => 'superAdmin.admin.show',
+        'create'  => 'superAdmin.admin.create',
+        'store'   => 'superAdmin.admin.store',
+        'edit'    => 'superAdmin.admin.edit',
+        'update'  => 'superAdmin.admin.update',
+        'destroy' => 'superAdmin.admin.destroy'
+    ]]);
 
-    Route::get('/superAdmin/doctor/create', 'superAdmin\DoctorController@create')->name('superAdmin.doctor.create');
-    Route::post('/superAdmin/doctor/store', 'superAdmin\DoctorController@store')->name('superAdmin.doctor.store');
-    Route::get('/superAdmin/doctor/list', 'superAdmin\DoctorController@index')->name('superAdmin.doctor.list');
-    Route::get('/superAdmin/doctor/edit/{id}', 'superAdmin\DoctorController@edit')->name('superAdmin.doctor.edit');
-    Route::put('/superAdmin/doctor/update/{id}', 'superAdmin\DoctorController@update')->name('superAdmin.doctor.update');
-    Route::delete('/superAdmin/doctor/destroy/{id}', 'superAdmin\DoctorController@destroy')->name('superAdmin.doctor.destroy');
+    Route::resource('superadmin/doctor', 'superAdmin\DoctorController', ['names' => [
+        'index'   => 'superAdmin.doctor.list',
+        'show'    => 'superAdmin.doctor.show',
+        'create'  => 'superAdmin.doctor.create',
+        'store'   => 'superAdmin.doctor.store',
+        'edit'    => 'superAdmin.doctor.edit',
+        'update'  => 'superAdmin.doctor.update',
+        'destroy' => 'superAdmin.doctor.destroy'
+    ]]);
 
-    Route::get('/superAdmin/midwife/create', 'superAdmin\MidwifeController@create')->name('superAdmin.midwife.create');
-    Route::post('/superAdmin/midwife/store', 'superAdmin\MidwifeController@store')->name('superAdmin.midwife.store');
-    Route::get('/superAdmin/midwife/list', 'superAdmin\MidwifeController@index')->name('superAdmin.midwife.list');
-    Route::get('/superAdmin/midwife/edit/{id}', 'superAdmin\MidwifeController@edit')->name('superAdmin.midwife.edit');
-    Route::put('/superAdmin/midwife/update/{id}', 'superAdmin\MidwifeController@update')->name('superAdmin.midwife.update');
-    Route::delete('/superAdmin/midwife/destroy/{id}', 'superAdmin\MidwifeController@destroy')->name('superAdmin.midwife.destroy');
+    Route::resource('superadmin/midwife', 'superAdmin\MidwifeController', ['names' => [
+        'index'   => 'superAdmin.midwife.list',
+        'show'    => 'superAdmin.midwife.show',
+        'create'  => 'superAdmin.midwife.create',
+        'store'   => 'superAdmin.midwife.store',
+        'edit'    => 'superAdmin.midwife.edit',
+        'update'  => 'superAdmin.midwife.update',
+        'destroy' => 'superAdmin.midwife.destroy'
+    ]]);
 
-    Route::get('/superAdmin/healthAnalyst/create', 'superAdmin\HealthAnalystController@create')->name('superAdmin.healthAnalyst.create');
-    Route::post('/superAdmin/healthAnalyst/store', 'superAdmin\HealthAnalystController@store')->name('superAdmin.healthAnalyst.store');
-    Route::get('/superAdmin/healthAnalyst/list', 'superAdmin\HealthAnalystController@index')->name('superAdmin.healthAnalyst.list');
-    Route::get('/superAdmin/healthAnalyst/edit/{id}', 'superAdmin\HealthAnalystController@edit')->name('superAdmin.healthAnalyst.edit');
-    Route::put('/superAdmin/healthAnalyst/update/{id}', 'superAdmin\HealthAnalystController@update')->name('superAdmin.healthAnalyst.update');
-    Route::delete('/superAdmin/healthAnalyst/destroy/{id}', 'superAdmin\HealthAnalystController@destroy')->name('superAdmin.healthAnalyst.destroy');
+    Route::resource('superadmin/healthanalyst', 'superAdmin\HealthAnalystController', ['names' => [
+        'index'   => 'superAdmin.healthAnalyst.list',
+        'show'    => 'superAdmin.healthAnalyst.show',
+        'create'  => 'superAdmin.healthAnalyst.create',
+        'store'   => 'superAdmin.healthAnalyst.store',
+        'edit'    => 'superAdmin.healthAnalyst.edit',
+        'update'  => 'superAdmin.healthAnalyst.update',
+        'destroy' => 'superAdmin.healthAnalyst.destroy'
+    ]]);
 
-    Route::get('/superAdmin/pharmacist/create', 'superAdmin\PharmacistController@create')->name('superAdmin.pharmacist.create');
-    Route::post('/superAdmin/pharmacist/store', 'superAdmin\PharmacistController@store')->name('superAdmin.pharmacist.store');
-    Route::get('/superAdmin/pharmacist/list', 'superAdmin\PharmacistController@index')->name('superAdmin.pharmacist.list');
-    Route::get('/superAdmin/pharmacist/edit/{id}', 'superAdmin\PharmacistController@edit')->name('superAdmin.pharmacist.edit');
-    Route::put('/superAdmin/pharmacist/update/{id}', 'superAdmin\PharmacistController@update')->name('superAdmin.pharmacist.update');
-    Route::delete('/superAdmin/pharmacist/destroy/{id}', 'superAdmin\PharmacistController@destroy')->name('superAdmin.pharmacist.destroy');
+    Route::resource('superadmin/pharmacist', 'superAdmin\PharmacistController', ['names' => [
+        'index'   => 'superAdmin.pharmacist.list',
+        'show'    => 'superAdmin.pharmacist.show',
+        'create'  => 'superAdmin.pharmacist.create',
+        'store'   => 'superAdmin.pharmacist.store',
+        'edit'    => 'superAdmin.pharmacist.edit',
+        'update'  => 'superAdmin.pharmacist.update',
+        'destroy' => 'superAdmin.pharmacist.destroy'
+    ]]);
+
 });
 
 Route::group(['middleware' => 'admin'], function() {
@@ -89,8 +105,10 @@ Route::group(['middleware' => 'doctor'], function() {
     });
     Route::get('/doctor/dashboard', 'doctor\UserController@Dashboard') ->name('doctor.dashboard');
     Route::get('/doctor/diagnosis/add', 'doctor\DiagnosisController@add') ->name('doctor.diagnosis.add');
+    Route::get('/doctor/diagnosis/add1', 'doctor\DiagnosisController@add1') ->name('doctor.diagnosis.add1');
     Route::get('/doctor/diagnosis/list', 'doctor\DiagnosisController@Index') ->name('doctor.diagnosis.list');
     Route::get('/doctor/diagnosis/create/{id}', 'doctor\DiagnosisController@create') ->name('doctor.diagnosis.create');
+    Route::get('/doctor/diagnosis/create1/{id}', 'doctor\DiagnosisController@create1') ->name('doctor.diagnosis.create1');
     Route::post('/doctor/diagnosis/store', 'doctor\DiagnosisController@store') ->name('doctor.diagnosis.store');
     Route::get('/doctor/diagnosis/list/edit/{id}', 'doctor\DiagnosisController@edit') ->name('doctor.diagnosis.edit');
     Route::post('/doctor/diagnosis/list/{id}', 'doctor\DiagnosisController@update') ->name('doctor.diagnosis.update');

@@ -17,16 +17,33 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ !isset($pharmacist) ? route('superAdmin.pharmacist.store') : route('superAdmin.pharmacist.update', $pharmacist->id)}}" method="POST">
-                    {{ isset($pharmacist) ? method_field('PUT') : ''}}
+                <form action="{{ isset($pharmacist) ? route('superAdmin.pharmacist.update', $pharmacist->id) : route('superAdmin.pharmacist.store') }}" method="POST">
+                    {{ isset($pharmacist) ? method_field('PATCH') : ''}}
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label">Name</label>
                             <input type="text" name="name" class="form-control" placeholder="John doe" value="{{ isset($pharmacist) ? $pharmacist->name : '' }}" required>
                         </div>
                         <div class="form-group">
+                            <label class="control-label">Gender</label>
+                            <div class="m-b-10">
+                                <label class="custom-control custom-radio">
+                                    <input value="M" id="radio5" name="gender" type="radio" class="custom-control-input" {{ isset($pharmacist) ? $pharmacist->gender == 'M' ? 'checked' : '' : old('gender') == 'M' ? 'checked' : '' }}>
+                                    <span class="custom-control-label">Male</span>
+                                </label>
+                                <label class="custom-control custom-radio ">
+                                    <input value="F" id="radio6" name="gender"  type="radio" class="custom-control-input" {{ isset($pharmacist) ? $pharmacist->gender == 'F' ? 'checked' : '' : old('gender') == 'F' ? 'checked' : '' }}>
+                                    <span class="custom-control-label">Female</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label">Email</label>
                             <input type="email" name="email" class="form-control" placeholder="Johndoe@mailinator.com" value="{{ isset($pharmacist) ? $pharmacist->email : '' }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="johndoe" value="{{ isset($pharmacist) ? $pharmacist->username : '' }}" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Password</label>

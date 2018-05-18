@@ -42,12 +42,15 @@ class AdminController extends Controller
         //
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
+            'username'  => $request->username,
             'password'  => $request->password,
-            'role'      => 'Admin',
         ];
 
-        User::create($data);
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('admin');
+        $user->roles()->attach($role);
 
         return redirect()->route('superAdmin.admin.list');
     }
@@ -86,12 +89,14 @@ class AdminController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
             'password'  => $request->password,
         ];
 
-        $admin = User::find($id);
-        $admin->update($data);
+        $user = Sentinel::findById($id);
+        $user->update($data);
+
         return redirect()->route('superAdmin.admin.list');
     }
 
