@@ -45,6 +45,7 @@ class MedicineController extends Controller
         //
         $data = [
             'name' => $request->name,
+            'type' => $request->type,
             'stock' => $request->stock,
             'price' => $request->price,
         ];
