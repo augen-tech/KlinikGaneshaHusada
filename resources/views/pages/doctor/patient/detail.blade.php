@@ -93,7 +93,16 @@
                                 <td>{{ $row->diagnosis->id}}</td>
                                 <td>{{ $row->diagnosis->created_at}}</td>
                                 <td>
-                                    <center><a href="{{ Storage::url($row->diagnosis->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                                        @if (isset($row->evidence)){
+                                            <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
+                                    
+                                        }
+                                        @else{
+                                            <a href="{{ route('doctor.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
+                                    
+                                        }
+                                            
+                                        @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -93,7 +93,16 @@
                         <td>{{ $diagnosis->id}}</td>
                         <td>{{ $diagnosis->created_at}}</td>
                         <td>
-                            <center><a href="{{ Storage::url($diagnosis->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                            @if (isset($row->evidence))
+                                <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
+                        
+                            
+                            @else
+                                <a href="{{ route('doctor.diagnosis.detail1', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
+                        
+                            
+                                
+                            @endif
                         </td>                            
                     </tr>
                 </table>

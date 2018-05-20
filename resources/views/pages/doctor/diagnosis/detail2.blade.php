@@ -78,13 +78,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <textarea name="subject" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->subject : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->subject : ''}}"></textarea>
+                                    <textarea name="subject" rows="6" class="form-control" value="{{ $diagnosis->subject }}" disabled></textarea>
                                     <label>Object</label>
-                                    <textarea name="object" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->object : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->object : ''}}"></textarea>
+                                    <textarea name="object" rows="6" class="form-control" value="{{ $diagnosis->object }}" disabled></textarea>
                                     <label>Assesment</label>
-                                    <textarea name="assesment" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->assesment : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->assesment : ''}}"></textarea>
+                                    <textarea name="assesment" rows="6" class="form-control" value="{{ $diagnosis->assesment }}" disabled></textarea>
                                     <label>Planning</label>
-                                    <textarea name="planning" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->planning : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->planning : ''}}"></textarea>
+                                    <textarea name="planning" rows="6" class="form-control" value="{{ $diagnosis->planning }}" disabled></textarea>
                                 </div>
                                 <div class="form-group">
                                         <label class="control-label">Special Request</label>
@@ -106,7 +106,6 @@
                     <h6>Input Prescription</h6>
                     <section>
                         <div id="dynamic_field">
-                            @if(isset($medicine_prescriptions))
                             @foreach($medicine_prescriptions as $key => $row_mp)
                                 <div class="row" id="{{ 'row' . $key}}">
                                     <div class="col-md-6">
@@ -138,38 +137,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            @else
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="intType1">Medicine</label>
-                                    <div class="form-group">
-                                        <select class="select2" style="width: 100%" name="medicine[]">
-                                            @foreach($medicines as $row )
-                                                <option value="{{$row->id}}"> {{$row->name}} </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <label class="control-label">Qty</label>
-                                        <input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"></div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
-                                        <label for="notation1">Notation :</label>
-                                    <input name="notation[]" type="text" class="form-control" id="notation1" value=""></div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                            <label for="notation1">Clear</label>
-                                            <button type="button" name="btn_remove" id="0" class="btn btn-danger btn_remove">X</button>
-                                    </div>
-                                </div>
-                            <
-                            @endif
-                            
                         </div>
                         <div class="row">
                             <div class="col-md-12">
