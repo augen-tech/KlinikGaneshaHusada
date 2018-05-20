@@ -63,26 +63,34 @@
 
                             <h3 class="box-title m-t-40">Diagnosis</h3>
                             <hr>
-                            <div class="col-md-12">
-                                {{-- <div class="card"> --}}
-                                    {{-- <div class="card-body"> --}}                                        
-                                        <h4 class="card-title">Subject</h4>
-                                        <textarea disabled name="subject" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->subject : $diagnosis->subject}}</textarea>
+                            @if(isset($resultLab) ? $resultLab->diagnosis->subject != null : $diagnosis->subject != null )
+                                <div class="col-md-12">
+                                    {{-- <div class="card"> --}}
+                                        {{-- <div class="card-body"> --}}                                        
+                                            <h4 class="card-title">Subject</h4>
+                                            <textarea disabled name="subject" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->subject : $diagnosis->subject}}</textarea>
+                                        {{-- </div> --}}
+                                        {{-- <div class="card-body"> --}}
+                                            <h4 class="card-title">Object</h4>
+                                            <textarea disabled name="object" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->object : $diagnosis->object}}</textarea>
+                                        {{-- </div> --}}
+                                        {{-- <div class="card-body"> --}}
+                                            <h4 class="card-title">Assesment</h4>
+                                            <textarea disabled name="assesment" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->assesment : $diagnosis->assesment}}</textarea>
+                                        {{-- </div> --}}
+                                        {{-- <div class="card-body"> --}}
+                                            <h4 class="card-title">Planning</h4>
+                                            <textarea disabled name="planning" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->planning : $diagnosis->planning}}</textarea>
+                                        {{-- </div> --}}
                                     {{-- </div> --}}
-                                    {{-- <div class="card-body"> --}}
-                                        <h4 class="card-title">Object</h4>
-                                        <textarea disabled name="object" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->object : $diagnosis->object}}</textarea>
-                                    {{-- </div> --}}
-                                    {{-- <div class="card-body"> --}}
-                                        <h4 class="card-title">Assesment</h4>
-                                        <textarea disabled name="assesment" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->assesment : $diagnosis->assesment}}</textarea>
-                                    {{-- </div> --}}
-                                    {{-- <div class="card-body"> --}}
-                                        <h4 class="card-title">Planning</h4>
-                                        <textarea disabled name="planning" rows="6" class="form-control">{{isset($resultLab) ? $resultLab->diagnosis->planning : $diagnosis->planning}}</textarea>
-                                    {{-- </div> --}}
-                                {{-- </div> --}}
-                            </div>  
+                                </div> 
+                            @else
+                                <div class="col-md-12">
+                                    <a href="{{ Storage::url(isset($resultLab) ? $resultLab->diagnosis->evidence: $diagnosis->evidence) }}" target="_blank">
+                                        <span><i class="fa fa-download" ></i></span>
+                                    </a>
+                                </div> 
+                            @endif 
                             
                             <h3 class="box-title m-t-40">{{ isset($resultLab) ? "Edit Result Lab"  : "Result Lab"}}</h3>
                             <hr>

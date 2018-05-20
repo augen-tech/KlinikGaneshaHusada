@@ -49,10 +49,12 @@
                                     <td style="text-align:center">                                
                                         <a href="{{ route('healthAnalyst.resultLab.form', $row->id)}}">
                                             <span><i class="fa fa-plus"></i></span>          
-                                        </a>    
-                                        <a href="{{ Storage::url($row->evidence) }}" target="_blank">
-                                            <span><i class="fa fa-download" ></i></span>
-                                        </a>                                    
+                                        </a>   
+                                        @if($row->evidence != null) 
+                                            <a href="{{ Storage::url($row->evidence) }}" target="_blank">
+                                                <span><i class="fa fa-download" ></i></span>
+                                            </a>                      
+                                        @endif              
                                     </td>                                                                
                                 </tr>
                                 
