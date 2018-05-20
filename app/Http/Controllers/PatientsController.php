@@ -18,17 +18,18 @@ class PatientsController extends Controller
     public function show($id)
     {
         // //
-        // $registration = Registration::find($id);
-        // $patient = Patient::where('id','=', $id)->first();
-        // $diagnosis = Diagnosis::where('registration_id','=', $id)->get();
-
-        // return view('pages.doctor.patient.detail', compact('diagnosis','patient', 'registration'));
-        
-        $patient = Patient::find($id);
+        $patient =Patient::find($id);
         $registration = Registration::where('patient_id','=', $id)->get();
-        // dd($registration);
+        $diagnosis = Diagnosis::where('registration_id','=', $registration->id)->get();
+
+
+        return view('pages.doctor.patient.detail', compact('diagnosis','patient', 'registration'));
+        
+        // $patient = Patient::find($id);
+        // $registration = Registration::where('patient_id','=', $id)->get();
+        // // dd($registration);
        
-        return view('pages.doctor.patient.detail', compact('patient','registration'));
+        // return view('pages.doctor.patient.detail', compact('patient','registration'));
 
 
     }

@@ -280,7 +280,7 @@ class DiagnosisController extends Controller
         // $medicines = Medicine::where('id', '=', $medicine_prescriptions[1]->medicine_id)->get();
         // return dd($medicine_prescriptions);
         // return dd($medicines);
-        return view('pages.doctor.diagnosis.detail2', compact('patient', 'registration','diagnosis', 'prescription','medicine_prescription', 'medicine'));
+        return view('pages.doctor.diagnosis.detail2', compact('patient', 'registration','diagnosis', 'prescription','medicine_prescriptions', 'medicines'));
 
         // $diagnosis = Diagnosis::where('id', '=', $id)->first();
         // $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();

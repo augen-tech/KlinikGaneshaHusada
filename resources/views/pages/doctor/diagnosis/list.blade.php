@@ -54,7 +54,7 @@
                                     
                                         
                                         @else
-                                            <a href="{{ route('doctor.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
+                                            <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
                                     
                                         
                                             
