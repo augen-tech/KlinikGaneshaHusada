@@ -23,6 +23,7 @@
                     <th>No.</th>
                     <th>Medicine ID</th>
                     <th>Name</th>
+                    <th>Type</th>
                     <th>Stock</th>
                     <th>Price</th>
                     <th>Action</th>
@@ -36,6 +37,7 @@
                         <td>{{$key+1}}</td>
                         <td>{{$row->id}}</td>
                         <td>{{$row->name}}</td>
+                        <td>{{$row->type}}</td>
                         <td>{{$row->stock}}</td>
                         <td>{{$row->price}}</td>
                         <td class="text-nowrap">

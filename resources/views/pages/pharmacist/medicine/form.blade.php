@@ -19,12 +19,22 @@
         <h4 class="card-title">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</h4>
             <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">            
                 {{ isset($medicine) ? method_field('PUT') : '' }}
+                {{ csrf_field() }}
                 <div class="form-group">
                     
                     <label>Medicine Name</label>
                     <input type="text" placeholder="medicine-name" name="name" class="form-control" value="{{isset($medicine) ? $medicine->name : '' }}">
                     
                 </div>
+
+                <div class="form-group">
+                    <label>Medicine Type</label>
+                    <select class="form-control" name="type">
+                        <option value="Racik">Racik</option>
+                        <option value="Pil" selected>Pil</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     
                     <label>Stock</label>
