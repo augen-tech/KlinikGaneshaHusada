@@ -13,7 +13,7 @@ class MedicinesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $medicine = array("simprofen","penicilin","amoxcilin","obh","diapet");
+        $medicine = array("simprofen","penicilin","amoxcilin","obh","diapet");        
         foreach(range(0,4) as $index){
             DB::table('medicines')->insert([
                 'name' => $medicine[$index],

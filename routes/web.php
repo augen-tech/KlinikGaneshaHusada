@@ -105,8 +105,10 @@ Route::group(['middleware' => 'doctor'], function() {
     });
     Route::get('/doctor/dashboard', 'doctor\UserController@Dashboard') ->name('doctor.dashboard');
     Route::get('/doctor/diagnosis/add', 'doctor\DiagnosisController@add') ->name('doctor.diagnosis.add');
+    Route::get('/doctor/diagnosis/add1', 'doctor\DiagnosisController@add1') ->name('doctor.diagnosis.add1');
     Route::get('/doctor/diagnosis/list', 'doctor\DiagnosisController@Index') ->name('doctor.diagnosis.list');
     Route::get('/doctor/diagnosis/create/{id}', 'doctor\DiagnosisController@create') ->name('doctor.diagnosis.create');
+    Route::get('/doctor/diagnosis/create1/{id}', 'doctor\DiagnosisController@create1') ->name('doctor.diagnosis.create1');
     Route::post('/doctor/diagnosis/store', 'doctor\DiagnosisController@store') ->name('doctor.diagnosis.store');
     Route::get('/doctor/diagnosis/list/edit/{id}', 'doctor\DiagnosisController@edit') ->name('doctor.diagnosis.edit');
     Route::post('/doctor/diagnosis/list/{id}', 'doctor\DiagnosisController@update') ->name('doctor.diagnosis.update');

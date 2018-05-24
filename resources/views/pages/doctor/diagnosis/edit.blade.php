@@ -73,35 +73,54 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">File Diagnosis</h4>
-                                    <input type="file" id="file" name="file" class="dropify" required/>
+                                    <input type="file" id="file" name="file" class="dropify" />
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="box-title m-t-40">Diagnosis</h3>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Subject</h4>
+                                    <textarea name="subject" rows="6" class="form-control" placeholder="{{$diagnosis->subject}}" ></textarea>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Object</h4>
+                                    <textarea name="object" rows="6" class="form-control" placeholder="{{$diagnosis->object}}" ></textarea>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Assesment</h4>
+                                    <textarea name="assesment" rows="6" class="form-control" placeholder="{{$diagnosis->assesment}}" ></textarea>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Planning</h4>
+                                    <textarea name="planning" rows="6" class="form-control" placeholder="{{$diagnosis->planning}}" ></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Special Request</label>
-                                        <div class="m-b-10">
-                                            <label class="custom-control custom-radio">
-                                                <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" {{ isset($diagnosis) ? ($diagnosis->special_request == 1) ? 'checked' : '' : ''}}>
-                                                <span class="custom-control-label">yes</span>
-                                            </label>
-                                            <label class="custom-control custom-radio">
-                                                <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" {{ isset($diagnosis) ? ($diagnosis->special_request == 0) ? 'checked' : '' : ''}}>
-                                                <span class="custom-control-label">no</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="from-group">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Price</h4>
-                                            <input type="number" class="form-control" name="price">
-                                        </div>
-                                    </div>
+                            <div class="col-md-6">
+                                <label class="control-label">Special Request</label>
+                                <div class="m-b-10">
+                                    <label class="custom-control custom-radio">
+                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" {{ isset($diagnosis) ? ($diagnosis->special_request == 1) ? 'checked' : '' : ''}}>
+                                        <span class="custom-control-label">yes</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" {{ isset($diagnosis) ? ($diagnosis->special_request == 0) ? 'checked' : '' : ''}}>
+                                        <span class="custom-control-label">no</span>
+                                    </label>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h4 class="card-title">Price</h4>
+                                    <input type="number" class="form-control" name="price" placeholder="{{$diagnosis->price}}">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success" value="upload"><i class="fa fa-check"></i> Submit</button>
                             <button type="button" class="btn btn-inverse">Cancel</button>

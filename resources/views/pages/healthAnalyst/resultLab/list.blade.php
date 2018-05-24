@@ -34,11 +34,12 @@
                                 </tr>
                             @else
                                 <tr>
-                                    <th>Id</th>
+                                    <th>No</th>
                                     <th width="15%">Diagnosis Id</th>
                                     <th>Patient</th>
                                     <th>Doctor</th>
                                     <th>Result</th>                                
+                                    <th>Price</th>
                                     <th>Action</th>                                                                                                     
                                 </tr>
                             
@@ -62,9 +63,9 @@
                                     </tr>
                                 @endforeach
                             @else
-                                @foreach($resultLabs as $row)
+                                @foreach($resultLabs as $index => $row)
                                     <tr>
-                                        <td>{{$row->id}}</td>
+                                        <td>{{$index + 1}}</td>
                                         <td>{{$row->diagnosis->id}}</td>
                                         <td>                                            
                                             <div><left>{{str_pad($row->diagnosis->registration->patient->id,6,"0",STR_PAD_LEFT)}}</left></span>                                            
@@ -72,6 +73,7 @@
                                         </td>
                                         <td>{{$row->diagnosis->registration->doctor->name}}</td>
                                         <td>{{$row->result}}</td>                                        
+                                        <td>{{$row->price}}</td>                                        
                                         <td>
                                             <a href="{{ route('healthAnalyst.resultLab.edit', $row->id)}}">
                                                 <span><i class="mdi mdi-lead-pencil"></i></span>          

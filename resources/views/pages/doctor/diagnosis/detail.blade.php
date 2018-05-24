@@ -89,15 +89,13 @@
                         </thead>
                     </tr>
                     
-                    
-                        <tr>
-                            <td>{{ $diagnosis->id}}</td>
-                            <td>{{ $diagnosis->created_at}}</td>
-                            <td>
-                                <center><a href="{{ Storage::url($diagnosis->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
-                            </td>                            
-                        </tr>
-                    
+                    <tr>
+                        <td>{{ $diagnosis->id}}</td>
+                        <td>{{ $diagnosis->created_at}}</td>
+                        <td>
+                            <center><a href="{{ Storage::url($diagnosis->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                        </td>                            
+                    </tr>
                 </table>
             </div>
         </div>

@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Patients</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Add Diagnosis</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Patients</li>
+            <li class="breadcrumb-item active">Add Diagnosis</li>
         </ol>
     </div>
 </div>
@@ -24,17 +24,21 @@
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th style="width : 10%">Id Patient</th>
-                            <th style="width : 40%">Patient</th>
+                            <th style="width : 5%">ID</th>
+                            <th>Date</th>
+                            <th style="width : 30%">Patient</th>
+                            <th style="width : 40%">Complaint</th>
                             <th style="width : 10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($patients as $row)
+                        @foreach($registrations as $row)
                             <tr>
-                                <td><center>{{ $row->id }}</center></td>
-                                <td>{{ $row->name }}</td>
-                            <td><a href="{{ route('doctor.patient.detail', $row->id)}}"><center><span><i class="fa fa-search"></i></span></center></a></td>
+                                <td>{{ $row->id }}</td>
+                                <td>{{ $row->created_at }}</td>
+                                <td>{{ $row->patient->name }}</td>
+                                <td>{{ $row->complaint }}</td>
+                                <td><a href="{{ route('doctor.diagnosis.create1', $row->id)}}"><center><span><i class="fa fa-stethoscope"></i></span></center></a></td>
                             </tr>                            
                         @endforeach
                     </tbody>
@@ -47,5 +51,7 @@
 
 @section('script')
 <script src="{{ asset('material/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script>$('#myTable').DataTable();</script>
+<script>$('#myTable').DataTable({
+    "order": [[ 1, "asc" ]]
+});</script>
 @endsection

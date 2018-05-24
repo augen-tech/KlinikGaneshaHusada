@@ -87,13 +87,13 @@
                             <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    @if($diagnoses != null))
-                        @foreach($diagnoses as $row)
+                    @if($registration != null))
+                        @foreach($registration as $row)
                             <tr>
-                                <td>{{ $row->id}}</td>
-                                <td>{{ $row->created_at}}</td>
+                                <td>{{ $row->diagnosis->id}}</td>
+                                <td>{{ $row->diagnosis->created_at}}</td>
                                 <td>
-                                    <center><a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                                    <center><a href="{{ Storage::url($row->diagnosis->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
                                 </td>
                             </tr>
                         @endforeach

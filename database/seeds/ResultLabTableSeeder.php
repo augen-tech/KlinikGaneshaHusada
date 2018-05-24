@@ -20,6 +20,8 @@ class ResultLabTableSeeder extends Seeder
             DB::table('result_labs')->insert([                
                 'diagnosis_id' => $diagnoses[rand(0, 10)]->id,
                 'result' => $faker->text($maxNbChars = 190),                                
+                'price' => $faker->numberBetween($min = 75000, $max = 350000)
+
             ]);
         }
     }
