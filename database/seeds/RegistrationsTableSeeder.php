@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Patient;
+use App\User;
 
 
 class RegistrationsTableSeeder extends Seeder

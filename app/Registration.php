@@ -12,6 +12,7 @@ class Registration extends Model
         'patient_id',
         'doctor_id',
         'complaint',
+        'doctor_id',
         'type',
         'blood_pressure',
         'state',
