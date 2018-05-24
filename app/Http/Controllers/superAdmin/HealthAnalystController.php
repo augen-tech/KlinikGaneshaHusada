@@ -41,12 +41,15 @@ class HealthAnalystController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
+            'username'  => $request->username,
             'password'  => $request->password,
-            'role'      => 'HealthAnalyst',
         ];
 
-        User::create($data);
+        $user = Sentinel::registerAndActivate($data);
+        $role = Sentinel::findRoleBySlug('healthAnalyst');
+        $user->roles()->attach($role);
 
         return redirect()->route('superAdmin.healthAnalyst.list');
     }
@@ -85,12 +88,14 @@ class HealthAnalystController extends Controller
     {
         $data = [
             'name'      => $request->name,
+            'gender'    => $request->gender,
             'email'     => $request->email,
             'password'  => $request->password,
         ];
 
-        $healthAnalyst = User::find($id);
-        $healthAnalyst->update($data);
+        $user = Sentinel::findById($id);
+        $user->update($data);
+        
         return redirect()->route('superAdmin.healthAnalyst.list');
     }
 

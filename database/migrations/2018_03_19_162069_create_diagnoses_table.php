@@ -16,8 +16,14 @@ class CreateDiagnosesTable extends Migration
         Schema::create('diagnoses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('registration_id')->unsigned();
-            $table->string('result');
-            $table->string('special_request');
+            $table->string('evidence')->nullable();
+            $table->string('subject')->nullable();
+            $table->string('object')->nullable();
+            $table->string('assesment')->nullable();
+            $table->string('planning')->nullable();
+            $table->string('price')->nullable();
+            $table->string('result')->nullable();
+            $table->integer('special_request');
             $table->timestamps();
 
             $table->foreign('registration_id')

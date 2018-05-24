@@ -11,6 +11,7 @@ class ResultLab extends Model
         'id',
         'diagnosis_id',
         'result',
+        'price',
     ];
 
     public function diagnosis(){

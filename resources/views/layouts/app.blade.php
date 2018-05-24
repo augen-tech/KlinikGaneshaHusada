@@ -279,14 +279,14 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/users/1.jpg') }}" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="{{ asset('material/images/users/1.jpg') }}" alt="user"></div>
+                                            <div class="u-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Steave Jobs</h4>
+                                                <h4>{{ Sentinel::getUser()->username }}</h4>
                                                 <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
@@ -329,7 +329,7 @@
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="{{ asset('material/images/users/1.jpg') }}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /> </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
@@ -393,21 +393,24 @@
                                 <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
+                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
+                                        <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            <li>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
                                     <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
                                     
                                 </ul>
                             </li>
-                            <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('admin.patient.create')}}">Add Patient</a></li>
-                                    <li><a href="{{ route('admin.patient.list')}}">List Patient</a></li>
-                                    
-                                </ul>
-                            </li>
+                            
+                            
+                            
                             <li>
                                 {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
                                 <ul aria-expanded="false" class="collapse">
@@ -430,18 +433,19 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">DOCTOR</li>
                             <li>
-                                <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Diagnosis</span></a>
+                                <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis</a></li>
+                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
+                                    <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
                                 </ul>
                             </li>
                             
                             <li>
-                                <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patients</span></a>
+                                <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
                             </li>
                             <li>
                                 {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
@@ -462,19 +466,62 @@
                             </li>
                         </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'midwife')
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">MIDWIFE</li>
+                        <li>
+                            <a href="{{ route('midwife.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('midwife.diagnosis.add')}}"> Add Diagnosis</a></li>
+                                <li><a href="{{ route('midwife.diagnosis.list')}}">List Diagnosis</a></li>
+                            </ul>
+                        </li>
                         
+                        <li>
+                            <a href="{{ route('midwife.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
+                        </li>
+                        <li>
+                            {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="javascript:void(0)">item 1.1</a></li>
+                                <li><a href="javascript:void(0)">item 1.2</a></li>
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="javascript:void(0)">item 1.3.1</a></li>
+                                        <li><a href="javascript:void(0)">item 1.3.2</a></li>
+                                        <li><a href="javascript:void(0)">item 1.3.3</a></li>
+                                        <li><a href="javascript:void(0)">item 1.3.4</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">item 1.4</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'healthAnalyst')
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">HEALTH ANALYST</li>
                             <li>
-                                <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Lab</span></a>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-bar-chart-o"></i><span class="hide-menu">Result Lab</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Create Result Lab</a></li>
-                                    <li><a href="{{ route('healthAnalyst.resultLab.list')}}">List Result Lab</a></li>
+                                    @php ($onPatientList = 0)
+                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Add Result Lab</a></li>
+                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Result Lab</a></li>
                                 </ul>
+                            </li>
+                            <li>
+                                @php ($onPatientList = 1)
+                                <a  href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}"><i class="fa fa-address-book-o"></i>Patients</a>
+                                {{-- <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
+                                <ul aria-expanded="false" class="collapse">                                    
+                                    @php ($onPatientList = 1)
+                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Patients</a></li>
+                                </ul> --}}
                             </li>
                             
                             
@@ -500,14 +547,21 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">PHARMACIST</li>
                             <li>
-                                <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
+                                <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-heartbeat"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{route('pharmacist.prescription.list')}}">Prescription List</a></li>
-                                    <li><a href="#">Prescription Commited</a></li>
+                                    <li><a href="{{route('pharmacist.diagnosis.update')}}">Update Diagnosis</a></li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-th"></i><span class="hide-menu">Prescription</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{route('pharmacist.prescription.confirm')}}">Confirm Prescription</a></li>
+                                    <li><a href="{{route('pharmacist.prescription.list')}}">Prescription List</a></li>
+                                </ul>
+                                {{-- <a href="{{route('pharmacist.receipt.list')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Prescription</span></a> --}}
                             </li>
                             <li>
                                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Medicine</span></a>
@@ -566,7 +620,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 Material Pro Admin by wrappixel.com
+                © 2018 Tekindo.com
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

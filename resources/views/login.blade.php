@@ -37,7 +37,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/akbar.jpg')}});">
+    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{ asset('material/images/background/login-klinik.jpg')}});">
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
@@ -126,17 +126,15 @@
     <script src="{{ asset('material/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('material/js/custom.min.js')}}"></script>
-<<<<<<< HEAD
-=======
+
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
-<<<<<<< HEAD
+
     {{--  <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>  --}}
-=======
+
     <script src="{{ asset('material/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
->>>>>>> 94633e26841f1d82e665497ff078715dfac524c7
->>>>>>> 356ad0413604dd6a869d3edb9e5dc45eb15aae80
+
 </body>
 
 </html>

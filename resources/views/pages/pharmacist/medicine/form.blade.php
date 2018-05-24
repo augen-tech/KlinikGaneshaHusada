@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('breadcumb')
-<div class="col-md-5 col-8 align-self-center">
-    <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</h3>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0)">Medicine</a></li>
-       
-        <li class="breadcrumb-item active">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</li>
-    </ol>
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Medicine</a></li>
+        
+            <li class="breadcrumb-item active">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</li>
+        </ol>
+    </div>
 </div>
 @endsection
 
@@ -15,7 +17,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">{{ isset($medicine) ? 'Edit Medicine' : 'Add Medicine' }}</h4>
-            <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">
+            <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">            
                 {{ isset($medicine) ? method_field('PUT') : '' }}
                 <div class="form-group">
                     

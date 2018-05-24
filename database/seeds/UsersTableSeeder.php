@@ -83,7 +83,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->email,
                 'password' => 'qwerty123',
                 'name' => $faker->name,
-                'image' => 'test.png',
+                'gender' => 'M',
             ];
 
             $user = Sentinel::registerAndActivate($credentials);
@@ -98,7 +98,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'superAdmin@example.com',
             'password' => 'qwerty123',
             'name' => 'SuperAdmin',
-            'image' => 'test.png',
+            'gender' => 'M',
 		];
 
         $user = Sentinel::registerAndActivate($credentials);
@@ -112,7 +112,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'admin@example.com',
             'password' => 'qwerty123',
             'name' => 'Admin',
-            'image' => 'test.png',
+            'gender' => 'M',
 		];
 
         $user = Sentinel::registerAndActivate($credentials);
@@ -126,7 +126,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'doctor@example.com',
             'password' => 'qwerty123',
             'name' => 'Doctor',
-            'image' => 'test.png',
+            'gender' => 'F',
 		];
 
         $user = Sentinel::registerAndActivate($credentials);
@@ -140,7 +140,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'midwife@example.com',
             'password' => 'qwerty123',
             'name' => 'Midwife',
-            'image' => 'test.png',
+            'gender' => 'M',
 		];
 
         $user = Sentinel::registerAndActivate($credentials);
@@ -154,7 +154,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'healthAnalyst@example.com',
             'password' => 'qwerty123',
             'name' => 'Health Analyst',
-            'image' => 'test.png',
+            'gender' => 'F',
 		];
 
         $user = Sentinel::registerAndActivate($credentials);
@@ -168,7 +168,7 @@ class UsersTableSeeder extends Seeder
 			'email' => 'pharmacist@example.com',
             'password' => 'qwerty123',
             'name' => 'Pharmacist',
-            'image' => 'test.png',
+            'gender' => 'M',
 		];
 
         $user = Sentinel::registerAndActivate($credentials);

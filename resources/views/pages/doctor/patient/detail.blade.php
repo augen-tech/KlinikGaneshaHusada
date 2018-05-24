@@ -6,7 +6,8 @@
 <link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @endsection
 @section('breadcumb')
-<div class="col-md-5 col-8 align-self-center">
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Patient Detail</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
@@ -15,6 +16,7 @@
             <li class="breadcrumb-item active">Patient Detail</li>
         </ol>
     </div>
+</div>
 @endsection
 
 @section('content')
@@ -77,21 +79,31 @@
                 </form>
                 <hr>
                 <label>Patient History</label>
-                {{--  Table Diagnosis  --}}
                 <table id="myTable" class="table table-bordered table-striped">
-                    @foreach($patient->registrations as $row)
                     <tr>
                         <thead>
                             <th>ID</th>
-                            <th>Diagnosis Result</th>
+                            <th>Date</th>
+                            <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    <tr>
-                        <td>{{ $row->diagnosis->id}}</td>
-                        <td>{{ $row->diagnosis->result}}</td>
-                        {{--  <td>{{ $registration->diagnosis->result }}</td>  --}}
-                    </tr>
-                    @endforeach
+                    @if($registration != null))
+                        @foreach($registration as $row)
+                            <tr>
+                                <td>{{ $row->diagnosis->id}}</td>
+                                <td>{{ $row->diagnosis->created_at}}</td>
+                                <td>
+                                        @if (isset($row->evidence)){
+                                            <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>                                    
+                                        @else
+                                            <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>                                    
+                                        @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                            Ksong
+                    @endif
                 </table>
             </div>
         </div>
@@ -99,7 +111,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('script')
 <script src="{{ asset('material/plugins/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('material/plugins/wizard/jquery.steps.min.js')}}"></script>
 <script src="{{ asset('material/plugins/wizard/jquery.validate.min.js')}}"></script>

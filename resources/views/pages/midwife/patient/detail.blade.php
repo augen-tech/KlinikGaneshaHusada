@@ -2,19 +2,21 @@
 
 @section('styles')
 <link href="{{ asset('material/plugins/wizard/steps.css')}}" rel="stylesheet">
-<link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" >
-<link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" >
+<link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" />
+<link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @endsection
 @section('breadcumb')
-<div class="col-md-5 col-8 align-self-center">
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
         <h3 class="text-themecolor m-b-0 m-t-0">Patient Detail</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
             
-            <li class="breadcrumb-item"><a href="{{ route('doctor.patient.list')}}">Patient</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('midwife.patient.list')}}">Patient</a></li>
             <li class="breadcrumb-item active">Patient Detail</li>
         </ol>
     </div>
+</div>
 @endsection
 
 @section('content')
@@ -77,29 +79,27 @@
                 </form>
                 <hr>
                 <label>Patient History</label>
-                {{--  Table Diagnosis  --}}
                 <table id="myTable" class="table table-bordered table-striped">
-                    
                     <tr>
                         <thead>
-                            <th>Medicine</th>
-                            <th>Qty</th>
-                            <th>Notation</th>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    @foreach($medicine_prescriptions as $row )
-                    <tr>
-                        @foreach($medicines as $row_)
-                            @if ($row_->id == $row->medicine_id)                        
-                                <td>{{$row_->name}}</td>
-                            @endif
+                    @if($diagnoses != null))
+                        @foreach($diagnoses as $row)
+                            <tr>
+                                <td>{{ $row->id}}</td>
+                                <td>{{ $row->created_at}}</td>
+                                <td>
+                                    <center><a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
+                                </td>
+                            </tr>
                         @endforeach
-                        <td>{{$row->amount}}</td>
-                        <td>{{$row->notation}}</td>
-                        {{--  <td>{{ $registration->diagnosis->result }}</td>  --}}
-                    </tr>
-                    @endforeach
-                    
+                    @else
+                            Ksong
+                    @endif
                 </table>
             </div>
         </div>
@@ -107,7 +107,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('script')
 <script src="{{ asset('material/plugins/moment/min/moment.min.js')}}"></script>
 <script src="{{ asset('material/plugins/wizard/jquery.steps.min.js')}}"></script>
 <script src="{{ asset('material/plugins/wizard/jquery.validate.min.js')}}"></script>

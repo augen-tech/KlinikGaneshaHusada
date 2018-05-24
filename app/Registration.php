@@ -10,10 +10,12 @@ class Registration extends Model
     protected $fillable =[
         'id',
         'patient_id',
+        'doctor_id',
         'complaint',
         'doctor_id',
         'type',
         'blood_pressure',
+        'state',
 
     ];
 
@@ -21,12 +23,10 @@ class Registration extends Model
         return $this->belongsTo(Patient::class);
     }
 
+    public function diagnosis(){   // dd('HEY');
+        return $this->hasOne(Diagnosis::class);
+    }
     public function doctor(){
         return $this->belongsTo(User::class);
     }
-
-    public function diagnosis(){
-        return $this->hasOne(Diagnosis::class);
-    }
-    
 }

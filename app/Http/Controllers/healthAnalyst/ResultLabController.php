@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ResultLab;
 use App\Diagnosis;
+use App\Patient;
 
 class ResultLabController extends Controller
 {
@@ -15,11 +16,17 @@ class ResultLabController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($onPatientList)
     {
         //
-        $resultLab = ResultLab::all();
-        return view('pages.healthAnalyst.resultLab.list',compact('resultLab'));
+        $resultLabs = ResultLab::all();
+        $patients = Patient::all();
+
+        if($onPatientList == 1){
+            return view('pages.healthAnalyst.resultLab.list',compact('resultLabs','patients'));
+        }else{
+            return view('pages.healthAnalyst.resultLab.list',compact('resultLabs'));
+        }
     }
 
     /**
@@ -30,7 +37,21 @@ class ResultLabController extends Controller
     public function create()
     {
         //
-        $diagnoses = Diagnosis::all();
+        // $diagnoses = Diagnosis::doesntHave('resultLab', function ($query) {
+        //     $query->where('special_request', '=', 1);
+        // })->orderBy('created_at','ASC')->get();              
+
+        $tempDiagnoses = Diagnosis::doesntHave('resultLab');    
+        $diagnoses = $tempDiagnoses->where('special_request', '=', 1)->orderBy('created_at','ASC')->get();
+
+        // $diagnoses = Diagnosis::doesntHave('resultLab','and', function($q){
+        //     $q->where('special_request', '=', 1);
+        // })->orderBy('created_at','ASC')->get();        
+
+        // $diagnoses = Diagnosis::doesntHave('resultLab', 'and', function ($q) {
+        //     $q->where('special_request', '=', 1);
+        // });
+                    
         return view('pages.healthAnalyst.resultLab.create',compact('diagnoses'));  
     }
 
@@ -54,11 +75,12 @@ class ResultLabController extends Controller
         // return dd($request->all());
         $data = [
             'diagnosis_id' => $request->diagnosis_id,
-            'result' => $request->result
+            'result' => $request->result,
+            'price' => $request->price
         ];
 
         ResultLab::create($data);
-        return redirect()->route('healthAnalyst.resultLab.list');
+        return redirect()->route('healthAnalyst.resultLab.list',0);
         
 
     }
@@ -84,6 +106,7 @@ class ResultLabController extends Controller
     public function edit($id)
     {
         //
+        
         $resultLab = ResultLab::find($id);        
         return view('pages.healthAnalyst.resultLab.form',compact('resultLab'));  
     }
@@ -106,7 +129,7 @@ class ResultLabController extends Controller
         $resultLab->fill($input)->save();
         // Session::flash('flash_message', 'Task successfully added!');
     
-        return redirect()->route('healthAnalyst.resultLab.list');
+        return redirect()->route('healthAnalyst.resultLab.list',0);
     }
 
     /**
@@ -120,6 +143,6 @@ class ResultLabController extends Controller
         //
         $resultLab = ResultLab::find($id);
         $resultLab->delete();
-        return redirect()->route('healthAnalyst.resultLab.list');
+        return redirect()->route('healthAnalyst.resultLab.list',0);
     }
 }

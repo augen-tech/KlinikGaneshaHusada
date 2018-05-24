@@ -10,12 +10,21 @@ class Diagnosis extends Model
     protected $fillable =[
 
         'registration_id',
-        'result',
         'special_request',
+        'evidence',
+        'subject',
+        'object',
+        'assesment',
+        'planning',
+        'price',
     ];
 
     public function registration(){
         return $this->belongsTo(Registration::class);
+    }
+
+    public function resultLab(){
+        return $this->hasOne(ResultLab::class);
     }
     public function medicine(){
         return $this->belongsTo(Medicine::class);
