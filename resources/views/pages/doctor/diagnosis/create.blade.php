@@ -80,7 +80,8 @@
                             </div>
                         </div>
 
-                        <h6>Input Prescription</h6>
+                        <h3 class="box-title m-t-40">Input Prescription</h3>
+                        <hr>
                             <div id="dynamic_field">
                                 @if(isset($medicine_prescriptions))
                                 @foreach($medicine_prescriptions as $key => $row_mp)

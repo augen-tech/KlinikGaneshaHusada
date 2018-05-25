@@ -99,6 +99,14 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="from-group">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Price</h4>
+                                                <input type="number" class="form-control" name="price" required placeholder="{{ isset($diagnosis) ? $diagnosis->price : ''}}">
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </section>
