@@ -20,7 +20,9 @@ class PatientsController extends Controller
         // //
         $patient =Patient::find($id);
         $registration = Registration::where('patient_id','=', $id)->get();
-        $diagnosis = Diagnosis::where('registration_id','=', $registration->id)->get();
+        // dd($registration);
+        // $diagnosis = Diagnosis::where('registration_id','=', $registration->id)->get();
+        // dd($diagnosis);
 
 
         return view('pages.doctor.patient.detail', compact('diagnosis','patient', 'registration'));
