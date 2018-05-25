@@ -22,7 +22,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body wizard-content">
-                 <form action="{{ isset($diagnosis) ? route('midwife.diagnosis.update', $diagnosis-> id) : route('midwife.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
+                <form action="{{ isset($diagnosis) ? route('midwife.diagnosis.update', $diagnosis-> id) : route('midwife.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
                     
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <!-- Step 1 -->
@@ -175,22 +175,20 @@
                                             <button type="button" name="btn_remove" id="0" class="btn btn-danger btn_remove">X</button>
                                     </div>
                                 </div>
-                            <
-                            @endif
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <center>
-                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions): " " }}>Add medicine</button>
-                                </center>
-                                <br>
-                                <br>
                             </div>
+                            @endif
                         </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <center>
+                                        <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions): " " }}>Add medicine</button>
+                                    </center>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                            
                     </section>
-                    
                 </form>
             </div>
         </div>
