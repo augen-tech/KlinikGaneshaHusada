@@ -98,7 +98,7 @@
                         
                             
                             @else
-                                <a href="{{ route('doctor.diagnosis.detail1', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
+                                <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
                         
                             
                                 

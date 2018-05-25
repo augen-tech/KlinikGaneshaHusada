@@ -87,19 +87,21 @@
                             <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    @if($diagnoses != null))
-                        @foreach($diagnoses as $row)
-                            <tr>
-                                <td>{{ $row->id}}</td>
-                                <td>{{ $row->created_at}}</td>
-                                <td>
-                                    <center><a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a></center>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                            Ksong
+                    @foreach($registration as $row)
+                    @if(isset($registration))
+                       <tr>
+                            <td>{{ $row->diagnosis->id}}</td>
+                            <td>{{ $row->diagnosis->created_at}}</td>
+                            <td>
+                                    @if (isset($row->evidence)){
+                                        <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>                                    
+                                    @else
+                                        <a href="{{ route('midwife.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>                                    
+                                    @endif
+                            </td>
+                        </tr>
                     @endif
+                    @endforeach
                 </table>
             </div>
         </div>

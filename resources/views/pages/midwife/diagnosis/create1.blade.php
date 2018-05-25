@@ -22,7 +22,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body wizard-content">
-                 <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
+                 <form action="{{ isset($diagnosis) ? route('midwife.diagnosis.update', $diagnosis-> id) : route('midwife.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
                     
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <!-- Step 1 -->
@@ -66,7 +66,7 @@
                             <br>
                             <div class="col-md-6">
                                     <div class="form-group">
-                                        <a href="{{ route('doctor.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
+                                        <a href="{{ route('midwife.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
                                     </div>
                                 </div>
                         </div>
