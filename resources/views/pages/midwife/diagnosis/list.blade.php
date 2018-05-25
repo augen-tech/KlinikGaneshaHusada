@@ -49,13 +49,16 @@
                                     <td><center>   
                                         <a href="{{ route('midwife.diagnosis.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
                                         <a href="{{ route('midwife.diagnosis.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
-                                        @if (isset($diagnosis->evidence)){
+                                        @if (isset($row->evidence))
                                             <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
-                                        }
+                                    
                                         
+                                        @else
+                                            <a href="{{ route('midwife.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
+                                    
+                                        
+                                            
                                         @endif
-
-                                        
                                         {{-- <a href="{{ route('midwife.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a> --}}
                                     </center></td>
                                 </tr>                            

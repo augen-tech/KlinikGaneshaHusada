@@ -344,14 +344,22 @@ class DiagnosisController extends Controller
         $diagnosis = Diagnosis::where('id', '=', $id)->first();
         $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();
         $patient = Patient::where('id', '=', $registration->patient_id)->first();
-        $tempdiagnosis = Diagnosis::where('evidence','=', null)->first();
+        $prescription = Prescription::where('diagnosis_id', '=', $id)->first();
+        $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+        
+        $medicines_ = array();
+
+        foreach ($medicine_prescriptions as $row) {            
+            $tempmedicines_ = Medicine::where('id', '=', $row->medicine_id)->first();
+            array_push($medicines_, $tempmedicines_);
+        }
         // dd(isset($tempdiagnosis));
         
         if (isset($diagnosis->evidence)){
-            return view('pages.doctor.diagnosis.create  ', compact('registration','diagnosis', 'patient','medicines'));
+            return view('pages.doctor.diagnosis.create  ', compact('registration','diagnosis', 'patient','medicines','prescription', 'medicine_prescriptions','medicines_'));
         
         }else{
-            return view('pages.doctor.diagnosis.create1  ', compact('registration','diagnosis', 'patient','medicines'));
+            return view('pages.doctor.diagnosis.create1  ', compact('registration','diagnosis', 'patient','medicines','prescription', 'medicine_prescriptions','medicines_'));
 
         }
         // endif
