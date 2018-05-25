@@ -143,6 +143,7 @@
                                                 <button type="button" name="btn_remove" id="0" class="btn btn-danger btn_remove">X</button>
                                         </div>
                                     </div>
+                                </div>
                                 @endif
                             </div>
                             <div class="row">
