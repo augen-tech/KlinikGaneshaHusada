@@ -149,7 +149,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <center>
-                                        <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions): " " }}>Add medicine</button>
+                                        <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions) : 0 }}>Add medicine</button>
                                     </center>
                                     <br>
                                     <br>
