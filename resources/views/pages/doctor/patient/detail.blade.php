@@ -87,9 +87,11 @@
                             <th>Download Diagnosis</th>
                         </thead>
                     </tr>
-                    @if($registration != null))
+                    {{-- @if($registration != null)) --}}
+                    
                         @foreach($registration as $row)
-                            <tr>
+                        @if(isset($registration))
+                           <tr>
                                 <td>{{ $row->diagnosis->id}}</td>
                                 <td>{{ $row->diagnosis->created_at}}</td>
                                 <td>
@@ -100,10 +102,11 @@
                                         @endif
                                 </td>
                             </tr>
+                        @endif
                         @endforeach
-                    @else
+                    {{-- @else
                             Ksong
-                    @endif
+                    @endif --}}
                 </table>
             </div>
         </div>

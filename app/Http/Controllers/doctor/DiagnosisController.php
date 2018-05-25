@@ -58,6 +58,7 @@ class DiagnosisController extends Controller
     public function create1($id)
     {
         //
+        
         $registration = Registration::find($id);
         $medicines = Medicine::all();
         // $medicine_prescriptions = MedicinePrescription::all();
@@ -122,6 +123,8 @@ class DiagnosisController extends Controller
             // $registration = Registration::find($diagnosis->registration->id);
             // $registration->update($data_registration);
         }
+
+            // $diagnoses = Diagnosis::find($id);
 
             $subtotal = 0;
             foreach($request->medicine AS $key => $row){
@@ -337,13 +340,29 @@ class DiagnosisController extends Controller
     {
         //
 
-        
+        $medicines = Medicine::all();
         $diagnosis = Diagnosis::where('id', '=', $id)->first();
         $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();
         $patient = Patient::where('id', '=', $registration->patient_id)->first();
+        $prescription = Prescription::where('diagnosis_id', '=', $id)->first();
+        $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
         
+        $medicines_ = array();
+
+        foreach ($medicine_prescriptions as $row) {            
+            $tempmedicines_ = Medicine::where('id', '=', $row->medicine_id)->first();
+            array_push($medicines_, $tempmedicines_);
+        }
+        // dd(isset($tempdiagnosis));
         
-        return view('pages.doctor.diagnosis.edit  ', compact('registration','diagnosis', 'patient'));
+        if (isset($diagnosis->evidence)){
+            return view('pages.doctor.diagnosis.create  ', compact('registration','diagnosis', 'patient','medicines','prescription', 'medicine_prescriptions','medicines_'));
+        
+        }else{
+            return view('pages.doctor.diagnosis.create1  ', compact('registration','diagnosis', 'patient','medicines','prescription', 'medicine_prescriptions','medicines_'));
+
+        }
+        // endif
         // $diagnosis = Diagnosis::find($id);
         // $registration = Registration::find($diagnosis->registration_id);
         // $medicines = Medicine::all();

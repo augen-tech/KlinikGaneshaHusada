@@ -127,17 +127,20 @@ Route::group(['middleware' => 'midwife'], function() {
     });
     Route::get('/midwife/dashboard', 'midwife\UserController@Dashboard') ->name('midwife.dashboard');
     Route::get('/midwife/diagnosis/add', 'midwife\DiagnosisController@add') ->name('midwife.diagnosis.add');
+    Route::get('/midwife/diagnosis/add1', 'midwife\DiagnosisController@add1') ->name('midwife.diagnosis.add1');
     Route::get('/midwife/diagnosis/list', 'midwife\DiagnosisController@Index') ->name('midwife.diagnosis.list');
     Route::get('/midwife/diagnosis/create/{id}', 'midwife\DiagnosisController@create') ->name('midwife.diagnosis.create');
+    Route::get('/midwife/diagnosis/create1/{id}', 'midwife\DiagnosisController@create1') ->name('midwife.diagnosis.create1');
     Route::post('/midwife/diagnosis/store', 'midwife\DiagnosisController@store') ->name('midwife.diagnosis.store');
     Route::get('/midwife/diagnosis/list/edit/{id}', 'midwife\DiagnosisController@edit') ->name('midwife.diagnosis.edit');
     Route::post('/midwife/diagnosis/list/{id}', 'midwife\DiagnosisController@update') ->name('midwife.diagnosis.update');
     Route::get('/midwife/diagnosis/destroy/{id}', 'midwife\DiagnosisController@destroy')->name('midwife.diagnosis.destroy');
     Route::get('/midwife/diagnosis/download/{evidence}', 'midwife\DiagnosisController@download') ->name('midwife.diagnosis.download');
     Route::get('/midwife/diagnosis/detail/{id}', 'midwife\DiagnosisController@show') ->name('midwife.diagnosis.detail');
+    Route::get('/midwife/diagnosis/detail2/{id}', 'midwife\DiagnosisController@show2') ->name('midwife.diagnosis.detail2');
 
-    Route::get('/midwife/patient/list', 'PatientsController@Index') ->name('midwife.patient.list');
-    Route::get('/midwife/patient/detail/{id}', 'PatientsController@show') ->name('midwife.patient.detail');
+    Route::get('/midwife/patient/list', 'PatientsController@Index1') ->name('midwife.patient.list');
+    Route::get('/midwife/patient/detail/{id}', 'PatientsController@show1') ->name('midwife.patient.detail');
 });
 
 Route::group(['middleware' => 'healthAnalyst'], function() {

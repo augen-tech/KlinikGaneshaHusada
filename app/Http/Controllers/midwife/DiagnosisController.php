@@ -23,6 +23,7 @@ class DiagnosisController extends Controller
     {
         //
         $diagnoses = Diagnosis::all();
+        
         return view('pages.midwife.diagnosis.list', compact('diagnoses'));
     }
 
@@ -45,16 +46,25 @@ class DiagnosisController extends Controller
 
         $tempregistrations = Registration::doesntHave('diagnosis'); 
         $registrations = $tempregistrations->where('type','=',1)->get();   
-        // $registrations = $tempRegistrations->where('id', '!=', -1)->get();        
-        // $registrations = Registration::all();
-        // return dd($tempRegistrations);
-        // return dd($diagnoses);
-
         
-
-        // $registrations->all();
-        // $registrations = $registrations1::where('registration_id','=','')->get();
         return view('pages.midwife.diagnosis.add', compact('registrations'));
+    }
+
+    public function add1(){
+        $tempregistrations = Registration::doesntHave('diagnosis'); 
+        $registrations = $tempregistrations->where('type','=',1)->get();
+        return view('pages.midwife.diagnosis.add1', compact('registrations'));
+    }
+
+    public function create1($id)
+    {
+        //
+        
+        $registration = Registration::find($id);
+        $medicines = Medicine::all();
+        // $medicine_prescriptions = MedicinePrescription::all();
+        // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
+        return view('pages.midwife.diagnosis.create1', compact('registration','medicines'));
     }
 
     
@@ -67,62 +77,87 @@ class DiagnosisController extends Controller
      */
     public function store(Request $request)
     {
-        $uploadedFile = $request->file('file');
-
-        $path = $uploadedFile->store('public/files');
-        //
-        // $md5Name = md5_file($request->file('file')->getRealPath());
-        // $guessExtension = $request->file('file')->guessExtension();
-        // $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
-
-        // {{ asset('storage/' . $diagnosis->filename)}}
-
-        // if(Input::hasFile('file')){
-
-		// 	echo 'Uploaded';
-		// 	$file = Input::file('file');
-		// 	$file->move('uploads', $file->getClientOriginalName());
-		// 	echo '';
-        // }
-
-        // $md5Name = md5_file($request->file('lele')->getRealPath());
-        // $guessExtension = $request->file('lele')->guessExtension();
-        // $file = $request->file('lele')->storeAs('\xampp\htdocs\tekindo\KlinikGaneshaHusada\public\uploads', $md5Name.'.'.$guessExtension  ,'C');
-
-
-        $data_diagnosis = [
-            'registration_id' => $request->registration_id,
-            'special_request' => $request->radio,
-            'evidence' => $path,           
-        ];      
-       
-        $diagnosis = Diagnosis::create($data_diagnosis);
-
-        $data_registration = [
-            'state' => 1,
-        ];
-
-        $registration = Registration::find($diagnosis->registration->id);
-        $registration->update($data_registration);
-        // //
-        // //save prescription 
-
-        // $data_prescription = [            
-        //     'diagnosis_id' => $diagnosis->id,
-        // ];
-        // $prescription = Prescription::create($data_prescription);
-
-        
+        if (isset($request->file)){
+            $rules = [
+                'evidence'                  => 'required',
+            ];
             
-        // foreach ($request->medicine as $index => $row) {            
-        //     $data_mp = [       
-        //         'prescription_id' => $prescription->id,
-        //         'medicine_id' => $request->medicine[$index], 
-        //         'amount' => $request->amount[$index],
-        //         'notation' => $request->notation[$index],
-        //     ];
-        //     $medicine_prescription = MedicinePrescription::create($data_mp);    
-        // }
+                $uploadedFile = $request->file('file');
+
+                $path = $uploadedFile->store('public/files');
+    
+                $data_diagnosis = [
+                    'registration_id' => $request->registration_id,
+                    'special_request' => $request->radio,
+                    'evidence' => $path,
+                ];
+
+                $diagnosis = Diagnosis::create($data_diagnosis);
+        
+                // $data_registration = [
+                //     'state' => 1,
+                // ];
+    
+                // $registration = Registration::find($diagnosis->registration->id);
+                // $registration->update($data_registration);
+    
+                
+                // return redirect()->route('doctor.diagnosis.list');
+            
+            
+        } else {
+            $data_diagnosis = [
+                'registration_id' => $request->registration_id,
+                'special_request' => $request->radio,
+                'subject' => $request->subject,
+                'object' => $request->object,
+                'assesment' => $request->assesment,
+                'planning' => $request->planning,
+                'price' => $request->price,
+            ];      
+           
+            $diagnosis = Diagnosis::create($data_diagnosis);
+        
+
+            // $registration = Registration::find($diagnosis->registration->id);
+            // $registration->update($data_registration);
+        }
+
+            // $diagnoses = Diagnosis::find($id);
+
+            $subtotal = 0;
+            foreach($request->medicine AS $key => $row){
+                $medicine = Medicine::find($row);
+                $subtotal += $medicine->price * $request->amount[$key];
+            }
+
+            if($diagnosis->special_request != null){
+                $subtotal += 100000;
+            }else{
+                $subtotal += 50000;
+            }
+
+            $tax = $subtotal * 0.1;
+            $total = $subtotal + $tax;
+
+            $data_prescription = [
+                'diagnosis_id' => $diagnosis->id,
+                'status' => 'no',
+                'total_price' => $total,
+            ];
+            
+            $prescription = Prescription::create($data_prescription);
+            
+           
+        foreach ($request->medicine as $index => $row) {            
+            $data_mp = [       
+                'prescription_id' => $prescription->id,
+                'medicine_id' => $request->medicine[$index], 
+                'amount' => $request->amount[$index],
+                'notation' => $request->notation[$index],
+            ];
+            $medicine_prescription = MedicinePrescription::create($data_mp);    
+        }
 
        
         return redirect()->route('midwife.diagnosis.list');
@@ -135,6 +170,27 @@ class DiagnosisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function show2($id)
+    {
+        //
+        
+        $diagnosis = Diagnosis::find($id);
+        $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();
+        $patient = Patient::where('id', '=', $registration->patient_id)->first();
+        
+        $prescriptions = Prescription::all();        
+
+        $prescription = Prescription::where('diagnosis_id','=' , $id)->first();     
+       
+        $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+        $medicines = Medicine::all();
+        // $medicines = Medicine::where('id', '=', $medicine_prescriptions[1]->medicine_id)->get();
+        // return dd($medicine_prescriptions);
+        // return dd($medicines);
+        return view('pages.midwife.diagnosis.detail2', compact('patient', 'registration','diagnosis', 'prescription','medicine_prescriptions', 'medicines'));
+    }
+
     public function show($id)
     {
         //
@@ -170,14 +226,30 @@ class DiagnosisController extends Controller
     public function edit($id)
     {
         //
-
-        
+        $medicines = Medicine::all();
         $diagnosis = Diagnosis::where('id', '=', $id)->first();
         $registration = Registration::where('id', '=', $diagnosis->registration_id)->first();
         $patient = Patient::where('id', '=', $registration->patient_id)->first();
+
+        $prescription = Prescription::where('diagnosis_id', '=', $id)->first();
+        $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
         
+        $medicines_ = array();
+
+        foreach ($medicine_prescriptions as $row) {            
+            $tempmedicines_ = Medicine::where('id', '=', $row->medicine_id)->first();
+            array_push($medicines_, $tempmedicines_);
+        }
+        // dd(isset($tempdiagnosis));
         
-        return view('pages.midwife.diagnosis.create  ', compact('registration','diagnosis', 'patient'));
+        if (isset($diagnosis->evidence)){
+            return view('pages.midwife.diagnosis.create  ', compact('registration','diagnosis', 'patient','medicines','prescription', 'medicine_prescriptions','medicines_'));
+        
+        }else{
+            return view('pages.midwife.diagnosis.create1  ', compact('registration','diagnosis', 'patient','medicines','prescription', 'medicine_prescriptions','medicines_'));
+
+        }
+        
         // $diagnosis = Diagnosis::find($id);
         // $registration = Registration::find($diagnosis->registration_id);
         // $medicines = Medicine::all();
@@ -211,24 +283,67 @@ class DiagnosisController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
-        $md5Name = md5_file($request->file('file')->getRealPath());
-        $guessExtension = $request->file('file')->guessExtension();
-        $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
-
         $diagnosis = Diagnosis::find($id); 
-        // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
-        // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
-
-        $data_diagnosis = [
-            'registration_id' => $request->registration_id,
-            'special_request' => $request->radio,
-            'evidence' => $md5Name . '.' . $guessExtension,
-        ];
-
-        // $diagnosis = Diagnosis::update($data);
+        if (isset($request->file)){
         
-        $diagnosis->fill($data_diagnosis)->save();
+            Storage::delete($diagnosis->evidence);
+            $uploadedFile = $request->file('file');
+
+            $path = $uploadedFile->store('public/files');
+            // $md5Name = md5_file($request->file('file')->getRealPath());
+            // $guessExtension = $request->file('file')->guessExtension();
+            // $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
+
+            // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
+            // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+
+            $data_diagnosis = [
+                'registration_id' => $request->registration_id,
+                'special_request' => $request->radio,
+                'evidence' => $path,
+            ];
+
+            // $diagnosis = Diagnosis::update($data);
+            
+            $diagnosis->fill($data_diagnosis)->save();
+        }else{
+
+            // $diagnosis = Diagnosis::find($id); 
+            // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
+            // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+
+            $data_diagnosis = [
+                'registration_id' => $request->registration_id,
+                'special_request' => $request->radio,
+                'subject' => $request->subject,
+                'object' => $request->object,
+                'assesment' => $request->assesment,
+                'planning' => $request->planning,
+                'price' => $request->price,
+            ];
+            // dd($data_diagnosis);
+            // $diagnosis = Diagnosis::update($data);
+            
+            $diagnosis->fill($data_diagnosis)->save();
+        }
+        
+        // $md5Name = md5_file($request->file('file')->getRealPath());
+        // $guessExtension = $request->file('file')->guessExtension();
+        // $request->file->storeAs('file', $md5Name . '.' . $guessExtension);
+
+        // $diagnosis = Diagnosis::find($id); 
+        // // $prescription = Prescription::where('diagnosis_id','=' , $id)->first();
+        // // $medicine_prescriptions = MedicinePrescription::where('prescription_id', '=', $prescription->id)->get();
+
+        // $data_diagnosis = [
+        //     'registration_id' => $request->registration_id,
+        //     'special_request' => $request->radio,
+        //     'evidence' => $md5Name . '.' . $guessExtension,
+        // ];
+
+        // // $diagnosis = Diagnosis::update($data);
+        
+        // $diagnosis->fill($data_diagnosis)->save();
 
         // $data_prescription = [            
         //     'diagnosis_id' => $prescription->diagnosis_id,

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('style')
+<link href="{{ asset('material/plugins/wizard/steps.css')}}" rel="stylesheet">
 <link href="{{ asset('material/plugins/select2/dist/css/select2.min.css')}}" rel="stylesheet" />
 <link href="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @endsection
@@ -20,13 +21,13 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-body ">
-                 <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
+            <div class="card-body wizard-content">
+                 <form action="{{ isset($diagnosis) ? route('midwife.diagnosis.update', $diagnosis-> id) : route('midwife.diagnosis.store')}}" method="POST" class="tab-wizard wizard-circle">
                     
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <!-- Step 1 -->
-                    <h3>Patient Info</h3>
-                    <hr>
+                    <h6>Patient Info</h6>
+                    <section>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -65,25 +66,25 @@
                             <br>
                             <div class="col-md-6">
                                     <div class="form-group">
-                                        <a href="{{ route('doctor.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
+                                        <a href="{{ route('midwife.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
                                     </div>
                                 </div>
                         </div>
-                    
+                    </section>
                     <!-- Step 2 -->
-                    <h3>Dignosis Result</h3>
-                    <hr>
+                    <h6>Dignosis Result</h6>
+                    <section>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <textarea name="subject" rows="6" class="form-control" value="{{ $diagnosis->subject }}" placeholder="{{ $diagnosis->subject }}" disabled></textarea>
+                                    <textarea name="subject" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->subject : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->subject : ''}}"></textarea>
                                     <label>Object</label>
-                                    <textarea name="object" rows="6" class="form-control" value="{{ $diagnosis->object }}" placeholder="{{ $diagnosis->object }}" disabled></textarea>
+                                    <textarea name="object" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->object : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->object : ''}}"></textarea>
                                     <label>Assesment</label>
-                                    <textarea name="assesment" rows="6" class="form-control" value="{{ $diagnosis->assesment }}" placeholder="{{ $diagnosis->assesment }}" disabled></textarea>
+                                    <textarea name="assesment" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->assesment : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->assesment : ''}}"></textarea>
                                     <label>Planning</label>
-                                    <textarea name="planning" rows="6" class="form-control" value="{{ $diagnosis->planning }}" placeholder="{{ $diagnosis->planning }}" disabled></textarea>
+                                    <textarea name="planning" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->planning : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->planning : ''}}"></textarea>
                                 </div>
                                 <div class="form-group">
                                         <label class="control-label">Special Request</label>
@@ -98,13 +99,22 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="from-group">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Price</h4>
+                                                <input type="number" class="form-control" name="price" required placeholder="{{ isset($diagnosis) ? $diagnosis->price : ''}}">
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
-                    
+                    </section>
                     <!-- Step 3 -->
-                    <h3>Prescription</h3>
-                    <hr>
+                    <h6>Input Prescription</h6>
+                    <section>
                         <div id="dynamic_field">
+                            @if(isset($medicine_prescriptions))
                             @foreach($medicine_prescriptions as $key => $row_mp)
                                 <div class="row" id="{{ 'row' . $key}}">
                                     <div class="col-md-6">
@@ -112,7 +122,7 @@
                                         <div class="form-group">
                                             <select class="select2" style="width: 100%" name="medicine[]">
                                                 @foreach($medicines as $row )
-                                                    <option disabled value="{{$row->id}}" {{ ($row_mp->medicine->id == $row->id) ? 'selected' : '' }}> {{$row->name}} </option>
+                                                    <option value="{{$row->id}}" {{ ($row_mp->medicine->id == $row->id) ? 'selected' : '' }}> {{$row->name}} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -120,21 +130,67 @@
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label class="control-label">Qty</label>
-                                            <input disabled class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" value="{{ isset($medicine_prescriptions) ? $row_mp->amount : ''}}" placeholder="{{ isset($medicine_prescription) ? $row_mp->amount : ''}}" name="amount[]"></div>
+                                            <input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" value="{{ isset($medicine_prescriptions) ? $row_mp->amount : ''}}" placeholder="{{ isset($medicine_prescription) ? $row_mp->amount : ''}}" name="amount[]"></div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                                             <label for="notation1">Notation :</label>
-                                            <input disabled name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($medicine_prescriptions) ? $row_mp->notation : ''}}" placeholder="{{ isset($medicine_prescriptions) ? $row_mp->notation : ''}}"></div>
+                                            <input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($medicine_prescriptions) ? $row_mp->notation : ''}}" placeholder="{{ isset($medicine_prescriptions) ? $row_mp->notation : ''}}"></div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                                <label for="notation1">Clear</label>
+                                                <button type="button" name="btn_remove" id="{{ $key }}" class="btn btn-danger btn_remove">X</button>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="form-actions">
-                                    <button type="button" href="{{ route('doctor.diagnosis.list')}}" class="btn btn-inverse">Back</button>
+                            @else
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="intType1">Medicine</label>
+                                    <div class="form-group">
+                                        <select class="select2" style="width: 100%" name="medicine[]">
+                                            @foreach($medicines as $row )
+                                                <option value="{{$row->id}}"> {{$row->name}} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label class="control-label">Qty</label>
+                                        <input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
+                                        <label for="notation1">Notation :</label>
+                                    <input name="notation[]" type="text" class="form-control" id="notation1" value=""></div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                            <label for="notation1">Clear</label>
+                                            <button type="button" name="btn_remove" id="0" class="btn btn-danger btn_remove">X</button>
+                                    </div>
+                                </div>
+                            <
+                            @endif
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <center>
+                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions): " " }}>Add medicine</button>
+                                </center>
+                                <br>
+                                <br>
                             </div>
                         </div>
-                    </div>
+                        </div>
+                    </section>
+                    
                 </form>
             </div>
         </div>
@@ -144,6 +200,9 @@
 
 @section('script')
 <script src="{{ asset('material/plugins/moment/min/moment.min.js')}}"></script>
+<script src="{{ asset('material/plugins/wizard/jquery.steps.min.js')}}"></script>
+<script src="{{ asset('material/plugins/wizard/jquery.validate.min.js')}}"></script>
+<script src="{{ asset('material/plugins/wizard/steps.js')}}"></script>
 <script src="{{ asset('material/plugins/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 <script>

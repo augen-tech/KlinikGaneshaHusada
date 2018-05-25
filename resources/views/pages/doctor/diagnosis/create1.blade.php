@@ -99,6 +99,14 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="from-group">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Price</h4>
+                                                <input type="number" class="form-control" name="price" required placeholder="{{ isset($diagnosis) ? $diagnosis->price : ''}}">
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </section>
@@ -174,7 +182,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <center>
-                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions): " " }}>Add medicine</button>
+                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions) : 0 }}>Add medicine</button>
                                 </center>
                                 <br>
                                 <br>
