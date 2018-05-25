@@ -77,13 +77,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <textarea name="subject" rows="6" class="form-control" value="{{ $diagnosis->subject }}" disabled></textarea>
+                                    <textarea name="subject" rows="6" class="form-control" value="{{ $diagnosis->subject }}" placeholder="{{ $diagnosis->subject }}" disabled></textarea>
                                     <label>Object</label>
-                                    <textarea name="object" rows="6" class="form-control" value="{{ $diagnosis->object }}" disabled></textarea>
+                                    <textarea name="object" rows="6" class="form-control" value="{{ $diagnosis->object }}" placeholder="{{ $diagnosis->object }}" disabled></textarea>
                                     <label>Assesment</label>
-                                    <textarea name="assesment" rows="6" class="form-control" value="{{ $diagnosis->assesment }}" disabled></textarea>
+                                    <textarea name="assesment" rows="6" class="form-control" value="{{ $diagnosis->assesment }}" placeholder="{{ $diagnosis->assesment }}" disabled></textarea>
                                     <label>Planning</label>
-                                    <textarea name="planning" rows="6" class="form-control" value="{{ $diagnosis->planning }}" disabled></textarea>
+                                    <textarea name="planning" rows="6" class="form-control" value="{{ $diagnosis->planning }}" placeholder="{{ $diagnosis->planning }}" disabled></textarea>
                                 </div>
                                 <div class="form-group">
                                         <label class="control-label">Special Request</label>
