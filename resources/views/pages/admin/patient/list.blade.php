@@ -23,14 +23,9 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Date</th>
-                            <th>Religion</th>
-                            <th>Gender</th>
-                            <th>Job</th>
-                            <th>Allergy History</th>
-                            <th>Disease History</th>
-                            <th>Disease History Family</th>
-                            <th>Blood Type</th>
                             <th>Address</th>
+                            <th>Blood Type</th>
+                            <th>Gender</th>
                             <th>Phone</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -42,14 +37,9 @@
                                 <td>{{$row->id}} </td>
                                 <td>{{$row->name}} </td>
                                 <td>{{$row->dob}} </td>
-                                <td>{{$row->religion}} </td>
-                                <td>{{$row->gender}}</td>
-                                <td>{{$row->job}} </td>
-                                <td>{{$row->allergy_history}} </td>
-                                <td>{{$row->disease_history}} </td>
-                                <td>{{$row->disease_history_family}} </td>
-                                <td>{{$row->blood_type}}</td>
                                 <td>{{$row->address}}</td>
+                                <td>{{$row->blood_type}}</td>
+                                <td>{{$row->gender}}</td>
                                 <td>{{$row->phone}}</td>
                                 <td><a href="{{ route('admin.patient.edit', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i></td>
                                 <td><a href="{{ route('admin.patient.destroy', $row->id)}}"><span><i class="mdi mdi-delete"></span></a></i></td>
