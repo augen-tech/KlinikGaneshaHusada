@@ -14,6 +14,17 @@ class Patient extends Model
         'blood_type',
         'gender',
         'phone',
+        'religion',
+        'parent_name',
+        'parent_job',
+        'child_order',
+        'birth_weight',
+        'birth_attendant',
+        'labor_method',
+        'job',
+        'allergy_history',
+        'disease_history',
+        'disease_history_family',
         
     ];
     public function registrations()
