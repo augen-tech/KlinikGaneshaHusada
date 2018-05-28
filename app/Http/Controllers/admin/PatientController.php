@@ -13,25 +13,45 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexchild()
     {
         //
         $patients = Patient::all();
-        return view('pages.admin.patient.list', compact('patients'));
-        
+        // return view('pages.admin.patient.list', compact('patients'));
+        return view('pages.admin.patient.listPatient.child', compact('patients'));
     }
+
+    public function indexadult()
+    {
+        //
+        $patients = Patient::all();
+        // return view('pages.admin.patient.list', compact('patients'));
+        return view('pages.admin.patient.listPatient.adult', compact('patients'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createchild()
     {
         //
-        $patients = Patient::all();
-        return view('pages.admin.patient.add', compact('patients'));
+        
+        // return view('pages.admin.patient.add', compact('patients'));
+        return view('pages.admin.patient.addPatient.child');
     }
+
+    public function createadult()
+    {
+        //
+       
+        // return view('pages.admin.patient.add', compact('patients'));
+        return view('pages.admin.patient.addPatient.adult');
+    }
+
+    
 
     /**
      * Store a newly created resource in storage.
@@ -42,17 +62,43 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         //
+
+        // return dd($request);
         $data=[
             'name'=> $request->name,
             'dob'=> $request->dob,
             'address' => $request->address,
-            'blood_type' => $request->blood_type,
+            'blood_type' => $request->blood,
             'gender' => $request->gender,
-            'phone' => $request->phone           
+            'phone' => $request->phone,
+
+            //anak
+            'parent_name' => $request->parent_name,
+            'parent_job' => $request->parent_job,
+            'child_order' => $request->child_order,
+            'birth_weight' => $request->birth_weight,
+            'birth_attendant' =>$request->birth_attendant,
+            'labor_method' =>$request->labor_method,
+
+            //adult
+            'religion' =>$request->religion,
+            'job' =>$request->job,
+            'allergy_history' =>$request->aHistory,
+            'disease_history' =>$request->dHistory,
+            'disease_history_family' =>$request->dHistoryF
+
+
         ];
 
         Patient::create($data);
-        return redirect()->route('admin.patient.list');
+        // return redirect()->route('admin.patient.list');
+        if ($request->religion == 'null'){
+            return redirect()->route('admin.patient.listchild');
+        }else {
+            return redirect()->route('admin.patient.listadult');
+
+        }
+        
     }
 
     /**
@@ -72,13 +118,22 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editchild($id)
     {
         //
         
         $patient = Patient :: find($id);
                 
-        return view('pages.admin.patient.add',compact('patient'));  
+        return view('pages.admin.patient.addPatient.child',compact('patient'));
+    }
+
+    public function editadult($id)
+    {
+        //
+        
+        $patient = Patient :: find($id);
+                
+        return view('pages.admin.patient.addPatient.adult',compact('patient'));
     }
 
     /**
@@ -99,7 +154,21 @@ class PatientController extends Controller
         $patient->fill($input)->save();
         // Session::flash('flash_message', 'Task successfully added!');
 
-        return redirect()->route('admin.patient.list');
+        if ($request->religion == 'null'){
+            return redirect()->route('admin.patient.listchild');
+        }else {
+            return redirect()->route('admin.patient.listadult');
+
+        }
+        
+        // if ($request->religion == 'null'){
+        //     return redirect()->route('admin.patient.listPatient.child');
+        // }else {
+        //     return redirect()->route('admin.patient.listPatient.adult');
+
+        // }
+
+        
     }
 
     /**
@@ -108,11 +177,21 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroychild($id)
     {
         //
         $patient = Patient::find($id);
         $patient->delete();
-        return redirect()->route('admin.patient.list');
+            return redirect()->route('admin.patient.listchild');
+            
+    }
+    
+    public function destroyadult($id)
+    {
+        //
+        $patient = Patient::find($id);
+        $patient->delete();
+            
+            return redirect()->route('admin.patient.listadult');
     }
 }

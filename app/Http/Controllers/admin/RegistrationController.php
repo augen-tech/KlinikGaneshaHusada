@@ -30,10 +30,12 @@ class RegistrationController extends Controller
     public function create()
     {
         //
-        $patients = Patient::all(); 
-        $role = Sentinel::findRoleById(3);        
-        $doctors = $role->users()->with('roles')->get();
-        return view('pages.admin.registration.add', compact ('patients','doctors'));
+        $patients = Patient::all();
+        $role1 = Sentinel::findRoleById(3);
+        $role2 = Sentinel::findRoleById(4);        
+        $doctors = $role1->users()->with('roles')->get();
+        $midwifes = $role2->users()->with('roles')->get();
+        return view('pages.admin.registration.add', compact ('patients','doctors','midwifes'));
     }
 
     /**
@@ -45,13 +47,20 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         //
-        
+        // return dd($request);
+        if($request->radio_type == 0)
+            $dpjp = $request->doctor_id;
+        else
+            $dpjp = $request->midwife_id;
+
         $data=[
             'patient_id'=> $request->patient_id,
-            'doctor_id'=> $request->doctor_id,
+            'doctor_id'=> $dpjp,
             'complaint'=> $request->complaint,
-            'type' => $request->type,
-            'blood_pressure' => $request->blood_pressure           
+            'type' => $request->radio_type,
+            'blood_pressure' => $request->blood_pressure,
+            'weight'=>$request->weight,
+            'high'=>$request->high,           
         ];
 
         Registration::create($data);
@@ -80,13 +89,15 @@ class RegistrationController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return dd ($request);
         $patients = Patient::all();
         $registration = Registration ::find($id);        
         
-        $role = Sentinel::findRoleById(3);        
-        $doctors = $role->users()->with('roles')->get();
-        return view('pages.admin.registration.add',compact('registration','patients','doctors'));
+        $role1 = Sentinel::findRoleById(3); 
+        $role2 = Sentinel::findRoleById(4);       
+        $doctors = $role1->users()->with('roles')->get();
+        $midwifes = $role2->users()->with('roles')->get();
+        return view('pages.admin.registration.add',compact('registration','patients','doctors','midwifes'));
     }
 
     /**
