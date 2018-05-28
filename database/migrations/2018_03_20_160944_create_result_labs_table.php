@@ -13,7 +13,7 @@ class CreateResultLabsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Result_Labs', function (Blueprint $table) {
+        Schema::create('result_labs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('diagnosis_id')->unsigned();
             $table->string('result');
