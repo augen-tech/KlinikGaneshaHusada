@@ -86,28 +86,17 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/admin/dashboard', 'admin\UserController@Dashboard') ->name('admin.dashboard');
     Route::get('/admin/registration/add', 'admin\RegistrationController@create') ->name('admin.registration.create');
     Route::get('/admin/registration/list', 'admin\RegistrationController@index') ->name('admin.registration.list');
-    Route::post('/admin/registration/store', 'admin\RegistrationController@store') ->name('admin.registration.store');
+    Route::get('/admin/registration/store', 'admin\RegistrationController@store') ->name('admin.registration.store');
     Route::get('/admin/registration/edit/{id}', 'admin\RegistrationController@edit') ->name('admin.registration.edit');
-    Route::post('/admin/registration/update/{id}', 'admin\RegistrationController@update') ->name('admin.registration.update');
+    Route::get('/admin/registration/update/{id}', 'admin\RegistrationController@update') ->name('admin.registration.update');
     Route::get('/admin/registration/destroy/{id}', 'admin\RegistrationController@destroy') ->name('admin.registration.destroy');
 
-    // Route::get('/admin/patient/add', 'admin\PatientController@create') ->name('admin.patient.create');
-    Route::get('/admin/patient/addPatient/child', 'admin\PatientController@createchild') ->name('admin.patient.createchild');
-    Route::get('/admin/patient/addPatient/adult', 'admin\PatientController@createadult') ->name('admin.patient.createadult');
-    
-    // Route::get('/admin/patient/list', 'admin\PatientController@index') ->name('admin.patient.list');
-    Route::get('/admin/patient/listPatient/adult', 'admin\PatientController@indexadult') ->name('admin.patient.listadult');
-    Route::get('/admin/patient/listPatient/child', 'admin\PatientController@indexchild') ->name('admin.patient.listchild');
-
-    Route::post('/admin/patient/store', 'admin\PatientController@store') ->name('admin.patient.store');
-
-    Route::get('/admin/patient/editchild/{id}', 'admin\PatientController@editchild') ->name('admin.patient.editchild');
-    Route::get('/admin/patient/editadult/{id}', 'admin\PatientController@editadult') ->name('admin.patient.editadult');
-
-    Route::post('/admin/patient/update/{id}', 'admin\PatientController@update') ->name('admin.patient.update');
-
-    Route::get('/admin/patient/destroychild/{id}', 'admin\PatientController@destroychild') ->name('admin.patient.destroychild');
-    Route::get('/admin/patient/destroyadult/{id}', 'admin\PatientController@destroyadult') ->name('admin.patient.destroyadult');
+    Route::get('/admin/patient/add', 'admin\PatientController@create') ->name('admin.patient.create');
+    Route::get('/admin/patient/list', 'admin\PatientController@index') ->name('admin.patient.list');
+    Route::get('/admin/patient/store', 'admin\PatientController@store') ->name('admin.patient.store');
+    Route::get('/admin/patient/edit/{id}', 'admin\PatientController@edit') ->name('admin.patient.edit');
+    Route::get('/admin/patient/update/{id}', 'admin\PatientController@update') ->name('admin.patient.update');
+    Route::get('/admin/patient/destroy/{id}', 'admin\PatientController@destroy') ->name('admin.patient.destroy');
 });
 
 Route::group(['middleware' => 'doctor'], function() {
