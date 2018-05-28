@@ -17,7 +17,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped">
+                <table id="myTable" class="table table-bordered table-striped" width="200px">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -32,28 +32,29 @@
                             <th>Blood Type</th>
                             <th>Address</th>
                             <th>Phone</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($patients as $row)
-                            <tr>
-                                <td>{{$row->id}} </td>
-                                <td>{{$row->name}} </td>
-                                <td>{{$row->dob}} </td>
-                                <td>{{$row->religion}} </td>
-                                <td>{{$row->gender}}</td>
-                                <td>{{$row->job}} </td>
-                                <td>{{$row->allergy_history}} </td>
-                                <td>{{$row->disease_history}} </td>
-                                <td>{{$row->disease_history_family}} </td>
-                                <td>{{$row->blood_type}}</td>
-                                <td>{{$row->address}}</td>
-                                <td>{{$row->phone}}</td>
-                                <td><a href="{{ route('admin.patient.edit', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i></td>
-                                <td><a href="{{ route('admin.patient.destroy', $row->id)}}"><span><i class="mdi mdi-delete"></span></a></i></td>
-                            </tr>                            
+                            @if ($row->child_order == 0 )
+                                <tr>
+                                    <td>{{$row->id}} </td>
+                                    <td>{{$row->name}} </td>
+                                    <td>{{$row->dob}} </td>
+                                    <td>{{$row->religion}} </td>
+                                    <td>{{$row->gender}}</td>
+                                    <td>{{$row->job}} </td>
+                                    <td>{{$row->allergy_history}} </td>
+                                    <td>{{$row->disease_history}} </td>
+                                    <td>{{$row->disease_history_family}} </td>
+                                    <td>{{$row->blood_type}}</td>
+                                    <td>{{$row->address}}</td>
+                                    <td>{{$row->phone}}</td>
+                                    <td><a href="{{ route('admin.patient.editadult', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i>
+                                        <a href="{{ route('admin.patient.destroyadult', $row->id)}}"><span><i class="mdi mdi-delete"></span></a></i></td>
+                                </tr>  
+                            @endif                          
                         @endforeach
                     </tbody>
                 </table>
