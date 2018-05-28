@@ -393,19 +393,30 @@
                                 <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-                                    <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
-                                        <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
+								<ul aria-expanded="false" class="collapse">
+									<li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
+									<li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
                                         
-                                    </ul>
-                                </li>
+								</ul>
+							</li>
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
-                                    <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
-                                    
+                                    <li>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Add Patient</span></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.patient.createchild')}}">Child</a></li>
+                                        <li><a href="{{ route('admin.patient.createadult')}}">Adult</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">List Patient</span></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.patient.listchild')}}">List Patient Child</a></li>
+                                        <li><a href="{{ route('admin.patient.listadult')}}">List Patient Adult</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             
