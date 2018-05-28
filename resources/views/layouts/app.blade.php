@@ -242,13 +242,13 @@
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="{{ asset('material/images/users/1.jpg') }}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="{{ asset('material/images/users/p3.png') }}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="{{ asset('material/images/users/2.jpg') }}" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="{{ asset('material/images/users/p3.jpg') }}" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                             </a>
@@ -279,14 +279,14 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('material/images/users/p3.png') }}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="{{ asset(Sentinel::getUser()->image) }}" alt="user"></div>
+                                            <div class="u-img"><img src="{{ asset('material/images/users/p3.png') }}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>{{ Sentinel::getUser()->username }}</h4>
+                                                <h4>Steave Jobs</h4>
                                                 <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
@@ -329,7 +329,7 @@
                 <!-- User profile -->
                 <div class="user-profile" style="background: url({{ asset('material/images/background/user-info.jpg') }}) no-repeat;">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="{{ asset(Sentinel::getUser()->image) }}" alt="user" /> </div>
+                    <div class="profile-img"> <img src="{{ asset('material/images/users/p3.png') }}" alt="user" /> </div>
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Sentinel::getUser()->name }}<span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
@@ -403,15 +403,26 @@
                             <li>
                                 <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
-                                    <li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
-                                    
+                                    <li>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Add Patient</span></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.patient.createchild')}}">Child</a></li>
+                                        <li><a href="{{ route('admin.patient.createadult')}}">Adult</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">List Patient</span></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                        <li><a href="{{ route('admin.patient.listchild')}}">List Patient Child</a></li>
+                                        <li><a href="{{ route('admin.patient.listadult')}}">List Patient Adult</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             
                             
                             
-                            <li>
+                            <!-- <li>
                                 {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="javascript:void(0)">item 1.1</a></li>
@@ -427,7 +438,7 @@
                                     </li>
                                     <li><a href="#">item 1.4</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'doctor')
                         <ul id="sidebarnav">
@@ -438,8 +449,7 @@
                             <li>
                                 <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
-                                    <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
+                                    <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
                                 </ul>
                             </li>
@@ -474,8 +484,7 @@
                         <li>
                             <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('midwife.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
-                                <li><a href="{{ route('midwife.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
+                                <li><a href="{{ route('midwife.diagnosis.add')}}"> Add Diagnosis</a></li>
                                 <li><a href="{{ route('midwife.diagnosis.list')}}">List Diagnosis</a></li>
                             </ul>
                         </li>
