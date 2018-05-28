@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Patient;
+use App\User;
 
 
 class RegistrationsTableSeeder extends Seeder
@@ -18,20 +19,13 @@ class RegistrationsTableSeeder extends Seeder
         $patients = Patient::all();
         
         $faker = Faker::create();
-        
-        foreach(range(0,10) as $index){
+        foreach(range(0,15) as $index){
             DB::table('registrations')->insert([
                 'patient_id' => $patients[rand(0, 10)]->id,
                 'doctor_id' => 3,
                 'complaint' => $faker->text($maxNbChars = 190), 
                 'type' => rand(0,1), 
-                'blood_pressure' => rand(50,100) . "/" . rand(50,100) , 
-                // 
-                'weight' => rand (10,250),
-                'high'=>rand (10,200),
-                // 'state' => 0,       
-                
-
+                'blood_pressure' => rand(50,100) . "/" . rand(50,100) ,           
             ]);
         }
     }
