@@ -150,7 +150,7 @@ Route::group(['middleware' => 'midwife'], function() {
     Route::get('/midwife/diagnosis/detail/{id}', 'midwife\DiagnosisController@show') ->name('midwife.diagnosis.detail');
     Route::get('/midwife/diagnosis/detail2/{id}', 'midwife\DiagnosisController@show2') ->name('midwife.diagnosis.detail2');
 
-    Route::get('/midwife/patient/list', 'PatientsController@Index1') ->name('midwife.patient.list');
+    // Route::get('/midwife/patient/list', 'PatientsController@Index1') ->name('midwife.patient.list');
     Route::get('/midwife/patient/detail/{id}', 'PatientsController@show1') ->name('midwife.patient.detail');
 });
 
