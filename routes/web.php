@@ -128,7 +128,7 @@ Route::group(['middleware' => 'doctor'], function() {
     Route::get('/doctor/diagnosis/detail/{id}', 'doctor\DiagnosisController@show') ->name('doctor.diagnosis.detail');
     Route::get('/doctor/diagnosis/detail2/{id}', 'doctor\DiagnosisController@show2') ->name('doctor.diagnosis.detail2');
 
-    Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
+    // Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
     Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');
 });
 

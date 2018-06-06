@@ -451,7 +451,7 @@
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
-                                    <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
+                                    {{-- <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li> --}}
                                 </ul>
                             </li>
                             
