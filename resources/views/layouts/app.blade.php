@@ -451,13 +451,13 @@
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
-                                    {{-- <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li> --}}
+                                    <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
                                 </ul>
                             </li>
                             
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                            </li>
+                            </li> --}}
                             <li>
                                 {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
                                 <ul aria-expanded="false" class="collapse">
@@ -491,9 +491,9 @@
                             </ul>
                         </li>
                         
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('midwife.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                        </li>
+                        </li> --}}
                         <li>
                             {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
                             <ul aria-expanded="false" class="collapse">
