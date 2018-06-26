@@ -86,8 +86,9 @@
                                     <label>Planning</label>
                                     <textarea name="planning" rows="6" class="form-control" value="{{ isset($diagnosis) ? $diagnosis->planning : ''}}" placeholder="{{ isset($diagnosis) ? $diagnosis->planning : ''}}"></textarea>
                                 </div>
+                                <h3 class="box-title m-t-40">Special Request</h3>
+                                <hr>
                                 <div class="form-group">
-                                        <label class="control-label">Special Request</label>
                                         <div class="m-b-10">
                                             <label class="custom-control custom-radio">
                                                 <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" {{ isset($diagnosis) ? ($diagnosis->special_request == 1) ? 'checked' : '' : ''}}>
@@ -98,7 +99,14 @@
                                                 <span class="custom-control-label">no</span>
                                             </label>
                                         </div>
+                                        <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Field Special Request</label>
+                                                    <textarea name="field_sr" rows="6"  class="form-control" placeholder="{{ isset($diagnosis) ? $diagnosis->field_sr : ''}}"></textarea>
+                                                </div> 
+                                            </div>
                                     </div>
+                                
                                     <div class="col-md-6">
                                         <div class="from-group">
                                             <div class="card-body">
