@@ -24,6 +24,7 @@ class CreateDiagnosesTable extends Migration
             $table->string('price')->nullable();
             $table->string('result')->nullable();
             $table->integer('special_request');
+            $table->string('field_sr')->nullable();
             $table->timestamps();
 
             $table->foreign('registration_id')
