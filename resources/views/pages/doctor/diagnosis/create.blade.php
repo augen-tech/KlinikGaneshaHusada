@@ -79,6 +79,34 @@
                                 </div>
                             </div>
                         </div>
+                        <h3 class="box-title m-t-40">Special Request</h3>
+                        <hr>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{-- <label class="control-label">Special Request</label> --}}
+                                <div class="m-b-10">
+                                    <label class="custom-control custom-radio">
+                                        <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" {{ isset($diagnosis) ? ($diagnosis->special_request == 1) ? 'checked' : '' : ''}}>
+                                        <span class="custom-control-label">yes</span>
+                                    </label>
+                                    <label class="custom-control custom-radio">
+                                        <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" {{ isset($diagnosis) ? ($diagnosis->special_request == 0) ? 'checked' : '' : ''}}>
+                                        <span class="custom-control-label">no</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                        <h4 class="card-title">Field Special Request</h4>
+                                        <textarea rows="6" name="field_sr" class="form-control" placeholder="{{ isset($diagnosis) ? $diagnosis->field_sr : ''}}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
 
                         <h3 class="box-title m-t-40">Input Prescription</h3>
                         <hr>
@@ -159,25 +187,10 @@
                         
                         <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Special Request</label>
-                                        <div class="m-b-10">
-                                            <label class="custom-control custom-radio">
-                                                <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" {{ isset($diagnosis) ? ($diagnosis->special_request == 1) ? 'checked' : '' : ''}}>
-                                                <span class="custom-control-label">yes</span>
-                                            </label>
-                                            <label class="custom-control custom-radio">
-                                                <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" {{ isset($diagnosis) ? ($diagnosis->special_request == 0) ? 'checked' : '' : ''}}>
-                                                <span class="custom-control-label">no</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="from-group">
                                         <div class="card-body">
                                             <h4 class="card-title">Price</h4>
-                                            <input type="number" class="form-control" name="price" required>
+                                            <input type="number" class="form-control" name="price" placeholder="{{ isset($diagnosis) ? $diagnosis->price : ''}}" required>
                                         </div>
                                     </div>
                                 </div>

@@ -89,7 +89,9 @@ class DiagnosisController extends Controller
                 $data_diagnosis = [
                     'registration_id' => $request->registration_id,
                     'special_request' => $request->radio,
+                    'field_sr' => $request->field_sr,
                     'evidence' => $path,
+                    'price' => $request->price,
                 ];
 
                 $diagnosis = Diagnosis::create($data_diagnosis);
@@ -113,6 +115,7 @@ class DiagnosisController extends Controller
                 'object' => $request->object,
                 'assesment' => $request->assesment,
                 'planning' => $request->planning,
+                'field_sr' => $request->field_sr,
                 'price' => $request->price,
             ];      
            
