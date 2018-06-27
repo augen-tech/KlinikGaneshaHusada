@@ -33,10 +33,10 @@
                         <input name="dob" type="date" class="form-control" value="{{isset ($patient) ? $patient->dob : ""  }}" placeholder= {{isset ($patient) ? $patient->dob : ""  }}>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Address</label>
                         <input name="address" type="text" class="form-control" value="{{isset ($patient) ? $patient->address : ""  }}" placeholder= {{isset ($patient) ? $patient->address : ""  }} >
-                    </div>
+                    </div> -->
 
                     <div class="form-group" >
                         <label class="control-label">Blood Type</label>
@@ -75,10 +75,10 @@
                         </select> -->
                     </div>
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label">Phone Number</label>
-                        <input name="phone" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder= {{isset ($patient) ? $patient->phone : ""  }}>                            
-                    </div>
+                        <input name="phone" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder= {{isset ($patient) ? $patient->phone : ""  }}>                            
+                    </div> -->
 
                     <div class="form-group">
                         <label class="control-label">Gender</label>
@@ -110,12 +110,12 @@
 
                     <div class="form-group">
                         <label class="control-label">Child Order</label>
-                        <input name="child_order" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->child_order : ""  }}" placeholder= {{isset ($patient) ? $patient->child_order : ""  }}>                            
+                        <input name="child_order" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->child_order : ""  }}" placeholder= {{isset ($patient) ? $patient->child_order : ""  }}>                            
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Birth Weight</label>
-                        <input name="birth_weight" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->birth_weight : ""  }}" placeholder= {{isset ($patient) ? $patient->birth_weight : ""  }}>                            
+                        <input name="birth_weight" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->birth_weight : ""  }}" placeholder= {{isset ($patient) ? $patient->birth_weight : ""  }}>                            
                     </div>
 
                     <div class="form-group">

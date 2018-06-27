@@ -25,8 +25,8 @@
                             <th>Parent Name</th>
                             <th>Parent Job</th>
                             <th>Date</th>
-                            <th>Address</th>
-                            <th>Phone</th>
+                            <!-- <th>Address</th>
+                            <th>Phone</th> -->
                             <th>Gender</th>
                             <th>Blood Type</th>
                             <th>Child Order</th>
@@ -45,8 +45,8 @@
                                     <td>{{$row->parent_name}} </td>
                                     <td>{{$row->parent_job}} </td>
                                     <td>{{$row->dob}}</td>
-                                    <td>{{$row->address}} </td>
-                                    <td>{{$row->phone}} </td>
+                                    <!-- <td>{{$row->address}} </td>
+                                    <td>{{$row->phone}} </td> -->
                                     <td>{{$row->gender}} </td>
                                     <td>{{$row->blood_type}} </td>
                                     <td>{{$row->child_order}}</td>

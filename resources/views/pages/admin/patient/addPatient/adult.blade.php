@@ -74,7 +74,7 @@
 
                     <div class="form-group">
                         <label class="control-label">Phone Number</label>
-                        <input name="phone" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder={{isset ($patient) ? $patient->phone : ""  }}>                            
+                        <input name="phone" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder={{isset ($patient) ? $patient->phone : ""  }}>                            
                     </div>
                         
                     <div class="form-group">
