@@ -23,18 +23,18 @@
                 <form action="{{ isset($diagnosis) ? route('doctor.diagnosis.update', $diagnosis-> id) : route('doctor.diagnosis.store')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <div class="form-body">
-                        <h3 class="card-title">Patient Info</h3>
+                        <h3 class="card-title">Informasi Pasien</h3>
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="idPatient1">Id Patient :</label>
+                                    <label for="idPatient1">Id Pasien :</label>
                                 <input type="text" class="form-control" disabled id="idPatient1" value="{{$registration->patient->id}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phoneNumber1">Phone Number :</label>
+                                    <label for="phoneNumber1">Nomor Telepon :</label>
                                     <input type="tel" class="form-control" disabled id="phoneNumber1" value="{{$registration->patient->phone}}">
                                 </div>
                             </div>
@@ -42,13 +42,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name1">Patient Name :</label>
+                                    <label for="name1">Nama Pasien :</label>
                                 <input type="text" class="form-control" disabled id="name1" value="{{$registration->patient->name}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date1">Date of Birth :</label>
+                                    <label for="date1">Tanggal Lahir :</label>
                                     <input type="date" class="form-control" id="date1" disabled value="{{$registration->patient->dob}}"> 
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="address1"> Address :</label>
+                                    <label for="address1"> Alamat :</label>
                                     <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->address}}">
                                 </div>
                             </div>
