@@ -31,9 +31,9 @@ class ReferenceController extends Controller
 
     public function list()
     {
-        $diagnoses = Diagnosis::all();
-        dd($diagnosis);
-        return view('pages.doctor.reference.list', compact('diagnoses'));
+        $references = Reference::all();
+        // dd($references);
+        return view('pages.doctor.reference.list', compact('references'));
     }
 
     /**
@@ -104,6 +104,11 @@ class ReferenceController extends Controller
     public function edit($id)
     {
         //
+        $reference = Reference::find($id);
+        // dd($reference);
+        $diagnosis = Diagnosis::where('id','=',$reference->diagnosis_id)->first();  
+        // dd($diagnosis);      
+        return view('pages.doctor.reference.reference  ',compact('diagnosis')); 
     }
 
     /**
@@ -138,5 +143,8 @@ class ReferenceController extends Controller
     public function destroy($id)
     {
         //
+        $references = Reference::find($id)->delete();
+        
+        return redirect()->route('doctor.reference.list');
     }
 }

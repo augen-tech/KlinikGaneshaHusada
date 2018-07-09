@@ -33,18 +33,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($diagnoses as $row)
+                            @foreach($references as $row)
                                 <tr>
                                     <td><center>{{ $row->id }}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td><a href="{{ route('doctor.patient.detail', $row->registration->patient->id) }}">
-                                            {{ $row->registration->patient->name }}
+                                    <td><a href="{{ route('doctor.patient.detail', $row->diagnosis->registration->patient->id) }}">
+                                            {{ $row->diagnosis->registration->patient->name }}
                                             <br>
-                                            ID : {{ str_pad($row->registration->patient->id,6,0,STR_PAD_LEFT) }}
+                                            ID : {{ str_pad($row->diagnosis->registration->patient->id,6,0,STR_PAD_LEFT) }}
                                         </a>
                                     </td>
-                                    <td><center>{{ $row->reference->hospital }}</center></td>
-                                    
+                                    <td>{{ $row->hospital }}</td>
+                                    <td><center>   
+                                            <a href="{{ route('doctor.reference.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
+                                            <a href="{{ route('doctor.reference.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
+                                            
+                                            {{-- <a href="{{ route('doctor.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a> --}}
+                                        </center>
+                                    </td>
                                 </tr>                            
                             @endforeach
                         </tbody>
