@@ -11,6 +11,7 @@ use App\Medicine;
 use App\MedicinePrescription;
 use App\Prescription;
 use App\Patient;
+use App\ResultLab;
 use Validator;
 use Storage;
 
@@ -21,6 +22,20 @@ class DiagnosisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index2($onPatientList)
+    {
+        //
+        $resultLabs = ResultLab::all();
+        $patients = Patient::all();
+
+        if($onPatientList == 1){
+            return view('pages.doctor.listHA',compact('resultLabs','patients'));
+        }else{
+            return view('pages.listHA',compact('resultLabs'));
+        }
+    }
+
     public function index()
     {
         //
@@ -28,11 +43,7 @@ class DiagnosisController extends Controller
         return view('pages.doctor.diagnosis.list', compact('diagnoses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create($id)
     {
         //
@@ -59,8 +70,7 @@ class DiagnosisController extends Controller
     {
         //
         
-        $registration = Registration::find($id);
-        $medicines = Medicine::all();
+        $diagnosis = Diagnosis::find($id);
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.doctor.diagnosis.create1', compact('registration','medicines'));
@@ -163,6 +173,7 @@ class DiagnosisController extends Controller
             ];
             $medicine_prescription = MedicinePrescription::create($data_mp);    
         }
+
 
         return redirect()->route('doctor.diagnosis.list');
         // $notification = [

@@ -12,7 +12,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
             
-            <li class="breadcrumb-item"><a href="{{ route('doctor.patient.list')}}">Patient</a></li>
+            {{-- <li class="breadcrumb-item"><a href="{{ route('doctor.patient.list')}}">Patient</a></li> --}}
             <li class="breadcrumb-item active">Patient Detail</li>
         </ol>
     </div>
@@ -95,11 +95,11 @@
                                 <td>{{ $row->diagnosis->id}}</td>
                                 <td>{{ $row->diagnosis->created_at}}</td>
                                 <td>
-                                        @if (isset($row->evidence)){
-                                            <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>                                    
-                                        @else
-                                            <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>                                    
-                                        @endif
+                                    @if (isset($row->evidence)){
+                                        <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>                                    
+                                    @else
+                                        <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>                                    
+                                    @endif
                                 </td>
                             </tr>
                         @endif

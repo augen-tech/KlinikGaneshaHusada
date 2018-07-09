@@ -130,6 +130,14 @@ Route::group(['middleware' => 'doctor'], function() {
 
     // Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
     Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');
+    
+    Route::get('/doctor/reference/add/', 'doctor\ReferenceController@add') ->name('doctor.reference.add');
+    Route::get('/doctor/reference/send/{id}', 'doctor\ReferenceController@send') ->name('doctor.reference.send');
+    Route::post('/doctor/reference/store', 'doctor\ReferenceController@store') ->name('doctor.reference.store');
+    // Route::post('/doctor/reference/list/{id}', 'doctor\ReferenceController@update') ->name('doctor.reference.update');
+    Route::post('/doctor/reference/list/', 'doctor\ReferenceController@list') ->name('doctor.reference.list');
+    Route::get('/doctor/listHealthAnalyst/{onPatientList}', 'doctor\DiagnosisController@Index') ->name('doctor.listHA');   
+    
 });
 
 Route::group(['middleware' => 'midwife'], function() {
