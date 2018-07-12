@@ -8,11 +8,11 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Diagnosis Proceed</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Data Diagnosis</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Diagnosis</a></li>
-            <li class="breadcrumb-item">Update Diagnosis</li>
-            <li class="breadcrumb-item active">Diagnosis Proceed</li>
+            <li class="breadcrumb-item">Perbarui Diagnosis</li>
+            <li class="breadcrumb-item active">Data Diagnosis</li>
         </ol>
     </div>
 </div>
@@ -27,18 +27,18 @@
                     
                     <input type="hidden" name="registration_id" value="{{ $diagnoses->registration->id}}">
                     <!-- Step 1 -->
-                    <h6>Patient Info</h6>
+                    <h6>Info Pasien</h6>
                     <section>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="idPatient1">Id Patient :</label>
+                                    <label for="idPatient1">Id Pasien :</label>
                                 <input type="text" class="form-control" disabled id="idPatient1" value="{{$diagnoses->registration->patient->id}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phoneNumber1">Phone Number :</label>
+                                    <label for="phoneNumber1">Nomor Telepon :</label>
                                     <input type="tel" class="form-control" disabled id="phoneNumber1" value="{{$diagnoses->registration->patient->phone}}">
                                 </div>
                             </div>
@@ -46,13 +46,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name1">Patient Name :</label>
+                                    <label for="name1">Nama Pasien :</label>
                                 <input type="text" class="form-control" disabled id="name1" value="{{$diagnoses->registration->patient->name}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date1">Date of Birth :</label>
+                                    <label for="date1">Tanggal Lahir :</label>
                                     <input type="date" class="form-control" id="date1" disabled value="{{$diagnoses->registration->patient->dob}}"> 
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="address1"> Address :</label>
+                                    <label for="address1"> Alamat :</label>
                                     <input type="text" class="form-control" disabled id="address1" value="{{$diagnoses->registration->patient->address}}">
                                 </div>
                             </div>
@@ -73,13 +73,13 @@
                         </div>
                     </section>
                     <!-- Step 2 -->
-                    <h6>Dignosis Result</h6>
+                    <h6>Hasil Diagnosis</h6>
                     <section>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Result :</label>
-                                    <textarea name="result" rows="6" class="form-control" placeholder="Patient's Result"></textarea>
+                                    <label>Hasil :</label>
+                                    <textarea name="result" rows="6" class="form-control" placeholder="Hasil Pasien"></textarea>
                                     <label>Special Request :</label>
                                     <textarea name="special_request" rows="6" class="form-control" placeholder="Patient's Special Request"></textarea>
                                 </div>
@@ -87,14 +87,14 @@
                         </div>
                     </section>
                     <!-- Step 3 -->
-                    <h6>Input Prescription</h6>
+                    <h6>Masukan Resep</h6>
                     <section>
                         <div id="dynamic_field">
                             @if(isset($medicine_prescriptions))
                             @foreach($medicine_prescriptions as $key => $row_mp)
                                 <div class="row" id="{{ 'row' . $key}}">
                                     <div class="col-md-6">
-                                        <label for="intType1">Medicine</label>
+                                        <label for="intType1">Obat</label>
                                         <div class="form-group">
                                             <select class="select2" style="width: 100%" name="medicine[]">
                                                 @foreach($medicines as $row )
@@ -111,12 +111,12 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <input type="hidden" name="registration_id" value="{{ $diagnoses->registration->id}}">
-                                            <label for="notation1">Notation :</label>
+                                            <label for="notation1">Keterangan :</label>
                                             <input name="notation[]" type="text" class="form-control" id="notation1" value="{{$row_mp->notation}}" placeholder="{{$row_mp->notation}}"></div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                                <label for="notation1">Clear</label>
+                                                <label for="notation1">Hapus</label>
                                                 <button type="button" name="btn_remove" id="{{ $key }}" class="btn btn-danger btn_remove">X</button>
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@
                             @else
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="intType1">Medicine</label>
+                                    <label for="intType1">Obat</label>
                                     <div class="form-group">
                                         <select class="select2" style="width: 100%" name="medicine[]">
                                             @foreach($medicines as $row )
@@ -142,12 +142,12 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden" name="registration_id" value="{{ $diagnoses->registration->id}}">
-                                        <label for="notation1">Notation :</label>
+                                        <label for="notation1">Keterangan :</label>
                                     <input name="notation[]" type="text" class="form-control" id="notation1" value=""></div>
                                 </div>
                                 <div class="col-md-1">
                                     <div class="form-group">
-                                            <label for="notation1">Clear</label>
+                                            <label for="notation1">Hapus</label>
                                             <button type="button" name="btn_remove" id="0" class="btn btn-danger btn_remove">X</button>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <center>
-                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions) : 0 }}>Add medicine</button>
+                                    <button name="add" id="add" type="button" class="btn btn-block btn-info" data-count={{ isset($medicine_prescriptions) ? count($medicine_prescriptions) : 0 }}>Tambah Obat</button>
                                 </center>
                                 <br>
                                 <br>

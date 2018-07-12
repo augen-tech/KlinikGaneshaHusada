@@ -27,7 +27,7 @@ class CreatePatientsTable extends Migration
 
     }
 
-    /**
+    /** 
      * Reverse the migrations.
      *
      * @return void

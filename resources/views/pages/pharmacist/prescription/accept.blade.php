@@ -3,11 +3,11 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Accept Prescription</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Tagihan Resep</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Prescription</a></li>
-            <li class="breadcrumb-item">Confirm Prescription</li>
-            <li class="breadcrumb-item active">Accept Prescription</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Resep</a></li>
+            <li class="breadcrumb-item">Konfirmasi Resep</li>
+            <li class="breadcrumb-item active">Tagihan Resep</li>
         </ol>
     </div>
 </div>
@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-body printableArea">
-            <h3><b>INVOICE</b> <span class="pull-right">#5669626</span></h3>
+            <h3><b>Tagihan Resep</b> <span class="pull-right">#5669626</span></h3>
             <hr>
             <div class="row">
                 <div class="col-md-12">
@@ -32,13 +32,13 @@
                     </div>
                     <div class="pull-right text-right">
                         <address>
-                            <h3>To,</h3>
+                            <h3>Kepada,</h3>
                             <h4 class="font-bold">{{$prescription->diagnosis->registration->patient->name}},</h4>
                             <p class="text-muted m-l-30">
                                 {{$prescription->diagnosis->registration->patient->address}}
                             </p>
-                            <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> {{$prescription->diagnosis->created_at}}</p>
-                            <p><b>Due Date :</b> <i class="fa fa-calendar"></i> {{$prescription->created_at}}</p>
+                            <p class="m-t-30"><b>Terbuat :</b> <i class="fa fa-calendar"></i> {{$prescription->diagnosis->created_at}}</p>
+                            <p><b>Jatuh Tempo :</b> <i class="fa fa-calendar"></i> {{$prescription->created_at}}</p>
                         </address>
                     </div>
                 </div>
@@ -48,11 +48,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th>Description</th>
-                                    <th class="text-right">Quantity</th>
-                                    <th class="text-right">Notation</th>
-                                    <th class="text-right">Unit Cost</th>
-                                    <th class="text-right">Total</th>
+                                    <th>Deskripsi</th>
+                                    <th class="text-right">Jumlah</th>
+                                    <th class="text-right">Keterangan</th>
+                                    <th class="text-right">Harga</th>
+                                    <th class="text-right">Total Harga</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,7 +67,7 @@
                                 @if($prescription->diagnosis->special_request != null)
                                     <tr>
                                         <td class="text-center">2</td>
-                                        <td>Special Request</td>
+                                        <td>Permintaan Khusus</td>
                                         <td class="text-right"></td>
                                         <td class="text-right">{{$prescription->diagnosis->special_request}}</td>
                                         <td class="text-right">Rp. 50000</td>
@@ -81,7 +81,7 @@
                                         @else
                                             <td class="text-center">{{$key+2}}</td>
                                         @endif
-                                        <td>Medicine: {{$row->medicine->name}}</td>
+                                        <td>Obat: {{$row->medicine->name}}</td>
                                         <td class="text-right">{{$row->amount}}</td>
                                         <td class="text-right">{{$row->notation}}</td>
                                         <td class="text-right">Rp. {{$row->medicine->price}}</td>
@@ -94,8 +94,8 @@
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
-                        <p>Sub - Total amount: {{$subtotal}}</p>
-                        <p>tax (10%) : {{$tax}}</p>
+                        <p>Sub - Total Jumlah: {{$subtotal}}</p>
+                        <p>Pajak (10%) : {{$tax}}</p>
                         <hr>
                         <h3><b>Total :</b> {{$prescription->total_price}}</h3>
                     </div>
@@ -103,7 +103,7 @@
                     <hr>
                     @if($prescription->status == 'no')
                         <div class="text-right">
-                            <a href="{{ route('pharmacist.prescription.store', $prescription->id) }}"><button class="btn btn-danger" type="button"> Proceed to payment </button></a>
+                            <a href="{{ route('pharmacist.prescription.store', $prescription->id) }}"><button class="btn btn-danger" type="button"> Melakukan Pembayaran </button></a>
                             <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
                         </div>    
                     @elseif($prescription->status == 'yes')
