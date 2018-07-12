@@ -23,9 +23,10 @@ class PatientsController extends Controller
     public function show($id)
     {
         // //
-        $patient =Patient::find($id);
-        $registration = Registration::where('patient_id','=', $id)->get();
-        // dd($registration);
+        
+        $registration = Registration::where('id','=', $id)->get();
+        $patient =Patient::where('id','=',$registration->patient_id)->get();
+        dd($patient);
         // $diagnosis = Diagnosis::where('registration_id','=', $registration->id)->get();
         // dd($diagnosis);
 

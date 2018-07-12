@@ -25,18 +25,18 @@
                     
                     <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
                     <!-- Step 1 -->
-                    <h3>Patient Info</h3>
+                    <h3>Informasi Pasien</h3>
                     <hr>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="idPatient1">Id Patient :</label>
+                                    <label for="idPatient1">Id Pasien :</label>
                                 <input type="text" class="form-control" disabled id="idPatient1" value="{{$registration->patient->id}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phoneNumber1">Phone Number :</label>
+                                    <label for="phoneNumber1">Nomor Telepon :</label>
                                     <input type="tel" class="form-control" disabled id="phoneNumber1" value="{{$registration->patient->phone}}">
                                 </div>
                             </div>
@@ -44,13 +44,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name1">Patient Name :</label>
+                                    <label for="name1">Nama Pasien :</label>
                                 <input type="text" class="form-control" disabled id="name1" value="{{$registration->patient->name}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date1">Date of Birth :</label>
+                                    <label for="date1">Tanggal Lahir :</label>
                                     <input type="date" class="form-control" id="date1" disabled value="{{$registration->patient->dob}}"> 
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="address1"> Address :</label>
+                                    <label for="address1"> Alamat :</label>
                                     <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->address}}">
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                         </div>
                     
                     <!-- Step 2 -->
-                    <h3>Dignosis Result</h3>
+                    <h3>Hasil Diagnosis</h3>
                     <hr>
                         <div class="row">
                             <div class="col-md-12">
@@ -86,15 +86,15 @@
                                     <textarea name="planning" rows="6" class="form-control" value="{{ $diagnosis->planning }}" placeholder="{{ $diagnosis->planning }}" disabled></textarea>
                                 </div>
                                 <div class="form-group">
-                                        <label class="control-label">Special Request</label>
+                                        <label class="control-label">Permintaan Khusus</label>
                                         <div class="m-b-10">
                                             <label class="custom-control custom-radio">
                                                 <input required id="radio5" name="radio" type="radio" class="custom-control-input" value="1" {{ isset($diagnosis) ? ($diagnosis->special_request == 1) ? 'checked' : '' : ''}}>
-                                                <span class="custom-control-label">yes</span>
+                                                <span class="custom-control-label">Ya</span>
                                             </label>
                                             <label class="custom-control custom-radio">
                                                 <input id="radio6" name="radio" type="radio" class="custom-control-input" value="0" {{ isset($diagnosis) ? ($diagnosis->special_request == 0) ? 'checked' : '' : ''}}>
-                                                <span class="custom-control-label">no</span>
+                                                <span class="custom-control-label">Tidak</span>
                                             </label>
                                         </div>
                                     </div>
@@ -102,13 +102,13 @@
                         </div>
                     
                     <!-- Step 3 -->
-                    <h3>Prescription</h3>
+                    <h3>Resep</h3>
                     <hr>
                         <div id="dynamic_field">
                             @foreach($medicine_prescriptions as $key => $row_mp)
                                 <div class="row" id="{{ 'row' . $key}}">
                                     <div class="col-md-6">
-                                        <label for="intType1">Medicine</label>
+                                        <label for="intType1">Obat</label>
                                         <div class="form-group">
                                             <select class="select2" style="width: 100%" name="medicine[]">
                                                 @foreach($medicines as $row )
@@ -119,19 +119,19 @@
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <label class="control-label">Qty</label>
+                                            <label class="control-label">Jumlah</label>
                                             <input disabled class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" value="{{ isset($medicine_prescriptions) ? $row_mp->amount : ''}}" placeholder="{{ isset($medicine_prescription) ? $row_mp->amount : ''}}" name="amount[]"></div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <input type="hidden" name="registration_id" value="{{ $registration-> id}}">
-                                            <label for="notation1">Notation :</label>
+                                            <label for="notation1">Aturan :</label>
                                             <input disabled name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($medicine_prescriptions) ? $row_mp->notation : ''}}" placeholder="{{ isset($medicine_prescriptions) ? $row_mp->notation : ''}}"></div>
                                     </div>
                                 </div>
                             @endforeach
                             <div class="form-actions">
-                                    <button type="button" href="{{ route('doctor.diagnosis.list')}}" class="btn btn-inverse">Back</button>
+                                    <button type="button" href="{{ route('doctor.diagnosis.list')}}" class="btn btn-inverse">Kembali</button>
                             </div>
                         </div>
                     </div>

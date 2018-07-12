@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Add Diagnosis</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Tambah Diagnosis</li>
+            <li class="breadcrumb-item active">Add Diagnosis</li>
         </ol>
     </div>
 </div>
@@ -26,19 +26,27 @@
                         <tr>
                             <th style="width : 5%">ID</th>
                             <th>Tanggal</th>
-                            <th style="width : 30%">Pasien</th>
-                            <th style="width : 40%">Komplain</th>
+                            <th style="width : 50%">Pasien</th>
+                            <th style="width : 10%">Diagnosis</th>
                             <th style="width : 10%">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($registrations as $row)
+                        @foreach($diagnoses as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->created_at }}</td>
-                                <td>{{ $row->patient->name }}</td>
-                                <td>{{ $row->complaint }}</td>
-                                <td><a href="{{ route('midwife.diagnosis.create1', $row->id)}}"><center><span><i class="fa fa-stethoscope"></i></span></center></a></td>
+                                <td>{{ $row->registration->patient->name }}</td>
+                                <td>
+                                    @if (isset($row->evidence))
+                                        <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
+                                
+                                    
+                                    @else
+                                        <a href="#"><span><i class="fa fa-search"></i></span></a>
+                                    @endif
+                                </td>
+                                <td><a href="{{ route('doctor.reference.send', $row->id)}}"><center><span><i class="fa fa-ambulance"></i></span></center></a></td>
                             </tr>                            
                         @endforeach
                     </tbody>

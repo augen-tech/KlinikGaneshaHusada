@@ -451,30 +451,28 @@
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{ route('doctor.diagnosis.add')}}"> Add Diagnosis by Photo</a></li>
                                     <li><a href="{{ route('doctor.diagnosis.add1')}}"> Add Diagnosis by System</a></li>
-                                    <li><a href="{{ route('doctor.diagnosis.list')}}">List Diagnosis</a></li>
+                                    <li><a href="{{ route('doctor.diagnosis.list')}}">Daftar Diagnosis</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" aria-expanded="false"><i class="fa fa-hospital-o"></i><span class="hide-menu">Rujukan</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{ route('doctor.reference.add')}}">Tambah Rujukan</a></li>
+                                    <li><a href="{{ route('doctor.reference.list')}}">Daftar Rujukan</a></li>
                                 </ul>
                             </li>
                             
+                            @php ($onPatientList = 0)
                             <li>
+                                <a href="{{ route('doctor.listHA',$onPatientList)}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Daftar Hasil Lab</span></a>
+                            </li>
+                            
+                            
+                            {{-- <li>
                                 <a href="{{ route('doctor.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                            </li>
-                            <li>
-                                {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="javascript:void(0)">item 1.1</a></li>
-                                    <li><a href="javascript:void(0)">item 1.2</a></li>
-                                    <li>
-                                        <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                        <ul aria-expanded="false" class="collapse">
-                                            <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                            <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                            <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                            <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">item 1.4</a></li>
-                                </ul>
-                            </li>
+                            </li> --}}
+                            
                         </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'midwife')
                     <ul id="sidebarnav">
@@ -491,25 +489,20 @@
                             </ul>
                         </li>
                         
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('midwife.patient.list')}}" aria-expanded="false"><i class="fa fa-wheelchair"></i><span class="hide-menu">Patients</span></a>
-                        </li>
+                        </li> --}}
                         <li>
-                            {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}
+                            <a href="#" aria-expanded="false"><i class="fa fa-hospital-o"></i><span class="hide-menu">Rujukan</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void(0)">item 1.1</a></li>
-                                <li><a href="javascript:void(0)">item 1.2</a></li>
-                                <li>
-                                    <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                        <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                        <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                        <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">item 1.4</a></li>
+                                <li><a href="{{ route('midwife.reference.add')}}">Tambah Rujukan</a></li>
+                                <li><a href="{{ route('midwife.reference.list')}}">Daftar Rujukan</a></li>
                             </ul>
+                        </li>
+                        
+                        @php ($onPatientList = 0)
+                        <li>
+                            <a href="{{ route('midwife.listHA',$onPatientList)}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Daftar Hasil Lab</span></a>
                         </li>
                     </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'healthAnalyst')
