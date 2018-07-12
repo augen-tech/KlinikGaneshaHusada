@@ -80,8 +80,8 @@
                                 <div class="form-group">
                                     <label>Hasil :</label>
                                     <textarea name="result" rows="6" class="form-control" placeholder="Hasil Pasien"></textarea>
-                                    <label>Special Request :</label>
-                                    <textarea name="special_request" rows="6" class="form-control" placeholder="Patient's Special Request"></textarea>
+                                    <label>Permintaan Khusus :</label>
+                                    <textarea name="special_request" rows="6" class="form-control" placeholder="Permintaan Khusus Pasien"></textarea>
                                 </div>
                             </div>
                         </div>
