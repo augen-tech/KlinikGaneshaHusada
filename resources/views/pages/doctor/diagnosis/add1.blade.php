@@ -25,10 +25,10 @@
                     <thead>
                         <tr>
                             <th style="width : 5%">ID</th>
-                            <th>Date</th>
-                            <th style="width : 30%">Patient</th>
-                            <th style="width : 40%">Complaint</th>
-                            <th style="width : 10%">Action</th>
+                            <th>Tanggal</th>
+                            <th style="width : 30%">Pasien</th>
+                            <th style="width : 40%">Komplain</th>
+                            <th style="width : 10%">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>

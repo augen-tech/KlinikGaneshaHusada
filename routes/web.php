@@ -128,8 +128,18 @@ Route::group(['middleware' => 'doctor'], function() {
     Route::get('/doctor/diagnosis/detail/{id}', 'doctor\DiagnosisController@show') ->name('doctor.diagnosis.detail');
     Route::get('/doctor/diagnosis/detail2/{id}', 'doctor\DiagnosisController@show2') ->name('doctor.diagnosis.detail2');
 
-    Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
+    // Route::get('/doctor/patient/list', 'PatientsController@Index') ->name('doctor.patient.list');
     Route::get('/doctor/patient/detail/{id}', 'PatientsController@show') ->name('doctor.patient.detail');
+    
+    Route::get('/doctor/reference/add/', 'doctor\ReferenceController@add') ->name('doctor.reference.add');
+    Route::get('/doctor/reference/send/{id}', 'doctor\ReferenceController@send') ->name('doctor.reference.send');
+    Route::post('/doctor/reference/store', 'doctor\ReferenceController@store') ->name('doctor.reference.store');
+    // Route::post('/doctor/reference/list/{id}', 'doctor\ReferenceController@update') ->name('doctor.reference.update');
+    Route::get('/doctor/reference/list/', 'doctor\ReferenceController@list') ->name('doctor.reference.list');
+    Route::get('/doctor/listHealthAnalyst/{onPatientList}', 'doctor\DiagnosisController@Index') ->name('doctor.listHA');   
+    Route::get('/doctor/reference/destroy/{id}', 'doctor\ReferenceController@destroy')->name('doctor.reference.destroy');
+    Route::get('/doctor/reference/edit/{id}', 'doctor\ReferenceController@edit') ->name('doctor.reference.edit');
+   
 });
 
 Route::group(['middleware' => 'midwife'], function() {
@@ -150,8 +160,18 @@ Route::group(['middleware' => 'midwife'], function() {
     Route::get('/midwife/diagnosis/detail/{id}', 'midwife\DiagnosisController@show') ->name('midwife.diagnosis.detail');
     Route::get('/midwife/diagnosis/detail2/{id}', 'midwife\DiagnosisController@show2') ->name('midwife.diagnosis.detail2');
 
-    Route::get('/midwife/patient/list', 'PatientsController@Index1') ->name('midwife.patient.list');
+    // Route::get('/midwife/patient/list', 'PatientsController@Index1') ->name('midwife.patient.list');
     Route::get('/midwife/patient/detail/{id}', 'PatientsController@show1') ->name('midwife.patient.detail');
+   
+    Route::get('/midwife/reference/add/', 'midwife\ReferenceController@add') ->name('midwife.reference.add');
+    Route::get('/midwife/reference/send/{id}', 'midwife\ReferenceController@send') ->name('midwife.reference.send');
+    Route::post('/midwife/reference/store', 'midwife\ReferenceController@store') ->name('midwife.reference.store');
+    // Route::post('/doctor/reference/list/{id}', 'doctor\ReferenceController@update') ->name('doctor.reference.update');
+    Route::get('/midwife/reference/list/', 'midwife\ReferenceController@list') ->name('midwife.reference.list');
+    Route::get('/midwife/listHealthAnalyst/{onPatientList}', 'midwife\DiagnosisController@Index') ->name('midwife.listHA');   
+    Route::get('/midwife/reference/destroy/{id}', 'midwife\ReferenceController@destroy')->name('midwife.reference.destroy');
+    Route::get('/midwife/reference/edit/{id}', 'midwife\ReferenceController@edit') ->name('midwife.reference.edit');
+ 
 });
 
 Route::group(['middleware' => 'healthAnalyst'], function() {

@@ -28,39 +28,29 @@
                                 <th>ID</th>
                                 <th>Tanggal</th>
                                 <th style="width:30%">Pasien</th>
-                                <th>Hasil</th>
-                                <th style="width:10%">Permintaan Khusus</th>
+                                <th>Rumah Sakit Tujuan</th>
                                 <th>Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($diagnoses as $row)
+                            @foreach($references as $row)
                                 <tr>
                                     <td><center>{{ $row->id }}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td><a href="{{ route('midwife.patient.detail', $row->registration->patient->id) }}">
-                                            {{ $row->registration->patient->name }}
+                                    <td><a href="{{ route('midwife.patient.detail', $row->diagnosis->registration->patient->id) }}">
+                                            {{ $row->diagnosis->registration->patient->name }}
                                             <br>
-                                            ID : {{ str_pad($row->registration->patient->id,6,0,STR_PAD_LEFT) }}
+                                            ID : {{ str_pad($row->diagnosis->registration->patient->id,6,0,STR_PAD_LEFT) }}
                                         </a>
-                                        </td>
-                                    <td><center>{{ $row->result === null ? "-":" "}}</center></td>
-                                    <td><center>{{ $row->special_request === 1 ? "Yes" : "No"}}</center></td>
+                                    </td>
+                                    <td>{{ $row->hospital }}</td>
                                     <td><center>   
-                                        <a href="{{ route('midwife.diagnosis.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
-                                        <a href="{{ route('midwife.diagnosis.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
-                                        @if (isset($row->evidence))
-                                            <a href="{{ Storage::url($row->evidence) }}"><span><i class="fa fa-download"></i></span></a>
-                                    
-                                        
-                                        @else
-                                            <a href="{{ route('midwife.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
-                                    
-                                        
+                                            <a href="{{ route('midwife.reference.edit', $row->id) }} " data-toggle="tooltip" data-original-title="Edit"><span><i class="fa fa-pencil"></i></span></a>
+                                            <a href="{{ route('midwife.reference.destroy', $row->id) }}"><span><i class="mdi mdi-delete" alt="alert" id="sa-params"></i></span></a>
                                             
-                                        @endif
-                                        {{-- <a href="{{ route('midwife.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a> --}}
-                                    </center></td>
+                                            {{-- <a href="{{ route('midwife.diagnosis.detail', $row->id) }}"><span><i class="fa fa-search"></i></span></a> --}}
+                                        </center>
+                                    </td>
                                 </tr>                            
                             @endforeach
                         </tbody>

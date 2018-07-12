@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Daftar Diagnosis</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Diagnosis</li>
+            <li class="breadcrumb-item active">Daftar Diagnosis</li>
         </ol>
     </div>
 </div>
@@ -26,11 +26,11 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Date</th>
-                                <th style="width:30%">Patient</th>
-                                <th>Result</th>
-                                <th style="width:10%">Special Request</th>
-                                <th>Action</th>
+                                <th>Tanggal</th>
+                                <th style="width:30%">Pasien</th>
+                                <th>Hasil</th>
+                                <th style="width:10%">Permintaan Tambahan</th>
+                                <th>Tindakan</th>
                             </tr>
                         </thead>
                         <tbody>

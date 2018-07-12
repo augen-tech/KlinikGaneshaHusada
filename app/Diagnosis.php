@@ -16,6 +16,7 @@ class Diagnosis extends Model
         'object',
         'assesment',
         'planning',
+        'field_sr',
         'price',
     ];
 
@@ -26,6 +27,11 @@ class Diagnosis extends Model
     public function resultLab(){
         return $this->hasOne(ResultLab::class);
     }
+
+    public function reference(){
+        return $this->hasOne(Reference::class);
+    }
+
     public function medicine(){
         return $this->belongsTo(Medicine::class);
     }
