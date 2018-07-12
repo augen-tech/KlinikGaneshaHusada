@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Prescription</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Resep</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Prescription</a></li>
-            <li class="breadcrumb-item active">Prescription List</li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Resep</a></li>
+            <li class="breadcrumb-item active">Daftar Resep</li>
         </ol>
     </div>
 </div>
@@ -20,12 +20,12 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Date</th>
-                    <th>Patient</th>
-                    <th>Doctor</th>
+                    <th>Tanggal</th>
+                    <th>Pasien</th>
+                    <th>Dokter</th>
                     <th>Status</th>
-                    <th>Total Price</th>
-                    <th>View</th>
+                    <th>Total Harga</th>
+                    <th>Lihat</th>
                     
                 </tr>
             </thead>
@@ -40,7 +40,7 @@
                         <td><span class="label label-success">{{$row->status}}</span></td>
                         <td>Rp. {{$row->total_price}}</td>
                         <td class="text-nowrap">
-                            <a href="{{ route('pharmacist.prescription.accept', $row->id) }}" data-toggle="tooltip" data-original-title="Accept"> <i class="fa fa-eye m-r-10"></i> </a>
+                            <a href="{{ route('pharmacist.prescription.accept', $row->id) }}" data-toggle="tooltip" data-original-title="Proses"> <i class="fa fa-eye m-r-10"></i> </a>
                             
                             {{-- <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
                             <form action="{{ route('pharmacist.prescription.delete', $row->id) }}" id="delete" method="post">

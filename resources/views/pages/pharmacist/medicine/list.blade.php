@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Medicine List</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Daftar Obat</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Medicine</a></li>
-            <li class="breadcrumb-item active">Medicine List</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Obat</a></li>
+            <li class="breadcrumb-item active">Daftar Obat</li>
         </ol>
     </div>
 </div>
@@ -21,12 +21,12 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Medicine ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Stock</th>
-                    <th>Price</th>
-                    <th>Action</th>
+                    <th>ID Obat</th>
+                    <th>Nama</th>
+                    <th>Jenis</th>
+                    <th>Stok</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
                     
                 </tr>
             </thead>
@@ -41,9 +41,9 @@
                         <td>{{$row->stock}}</td>
                         <td>{{$row->price}}</td>
                         <td class="text-nowrap">
-                            <a href="{{ route('pharmacist.medicine.edit', $row->id) }}" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                            <a href="{{ route('pharmacist.medicine.edit', $row->id) }}" data-toggle="tooltip" data-original-title="Ubah"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                             
-                            <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i>
+                            <a href="#" onclick="$(this).find('#delete').submit();" data-toggle="tooltip" data-original-title="Hapus"> <i class="fa fa-close text-danger"></i>
                             <form action="{{ route('pharmacist.medicine.delete', $row->id) }}" id="delete" method="post">
                                 {{ method_field('DELETE') }} {{--kalo tulis ini sama dengan kayak tulis yang diatas, jadi yang diatas gw comment aja --}}
                             </form>

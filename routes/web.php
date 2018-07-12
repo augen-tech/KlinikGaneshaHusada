@@ -208,7 +208,7 @@ Route::group(['middleware' => 'pharmacist'], function() {
     Route::get('/pharmacist/medicine/add', 'pharmacist\MedicineController@create') ->name('pharmacist.medicine.add');
     Route::get('/pharmacist/medicine/list/edit/{id}', 'pharmacist\MedicineController@edit') ->name('pharmacist.medicine.edit');
     Route::put('/pharmacist/medicine/list/{id}', 'pharmacist\MedicineController@update') ->name('pharmacist.medicine.update');
-    Route::post('/pharmacist/medicine/store', 'pharmacist\MedicineController@store') ->name('pharmacist.medicine.store');    
+    Route::post('/pharmacist/medicine/store', 'pharmacist\MedicineController@store') ->name('pharmacist.medicine.store');  
     Route::delete('/pharmacist/medicine/list/delete/{id}','pharmacist\MedicineController@destroy')->name('pharmacist.medicine.delete');
     
 });

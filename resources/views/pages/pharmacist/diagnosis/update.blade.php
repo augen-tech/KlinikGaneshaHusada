@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Update Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Perbarui Diagnosis</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Diagnosis</a></li>
-            <li class="breadcrumb-item active">Update Diagnosis</li>
+            <li class="breadcrumb-item active">Perbarui Diagnosis</li>
         </ol>
     </div>
 </div>
@@ -22,10 +22,10 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Date</th>
-                            <th>Patient</th>
-                            <th>Doctor</th>
-                            <th>action</th>
+                            <th>Tanggal</th>
+                            <th>Pasien</th>
+                            <th>Dokter</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,8 +36,8 @@
                                 <td>{{ $row->registration->patient->name }}</td>
                                 <td>{{ $row->registration->doctor->name}}</td>
                                 <td>        
-                                    <a href="{{ route('pharmacist.diagnosis.proceed', $row->id) }}" data-toggle="tooltip" data-original-title="Update"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a>
-                                    <a href="{{ route('doctor.diagnosis.destroy', $row->id) }}" data-toggle="tooltip" data-original-title="Delete"><span><i class="fa fa-close text-danger"></i></span></a>
+                                    <a href="{{ route('pharmacist.diagnosis.proceed', $row->id) }}" data-toggle="tooltip" data-original-title="Perbarui"><span><i class="fa fa-tasks text-inverse m-r-10"></i></span></a>
+                                    <a href="{{ route('doctor.diagnosis.destroy', $row->id) }}" data-toggle="tooltip" data-original-title="Hapus"><span><i class="fa fa-close text-danger"></i></span></a>
                                 </td>
                             </tr>                            
                         @endforeach
