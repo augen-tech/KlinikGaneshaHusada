@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{isset ($patient) ? "Edit Patient" : "Child Patient" }}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{isset ($patient) ? "Ubah Data Pasien" : "Pasien Anak" }}</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{isset ($patient) ? "Edit Patient" : "Child Patient"}}</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Halaman Utama</a></li>
+            <li class="breadcrumb-item active">{{isset ($patient) ? "Ubah Data Pasien" : "Pasien Anak"}}</li>
         </ol>
     </div>
 </div>
@@ -16,7 +16,7 @@
 
 @section('content')
 
-<form action="{{route('admin.patient.store')}}" method="POST">
+<form action="{{ isset ($patient) ? route('admin.patient.update',$patient->id) : route('admin.patient.store')}}" method="POST">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -24,12 +24,12 @@
                     {{--  {{isset($patient) ? <h6>edit</h6> : <h6>create</h6>}}  --}}
                     
                     <div class="form-group">
-                        <label class="control-label">Name</label>
+                        <label class="control-label">Nama</label>
                         <input name="name" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->name : ""  }}" placeholder={{isset ($patient) ? $patient->name : ""  }} >                            
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Date of Birth</label>
+                        <label class="control-label">Tanggal Lahir</label>
                         <input name="dob" type="date" class="form-control" value="{{isset ($patient) ? $patient->dob : ""  }}" placeholder= {{isset ($patient) ? $patient->dob : ""  }}>
                     </div>
 
@@ -39,29 +39,29 @@
                     </div>
 
                     <div class="form-group" >
-                        <label class="control-label">Blood Type</label>
+                        <label class="control-label">Golongan Darah</label>
                             <div class="row p-t-12">
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio">
-                                    <input value="A" id="radio1" name="blood" type="radio" class="custom-control-input" >
+                                    <input value="A" id="radio1" name="blood_type" type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">A</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio ">
-                                    <input value="B" id="radio2" name="blood"  type="radio" class="custom-control-input" >
+                                    <input value="B" id="radio2" name="blood_type"  type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">B</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio">
-                                    <input value="AB" id="radio3" name="blood" type="radio" class="custom-control-input" >
+                                    <input value="AB" id="radio3" name="blood_type" type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">AB</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio ">
-                                    <input value="O" id="radio4" name="blood"  type="radio" class="custom-control-input" >
+                                    <input value="O" id="radio4" name="blood_type"  type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">O</span>
                                     </label>
                                 </div>
@@ -77,11 +77,11 @@
                     
                     <div class="form-group">
                         <label class="control-label">Phone Number</label>
-                        <input name="phone" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder= {{isset ($patient) ? $patient->phone : ""  }}>                            
+                        <input name="phone" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder= {{isset ($patient) ? $patient->phone : ""  }}>                            
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Gender</label>
+                        <label class="control-label">Jenis Kelamin</label>
                         <div class="m-b-10">
                             <label class="custom-control custom-radio">
                                 <input value="M" id="radio5" name="gender" type="radio" class="custom-control-input"  >
@@ -95,12 +95,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Parent Name</label>
-                        <input name="parent_name" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->parent_name : ""  }}" placeholder={{isset ($patient) ? $patient->parent_name : ""  }} >                            
+                        <label class="control-label">Nama Orang Tua</label>
+                        <input name="parent_name" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->parent_name : ""  }}" placeholder= {{isset ($patient) ? $patient->parent_name : ""  }} >                            
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Parent Job</label>
+                        <label class="control-label">Pekerjaan Orang Tua</label>
                         <input name="parent_job" type="text" id="firstName" class="form-control"  value="{{isset ($patient) ? $patient->parent_job : ""  }}" placeholder= {{isset ($patient) ? $patient->parent_job : ""  }}>                            
                     </div>
 
@@ -109,22 +109,22 @@
 
 
                     <div class="form-group">
-                        <label class="control-label">Child Order</label>
-                        <input name="child_order" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->child_order : ""  }}" placeholder= {{isset ($patient) ? $patient->child_order : ""  }}>                            
+                        <label class="control-label">Anak ke-</label>
+                        <input name="child_order" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->child_order : ""  }}" placeholder= {{isset ($patient) ? $patient->child_order : ""  }}>                            
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Birth Weight</label>
-                        <input name="birth_weight" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->birth_weight : ""  }}" placeholder= {{isset ($patient) ? $patient->birth_weight : ""  }}>                            
+                        <label class="control-label">Berat Badan</label>
+                        <input name="birth_weight" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->birth_weight : ""  }}" placeholder= {{isset ($patient) ? $patient->birth_weight : ""  }}>                            
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Birth Attendant</label>
+                        <label class="control-label">Perawat</label>
                         <input name="birth_attendant" type="text" id="firstName" class="form-control"  value="{{isset ($patient) ? $patient->birth_attendant : ""  }}" placeholder= {{isset ($patient) ? $patient->birth_attendant : ""  }} >                            
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Labor Method</label>
+                        <label class="control-label">Metode Kelahiran</label>
                         <input name="labor_method" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->labor_method : ""  }}" placeholder= {{isset ($patient) ? $patient->labor_method : ""  }}  >                            
                     </div>
                     
@@ -135,7 +135,7 @@
                         <input type="hidden" value="null" name="aHistory">
                         <input type="hidden" value="null" name="dHistory">
                         <input type="hidden" value="null" name="dHistoryF">
-                        <button type="submit" class="btn btn-success">Submit</button>                    
+                        <button type="submit" class="btn btn-success">Simpan</button>                    
                     </div>                             
                 </div>
             </div>

@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Patient</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Data Pasien</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Patient</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Halaman Utama</a></li>
+            <li class="breadcrumb-item active">Data Pasien</li>
         </ol>
     </div>
 </div>
@@ -17,22 +17,27 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped" width="200px">
+            <div style="height:500px; overflow-y: scroll;">
+                <table id="myTable" class="table table-bordered table-striped" width="200px" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Religion</th>
-                            <th>Gender</th>
-                            <th>Job</th>
-                            <th>Allergy History</th>
-                            <th>Disease History</th>
-                            <th>Disease History Family</th>
-                            <th>Blood Type</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Action</th>
+                            <th style="width:2%">Id</th>
+                            <th style="width:13%">Nama</th>
+                            <th style="width:10%">Tanggal Lahir</th>
+                            <th style="width:5%">Agama</th>
+
+                            <th style="width:5%">Jenis Kelamin</th>
+                            <th style="width:6%">Pekerjaan</th>
+                            <th style="width:5%">Riwayat Alergi</th>
+                            <th style="width:5%">Riwayat Penyakit</th>
+
+                            <th style="width:12%">Riwayat Penyakit Keluarga</th>
+                            <th style="width:2%">Golongan Darah</th>
+
+                            <th style="width:25%">Alamat</th>
+
+                            <th style="width:6%">Nomer Telepon</th>
+                            <th style="width:3%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +63,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

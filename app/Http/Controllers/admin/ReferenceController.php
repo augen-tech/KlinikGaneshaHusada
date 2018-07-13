@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\doctor;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,17 +25,20 @@ class ReferenceController extends Controller
     public function index()
     {
         //
+        $references = Reference::all();
+        // dd($references);
+        return view('pages.admin.reference.listReference', compact('references'));
         
         
         
     }
 
-    public function list()
-    {
-        $references = Reference::all();
-        // dd($references);
-        return view('pages.doctor.reference.list', compact('references'));
-    }
+    // public function list()
+    // {
+    //     $references = Reference::all();
+    //     // dd($references);
+    //     return view('pages.doctor.reference.list', compact('references'));
+    // }
 
     /**
      * Show the form for creating a new resource.
