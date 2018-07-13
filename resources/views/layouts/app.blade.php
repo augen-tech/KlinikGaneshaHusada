@@ -508,20 +508,20 @@
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'healthAnalyst')
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">HEALTH ANALYST</li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
-                            </li>
+                            </li> --}}
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-bar-chart-o"></i><span class="hide-menu">Result Lab</span></a>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-bar-chart-o"></i><span class="hide-menu">Hasil Lab</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     @php ($onPatientList = 0)
-                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Add Result Lab</a></li>
-                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">List Result Lab</a></li>
+                                    <li><a href="{{ route('healthAnalyst.resultLab.create')}}">Tambah Hasil Lab</a></li>
+                                    <li><a href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}">Daftar Hasil Lab</a></li>
                                 </ul>
                             </li>
                             <li>
                                 @php ($onPatientList = 1)
-                                <a  href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}"><i class="fa fa-address-book-o"></i>Patients</a>
+                                <a  href="{{ route('healthAnalyst.resultLab.list',$onPatientList)}}"><i class="fa fa-address-book-o"></i>Pasien</a>
                                 {{-- <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
                                 <ul aria-expanded="false" class="collapse">                                    
                                     @php ($onPatientList = 1)

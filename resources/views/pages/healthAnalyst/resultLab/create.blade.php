@@ -24,10 +24,10 @@
                         <thead>
                             <tr>
                                 <th style="text-align:center">No</th>                                                                                                
-                                <th style="text-align:center" style="width:10%">Date </th>                                                                
-                                <th style="text-align:center">Patient</th>                                                                                            
-                                <th style="text-align:center">Doctor</th>  
-                                <th style="text-align:center">Action</th>                                
+                                <th style="text-align:center" style="width:10%">Tanggal</th>                                                                
+                                <th style="text-align:center">Pasien</th>                                                                                            
+                                <th style="text-align:center">Dokter</th>  
+                                <th style="text-align:center">Aksi</th>                                
                             </tr>
                         </thead>
                         

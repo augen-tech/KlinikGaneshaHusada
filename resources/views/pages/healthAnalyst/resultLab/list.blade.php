@@ -17,19 +17,19 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">List Result</h4>
+                <h4 class="card-title">Daftar Hasil Lab</h4>
                 {{-- <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6> --}}
                 {{-- <div class="table-responsive m-t-40"> --}}
                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             @if(isset($patients))
                                 <tr>                                    
-                                    <th>Patient</th>
-                                    <th>Date of Birth</th>
-                                    <th>Address</th>
-                                    <th>Blood Type</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
+                                    <th>Pasien</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Alamat</th>
+                                    <th>Gol. Darah</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Nomer Telepon</th>
                                                                                                 
                                 </tr>
                             @else
