@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{isset ($registration) ? "Edit Registration" : "Add Registration" }}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{isset ($registration) ? "Ubah Data Registrasi" : "Tambah Registrasi" }}</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{isset ($registration) ? "Edit Registration" : "Add Registration" }}</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Halaman Utama</a></li>
+            <li class="breadcrumb-item active">{{isset ($registration) ? "Ubah Data Registrasi" : "Tambah Registrasi" }}</li>
         </ol>
     </div>
 </div>
@@ -23,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{--  {{isset ($registration) && $row->id=$registration->patient_id ? $registration->patient_id  : $row->id}}  --}}
-                            <label class="control-label">Patient</label>                            
+                            <label class="control-label">Nama Pasien</label>                            
                               
                             @if(isset($registration))
                             <select id="id" class="form-control custom-select" name="patient_id" disabled>
@@ -67,12 +67,12 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Type</label>
+                            <label class="control-label">Jenis Perawatan</label>
                             <div class="m-b-10">
 
                                 <label class="custom-control custom-radio">
                                     <input id="radio5" value= "0" name="radio_type" type="radio" class="custom-control-input" checked>
-                                    <span class="custom-control-label">General</span>
+                                    <span class="custom-control-label">Umum</span>
                                 </label>
                                 <label class="custom-control custom-radio">
                                     <input id="radio6" value= "1" name="radio_type" type="radio" class="custom-control-input">
@@ -90,7 +90,7 @@
                 <div class="row p-t-12">
                         <div class="col-md-6">
                         <div >
-                                <label class="control-label">Blood Pressure</label>
+                                <label class="control-label">Tekanan Darah</label>
                                 <input type="text" id="blood" class="form-control" name="blood_pressure" value="{{isset ($registration) ? $registration->blood_pressure : ""  }}" >
                                 <small class="form-control-feedback">  </small> 
                             </div>
@@ -104,7 +104,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{--  {{isset ($registration) && $row->id=$registration->patient_id ? $registration->patient_id  : $row->id}}  --}}
-                            <label id="label-doctor-midwife" class="control-label">Doctor</label>                            
+                            <label id="label-doctor-midwife" class="control-label">Nama Dokter</label>                            
                                 
                             @if(isset($registration))
                             
@@ -143,7 +143,7 @@
                 <div class="row p-t-12">
                     <div class="col-md-6">
                         <div >
-                            <label class="control-label">Weight</label>
+                            <label class="control-label">Berat Badan</label>
                             <input type="text" class="form-control" name="weight" value="{{isset ($registration) ? $registration->weight : ""  }}" >
                             <small class="form-control-feedback">  </small> 
                         </div>
@@ -151,7 +151,7 @@
 
                     <div class="col-md-6">
                         <div >
-                            <label class="control-label">High</label>
+                            <label class="control-label">Tinggi Badan</label>
                             <input type="text" class="form-control" name="high" value="{{isset ($registration) ? $registration->high : ""  }}" >
                             <small class="form-control-feedback">  </small> 
                         </div>
@@ -161,7 +161,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="control-label">Complaint</label>
+                            <label class="control-label">Keluhan</label>
                             <textarea class="textarea_editor form-control" rows="3"  name="complaint"   >{{isset ($registration) ? $registration->complaint :  "" }}</textarea>
                             
                         </div>
@@ -179,8 +179,8 @@
                 <!--/row-->
                 
             <div class="form-actions">
-                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                <button type="reset" class="btn btn-inverse">Cancel</button>
+                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Simpan</button>
+                <button type="reset" class="btn btn-inverse">Batal</button>
             </div>
                 
             </div>

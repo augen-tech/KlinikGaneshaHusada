@@ -393,28 +393,28 @@
                                 <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
                             <li>
-								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registration</span></a>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registrasi</span></a>
 								<ul aria-expanded="false" class="collapse">
-									<li><a href="{{ route('admin.registration.create')}}">Add Registration</a></li>
-									<li><a href="{{ route('admin.registration.list')}}"> List Registration</a></li>
+									<li><a href="{{ route('admin.registration.create')}}">Tambah Registrasi</a></li>
+									<li><a href="{{ route('admin.registration.list')}}"> Daftar Registrasi Pasien</a></li>
                                         
 								</ul>
 							</li>
                             <li>
-                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Patient</span></a>
+                                <a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Pasien</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li>
-                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Add Patient</span></a>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Tambahkan Pasien</span></a>
                                         <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.patient.createchild')}}">Child</a></li>
-                                        <li><a href="{{ route('admin.patient.createadult')}}">Adult</a></li>
+                                        <li><a href="{{ route('admin.patient.createchild')}}">Anak</a></li>
+                                        <li><a href="{{ route('admin.patient.createadult')}}">Dewasa</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">List Patient</span></a>
+                                        <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Daftar Pasien</span></a>
                                         <ul aria-expanded="false" class="collapse">
-                                        <li><a href="{{ route('admin.patient.listchild')}}">List Patient Child</a></li>
-                                        <li><a href="{{ route('admin.patient.listadult')}}">List Patient Adult</a></li>
+                                        <li><a href="{{ route('admin.patient.listchild')}}">Daftar Pasien Anak</a></li>
+                                        <li><a href="{{ route('admin.patient.listadult')}}">Daftar Pasien Dewasa</a></li>
                                         </ul>
                                     </li>
                                 </ul>

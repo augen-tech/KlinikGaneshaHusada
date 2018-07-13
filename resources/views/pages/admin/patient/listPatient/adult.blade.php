@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Patient</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Data Pasien</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List Patient</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Halaman Utama</a></li>
+            <li class="breadcrumb-item active">Data Pasien</li>
         </ol>
     </div>
 </div>
@@ -21,18 +21,18 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Religion</th>
-                            <th>Gender</th>
-                            <th>Job</th>
-                            <th>Allergy History</th>
-                            <th>Disease History</th>
-                            <th>Disease History Family</th>
-                            <th>Blood Type</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Action</th>
+                            <th>Nama</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Agama</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Pekerjaan</th>
+                            <th>Riwayat Alergi</th>
+                            <th>Riwayat Penyakit</th>
+                            <th>Riwayat Penyakit Keluarga</th>
+                            <th>Golongan Darah</th>
+                            <th>Alamat</th>
+                            <th>Nomer Telepon</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

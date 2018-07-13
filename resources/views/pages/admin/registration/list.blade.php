@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">List Registrations</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Daftar Registrasi</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">List</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Halaman Utama</a></li>
+            <li class="breadcrumb-item active">Daftar Registrasi</li>
         </ol>
     </div>
 </div>
@@ -22,15 +22,15 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Date</th>
-                            <th>Name</th>
+                            <th>Tanggal Daftar</th>
+                            <th>Nama Pasien</th>
                             <th>Pic</th>
-                            <th>Type</th>
-                            <th>Blood Pressure</th>
-                            <th>Weight</th>
-                            <th>High</th>
-                            <th>Complaint</th>
-                            <th>Action</th>
+                            <th>Tipe Perawatan</th>
+                            <th>Tekanan DArah</th>
+                            <th>Berat Badan</th>
+                            <th>Tinggi Badan</th>
+                            <th>Keluhan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
