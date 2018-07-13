@@ -411,19 +411,25 @@
                                         </ul>
                                     </li>
                                     <li>
+        
+                                    <li>
                                         <a class="has-arrow " href="#" aria-expanded="false"><span class="hide-menu">Daftar Pasien</span></a>
                                         <ul aria-expanded="false" class="collapse">
                                         <li><a href="{{ route('admin.patient.listchild')}}">Daftar Pasien Anak</a></li>
                                         <li><a href="{{ route('admin.patient.listadult')}}">Daftar Pasien Dewasa</a></li>
                                         </ul>
                                     </li>
-                                    <!-- <li>
-                                        <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Preference</span></a>
-                                    </li> -->
+                                    
                                 </ul>
                             </li>
                             
-                            
+                            <li>
+								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Rujukan</span></a>
+								<ul aria-expanded="false" class="collapse">
+                                    <li><a href="{{ route('doctor.reference.list')}}">Daftar Rujukan</a></li>
+                                        
+								</ul>
+							</li>
                             
                             <li>
                                 {{--  <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>  --}}

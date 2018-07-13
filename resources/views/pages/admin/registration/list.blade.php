@@ -21,7 +21,7 @@
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                
                                 <th>Tanggal Daftar</th>
                                 <th>Nama Pasien</th>
                                 <th>Pic</th>
@@ -36,7 +36,7 @@
                         <tbody>
                             @foreach($registrations as $row)
                                 <tr>
-                                    <td>{{$row->id}} </td>
+                                    
                                     <td>{{$row->created_at}}</td>
                                     <td>
                                         <div> {{$row->id=str_pad($row->id, 6, '0', STR_PAD_LEFT)}} </div>
