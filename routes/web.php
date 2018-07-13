@@ -108,6 +108,8 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::get('/admin/patient/destroychild/{id}', 'admin\PatientController@destroychild') ->name('admin.patient.destroychild');
     Route::get('/admin/patient/destroyadult/{id}', 'admin\PatientController@destroyadult') ->name('admin.patient.destroyadult');
+
+    
 });
 
 Route::group(['middleware' => 'doctor'], function() {
