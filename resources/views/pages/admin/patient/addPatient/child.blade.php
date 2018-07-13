@@ -33,35 +33,35 @@
                         <input name="dob" type="date" class="form-control" value="{{isset ($patient) ? $patient->dob : ""  }}" placeholder= {{isset ($patient) ? $patient->dob : ""  }}>
                     </div>
 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label>Address</label>
                         <input name="address" type="text" class="form-control" value="{{isset ($patient) ? $patient->address : ""  }}" placeholder= {{isset ($patient) ? $patient->address : ""  }} >
-                    </div> -->
+                    </div>
 
                     <div class="form-group" >
                         <label class="control-label">Golongan Darah</label>
                             <div class="row p-t-12">
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio">
-                                    <input value="A" id="radio1" name="blood" type="radio" class="custom-control-input" >
+                                    <input value="A" id="radio1" name="blood_type" type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">A</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio ">
-                                    <input value="B" id="radio2" name="blood"  type="radio" class="custom-control-input" >
+                                    <input value="B" id="radio2" name="blood_type"  type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">B</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio">
-                                    <input value="AB" id="radio3" name="blood" type="radio" class="custom-control-input" >
+                                    <input value="AB" id="radio3" name="blood_type" type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">AB</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio ">
-                                    <input value="O" id="radio4" name="blood"  type="radio" class="custom-control-input" >
+                                    <input value="O" id="radio4" name="blood_type"  type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">O</span>
                                     </label>
                                 </div>
@@ -75,10 +75,10 @@
                         </select> -->
                     </div>
                     
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label class="control-label">Phone Number</label>
                         <input name="phone" type="number" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->phone : ""  }}" placeholder= {{isset ($patient) ? $patient->phone : ""  }}>                            
-                    </div> -->
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label">Jenis Kelamin</label>
@@ -96,7 +96,7 @@
 
                     <div class="form-group">
                         <label class="control-label">Nama Orang Tua</label>
-                        <input name="parent_name" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->parent_name : ""  }}" placeholder={{isset ($patient) ? $patient->parent_name : ""  }} >                            
+                        <input name="parent_name" type="text" id="firstName" class="form-control" value="{{isset ($patient) ? $patient->parent_name : ""  }}" placeholder= {{isset ($patient) ? $patient->parent_name : ""  }} >                            
                     </div>
 
                     <div class="form-group">

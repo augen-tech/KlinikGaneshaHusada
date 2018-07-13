@@ -45,25 +45,25 @@
                             <div class="row p-t-12">
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio">
-                                    <input value="A" id="radio1" name="blood" type="radio" class="custom-control-input">
+                                    <input value="A" id="radio1" name="blood_type" type="radio" class="custom-control-input">
                                     <span class="custom-control-label">A</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio ">
-                                    <input value="B" id="radio2" name="blood" type="radio" class="custom-control-input">
+                                    <input value="B" id="radio2" name="blood_type" type="radio" class="custom-control-input">
                                     <span class="custom-control-label">B</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio">
-                                    <input value="AB" id="radio3" name="blood" type="radio" class="custom-control-input">
+                                    <input value="AB" id="radio3" name="blood_type" type="radio" class="custom-control-input">
                                     <span class="custom-control-label">AB</span>
                                     </label>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="custom-control custom-radio ">
-                                    <input value="O" id="radio4" name="blood" type="radio" class="custom-control-input" >
+                                    <input value="O" id="radio4" name="blood_type" type="radio" class="custom-control-input" >
                                     <span class="custom-control-label">O</span>
                                     </label>
                                 </div>

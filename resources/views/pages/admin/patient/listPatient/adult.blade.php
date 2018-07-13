@@ -17,22 +17,27 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped" width="200px">
+            <div style="height:500px; overflow-y: scroll;">
+                <table id="myTable" class="table table-bordered table-striped" width="200px" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nama</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Agama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Pekerjaan</th>
-                            <th>Riwayat Alergi</th>
-                            <th>Riwayat Penyakit</th>
-                            <th>Riwayat Penyakit Keluarga</th>
-                            <th>Golongan Darah</th>
-                            <th>Alamat</th>
-                            <th>Nomer Telepon</th>
-                            <th>Aksi</th>
+                            <th style="width:2%">Id</th>
+                            <th style="width:13%">Nama</th>
+                            <th style="width:10%">Tanggal Lahir</th>
+                            <th style="width:5%">Agama</th>
+
+                            <th style="width:5%">Jenis Kelamin</th>
+                            <th style="width:6%">Pekerjaan</th>
+                            <th style="width:5%">Riwayat Alergi</th>
+                            <th style="width:5%">Riwayat Penyakit</th>
+
+                            <th style="width:12%">Riwayat Penyakit Keluarga</th>
+                            <th style="width:2%">Golongan Darah</th>
+
+                            <th style="width:25%">Alamat</th>
+
+                            <th style="width:6%">Nomer Telepon</th>
+                            <th style="width:3%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +63,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

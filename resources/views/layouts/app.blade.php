@@ -389,9 +389,9 @@
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'admin')
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">Admin</li>
-                            <li>
+                            <!-- <li>
                                 <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Dashboard</span></a>
-                            </li>
+                            </li> -->
                             <li>
 								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Registrasi</span></a>
 								<ul aria-expanded="false" class="collapse">
@@ -417,6 +417,9 @@
                                         <li><a href="{{ route('admin.patient.listadult')}}">Daftar Pasien Dewasa</a></li>
                                         </ul>
                                     </li>
+                                    <!-- <li>
+                                        <a href="{{ route('admin.dashboard')}}" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Preference</span></a>
+                                    </li> -->
                                 </ul>
                             </li>
                             

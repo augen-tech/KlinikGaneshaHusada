@@ -144,7 +144,7 @@
                     <div class="col-md-6">
                         <div >
                             <label class="control-label">Berat Badan</label>
-                            <input type="text" class="form-control" name="weight" value="{{isset ($registration) ? $registration->weight : ""  }}" >
+                            <input type="number" class="form-control" name="weight" value="{{isset ($registration) ? $registration->weight : ""  }}" >
                             <small class="form-control-feedback">  </small> 
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                     <div class="col-md-6">
                         <div >
                             <label class="control-label">Tinggi Badan</label>
-                            <input type="text" class="form-control" name="high" value="{{isset ($registration) ? $registration->high : ""  }}" >
+                            <input type="number" class="form-control" name="high" value="{{isset ($registration) ? $registration->high : ""  }}" >
                             <small class="form-control-feedback">  </small> 
                         </div>
                     </div>

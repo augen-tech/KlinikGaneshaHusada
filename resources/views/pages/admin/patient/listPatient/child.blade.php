@@ -17,49 +17,54 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <table id="myTable" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nama</th>
-                            <th>Nama Orang Tua</th>
-                            <th>Peketjaan Orang Tua</th>
-                            <th>Tanggal Lahir</th>
-                            <!-- <th>Address</th>
-                            <th>Phone</th> -->
-                            <th>Jenis Kelamin</th>
-                            <th>Golongan Darah</th>
-                            <th>Anak ke-</th>
-                            <th>Berat Badan</th>
-                            <th>Perawat</th>
-                            <th>Metode Kelahiran</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($patients as $row)
-                            @if ($row->religion == "null")                            
-                                <tr>
-                                    <td>{{$row->id}} </td>
-                                    <td>{{$row->name}} </td>
-                                    <td>{{$row->parent_name}} </td>
-                                    <td>{{$row->parent_job}} </td>
-                                    <td>{{$row->dob}}</td>
-                                    <!-- <td>{{$row->address}} </td>
-                                    <td>{{$row->phone}} </td> -->
-                                    <td>{{$row->gender}} </td>
-                                    <td>{{$row->blood_type}} </td>
-                                    <td>{{$row->child_order}}</td>
-                                    <td>{{$row->birth_weight}}</td>
-                                    <td>{{$row->birth_attendant}}</td>
-                                    <td>{{$row->labor_method}}</td>
-                                    <td><a href="{{ route('admin.patient.editchild', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i>
-                                        <a href="{{ route('admin.patient.destroychild', $row->id)}}"><span><i class="mdi mdi-delete"></span></a></i></td>
-                                </tr>                            
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
+                <div style="height:500px; overflow-y: scroll;">
+                    <table id="myTable" class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width:1%">Id</th>
+                                <th style="width:10%">Nama</th>
+                                <th style="width:10%">Nama Orang Tua</th>
+                                <th style="width:8%">Pekerjaan Orang Tua</th>
+
+                                <th style="width:11%">Tanggal Lahir</th>
+                                <th style="width:20%">Address</th>
+                                <th style="width:5%">Phone</th>
+                                <th style="width:3%">Jenis Kelamin</th>
+
+                                <th style="width:3%">Golongan Darah</th>
+                                <th style="width:3%">Anak ke-</th>
+                                <th style="width:3%">Berat Badan</th>
+                                <th style="width:10%">Perawat</th>
+
+                                <th style="width:4%">Metode Kelahiran</th>
+                                <th style="width:3%">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($patients as $row)
+                                @if ($row->religion == "null")                            
+                                    <tr>
+                                        <td>{{$row->id}} </td>
+                                        <td>{{$row->name}} </td>
+                                        <td>{{$row->parent_name}} </td>
+                                        <td>{{$row->parent_job}} </td>
+                                        <td>{{$row->dob}}</td>
+                                        <td>{{$row->address}} </td>
+                                        <td>{{$row->phone}} </td>
+                                        <td>{{$row->gender}} </td>
+                                        <td>{{$row->blood_type}} </td>
+                                        <td>{{$row->child_order}}</td>
+                                        <td>{{$row->birth_weight}}</td>
+                                        <td>{{$row->birth_attendant}}</td>
+                                        <td>{{$row->labor_method}}</td>
+                                        <td><a href="{{ route('admin.patient.editchild', $row->id)}}"><span><i class="fa fa-pencil"></span></a></i>
+                                            <a href="{{ route('admin.patient.destroychild', $row->id)}}"><span><i class="mdi mdi-delete"></span></a></i></td>
+                                    </tr>                            
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
