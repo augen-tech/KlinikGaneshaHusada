@@ -426,7 +426,7 @@
                             <li>
 								<a class="has-arrow " href="#" aria-expanded="false"><i class="fa fa-circle"></i><span class="hide-menu">Rujukan</span></a>
 								<ul aria-expanded="false" class="collapse">
-                                    <li><a href="{{ route('doctor.reference.list')}}">Daftar Rujukan</a></li>
+                                    <li><a href="{{ route('admin.reference.list')}}">Daftar Rujukan</a></li>
                                         
 								</ul>
 							</li>
