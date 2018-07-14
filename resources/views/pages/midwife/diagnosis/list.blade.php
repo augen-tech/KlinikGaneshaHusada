@@ -38,7 +38,7 @@
                                 <tr>
                                     <td><center>{{ $row->id }}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td><a href="{{ route('midwife.patient.detail', $row->registration->patient->id) }}">
+                                    <td>
                                             {{ $row->registration->patient->name }}
                                             <br>
                                             ID : {{ str_pad($row->registration->patient->id,6,0,STR_PAD_LEFT) }}
