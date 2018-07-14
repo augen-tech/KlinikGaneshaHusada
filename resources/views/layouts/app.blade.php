@@ -560,15 +560,15 @@
                     @else
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">Apoteker</li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{route('pharmacist.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-heartbeat"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li><a href="{{route('pharmacist.diagnosis.update')}}">Perbarui Diagnosis</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-th"></i><span class="hide-menu">Resep</span></a>
                                 <ul aria-expanded="false" class="collapse">
