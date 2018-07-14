@@ -44,7 +44,7 @@
                 <div class="form-group">
                     
                     <label>Harga</label>
-                    <input type="text" placeholder="your-price-stock" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
+                    <input type="number" placeholder="your-price-stock" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
                     
                 </div>
                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{isset($medicine) ? 'Ubah' : 'Submit' }}</button>
