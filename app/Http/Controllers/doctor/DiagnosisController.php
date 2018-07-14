@@ -76,8 +76,8 @@ class DiagnosisController extends Controller
     public function create1($id)
     {
         //
-        
-        $diagnosis = Diagnosis::find($id);
+        $registration = Registration::find($id);
+        $medicines = Medicine::all();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.doctor.diagnosis.create1', compact('registration','medicines'));
