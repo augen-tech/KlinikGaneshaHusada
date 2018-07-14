@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Daftar Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Daftar Rujukan</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Daftar Diagnosis</li>
+            <li class="breadcrumb-item active">Daftar Rujukan</li>
         </ol>
     </div>
 </div>
@@ -37,11 +37,10 @@
                                 <tr>
                                     <td><center>{{ $row->id }}</center></td>
                                     <td><center>{{ $row->created_at }}</center></td>
-                                    <td><a href="{{ route('doctor.patient.detail', $row->diagnosis->registration->patient->id) }}">
-                                            {{ $row->diagnosis->registration->patient->name }}
+                                    <td>{{ $row->diagnosis->registration->patient->name }}
                                             <br>
                                             ID : {{ str_pad($row->diagnosis->registration->patient->id,6,0,STR_PAD_LEFT) }}
-                                        </a>
+                                        
                                     </td>
                                     <td>{{ $row->hospital }}</td>
                                     <td><center>   
