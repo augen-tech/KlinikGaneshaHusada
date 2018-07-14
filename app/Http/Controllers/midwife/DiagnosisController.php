@@ -11,6 +11,7 @@ use App\Medicine;
 use App\MedicinePrescription;
 use App\Prescription;
 use App\Patient;
+use App\ResultLab;
 
 class DiagnosisController extends Controller
 {
@@ -19,6 +20,27 @@ class DiagnosisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function form($id)
+    {
+        //
+        
+        $resultLab = ResultLab::find($id);        
+        return view('pages.midwife.form',compact('resultLab'));  
+    }
+
+    public function index2($onPatientList)
+    {
+        //
+        $resultLabs = ResultLab::all();
+        $patients = Patient::all();
+
+        if($onPatientList == 1){
+            return view('pages.midwife.listHA',compact('resultLabs','patients'));
+        }else{
+            return view('pages.midwife.listHA',compact('resultLabs'));
+        }
+    }
+
     public function index()
     {
         //
