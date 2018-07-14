@@ -70,6 +70,8 @@ class ReferenceController extends Controller
     public function store(Request $request)
     {
         //
+
+        $reference = Reference::find($id);
         $data_rujukan = [
             'diagnosis_id' => $request->diagnosis_id,
             'hospital' => $request->hospital,
@@ -108,7 +110,7 @@ class ReferenceController extends Controller
         // dd($reference);
         $diagnosis = Diagnosis::where('id','=',$reference->diagnosis_id)->first();  
         // dd($diagnosis);      
-        return view('pages.midwife.reference.reference  ',compact('diagnosis')); 
+        return view('pages.midwife.reference.reference  ',compact('diagnosis','reference')); 
     }
 
     /**
