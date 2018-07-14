@@ -63,11 +63,11 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <a href="{{ route('doctor.patient.detail', $registration->patient->id)}}"><span><i class="fa fa-info-circle">Detil</i></span></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <h3 class="box-title m-t-40">Unggah Diagnosis</h3>
                         <hr>
@@ -221,14 +221,16 @@ $( document ).ready(function() {
     i = $(this).attr("data-count");
     $(document).on("click","#add",function() {
         $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-6"><div class="form-group"><label for="intType1">Obat</label><select class="select2" style="width: 100%" name="medicine[]">@foreach($medicines as $row)<option value="{{$row->id}}">{{$row->name}}</option>@endforeach</select></div></div><div class="col-md-1"><div class="form-group"><label class="control-label">Jumlah</label><input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"></div></div><div class="col-md-4"><div class="form-group"><input type="hidden" name="registration_id" value="{{ $registration-> id}}"><label for="notation1">Aturan :</label><input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"></div></div><div class="col-md-1"><div class="form-group"><label for="notation1">Clear</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div></div></div>');
-        //<input type="hidden" name="registration_id" value="{{ $registration-> id}}">
+
         i++;
         $(".select2").select2();
         $(".vertical-spin").TouchSpin({
             verticalbuttons: true,
             verticalupclass: 'ti-plus',
             verticaldownclass: 'ti-minus'
-        });
+            
+
+            
     });
     $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   

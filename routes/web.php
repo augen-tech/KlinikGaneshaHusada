@@ -136,10 +136,12 @@ Route::group(['middleware' => 'doctor'], function() {
     Route::post('/doctor/reference/store', 'doctor\ReferenceController@store') ->name('doctor.reference.store');
     // Route::post('/doctor/reference/list/{id}', 'doctor\ReferenceController@update') ->name('doctor.reference.update');
     Route::get('/doctor/reference/list/', 'doctor\ReferenceController@list') ->name('doctor.reference.list');
-    Route::get('/doctor/listHealthAnalyst/{onPatientList}', 'doctor\DiagnosisController@Index') ->name('doctor.listHA');   
+    Route::get('/doctor/listHealthAnalyst/{onPatientList}', 'doctor\DiagnosisController@Index2') ->name('doctor.listHA');   
     Route::get('/doctor/reference/destroy/{id}', 'doctor\ReferenceController@destroy')->name('doctor.reference.destroy');
     Route::get('/doctor/reference/edit/{id}', 'doctor\ReferenceController@edit') ->name('doctor.reference.edit');
    
+    Route::get('doctor/healthAnalyst/form/{id}', 'doctor\DiagnosisController@Form') ->name('doctor.form');
+    
 });
 
 Route::group(['middleware' => 'midwife'], function() {
@@ -168,10 +170,12 @@ Route::group(['middleware' => 'midwife'], function() {
     Route::post('/midwife/reference/store', 'midwife\ReferenceController@store') ->name('midwife.reference.store');
     // Route::post('/doctor/reference/list/{id}', 'doctor\ReferenceController@update') ->name('doctor.reference.update');
     Route::get('/midwife/reference/list/', 'midwife\ReferenceController@list') ->name('midwife.reference.list');
-    Route::get('/midwife/listHealthAnalyst/{onPatientList}', 'midwife\DiagnosisController@Index') ->name('midwife.listHA');   
+    Route::get('/midwife/listHealthAnalyst/{onPatientList}', 'midwife\DiagnosisController@Index2') ->name('midwife.listHA');   
     Route::get('/midwife/reference/destroy/{id}', 'midwife\ReferenceController@destroy')->name('midwife.reference.destroy');
     Route::get('/midwife/reference/edit/{id}', 'midwife\ReferenceController@edit') ->name('midwife.reference.edit');
- 
+    
+    Route::get('midwife/healthAnalyst/form/{id}', 'midwife\DiagnosisController@Form') ->name('midwife.form');
+    
 });
 
 Route::group(['middleware' => 'healthAnalyst'], function() {

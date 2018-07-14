@@ -75,7 +75,7 @@
                                         <td>{{$row->result}}</td>                                        
                                         <td>{{$row->price}}</td>                                        
                                         <td>
-                                            <a href="{{ route('doctor.form', $row->id)}}">
+                                            <a href="{{ route('midwife.form', $row->id)}}">
                                                 <span><i class="fa fa-search"></i></span>          
                                             </a> 
                                         </td>                                    
