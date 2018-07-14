@@ -452,9 +452,9 @@
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'doctor')
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">DOCTOR</li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('doctor.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                                 <ul aria-expanded="false" class="collapse">
@@ -486,9 +486,9 @@
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'midwife')
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">MIDWIFE</li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('midwife.dashboard')}}" aria-expanded="false"><i class="fa fa-user-md"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="#" aria-expanded="false"><i class="fa fa-medkit"></i><span class="hide-menu">Diagnosis</span></a>
                             <ul aria-expanded="false" class="collapse">
