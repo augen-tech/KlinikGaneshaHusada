@@ -43,7 +43,7 @@
                                 
                                     
                                     @else
-                                        <a href="#"><span><i class="fa fa-search"></i></span></a>
+                                        <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
                                     @endif
                                 </td>
                                 <td><a href="{{ route('doctor.reference.send', $row->id)}}"><center><span><i class="fa fa-ambulance"></i></span></center></a></td>

@@ -132,6 +132,10 @@ class ReferenceController extends Controller
         // $diagnosis = Diagnosis::update($data);
         
         $reference->fill($data_rujukan)->save();
+        
+        
+        return redirect()->route('doctor.reference.list');
+
     }
 
     /**
