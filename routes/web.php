@@ -175,7 +175,8 @@ Route::group(['middleware' => 'midwife'], function() {
     Route::get('/midwife/listHealthAnalyst/{onPatientList}', 'midwife\DiagnosisController@Index2') ->name('midwife.listHA');   
     Route::get('/midwife/reference/destroy/{id}', 'midwife\ReferenceController@destroy')->name('midwife.reference.destroy');
     Route::get('/midwife/reference/edit/{id}', 'midwife\ReferenceController@edit') ->name('midwife.reference.edit');
-    
+    Route::post('/midwife/reference/update/{id}', 'midwife\ReferenceController@update') ->name('midwife.reference.update');
+   
     Route::get('midwife/healthAnalyst/form/{id}', 'midwife\DiagnosisController@Form') ->name('midwife.form');
     
 });
