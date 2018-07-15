@@ -71,7 +71,6 @@ class ReferenceController extends Controller
     {
         //
 
-        $reference = Reference::find($id);
         $data_rujukan = [
             'diagnosis_id' => $request->diagnosis_id,
             'hospital' => $request->hospital,
@@ -123,6 +122,7 @@ class ReferenceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $reference = Reference::find($id);
         $data_rujukan = [
             'diagnosis_id' => $request->diagnosis_id,
             'hospital' => $request->hospital,
@@ -135,7 +135,7 @@ class ReferenceController extends Controller
         
         $reference->fill($data_rujukan)->save();
 
-        return redirect()->route('doctor.reference.list');
+        return redirect()->route('midwife   .reference.list');
     }
 
     /**
