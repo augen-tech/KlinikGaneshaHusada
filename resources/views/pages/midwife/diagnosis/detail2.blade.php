@@ -64,10 +64,11 @@
                             </div>
                             <br>
                             <div class="col-md-6">
-                                    <div class="form-group">
-                                        <a href="{{ route('midwife.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Detil</i></span></a>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="address1"> Golongan Darah :</label>
+                                    <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->blood_type}}">
                                 </div>
+                            </div>
                         </div>
                     
                     <!-- Step 2 -->

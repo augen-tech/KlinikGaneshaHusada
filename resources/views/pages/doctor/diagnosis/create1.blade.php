@@ -63,18 +63,13 @@
                                     <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->address}}">
                                 </div>
                             </div>
+                            <br>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="date1">Tekanan Darah :</label>
-                                    <input type="text" class="form-control" id="blood_pressure" disabled value="{{$registration->blood_pressure}}"> 
+                                    <label for="address1"> Golongan Darah :</label>
+                                    <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->blood_type}}">
                                 </div>
                             </div>
-                            {{-- <br> --}}
-                            {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <a href="{{ route('doctor.patient.detail', $registration->id)}}"><span><i class="fa fa-info-circle">Details</i></span></a>
-                                    </div>
-                                </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-md-6">
