@@ -516,7 +516,7 @@
                     </ul>
                     @elseif(Sentinel::getUser()->roles()->first()->slug == 'healthAnalyst')
                         <ul id="sidebarnav">
-                            <li class="nav-small-cap">HEALTH ANALYST</li>
+                            <li class="nav-small-cap">Analis Kesehatan</li>
                             {{-- <li>
                                 <a href="{{ route('healthAnalyst.dashboard')}}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard</span></a>
                             </li> --}}

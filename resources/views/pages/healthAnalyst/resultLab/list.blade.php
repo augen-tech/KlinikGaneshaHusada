@@ -3,10 +3,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Lab</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Lab</a></li>
-            <li class="breadcrumb-item active">List</li>
+            {{-- <li class="breadcrumb-item"><a href="javascript:void(0)">Lab</a></li> --}}
+            {{-- <li class="breadcrumb-item active">Daftar Hasil Lab</li> --}}
         </ol>
     </div>
 </div>
@@ -35,12 +35,12 @@
                             @else
                                 <tr>
                                     <th>No</th>
-                                    <th width="15%">Diagnosis Id</th>
-                                    <th>Patient</th>
-                                    <th>Doctor</th>
-                                    <th>Result</th>                                
-                                    <th>Price</th>
-                                    <th>Action</th>                                                                                                     
+                                    <th width="15%">Id Diagnosa</th>
+                                    <th>Pasien</th>
+                                    <th>Dokter</th>
+                                    <th>Hasil</th>                                
+                                    <th>Harga</th>
+                                    <th>Aksi</th>                                                                                                     
                                 </tr>
                             
                             @endif
