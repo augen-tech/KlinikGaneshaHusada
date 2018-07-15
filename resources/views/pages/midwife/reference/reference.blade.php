@@ -8,10 +8,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($reference) ? 'Edit Diagnosis': 'Tambah Diagnosis'}}</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">{{ isset($reference) ? 'Edit Rujukan': 'Tambah Rujukan'}}</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">{{ isset($reference) ? 'Edit Diagnosis':'Tambah Diagnosis'}}</li>
+            <li class="breadcrumb-item active">{{ isset($reference) ? 'Edit Rujukan':'Tambah Rujukan'}}</li>
         </ol>
     </div>
 </div>
@@ -63,11 +63,6 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <a href="{{ route('midwife.patient.detail', $diagnosis->registration->patient->id)}}"><span><i class="fa fa-info-circle">Detil</i></span></a>
-                                </div>
-                            </div>
                         </div>
                         
                         <h3 class="box-title m-t-40">Kirim Rujukan</h3>

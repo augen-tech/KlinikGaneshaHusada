@@ -27,6 +27,7 @@ class ReferenceController extends Controller
         //
         
         
+        
     }
 
     public function list()
@@ -46,9 +47,7 @@ class ReferenceController extends Controller
     {
         $diagnosis = Diagnosis::find($id);
         // dd($diagnosis);
-        // $reference = Reference::where('diagnosis_id','=',$diagnosis->id)->get();
-        // dd($reference);
-
+     
         return view('pages.doctor.reference.reference', compact('diagnosis','reference'));
     }
     public function add(){
@@ -108,7 +107,7 @@ class ReferenceController extends Controller
         // dd($reference);
         $diagnosis = Diagnosis::where('id','=',$reference->diagnosis_id)->first();  
         // dd($diagnosis);      
-        return view('pages.doctor.reference.reference  ',compact('diagnosis')); 
+        return view('pages.doctor.reference.reference  ',compact('diagnosis','reference')); 
     }
 
     /**
@@ -121,6 +120,7 @@ class ReferenceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $reference = Reference::find($id);
         $data_rujukan = [
             'diagnosis_id' => $request->diagnosis_id,
             'hospital' => $request->hospital,
@@ -132,6 +132,10 @@ class ReferenceController extends Controller
         // $diagnosis = Diagnosis::update($data);
         
         $reference->fill($data_rujukan)->save();
+        
+        
+        return redirect()->route('doctor.reference.list');
+
     }
 
     /**

@@ -65,7 +65,8 @@
                             <br>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <a href="{{ route('doctor.patient.detail', $registration->patient->id)}}"><span><i class="fa fa-info-circle">Detil</i></span></a>
+                                    <label for="address1"> Golongan Darah :</label>
+                                    <input type="text" class="form-control" disabled id="address1" value="{{$registration->patient->blood_type}}">
                                 </div>
                             </div>
                         </div>
@@ -119,7 +120,7 @@
                                             <div class="form-group">
                                                 <select class="select2" style="width: 100%" name="medicine[]">
                                                     @foreach($medicines as $row )
-                                                        <option value="{{$row->id}}" {{ ($row_mp->medicine->id == $row->id) ? 'selected' : '' }}> {{$row->name}} </option>
+                                                        <option value="{{$row->id}}" {{ ($row_mp->medicine->id == $row->id) ? 'selected' : '' }}> {{$row->name.' ('.$row->type.')'}}  </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -150,7 +151,7 @@
                                         <div class="form-group">
                                             <select class="select2" style="width: 100%" name="medicine[]">
                                                 @foreach($medicines as $row )
-                                                    <option value="{{$row->id}}"> {{$row->name}} </option>
+                                                    <option value="{{$row->id}}"> {{$row->name.' ('.$row->type.')'}} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -216,11 +217,12 @@
 <script src="{{ asset('material/plugins/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
 <script src="{{ asset('material/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js')}}" type="text/javascript"></script>
 <script>
+
 $( document ).ready(function() {
     var i = 0;
     i = $(this).attr("data-count");
     $(document).on("click","#add",function() {
-        $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-6"><div class="form-group"><label for="intType1">Obat</label><select class="select2" style="width: 100%" name="medicine[]">@foreach($medicines as $row)<option value="{{$row->id}}">{{$row->name}}</option>@endforeach</select></div></div><div class="col-md-1"><div class="form-group"><label class="control-label">Jumlah</label><input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"></div></div><div class="col-md-4"><div class="form-group"><input type="hidden" name="registration_id" value="{{ $registration-> id}}"><label for="notation1">Aturan :</label><input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"></div></div><div class="col-md-1"><div class="form-group"><label for="notation1">Clear</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div></div></div>');
+        $('#dynamic_field').append('<div class="row" id="row'+i+'"><div class="col-md-6"><div class="form-group"><label for="intType1">Obat</label><select class="select2" style="width: 100%" name="medicine[]">@foreach($medicines as $row)<option value="{{$row->id}}">{{$row->name.' ('.$row->type.')'}}</option>@endforeach</select></div></div><div class="col-md-1"><div class="form-group"><label class="control-label">Jumlah</label><input class="vertical-spin" type="text" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" name="amount[]"></div></div><div class="col-md-4"><div class="form-group"><input type="hidden" name="registration_id" value="{{ $registration-> id}}"><label for="notation1">Aturan :</label><input name="notation[]" type="text" class="form-control" id="notation1" value="{{ isset($prescription) ? $prescription->notation : ''}}" placeholder="{{ isset($prescription) ? $prescription->notation : ''}}"></div></div><div class="col-md-1"><div class="form-group"><label for="notation1">Hapus</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div></div></div>');
         //<input type="hidden" name="registration_id" value="{{ $registration-> id}}">
         i++;
         $(".select2").select2();
@@ -241,7 +243,8 @@ $( document ).ready(function() {
         verticaldownclass: 'ti-minus'
     });
 });
-</script> 
+</script>
+
 <script src="{{ asset('material/plugins/dropify/dist/js/dropify.min.js')}}"></script>
 <script>
 $( document ).ready(function() {

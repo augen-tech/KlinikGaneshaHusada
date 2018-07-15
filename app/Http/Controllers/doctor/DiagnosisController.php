@@ -22,6 +22,13 @@ class DiagnosisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function form($id)
+    {
+        //
+        
+        $resultLab = ResultLab::find($id);        
+        return view('pages.doctor.form',compact('resultLab'));  
+    }
 
     public function index2($onPatientList)
     {
@@ -32,7 +39,7 @@ class DiagnosisController extends Controller
         if($onPatientList == 1){
             return view('pages.doctor.listHA',compact('resultLabs','patients'));
         }else{
-            return view('pages.listHA',compact('resultLabs'));
+            return view('pages.doctor.listHA',compact('resultLabs'));
         }
     }
 
@@ -69,8 +76,8 @@ class DiagnosisController extends Controller
     public function create1($id)
     {
         //
-        
-        $diagnosis = Diagnosis::find($id);
+        $registration = Registration::find($id);
+        $medicines = Medicine::all();
         // $medicine_prescriptions = MedicinePrescription::all();
         // $prescription = Prescription::find($medicine_prescriptions->prescription_id);
         return view('pages.doctor.diagnosis.create1', compact('registration','medicines'));

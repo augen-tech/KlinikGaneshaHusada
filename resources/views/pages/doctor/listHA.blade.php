@@ -75,12 +75,9 @@
                                         <td>{{$row->result}}</td>                                        
                                         <td>{{$row->price}}</td>                                        
                                         <td>
-                                            <a href="{{ route('healthAnalyst.resultLab.edit', $row->id)}}">
-                                                <span><i class="mdi mdi-lead-pencil"></i></span>          
+                                            <a href="{{ route('doctor.form', $row->id)}}">
+                                                <span><i class="fa fa-search"></i></span>          
                                             </a> 
-                                            <a href="{{ route('healthAnalyst.resultLab.destroy', $row->id)}}">
-                                                <span><i class="mdi mdi-delete"></i></span>          
-                                            </a>    
                                         </td>                                    
                                     </tr>
                                 @endforeach   

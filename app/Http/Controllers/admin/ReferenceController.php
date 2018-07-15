@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\midwife;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,16 +25,20 @@ class ReferenceController extends Controller
     public function index()
     {
         //
+        $references = Reference::all();
+        // dd($references);
+        return view('pages.admin.reference.listReference', compact('references'));
+        
         
         
     }
 
-    public function list()
-    {
-        $references = Reference::all();
-        // dd($references);
-        return view('pages.midwife.reference.list', compact('references'));
-    }
+    // public function list()
+    // {
+    //     $references = Reference::all();
+    //     // dd($references);
+    //     return view('pages.doctor.reference.list', compact('references'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -49,11 +53,11 @@ class ReferenceController extends Controller
         // $reference = Reference::where('diagnosis_id','=',$diagnosis->id)->get();
         // dd($reference);
 
-        return view('pages.midwife.reference.reference', compact('diagnosis','reference'));
+        return view('pages.doctor.reference.reference', compact('diagnosis','reference'));
     }
     public function add(){
         $diagnoses = Diagnosis::doesntHave('reference')->get(); 
-        return view('pages.midwife.reference.addReference', compact('diagnoses'));
+        return view('pages.doctor.reference.addReference', compact('diagnoses'));
     }
 
     public function create()
@@ -70,7 +74,6 @@ class ReferenceController extends Controller
     public function store(Request $request)
     {
         //
-
         $data_rujukan = [
             'diagnosis_id' => $request->diagnosis_id,
             'hospital' => $request->hospital,
@@ -82,7 +85,7 @@ class ReferenceController extends Controller
         $reference = Reference::create($data_rujukan);
         // dd($reference);
         
-        return redirect()->route('midwife.reference.add');
+        return redirect()->route('doctor.reference.add');
     }
 
     /**
@@ -109,7 +112,7 @@ class ReferenceController extends Controller
         // dd($reference);
         $diagnosis = Diagnosis::where('id','=',$reference->diagnosis_id)->first();  
         // dd($diagnosis);      
-        return view('pages.midwife.reference.reference  ',compact('diagnosis','reference')); 
+        return view('pages.doctor.reference.reference  ',compact('diagnosis')); 
     }
 
     /**
@@ -122,7 +125,6 @@ class ReferenceController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $reference = Reference::find($id);
         $data_rujukan = [
             'diagnosis_id' => $request->diagnosis_id,
             'hospital' => $request->hospital,
@@ -134,8 +136,6 @@ class ReferenceController extends Controller
         // $diagnosis = Diagnosis::update($data);
         
         $reference->fill($data_rujukan)->save();
-
-        return redirect()->route('midwife   .reference.list');
     }
 
     /**
@@ -149,6 +149,6 @@ class ReferenceController extends Controller
         //
         $references = Reference::find($id)->delete();
         
-        return redirect()->route('midwife.reference.list');
+        return redirect()->route('doctor.reference.list');
     }
 }

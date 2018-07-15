@@ -7,10 +7,10 @@
 @section('breadcumb')
 <div class="row page-titles">
     <div class="col-md-5 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Add Diagnosis</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Rujukan</h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active">Add Diagnosis</li>
+            <li class="breadcrumb-item active">Tambah Rujukan</li>
         </ol>
     </div>
 </div>
@@ -43,7 +43,7 @@
                                 
                                     
                                     @else
-                                        <a href="#"><span><i class="fa fa-search"></i></span></a>
+                                        <a href="{{ route('doctor.diagnosis.detail2', $row->id) }}"><span><i class="fa fa-search"></i></span></a>
                                     @endif
                                 </td>
                                 <td><a href="{{ route('doctor.reference.send', $row->id)}}"><center><span><i class="fa fa-ambulance"></i></span></center></a></td>

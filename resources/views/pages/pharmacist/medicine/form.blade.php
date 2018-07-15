@@ -23,7 +23,7 @@
                 <div class="form-group">
                     
                     <label>Nama Obat</label>
-                    <input type="text" placeholder="medicine-name" name="name" class="form-control" value="{{isset($medicine) ? $medicine->name : '' }}">
+                    <input type="text" placeholder="nama-obat" name="name" class="form-control" value="{{isset($medicine) ? $medicine->name : '' }}">
                     
                 </div>
 
@@ -38,13 +38,13 @@
                 <div class="form-group">
                     
                     <label>Stok</label>
-                    <input type="number" placeholder="your-medicine-stock" name="stock" class="form-control" value="{{isset($medicine) ? $medicine->stock : '' }}">
+                    <input type="number" placeholder="jumlah-stok-obat" name="stock" class="form-control" value="{{isset($medicine) ? $medicine->stock : '' }}">
                     
                 </div>
                 <div class="form-group">
                     
                     <label>Harga</label>
-                    <input type="text" placeholder="your-price-stock" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
+                    <input type="number" placeholder="harga-obat" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
                     
                 </div>
                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{isset($medicine) ? 'Ubah' : 'Submit' }}</button>

@@ -81,7 +81,14 @@
                                         @else
                                             <td class="text-center">{{$key+2}}</td>
                                         @endif
-                                        <td>Obat: {{$row->medicine->name}}</td>
+                                        <td>
+                                            Obat: {{$row->medicine->name}}
+                                            @if($row->medicine->type == 'racik')
+                                                (racik)
+                                            @elseif($row->medicine->type == 'pil')
+                                                (pil)
+                                            @endif
+                                        </td>
                                         <td class="text-right">{{$row->amount}}</td>
                                         <td class="text-right">{{$row->notation}}</td>
                                         <td class="text-right">Rp. {{$row->medicine->price}}</td>
