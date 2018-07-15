@@ -41,7 +41,7 @@
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" id="loginform" action="{{ route('postLogin') }}" method="POST">
-        <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/logo-icon.png')}}" alt="Home" /><br/><img src="{{ asset('material/images/logo-text.png')}}" alt="Home" /></a>  
+        {{-- <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('material/images/logo-icon.png')}}" alt="Home" /><br/><img src="{{ asset('material/images/logo-text.png')}}" alt="Home" /></a>   --}}
         
         @if(session('error'))
         <div class="form-group m-t-30">
