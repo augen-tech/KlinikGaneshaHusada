@@ -135,7 +135,7 @@ class ReferenceController extends Controller
         
         $reference->fill($data_rujukan)->save();
 
-        return redirect()->route('midwife.reference.add');
+        return redirect()->route('doctor.reference.list');
     }
 
     /**
