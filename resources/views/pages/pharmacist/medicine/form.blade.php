@@ -17,39 +17,47 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">{{ isset($medicine) ? 'Ubah Obat' : 'Tambah Obat' }}</h4>
-            <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">
-                {{ isset($medicine) ? method_field('PUT') : '' }}
-                {{ csrf_field() }}
-                <div class="form-group">
-                    
-                    <label>Nama Obat</label>
-                    <input type="text" placeholder="nama-obat" name="name" class="form-control" value="{{isset($medicine) ? $medicine->name : '' }}">
-                    
-                </div>
+        @if(count($errors)>0)
+            @foreach($errors->all() as $error)
+            <div class="alert alert-danger"> <i class="ti-announcement"></i>     {{$error}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            </div>
+            @endforeach
 
-                <div class="form-group">
-                    <label>Jenis Obat</label>
-                    <select class="form-control" name="type">
-                        <option value="Racik">Racik</option>
-                        <option value="Pil" selected>Pil</option>
-                    </select>
-                </div>
+        @endif
+        <form action="{{ isset($medicine) ? route('pharmacist.medicine.update', $medicine->id) : route('pharmacist.medicine.store') }}" method="POST">
+            {{ isset($medicine) ? method_field('PUT') : '' }}
+            {{ csrf_field() }}
+            <div class="form-group">
+                
+                <label>Nama Obat</label>
+                <input type="text" placeholder="nama-obat" name="name" class="form-control" value="{{isset($medicine) ? $medicine->name : '' }}">
+                
+            </div>
 
-                <div class="form-group">
-                    
-                    <label>Stok</label>
-                    <input type="number" placeholder="jumlah-stok-obat" name="stock" class="form-control" value="{{isset($medicine) ? $medicine->stock : '' }}">
-                    
-                </div>
-                <div class="form-group">
-                    
-                    <label>Harga</label>
-                    <input type="number" placeholder="harga-obat" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
-                    
-                </div>
-                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{isset($medicine) ? 'Ubah' : 'Submit' }}</button>
-            
-            </form> 
+            <div class="form-group">
+                <label>Jenis Obat</label>
+                <select class="form-control" name="type">
+                    <option value="Racik">Racik</option>
+                    <option value="Pil" selected>Pil</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                
+                <label>Stok</label>
+                <input type="number" placeholder="jumlah-stok-obat" name="stock" class="form-control" value="{{isset($medicine) ? $medicine->stock : '' }}">
+                
+            </div>
+            <div class="form-group">
+                
+                <label>Harga</label>
+                <input type="number" placeholder="harga-obat" name="price" class="form-control" value="{{isset($medicine) ? $medicine->price : '' }}">
+                
+            </div>
+            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{isset($medicine) ? 'Ubah' : 'Submit' }}</button>
+        
+        </form> 
         
     </div>
 </div>

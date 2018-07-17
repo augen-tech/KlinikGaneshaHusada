@@ -43,6 +43,12 @@ class MedicineController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'name' => 'required',
+            'stock' => 'required',
+            'price' => 'required',
+        ]);
+
         $data = [
             'name' => $request->name,
             'type' => $request->type,
@@ -93,6 +99,7 @@ class MedicineController extends Controller
     {
         // 'stock' => $request->stock,
         $medicine = Medicine::find($id);
+        
         
         $data = [
             'name' => $request->name,
